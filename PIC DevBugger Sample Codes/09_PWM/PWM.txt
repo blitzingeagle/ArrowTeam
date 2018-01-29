@@ -1,0 +1,16 @@
+Oscillator Used: 		Internal, 32 MHz (8 MHz with 4x PLL)
+Language: 			C MPLAB XC8
+LCD: 				Not Used
+KEYPAD: 			Not Used
+RTC:				Not Used
+Arduino:			Not Used
+A2D:				Not Used
+GLCD:				Not Used
+SD Card:			Not Used
+USB:				Not Used
+
+This program demonstrates usage of the PIC's PWM module by transmiting a PWM signal on RC2. In the debug module, the
+brightness of RC2 should be seen slowly increasing; this is because the duty cycle is being changed.
+
+The PWM value is displayed on the LEDs of PORTB in binary form.
+The PWM frequency setting in this code is not very precise (measured to be around 50 kHz)

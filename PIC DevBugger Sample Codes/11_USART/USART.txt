@@ -1,0 +1,14 @@
+Oscillator Used: 		External, 10 MHz
+Language: 			Assembly
+LCD: 				Not Used
+KEYPAD: 			Not Used
+RTC:				Not Used
+Arduino:			Not Used
+A2D:				Not Used
+GLCD:				Not Used
+SD Card:			Not Used
+USB:				Yes
+
+This assembly program transmits a counter over UART. This transmissions can be received by a PC
+if the co-processor is running the virtual COM PORT program (of course, the jumpers in the USB
+module must then be shorted as well to enable inter-PIC communication).

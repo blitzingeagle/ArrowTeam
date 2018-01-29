@@ -1,0 +1,91 @@
+MPASM  5.20                         A2D18.ASM   7-20-2009  15:49:01         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 
+                      00002 #include <p18f4620.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC18F4620 processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2007 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      01331         LIST
+                      00003                 list P=18F4620, F=INHX32, C=160, N=80, ST=OFF, MM=OFF, R=DEC
+                      00004 
+                      00005 ;;;;;;Configuration Bits;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                      00006 
+08 1F 1E 81 81 0F C0 000007                 CONFIG OSC=INTIO67, FCMEN=OFF, IESO=OFF
+       F E0 0F 40 
+                      00008                 CONFIG PWRT = OFF, BOREN = SBORDIS, BORV = 3
+                      00009                 CONFIG WDT = OFF, WDTPS = 32768
+                      00010                 CONFIG MCLRE = ON, LPT1OSC = OFF, PBADEN = OFF, CCP2MX = PORTC
+                      00011                 CONFIG STVREN = ON, LVP = OFF, XINST = OFF
+                      00012                 CONFIG DEBUG = OFF
+                      00013                 CONFIG CP0 = OFF, CP1 = OFF, CP2 = OFF, CP3 = OFF
+                      00014                 CONFIG CPB = OFF, CPD = OFF
+                      00015                 CONFIG WRT0 = OFF, WRT1 = OFF, WRT2 = OFF, WRT3 = OFF
+                      00016                 CONFIG WRTB = OFF, WRTC = OFF, WRTD = OFF
+                      00017                 CONFIG EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
+                      00018                 CONFIG EBTRB = OFF
+                      00019 
+                      00020 ;**************************************************************
+                      00021 ; Initialize Part
+                      00022 ;  
+                      00023 ; ADCON1 - AN0/RA0 as the only analog input
+                      00024 ; ADCON2 - Acquisition time = 8 TAD
+                      00025 ;                - Conversion clock = Fosc/64
+                      00026 ; TRISB - PORTB as output
+                      00027 ;**************************************************************
+000000                00028                 org             0
+000000 0E70           00029                 movlw   B'01110000'     ;set internal oscillator frequency
+000002 6ED3           00030                 movwf   OSCCON          ;to 8 MHz
+000004 8C9B           00031                 bsf             OSCTUNE, 6      ;turn on PLL to enable 32MHz clock frequency
+000006 D000           00032                 bra             INIT
+                      00033 
+000008 9EF2           00034 INIT    bcf             INTCON,GIE      ;disable global interrupt
+00000A 0E0E           00035                 movlw   B'00001110'     ;configure ADCON1
+00000C 6EC1           00036                 movwf   ADCON1          
+00000E 0E26           00037                 movlw   B'00100110'     ;configure ADCON2
+000010 6EC0           00038                 movwf   ADCON2
+000012 6A93           00039                 clrf    TRISB           ;configure PORTB as output
+000014 D000           00040                 bra             ADSTART
+                      00041 
+                      00042 
+                      00043 ;***************************************************************
+                      00044 ; MAIN PROGRAM
+                      00045 ;***************************************************************
+000016 D802           00046 ADSTART rcall   AD_CONV ;call the A2D subroutine
+000018 6E81           00047         movwf   PORTB   ;display the high 8-bit result to the LEDs 
+                      00048 
+00001A D7FF           00049 ENDLP   bra             ENDLP   ;endless loop
+                      00050 
+                      00051 
+                      00052 ;***************************************************************
+                      00053 ; AD CONVERT ROUTINE
+                      00054 ;***************************************************************
+00001C 0E01           00055 AD_CONV movlw   B'00000001'     ;configure ADCON0
+00001E 6EC2           00056         movwf   ADCON0          
+000020 82C2           00057         bsf             ADCON0,1        ;start the conversion
+                      00058 
+000022 B2C2           00059 WAIT    btfsc   ADCON0,1        ;wait until the conversion is completed
+000024 D7FE           00060         bra             WAIT            ;poll the GO bit in ADCON0
+000026 50C4           00061         movf    ADRESH,W        ;move the high 8-bit to W
+000028 0012           00062         return
+                      00063         end
+
+MPASM  5.20                         A2D18.ASM   7-20-2009  15:49:01         PAGE  2
+
+
+
+
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

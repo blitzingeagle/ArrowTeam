@@ -1,0 +1,19 @@
+Oscillator Used: 		External, 10 MHz
+Language: 			C MPLAB XC8
+LCD: 				Hitachi HD44780 16x2
+KEYPAD: 			Not Used
+RTC:				Not Used
+Arduino:			Not Used
+A2D:				Not Used
+GLCD:				Not Used
+SD Card:			Not Used
+USB:				Yes
+
+This program demonstrates PIC-PC communication. It sends key press data to a PC connected to the co-processor,
+while also displaying data received from the PC to the character LCD.
+
+Note: the co-processor must be booted into the program where it is running the virtual COM port. Also,
+the jumpers in the USB module must be shorted to enable PIC-PC communication.
+
+When data is being sent from the PC to the PIC, the LED_TX LED should be observed to be flashing.
+When data is being sent from the PIC to the PC, the LED_RX LED should be observed to be flashing.

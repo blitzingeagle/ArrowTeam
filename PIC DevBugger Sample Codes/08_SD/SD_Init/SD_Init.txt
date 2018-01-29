@@ -1,0 +1,22 @@
+Oscillator Used: 		External, 10 MHz
+Language: 			C MPLAB XC8
+LCD: 				Hitachi HD44780 16x2
+KEYPAD: 			Not Used
+RTC:				Not Used
+Arduino:			Not Used
+A2D:				Not Used
+GLCD:				Not Used
+SD Card:			Any microSD card
+USB:				Not Used
+
+SD cards are capable of storing large amounts of memory in a "non-volatile" fashion, meaning that the information
+is preserved even when power is turned off (this relies on the phenomena of floating-gate MOSFETs). An SD card is
+a slave device, and so it is communicated with my sending it commands as the master. When a SD card is first
+powered up, it will be unresponsive to any commands until it is initialized. Initialization is a "handshake" that
+is highly specific; in fact, all commands are sufficiently specific that there is a specification detailing how to
+implemented them. The implementation in this sample code follows the SD Physical Layer Simplified Specification 
+Version 6.00.
+
+In this sample, initialization is performed, during which time certain card-specific data is retrieved. Some
+examples are the storage capacity of the card, the manufacturer ID, the date the card was manufactured, and
+the SD version the card controller complies to. These details are printed to the character LCD.

@@ -1,0 +1,26 @@
+Oscillator Used: 		External, 10 MHz
+Language: 			Assembly & C MPLAB XC8
+LCD: 				Not Used
+KEYPAD: 			Not Used
+RTC:				Not used
+Arduino:			Not Used
+A2D:				Not Used
+GLCD:				Not Used
+SD Card:			Not Used
+USB:				Not Used
+
+This program iterates through the pins on the PIC, making the debug LEDs toggle sequentially.
+
+A few notes:
+ 1. Below the LED array in the debug module, there is a DIP switch called "LED DEBUG".
+    When one of these switches is turned ON (up position), the corresponding column of LEDs
+    will be enabled.
+
+ 2. Preconditions are described in main.c. These are:
+    2.1) No external circuitry driving the data lines
+    2.2) LED debug switches are all enabled
+    2.3) Debug DIP switches are all in the middle position
+    2.4) Arduino-PIC link switches are all OFF
+    2.5) JP_TX and JP_RX in the USB module are open (i.e. not shorted)
+    2.6) The A2D jumpers are open (i.e. not connected to the PIC)
+    2.7) The PRG/RUN switch must be in the PRG position (this is assumed for ALL sample code)

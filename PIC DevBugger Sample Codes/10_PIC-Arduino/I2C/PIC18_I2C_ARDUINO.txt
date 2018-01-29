@@ -1,0 +1,42 @@
+Oscillator Used: 		External, 10 MHz
+Language: 			C MPLAB XC8
+LCD: 				Hitiachi HD44780 16x2
+KEYPAD: 			Matrix 4X4
+RTC:				Not Used
+Arduino:			Arduino Nano, ATmega328, 5 V
+A2D:				Not Used
+GLCD:				Not Used
+SD Card:			Not Used
+USB:				Not Used
+
+This code is a demonstration of I2C communication between the PIC18F4620 and Arduino Nano board.
+This same procedure could be generalized to a larger number of devices.
+
+
+Instructions:
+
+1. Move all Arduino-PIC link switches to the OFF (down) position except for switch 1 and 2 on the lower bank (S3).
+   This will enable the I2C connection between the Arduino Nano and PIC. (A4 and A5 pin for the Arduino Nano,
+   RC4 and RC3 for the PIC)
+
+2. Load the PIC sample program onto the main PIC as you would normally
+
+3. Plug in an Arduino Nano board to the computer using a USB A to Mini-B cable
+
+4. Open "ARDUINO_I2C_RECIEVER.ino" in the Arduino IDE, and select "Arduino Nano" for the board, and "ATmega328" for the processor.
+   In Tools, choose the new COM port that appeared after the Arduino Nano was plugged in (you may need to remove and re-attach
+   the Arduino Nano to check)
+
+5. Upload the Arduino Nano code to the Arduino Nano board and open the serial monitor from the Arduino IDE
+
+6. Plug the Arduino Nano into the "Arduino Nano Board" socket on the PIC Devbugger. Be careful to align the Arduino 
+   with the USB cable pointing out of the board, and the left 2 positions of the socket unoccupied. The socket on the 
+   Devbugger is 16 positions wide while the Arduino Nano has 15 pins on each side
+
+7. After the Arduino Nano is properly connected to the Devbugger, the serial monitor should display the values input by the keypad
+
+8. To reverse the direction of data and let the PIC recieve data sent from the Arduino Nano, press the letter "A" on the keypad
+   3 times ("AAA"). The PIC will now enter reciever mode, and character sent to the Arduino Nano through the serial monitor will 
+   now be displayed on the LCD onboard the DevBugger
+
+9. To revert back to PIC -> Arduino communication, reset the PIC using the reset botton on the board

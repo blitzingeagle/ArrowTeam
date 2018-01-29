@@ -1,0 +1,19 @@
+Oscillator Used: 		External, 10 MHz
+Language: 			C MPLAB XC8
+LCD: 				Hitiachi HD44780 16x2
+KEYPAD: 			Not Used
+RTC:				Not Used
+Arduino:			Not Used
+A2D:				Not Used
+GLCD:				Not Used
+SD Card:			Not Used
+USB:				Not Used
+
+This code demonstrates some of the character LCD capabilities and use of the
+standard print formatting library. Printing floats, integers, longs, strings,
+and characters is demonstrates, along with various ways of setting the cursor
+position. Display rotations are also presented, as well as cursor blink, cursor
+toggle, and display toggle settings.
+
+Note that the more printf statements you have, the more memory your program will
+take up!

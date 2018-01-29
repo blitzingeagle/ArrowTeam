@@ -1,0 +1,35 @@
+Oscillator Used: 		External, 10 MHz
+Language: 			C MPLAB XC8
+LCD: 				Hitiachi HD44780 16x2
+KEYPAD: 			Matrix 4X4
+RTC:				DS1307
+Arduino:			Not Used
+A2D:				Both
+GLCD:				ST7735R-based 128x128 TFT LCD
+SD Card:			Any microSD card
+USB:				Yes
+
+This program tests the basic capabilities of the development board. The keypad is used to select which functionality will be demonstrated.
+
+CAUTION: each of these functions requires a specific jumper configuration before being used. Improper jumper configurations may damage
+the development board. Please refer to the other sample programs for specifics on how the board should be configured prior to running
+each function.
+
+KEY		FUNCTION
+
+1		Sets the time on the RTC
+
+2		Gets the time on the RTC
+
+3		Initializes the GLCD and draws two rectangles
+
+4		Initializes the SD card and displays the storage capacity. NOTE: if there is no SD card inserted, this function will never finish
+
+5		Iterates through the I/O. PIC must be reset to exit this function
+
+6		Sends "Hello world!" on the UART bus, which can be received by a PC through the USB module when the Co-processor is booted into the virtual COM 		port program
+
+7		Acquires analog data from RA2 and RA3 and displays the results on the character LCD in hexadecimal format
+
+Also, if you are using the V2.1 of the red GLCD PCB, use the file GLCD_PIC_V2.1.c. 
+Otherwise, if you are using V1.1 of the red GLCD PCB, use the file GLCD_PIC_V1.1.c.

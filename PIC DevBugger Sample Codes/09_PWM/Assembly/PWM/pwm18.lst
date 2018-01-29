@@ -1,0 +1,62 @@
+MPASM  5.20                         PWM18.ASM   7-20-2009  11:43:29         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include <p18f4620.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC18F4620 processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2007 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      01331         LIST
+                      00002                 list P=18F4620, F=INHX32, C=160, N=80, ST=OFF, MM=OFF, R=DEC
+                      00003 
+                      00004 ;;;;;;Configuration Bits;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                      00005 
+08 1F 1E 81 81 0F C0 000006                 CONFIG OSC=INTIO67, FCMEN=OFF, IESO=OFF
+       F E0 0F 40 
+                      00007                 CONFIG PWRT = OFF, BOREN = SBORDIS, BORV = 3
+                      00008                 CONFIG WDT = OFF, WDTPS = 32768
+                      00009                 CONFIG MCLRE = ON, LPT1OSC = OFF, PBADEN = OFF, CCP2MX = PORTC
+                      00010                 CONFIG STVREN = ON, LVP = OFF, XINST = OFF
+                      00011                 CONFIG DEBUG = OFF
+                      00012                 CONFIG CP0 = OFF, CP1 = OFF, CP2 = OFF, CP3 = OFF
+                      00013                 CONFIG CPB = OFF, CPD = OFF
+                      00014                 CONFIG WRT0 = OFF, WRT1 = OFF, WRT2 = OFF, WRT3 = OFF
+                      00015                 CONFIG WRTB = OFF, WRTC = OFF, WRTD = OFF
+                      00016                 CONFIG EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
+                      00017                 CONFIG EBTRB = OFF
+                      00018 
+000000                00019                 ORG     0
+000000 EF02 F000      00020                 GOTO    INIT
+                      00021 
+000004                00022 INIT
+000004 0E70           00023                 movlw   B'01110000'     ;Set internal oscillator frequency to 8MHz
+000006 6ED3           00024                 movwf   OSCCON
+000008 8C9B           00025                 bsf             OSCTUNE, 6      ;Enable PLL - oscillator speed = 32MHz
+00000A 9EF2           00026                 BCF             INTCON,GIE      ;disable global interrupt
+00000C 9CF2           00027                 BCF             INTCON,PEIE
+00000E 0E63           00028                 MOVLW   B'01100011'     ;configure PR2
+000010 6ECB           00029                 MOVWF   PR2
+000012 0E32           00030                 MOVLW   B'00110010'     ;configure CCPR2L
+000014 6EBB           00031                 MOVWF   CCPR2L
+000016 0E0C           00032                 MOVLW   B'00001100'     ;configure CCP2CON
+000018 6EBA           00033                 MOVWF   CCP2CON
+00001A 6A94           00034                 CLRF    TRISC           ;configure PORTC as output
+00001C 0E05           00035                 MOVLW   B'00000101'     ;configure T2CON, set prescaler to 4
+00001E 6ECA           00036                 MOVWF   T2CON
+                      00037         
+000020 EF10 F000      00038 ENDLP   GOTO    ENDLP           ;endless loop
+                      00039 
+                      00040                 END
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

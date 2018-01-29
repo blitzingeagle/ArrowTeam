@@ -1,0 +1,20 @@
+Oscillator Used: 		External, 10 MHz
+Language: 			C MPLAB XC8
+LCD: 				Not Used
+KEYPAD: 			Not Used
+RTC:				Not Used
+Arduino:			Not Used
+A2D:				Not Used
+GLCD:				ST7735R-based 128x128 TFT LCD
+SD Card:			Not Used
+USB:				Not Used
+
+A graphical LCD (or GLCD) is able to display arbitrary images by addressing pixels with specific
+color values. This sample program initializes a ST7735R-based GLCD, and demonstrates the 
+fundamental graphics "function", drawing rectangles. Drawing pixels are also demonstrated as a 
+special case of drawing rectangles.
+
+Note that the GLCD must be placed in the PIC socket (the bottom GLCD socket) for this program.
+
+Also, if you are using the V2.1 of the red GLCD PCB, use the file GLCD_PIC_V2.1.c. 
+Otherwise, if you are using V1.1 of the red GLCD PCB, use the file GLCD_PIC_V1.1.c.

@@ -1,0 +1,27 @@
+Oscillator Used: 		External 10 MHz only (C version); Internal 8 MHz oscillator with 4x PLL (assembly version)
+Language: 			Assembly & C MPLAB XC8
+LCD: 				Hitachi HD44780 16x2
+KEYPAD: 			Not Used
+RTC:				Not used
+Arduino:			Not Used
+A2D:				Both
+GLCD:				Not Used
+SD Card:			Not Used
+USB:				Not Used
+
+This program uses the PIC's Analog to Digital Converter (ADC) module to read the voltage signal on
+pins RA2 and RA3.
+
+The 2 potentiometers in the A2D section can be used to provide the ADC with a voltage reference.
+The 2 jumper links connect the Vref+ and Vref- potientiometers to RA3 and RA2, respectively.
+
+C VERSION:
+The results of the ADC are displayed on the character LCD in hexadecimal representation. The total conversion 
+output is 10 bits ranging from 0x000 to 0x3ff. The leftmost digit refers to the most significant 2 bits stored
+in ADRESH, and the 2 following letters are the hexadecimal representation of the lower byte of the A2D
+conversion result, stored in ADRESL.
+
+ASSEMBLY VERSION:
+The results of the lowest 8 bits of the ADC (i.e. ADRESL) are displayed on the pins of the PIC, and can be
+seen easily on the debug module LEDs. PORTC corresponds to the signal on RA3, and PORTD corresponds to the 
+signal on RA2.

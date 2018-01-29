@@ -1,0 +1,16 @@
+Oscillator Used: 		External, 10 MHz
+Language: 			C MPLAB XC8
+LCD: 				Hitiachi HD44780 16x2
+KEYPAD: 			Matrix 4X4
+RTC:				Not Used
+Arduino:			Not Used
+A2D:				Not Used
+GLCD:				Not Used
+SD Card:			Not Used
+USB:				Not Used
+
+This code demonstrates reading keypad data and displaying it on the character LCD.
+Upon startup, the LCD will display the character corresponding to the key pressed on the keypad.
+
+Note: the PRG/RUN switch must be switched to "RUN" in order for keypad input to work properly, 
+since the keypad encoder shares pins with the programmer.

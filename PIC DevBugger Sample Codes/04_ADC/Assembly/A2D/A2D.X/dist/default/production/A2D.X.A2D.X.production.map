@@ -1,0 +1,54 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Fri Sep 15 15:02:06 2017
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000032
+                   .cinit    romdata   0x000032    program   0x000002
+.config_300001_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x300001    program   0x000001
+.config_300002_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x300002    program   0x000001
+.config_300003_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x300003    program   0x000001
+.config_300005_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x300005    program   0x000001
+.config_300006_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x300006    program   0x000001
+.config_300008_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x300008    program   0x000001
+.config_300009_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x300009    program   0x000001
+.config_30000A_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x30000a    program   0x000001
+.config_30000B_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x30000b    program   0x000001
+.config_30000C_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x30000c    program   0x000001
+.config_30000D_BUILD/DEFAULT/PRODUCTION/_EXT/14    romdata   0x30000d    program   0x000001
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000033      
+                            0x300001    0x300003      
+                            0x300005    0x300006      
+                            0x300008    0x30000d      
+            63 out of 66584 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                  ADSTART   0x000018    program     static ..\a2d18.asm             
+                  AD_CONV   0x000026    program     static ..\a2d18.asm             
+                    ENDLP   0x000024    program     static ..\a2d18.asm             
+                     INIT   0x000008    program     static ..\a2d18.asm             
+                     WAIT   0x00002a    program     static ..\a2d18.asm             
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     INIT   0x000008    program     static ..\a2d18.asm             
+                  ADSTART   0x000018    program     static ..\a2d18.asm             
+                    ENDLP   0x000024    program     static ..\a2d18.asm             
+                  AD_CONV   0x000026    program     static ..\a2d18.asm             
+                     WAIT   0x00002a    program     static ..\a2d18.asm             
+
+

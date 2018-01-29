@@ -1,0 +1,2821 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
+                                                                                               Sun Jan 28 20:05:14 2018
+
+Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
+     1                           	processor	18F4620
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     8                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     9                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text9,global,reloc=2,class=CODE,delta=1,group=1
+    19                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    20                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    21  0000                     
+    22                           ; Version 1.45
+    23                           ; Generated 16/11/2017 GMT
+    24                           ; 
+    25                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    26                           ; All rights reserved.
+    27                           ; 
+    28                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    29                           ; 
+    30                           ; Redistribution and use in source and binary forms, with or without modification, are
+    31                           ; permitted provided that the following conditions are met:
+    32                           ; 
+    33                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    34                           ;        conditions and the following disclaimer.
+    35                           ; 
+    36                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    37                           ;        of conditions and the following disclaimer in the documentation and/or other
+    38                           ;        materials provided with the distribution.
+    39                           ; 
+    40                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    41                           ;        software without specific prior written permission.
+    42                           ; 
+    43                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    44                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    45                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    46                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    47                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    48                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    49                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    50                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    51                           ; 
+    52                           ; 
+    53                           ; Code-generator required, PIC18F4620 Definitions
+    54                           ; 
+    55                           ; SFR Addresses
+    56  0000                     
+    57                           	psect	smallconst
+    58  001000                     __psmallconst:
+    59                           	opt stack 0
+    60  001000  00                 	db	0
+    61  001001                     _VIOLET:
+    62                           	opt stack 0
+    63  001001  00D3               	dw	211
+    64  001003  0094               	dw	148
+    65  001005                     __end_of_VIOLET:
+    66                           	opt stack 0
+    67  001005                     _INDIGO:
+    68                           	opt stack 0
+    69  001005  0082               	dw	130
+    70  001007  004B               	dw	75
+    71  001009                     __end_of_INDIGO:
+    72                           	opt stack 0
+    73  001009                     _BLUE:
+    74                           	opt stack 0
+    75  001009  00FF               	dw	255
+    76  00100B  0000               	dw	0
+    77  00100D                     __end_of_BLUE:
+    78                           	opt stack 0
+    79  00100D                     _GREEN:
+    80                           	opt stack 0
+    81  00100D  FF00               	dw	65280
+    82  00100F  0000               	dw	0
+    83  001011                     __end_of_GREEN:
+    84                           	opt stack 0
+    85  001011                     _YELLOW:
+    86                           	opt stack 0
+    87  001011  FF00               	dw	65280
+    88  001013  00FF               	dw	255
+    89  001015                     __end_of_YELLOW:
+    90                           	opt stack 0
+    91  001015                     _ORANGE:
+    92                           	opt stack 0
+    93  001015  8C00               	dw	35840
+    94  001017  00FF               	dw	255
+    95  001019                     __end_of_ORANGE:
+    96                           	opt stack 0
+    97  001019                     _RED:
+    98                           	opt stack 0
+    99  001019  0000               	dw	0
+   100  00101B  00FF               	dw	255
+   101  00101D                     __end_of_RED:
+   102                           	opt stack 0
+   103  00101D                     _WHITE:
+   104                           	opt stack 0
+   105  00101D  FFFF               	dw	65535
+   106  00101F  00FF               	dw	255
+   107  001021                     __end_of_WHITE:
+   108                           	opt stack 0
+   109  001021                     _GREY:
+   110                           	opt stack 0
+   111  001021  8080               	dw	32896
+   112  001023  0080               	dw	128
+   113  001025                     __end_of_GREY:
+   114                           	opt stack 0
+   115  001025                     _BLACK:
+   116                           	opt stack 0
+   117  001025  0000               	dw	0
+   118  001027  0000               	dw	0
+   119  001029                     __end_of_BLACK:
+   120                           	opt stack 0
+   121  001029  C7                 	db	199
+   122  00102A                     __end_ofGLCD_PIC@INST_VMOFCTR2:
+   123                           	opt stack 0
+   124  00102A                     GLCD_PIC@INST_VMCTR1:
+   125                           	opt stack 0
+   126  00102A  C5                 	db	197
+   127  00102B                     __end_ofGLCD_PIC@INST_VMCTR1:
+   128                           	opt stack 0
+   129  00102B                     GLCD_PIC@INST_PWCTR5:
+   130                           	opt stack 0
+   131  00102B  C4                 	db	196
+   132  00102C                     __end_ofGLCD_PIC@INST_PWCTR5:
+   133                           	opt stack 0
+   134  00102C                     GLCD_PIC@INST_PWCTR4:
+   135                           	opt stack 0
+   136  00102C  C3                 	db	195
+   137  00102D                     __end_ofGLCD_PIC@INST_PWCTR4:
+   138                           	opt stack 0
+   139  00102D                     GLCD_PIC@INST_PWCTR3:
+   140                           	opt stack 0
+   141  00102D  C2                 	db	194
+   142  00102E                     __end_ofGLCD_PIC@INST_PWCTR3:
+   143                           	opt stack 0
+   144  00102E                     GLCD_PIC@INST_PWCTR2:
+   145                           	opt stack 0
+   146  00102E  C1                 	db	193
+   147  00102F                     __end_ofGLCD_PIC@INST_PWCTR2:
+   148                           	opt stack 0
+   149  00102F                     GLCD_PIC@INST_PWCTR1:
+   150                           	opt stack 0
+   151  00102F  C0                 	db	192
+   152  001030                     __end_ofGLCD_PIC@INST_PWCTR1:
+   153                           	opt stack 0
+   154  001030                     GLCD_PIC@INST_INVCTR:
+   155                           	opt stack 0
+   156  001030  B4                 	db	180
+   157  001031                     __end_ofGLCD_PIC@INST_INVCTR:
+   158                           	opt stack 0
+   159  001031                     GLCD_PIC@INST_FRMCTR3:
+   160                           	opt stack 0
+   161  001031  B3                 	db	179
+   162  001032                     __end_ofGLCD_PIC@INST_FRMCTR3:
+   163                           	opt stack 0
+   164  001032                     GLCD_PIC@INST_FRMCTR2:
+   165                           	opt stack 0
+   166  001032  B2                 	db	178
+   167  001033                     __end_ofGLCD_PIC@INST_FRMCTR2:
+   168                           	opt stack 0
+   169  001033                     GLCD_PIC@INST_FRMCTR1:
+   170                           	opt stack 0
+   171  001033  B1                 	db	177
+   172  001034                     __end_ofGLCD_PIC@INST_FRMCTR1:
+   173                           	opt stack 0
+   174  001034                     GLCD_PIC@INST_COLMOD:
+   175                           	opt stack 0
+   176  001034  3A                 	db	58
+   177  001035                     __end_ofGLCD_PIC@INST_COLMOD:
+   178                           	opt stack 0
+   179  001035  39                 	db	57
+   180  001036                     __end_ofGLCD_PIC@INST_IDMON:
+   181                           	opt stack 0
+   182  001036                     GLCD_PIC@INST_IDMOFF:
+   183                           	opt stack 0
+   184  001036  38                 	db	56
+   185  001037                     __end_ofGLCD_PIC@INST_IDMOFF:
+   186                           	opt stack 0
+   187  001037                     GLCD_PIC@INST_MADCTL:
+   188                           	opt stack 0
+   189  001037  36                 	db	54
+   190  001038                     __end_ofGLCD_PIC@INST_MADCTL:
+   191                           	opt stack 0
+   192  001038  35                 	db	53
+   193  001039                     __end_ofGLCD_PIC@INST_TEON:
+   194                           	opt stack 0
+   195  001039  34                 	db	52
+   196  00103A                     __end_ofGLCD_PIC@INST_TEOFF:
+   197                           	opt stack 0
+   198  00103A  30                 	db	48
+   199  00103B                     __end_ofGLCD_PIC@INST_PTLAR:
+   200                           	opt stack 0
+   201  00103B                     GLCD_PIC@INST_RAMWR:
+   202                           	opt stack 0
+   203  00103B  2C                 	db	44
+   204  00103C                     __end_ofGLCD_PIC@INST_RAMWR:
+   205                           	opt stack 0
+   206  00103C                     GLCD_PIC@INST_RASET:
+   207                           	opt stack 0
+   208  00103C  2B                 	db	43
+   209  00103D                     __end_ofGLCD_PIC@INST_RASET:
+   210                           	opt stack 0
+   211  00103D                     GLCD_PIC@INST_CASET:
+   212                           	opt stack 0
+   213  00103D  2A                 	db	42
+   214  00103E                     __end_ofGLCD_PIC@INST_CASET:
+   215                           	opt stack 0
+   216  00103E                     GLCD_PIC@INST_DISPON:
+   217                           	opt stack 0
+   218  00103E  29                 	db	41
+   219  00103F                     __end_ofGLCD_PIC@INST_DISPON:
+   220                           	opt stack 0
+   221  00103F  28                 	db	40
+   222  001040                     __end_ofGLCD_PIC@INST_DISPOFF:
+   223                           	opt stack 0
+   224  001040                     GLCD_PIC@INST_GAMSET:
+   225                           	opt stack 0
+   226  001040  26                 	db	38
+   227  001041                     __end_ofGLCD_PIC@INST_GAMSET:
+   228                           	opt stack 0
+   229  001041  21                 	db	33
+   230  001042                     __end_ofGLCD_PIC@INST_INVON:
+   231                           	opt stack 0
+   232  001042                     GLCD_PIC@INST_INVOFF:
+   233                           	opt stack 0
+   234  001042  20                 	db	32
+   235  001043                     __end_ofGLCD_PIC@INST_INVOFF:
+   236                           	opt stack 0
+   237  001043                     GLCD_PIC@INST_NORON:
+   238                           	opt stack 0
+   239  001043  13                 	db	19
+   240  001044                     __end_ofGLCD_PIC@INST_NORON:
+   241                           	opt stack 0
+   242  001044  12                 	db	18
+   243  001045                     __end_ofGLCD_PIC@INST_PTLON:
+   244                           	opt stack 0
+   245  001045                     GLCD_PIC@INST_SLPOUT:
+   246                           	opt stack 0
+   247  001045  11                 	db	17
+   248  001046                     __end_ofGLCD_PIC@INST_SLPOUT:
+   249                           	opt stack 0
+   250  001046  10                 	db	16
+   251  001047                     __end_ofGLCD_PIC@INST_SLPIN:
+   252                           	opt stack 0
+   253  001047                     GLCD_PIC@INST_SWRESET:
+   254                           	opt stack 0
+   255  001047  01                 	db	1
+   256  001048                     __end_ofGLCD_PIC@INST_SWRESET:
+   257                           	opt stack 0
+   258  001048  00                 	db	0
+   259  001049                     __end_ofGLCD_PIC@INST_NOP:
+   260                           	opt stack 0
+   261  001049  C7                 	db	199
+   262  00104A                     __end_of_INST_VMOFCTR2:
+   263                           	opt stack 0
+   264  00104A  C5                 	db	197
+   265  00104B                     __end_of_INST_VMCTR1:
+   266                           	opt stack 0
+   267  00104B  C4                 	db	196
+   268  00104C                     __end_of_INST_PWCTR5:
+   269                           	opt stack 0
+   270  00104C  C3                 	db	195
+   271  00104D                     __end_of_INST_PWCTR4:
+   272                           	opt stack 0
+   273  00104D  C2                 	db	194
+   274  00104E                     __end_of_INST_PWCTR3:
+   275                           	opt stack 0
+   276  00104E  C1                 	db	193
+   277  00104F                     __end_of_INST_PWCTR2:
+   278                           	opt stack 0
+   279  00104F  C0                 	db	192
+   280  001050                     __end_of_INST_PWCTR1:
+   281                           	opt stack 0
+   282  001050  B4                 	db	180
+   283  001051                     __end_of_INST_INVCTR:
+   284                           	opt stack 0
+   285  001051  B3                 	db	179
+   286  001052                     __end_of_INST_FRMCTR3:
+   287                           	opt stack 0
+   288  001052  B2                 	db	178
+   289  001053                     __end_of_INST_FRMCTR2:
+   290                           	opt stack 0
+   291  001053  B1                 	db	177
+   292  001054                     __end_of_INST_FRMCTR1:
+   293                           	opt stack 0
+   294  001054  3A                 	db	58
+   295  001055                     __end_of_INST_COLMOD:
+   296                           	opt stack 0
+   297  001055  39                 	db	57
+   298  001056                     __end_of_INST_IDMON:
+   299                           	opt stack 0
+   300  001056  38                 	db	56
+   301  001057                     __end_of_INST_IDMOFF:
+   302                           	opt stack 0
+   303  001057  36                 	db	54
+   304  001058                     __end_of_INST_MADCTL:
+   305                           	opt stack 0
+   306  001058  35                 	db	53
+   307  001059                     __end_of_INST_TEON:
+   308                           	opt stack 0
+   309  001059  34                 	db	52
+   310  00105A                     __end_of_INST_TEOFF:
+   311                           	opt stack 0
+   312  00105A  30                 	db	48
+   313  00105B                     __end_of_INST_PTLAR:
+   314                           	opt stack 0
+   315  00105B  2C                 	db	44
+   316  00105C                     __end_of_INST_RAMWR:
+   317                           	opt stack 0
+   318  00105C  2B                 	db	43
+   319  00105D                     __end_of_INST_RASET:
+   320                           	opt stack 0
+   321  00105D  2A                 	db	42
+   322  00105E                     __end_of_INST_CASET:
+   323                           	opt stack 0
+   324  00105E  29                 	db	41
+   325  00105F                     __end_of_INST_DISPON:
+   326                           	opt stack 0
+   327  00105F  28                 	db	40
+   328  001060                     __end_of_INST_DISPOFF:
+   329                           	opt stack 0
+   330  001060  26                 	db	38
+   331  001061                     __end_of_INST_GAMSET:
+   332                           	opt stack 0
+   333  001061  21                 	db	33
+   334  001062                     __end_of_INST_INVON:
+   335                           	opt stack 0
+   336  001062  20                 	db	32
+   337  001063                     __end_of_INST_INVOFF:
+   338                           	opt stack 0
+   339  001063  13                 	db	19
+   340  001064                     __end_of_INST_NORON:
+   341                           	opt stack 0
+   342  001064  12                 	db	18
+   343  001065                     __end_of_INST_PTLON:
+   344                           	opt stack 0
+   345  001065  11                 	db	17
+   346  001066                     __end_of_INST_SLPOUT:
+   347                           	opt stack 0
+   348  001066  10                 	db	16
+   349  001067                     __end_of_INST_SLPIN:
+   350                           	opt stack 0
+   351  001067  01                 	db	1
+   352  001068                     __end_of_INST_SWRESET:
+   353                           	opt stack 0
+   354  001068  00                 	db	0
+   355  001069                     __end_of_INST_NOP:
+   356                           	opt stack 0
+   357  001069                     _GLCD_SIZE_VERT:
+   358                           	opt stack 0
+   359  001069  80                 	db	128
+   360  00106A                     __end_of_GLCD_SIZE_VERT:
+   361                           	opt stack 0
+   362  00106A                     _GLCD_SIZE_HORZ:
+   363                           	opt stack 0
+   364  00106A  80                 	db	128
+   365  00106B                     __end_of_GLCD_SIZE_HORZ:
+   366                           	opt stack 0
+   367  00106B                     _GLCD_ADDRESSABLE_SIZE_VERT:
+   368                           	opt stack 0
+   369  00106B  A0                 	db	160
+   370  00106C                     __end_of_GLCD_ADDRESSABLE_SIZE_VERT:
+   371                           	opt stack 0
+   372  00106C                     _GLCD_ADDRESSABLE_SIZE_HORZ:
+   373                           	opt stack 0
+   374  00106C  80                 	db	128
+   375  00106D                     __end_of_GLCD_ADDRESSABLE_SIZE_HORZ:
+   376                           	opt stack 0
+   377  0000                     _TRISDbits	set	3989
+   378  0000                     _LATDbits	set	3980
+   379  0000                     _TRISCbits	set	3988
+   380  0000                     _SSPCON1	set	4038
+   381  0000                     _SSPSTAT	set	4039
+   382  0000                     _SSPCON1bits	set	4038
+   383  0000                     _SSPSTATbits	set	4039
+   384  0000                     _SSPBUF	set	4041
+   385  0000                     _ADCON1	set	4033
+   386  0000                     _ADCON0	set	4034
+   387  0000                     _TRISE	set	3990
+   388  0000                     _TRISD	set	3989
+   389  0000                     _TRISC	set	3988
+   390  0000                     _TRISB	set	3987
+   391  0000                     _TRISA	set	3986
+   392  0000                     _LATE	set	3981
+   393  0000                     _LATD	set	3980
+   394  0000                     _LATC	set	3979
+   395  0000                     _LATB	set	3978
+   396  0000                     _LATA	set	3977
+   397  0000                     _SSPIF	set	31987
+   398                           
+   399                           ; #config settings
+   400  00106D  00                 	db	0	; dummy byte at the end
+   401  0000                     
+   402                           	psect	cinit
+   403  0017D0                     __pcinit:
+   404                           	opt stack 0
+   405  0017D0                     start_initialization:
+   406                           	opt stack 0
+   407  0017D0                     __initialization:
+   408                           	opt stack 0
+   409                           
+   410                           ; Clear objects allocated to COMRAM (1 bytes)
+   411  0017D0  6A1C               	clrf	__pbssCOMRAM& (0+255),c
+   412  0017D2                     end_of_initialization:
+   413                           	opt stack 0
+   414  0017D2                     __end_of__initialization:
+   415                           	opt stack 0
+   416  0017D2  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   417  0017D4  6EF8               	movwf	tblptru,c
+   418  0017D6  0100               	movlb	0
+   419  0017D8  EFBD  F009         	goto	_main	;jump to C main() function
+   420                           tblptru	equ	0xFF8
+   421                           
+   422                           	psect	bssCOMRAM
+   423  00001C                     __pbssCOMRAM:
+   424                           	opt stack 0
+   425  00001C                     _MADCTLbits:
+   426                           	opt stack 0
+   427  00001C                     	ds	1
+   428                           tblptru	equ	0xFF8
+   429                           
+   430                           	psect	cstackCOMRAM
+   431  000001                     __pcstackCOMRAM:
+   432                           	opt stack 0
+   433  000001                     ??_spiTransfer:
+   434  000001                     ?___wmul:
+   435                           	opt stack 0
+   436  000001                     spiInit@divider:
+   437                           	opt stack 0
+   438  000001                     ___wmul@multiplier:
+   439                           	opt stack 0
+   440                           
+   441                           ; 2 bytes @ 0x0
+   442  000001                     	ds	1
+   443  000002                     spiTransfer@byteToTransfer:
+   444                           	opt stack 0
+   445                           
+   446                           ; 1 bytes @ 0x1
+   447  000002                     	ds	1
+   448  000003                     spiSend@val:
+   449                           	opt stack 0
+   450  000003                     ___wmul@multiplicand:
+   451                           	opt stack 0
+   452                           
+   453                           ; 2 bytes @ 0x2
+   454  000003                     	ds	1
+   455  000004                     glcdTransfer@cmd:
+   456                           	opt stack 0
+   457                           
+   458                           ; 1 bytes @ 0x3
+   459  000004                     	ds	1
+   460  000005                     ??_glcdTransfer:
+   461  000005                     ___wmul@product:
+   462                           	opt stack 0
+   463                           
+   464                           ; 2 bytes @ 0x4
+   465  000005                     	ds	1
+   466  000006                     glcdTransfer@byte:
+   467                           	opt stack 0
+   468                           
+   469                           ; 1 bytes @ 0x5
+   470  000006                     	ds	1
+   471  000007                     glcdDrawRectangle@XE:
+   472                           	opt stack 0
+   473  000007                     glcdSetCOLMOD@numBitsPerPixel:
+   474                           	opt stack 0
+   475                           
+   476                           ; 1 bytes @ 0x6
+   477  000007                     	ds	1
+   478  000008                     glcdDrawRectangle@YS:
+   479                           	opt stack 0
+   480  000008                     glcdSetCOLMOD@rawData:
+   481                           	opt stack 0
+   482                           
+   483                           ; 2 bytes @ 0x7
+   484  000008                     	ds	1
+   485  000009                     glcdDrawRectangle@YE:
+   486                           	opt stack 0
+   487                           
+   488                           ; 1 bytes @ 0x8
+   489  000009                     	ds	1
+   490  00000A                     glcdDrawRectangle@color:
+   491                           	opt stack 0
+   492                           
+   493                           ; 4 bytes @ 0x9
+   494  00000A                     	ds	4
+   495  00000E                     ??_glcdDrawRectangle:
+   496                           
+   497                           ; 1 bytes @ 0xD
+   498  00000E                     	ds	4
+   499  000012                     glcdDrawRectangle@numLoops:
+   500                           	opt stack 0
+   501                           
+   502                           ; 2 bytes @ 0x11
+   503  000012                     	ds	2
+   504  000014                     glcdDrawRectangle@i:
+   505                           	opt stack 0
+   506                           
+   507                           ; 2 bytes @ 0x13
+   508  000014                     	ds	2
+   509  000016                     glcdDrawRectangle@colorData:
+   510                           	opt stack 0
+   511                           
+   512                           ; 3 bytes @ 0x15
+   513  000016                     	ds	3
+   514  000019                     glcdDrawRectangle@XS:
+   515                           	opt stack 0
+   516                           
+   517                           ; 1 bytes @ 0x18
+   518  000019                     	ds	1
+   519  00001A                     ??_initGLCD:
+   520                           
+   521                           ; 1 bytes @ 0x19
+   522  00001A                     	ds	2
+   523  00001C                     tblptru	equ	0xFF8
+   524                           
+   525                           ; 1 bytes @ 0x1B
+   526 ;;
+   527 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   528 ;;
+   529 ;; *************** function _main *****************
+   530 ;; Defined at:
+   531 ;;		line 66 in file "main.c"
+   532 ;; Parameters:    Size  Location     Type
+   533 ;;		None
+   534 ;; Auto vars:     Size  Location     Type
+   535 ;;		None
+   536 ;; Return value:  Size  Location     Type
+   537 ;;                  1    wreg      void 
+   538 ;; Registers used:
+   539 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+   540 ;; Tracked objects:
+   541 ;;		On entry : 0/0
+   542 ;;		On exit  : 0/0
+   543 ;;		Unchanged: 0/0
+   544 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   545 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   546 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   547 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   548 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   549 ;;Total ram usage:        0 bytes
+   550 ;; Hardware stack levels required when called:    6
+   551 ;; This function calls:
+   552 ;;		_glcdDrawRectangle
+   553 ;;		_init
+   554 ;; This function is called by:
+   555 ;;		Startup code after reset
+   556 ;; This function uses a non-reentrant model
+   557 ;;
+   558                           
+   559                           	psect	text0
+   560  00137A                     __ptext0:
+   561                           	opt stack 0
+   562  00137A                     _main:
+   563                           	opt stack 25
+   564                           
+   565                           ;main.c: 67: init();
+   566                           
+   567                           ;incstack = 0
+   568  00137A  EC96  F00B         	call	_init	;wreg free
+   569  00137E                     l128:
+   570                           
+   571                           ;main.c: 72: glcdDrawRectangle(0, 18, 0, GLCD_SIZE_VERT, RED);
+   572  00137E  0E12               	movlw	18
+   573  001380  6E07               	movwf	glcdDrawRectangle@XE,c
+   574  001382  0E00               	movlw	0
+   575  001384  6E08               	movwf	glcdDrawRectangle@YS,c
+   576  001386  0E69               	movlw	low _GLCD_SIZE_VERT
+   577  001388  6EF6               	movwf	tblptrl,c
+   578  00138A                     	if	1	;There is more than 1 active tblptr byte
+   579  00138A  0E10               	movlw	high _GLCD_SIZE_VERT
+   580  00138C  6EF7               	movwf	tblptrh,c
+   581  00138E                     	endif
+   582  00138E                     	if	0	;There are less than 3 active tblptr bytes
+   583  00138E                     	endif
+   584  00138E  0008               	tblrd		*
+   585  001390  CFF5 F009          	movff	tablat,glcdDrawRectangle@YE
+   586  001394  0E19               	movlw	low _RED
+   587  001396  6EF6               	movwf	tblptrl,c
+   588  001398                     	if	1	;There is more than 1 active tblptr byte
+   589  001398  0E10               	movlw	high _RED
+   590  00139A  6EF7               	movwf	tblptrh,c
+   591  00139C                     	endif
+   592  00139C                     	if	0	;There are less than 3 active tblptr bytes
+   593  00139C                     	endif
+   594  00139C  0009               	tblrd		*+
+   595  00139E  CFF5 F00A          	movff	tablat,glcdDrawRectangle@color
+   596  0013A2  0009               	tblrd		*+
+   597  0013A4  CFF5 F00B          	movff	tablat,glcdDrawRectangle@color+1
+   598  0013A8  0009               	tblrd		*+
+   599  0013AA  CFF5 F00C          	movff	tablat,glcdDrawRectangle@color+2
+   600  0013AE  000A               	tblrd		*-
+   601  0013B0  CFF5 F00D          	movff	tablat,glcdDrawRectangle@color+3
+   602  0013B4  0E00               	movlw	0
+   603  0013B6  EC92  F00A         	call	_glcdDrawRectangle
+   604                           
+   605                           ;main.c: 73: glcdDrawRectangle(18, 36, 0, GLCD_SIZE_VERT, ORANGE);
+   606  0013BA  0E24               	movlw	36
+   607  0013BC  6E07               	movwf	glcdDrawRectangle@XE,c
+   608  0013BE  0E00               	movlw	0
+   609  0013C0  6E08               	movwf	glcdDrawRectangle@YS,c
+   610  0013C2  0E69               	movlw	low _GLCD_SIZE_VERT
+   611  0013C4  6EF6               	movwf	tblptrl,c
+   612  0013C6                     	if	1	;There is more than 1 active tblptr byte
+   613  0013C6  0E10               	movlw	high _GLCD_SIZE_VERT
+   614  0013C8  6EF7               	movwf	tblptrh,c
+   615  0013CA                     	endif
+   616  0013CA                     	if	0	;There are less than 3 active tblptr bytes
+   617  0013CA                     	endif
+   618  0013CA  0008               	tblrd		*
+   619  0013CC  CFF5 F009          	movff	tablat,glcdDrawRectangle@YE
+   620  0013D0  0E15               	movlw	low _ORANGE
+   621  0013D2  6EF6               	movwf	tblptrl,c
+   622  0013D4                     	if	1	;There is more than 1 active tblptr byte
+   623  0013D4  0E10               	movlw	high _ORANGE
+   624  0013D6  6EF7               	movwf	tblptrh,c
+   625  0013D8                     	endif
+   626  0013D8                     	if	0	;There are less than 3 active tblptr bytes
+   627  0013D8                     	endif
+   628  0013D8  0009               	tblrd		*+
+   629  0013DA  CFF5 F00A          	movff	tablat,glcdDrawRectangle@color
+   630  0013DE  0009               	tblrd		*+
+   631  0013E0  CFF5 F00B          	movff	tablat,glcdDrawRectangle@color+1
+   632  0013E4  0009               	tblrd		*+
+   633  0013E6  CFF5 F00C          	movff	tablat,glcdDrawRectangle@color+2
+   634  0013EA  000A               	tblrd		*-
+   635  0013EC  CFF5 F00D          	movff	tablat,glcdDrawRectangle@color+3
+   636  0013F0  0E12               	movlw	18
+   637  0013F2  EC92  F00A         	call	_glcdDrawRectangle
+   638                           
+   639                           ;main.c: 74: glcdDrawRectangle(36, 54, 0, GLCD_SIZE_VERT, YELLOW);
+   640  0013F6  0E36               	movlw	54
+   641  0013F8  6E07               	movwf	glcdDrawRectangle@XE,c
+   642  0013FA  0E00               	movlw	0
+   643  0013FC  6E08               	movwf	glcdDrawRectangle@YS,c
+   644  0013FE  0E69               	movlw	low _GLCD_SIZE_VERT
+   645  001400  6EF6               	movwf	tblptrl,c
+   646  001402                     	if	1	;There is more than 1 active tblptr byte
+   647  001402  0E10               	movlw	high _GLCD_SIZE_VERT
+   648  001404  6EF7               	movwf	tblptrh,c
+   649  001406                     	endif
+   650  001406                     	if	0	;There are less than 3 active tblptr bytes
+   651  001406                     	endif
+   652  001406  0008               	tblrd		*
+   653  001408  CFF5 F009          	movff	tablat,glcdDrawRectangle@YE
+   654  00140C  0E11               	movlw	low _YELLOW
+   655  00140E  6EF6               	movwf	tblptrl,c
+   656  001410                     	if	1	;There is more than 1 active tblptr byte
+   657  001410  0E10               	movlw	high _YELLOW
+   658  001412  6EF7               	movwf	tblptrh,c
+   659  001414                     	endif
+   660  001414                     	if	0	;There are less than 3 active tblptr bytes
+   661  001414                     	endif
+   662  001414  0009               	tblrd		*+
+   663  001416  CFF5 F00A          	movff	tablat,glcdDrawRectangle@color
+   664  00141A  0009               	tblrd		*+
+   665  00141C  CFF5 F00B          	movff	tablat,glcdDrawRectangle@color+1
+   666  001420  0009               	tblrd		*+
+   667  001422  CFF5 F00C          	movff	tablat,glcdDrawRectangle@color+2
+   668  001426  000A               	tblrd		*-
+   669  001428  CFF5 F00D          	movff	tablat,glcdDrawRectangle@color+3
+   670  00142C  0E24               	movlw	36
+   671  00142E  EC92  F00A         	call	_glcdDrawRectangle
+   672                           
+   673                           ;main.c: 75: glcdDrawRectangle(54, 72, 0, GLCD_SIZE_VERT, GREEN);
+   674  001432  0E48               	movlw	72
+   675  001434  6E07               	movwf	glcdDrawRectangle@XE,c
+   676  001436  0E00               	movlw	0
+   677  001438  6E08               	movwf	glcdDrawRectangle@YS,c
+   678  00143A  0E69               	movlw	low _GLCD_SIZE_VERT
+   679  00143C  6EF6               	movwf	tblptrl,c
+   680  00143E                     	if	1	;There is more than 1 active tblptr byte
+   681  00143E  0E10               	movlw	high _GLCD_SIZE_VERT
+   682  001440  6EF7               	movwf	tblptrh,c
+   683  001442                     	endif
+   684  001442                     	if	0	;There are less than 3 active tblptr bytes
+   685  001442                     	endif
+   686  001442  0008               	tblrd		*
+   687  001444  CFF5 F009          	movff	tablat,glcdDrawRectangle@YE
+   688  001448  0E0D               	movlw	low _GREEN
+   689  00144A  6EF6               	movwf	tblptrl,c
+   690  00144C                     	if	1	;There is more than 1 active tblptr byte
+   691  00144C  0E10               	movlw	high _GREEN
+   692  00144E  6EF7               	movwf	tblptrh,c
+   693  001450                     	endif
+   694  001450                     	if	0	;There are less than 3 active tblptr bytes
+   695  001450                     	endif
+   696  001450  0009               	tblrd		*+
+   697  001452  CFF5 F00A          	movff	tablat,glcdDrawRectangle@color
+   698  001456  0009               	tblrd		*+
+   699  001458  CFF5 F00B          	movff	tablat,glcdDrawRectangle@color+1
+   700  00145C  0009               	tblrd		*+
+   701  00145E  CFF5 F00C          	movff	tablat,glcdDrawRectangle@color+2
+   702  001462  000A               	tblrd		*-
+   703  001464  CFF5 F00D          	movff	tablat,glcdDrawRectangle@color+3
+   704  001468  0E36               	movlw	54
+   705  00146A  EC92  F00A         	call	_glcdDrawRectangle
+   706                           
+   707                           ;main.c: 76: glcdDrawRectangle(72, 90, 0, GLCD_SIZE_VERT, BLUE);
+   708  00146E  0E5A               	movlw	90
+   709  001470  6E07               	movwf	glcdDrawRectangle@XE,c
+   710  001472  0E00               	movlw	0
+   711  001474  6E08               	movwf	glcdDrawRectangle@YS,c
+   712  001476  0E69               	movlw	low _GLCD_SIZE_VERT
+   713  001478  6EF6               	movwf	tblptrl,c
+   714  00147A                     	if	1	;There is more than 1 active tblptr byte
+   715  00147A  0E10               	movlw	high _GLCD_SIZE_VERT
+   716  00147C  6EF7               	movwf	tblptrh,c
+   717  00147E                     	endif
+   718  00147E                     	if	0	;There are less than 3 active tblptr bytes
+   719  00147E                     	endif
+   720  00147E  0008               	tblrd		*
+   721  001480  CFF5 F009          	movff	tablat,glcdDrawRectangle@YE
+   722  001484  0E09               	movlw	low _BLUE
+   723  001486  6EF6               	movwf	tblptrl,c
+   724  001488                     	if	1	;There is more than 1 active tblptr byte
+   725  001488  0E10               	movlw	high _BLUE
+   726  00148A  6EF7               	movwf	tblptrh,c
+   727  00148C                     	endif
+   728  00148C                     	if	0	;There are less than 3 active tblptr bytes
+   729  00148C                     	endif
+   730  00148C  0009               	tblrd		*+
+   731  00148E  CFF5 F00A          	movff	tablat,glcdDrawRectangle@color
+   732  001492  0009               	tblrd		*+
+   733  001494  CFF5 F00B          	movff	tablat,glcdDrawRectangle@color+1
+   734  001498  0009               	tblrd		*+
+   735  00149A  CFF5 F00C          	movff	tablat,glcdDrawRectangle@color+2
+   736  00149E  000A               	tblrd		*-
+   737  0014A0  CFF5 F00D          	movff	tablat,glcdDrawRectangle@color+3
+   738  0014A4  0E48               	movlw	72
+   739  0014A6  EC92  F00A         	call	_glcdDrawRectangle
+   740                           
+   741                           ;main.c: 77: glcdDrawRectangle(90, 108, 0, GLCD_SIZE_VERT, INDIGO);
+   742  0014AA  0E6C               	movlw	108
+   743  0014AC  6E07               	movwf	glcdDrawRectangle@XE,c
+   744  0014AE  0E00               	movlw	0
+   745  0014B0  6E08               	movwf	glcdDrawRectangle@YS,c
+   746  0014B2  0E69               	movlw	low _GLCD_SIZE_VERT
+   747  0014B4  6EF6               	movwf	tblptrl,c
+   748  0014B6                     	if	1	;There is more than 1 active tblptr byte
+   749  0014B6  0E10               	movlw	high _GLCD_SIZE_VERT
+   750  0014B8  6EF7               	movwf	tblptrh,c
+   751  0014BA                     	endif
+   752  0014BA                     	if	0	;There are less than 3 active tblptr bytes
+   753  0014BA                     	endif
+   754  0014BA  0008               	tblrd		*
+   755  0014BC  CFF5 F009          	movff	tablat,glcdDrawRectangle@YE
+   756  0014C0  0E05               	movlw	low _INDIGO
+   757  0014C2  6EF6               	movwf	tblptrl,c
+   758  0014C4                     	if	1	;There is more than 1 active tblptr byte
+   759  0014C4  0E10               	movlw	high _INDIGO
+   760  0014C6  6EF7               	movwf	tblptrh,c
+   761  0014C8                     	endif
+   762  0014C8                     	if	0	;There are less than 3 active tblptr bytes
+   763  0014C8                     	endif
+   764  0014C8  0009               	tblrd		*+
+   765  0014CA  CFF5 F00A          	movff	tablat,glcdDrawRectangle@color
+   766  0014CE  0009               	tblrd		*+
+   767  0014D0  CFF5 F00B          	movff	tablat,glcdDrawRectangle@color+1
+   768  0014D4  0009               	tblrd		*+
+   769  0014D6  CFF5 F00C          	movff	tablat,glcdDrawRectangle@color+2
+   770  0014DA  000A               	tblrd		*-
+   771  0014DC  CFF5 F00D          	movff	tablat,glcdDrawRectangle@color+3
+   772  0014E0  0E5A               	movlw	90
+   773  0014E2  EC92  F00A         	call	_glcdDrawRectangle
+   774                           
+   775                           ;main.c: 78: glcdDrawRectangle(108, 128, 0, GLCD_SIZE_VERT, VIOLET);
+   776  0014E6  0E80               	movlw	128
+   777  0014E8  6E07               	movwf	glcdDrawRectangle@XE,c
+   778  0014EA  0E00               	movlw	0
+   779  0014EC  6E08               	movwf	glcdDrawRectangle@YS,c
+   780  0014EE  0E69               	movlw	low _GLCD_SIZE_VERT
+   781  0014F0  6EF6               	movwf	tblptrl,c
+   782  0014F2                     	if	1	;There is more than 1 active tblptr byte
+   783  0014F2  0E10               	movlw	high _GLCD_SIZE_VERT
+   784  0014F4  6EF7               	movwf	tblptrh,c
+   785  0014F6                     	endif
+   786  0014F6                     	if	0	;There are less than 3 active tblptr bytes
+   787  0014F6                     	endif
+   788  0014F6  0008               	tblrd		*
+   789  0014F8  CFF5 F009          	movff	tablat,glcdDrawRectangle@YE
+   790  0014FC  0E01               	movlw	low _VIOLET
+   791  0014FE  6EF6               	movwf	tblptrl,c
+   792  001500                     	if	1	;There is more than 1 active tblptr byte
+   793  001500  0E10               	movlw	high _VIOLET
+   794  001502  6EF7               	movwf	tblptrh,c
+   795  001504                     	endif
+   796  001504                     	if	0	;There are less than 3 active tblptr bytes
+   797  001504                     	endif
+   798  001504  0009               	tblrd		*+
+   799  001506  CFF5 F00A          	movff	tablat,glcdDrawRectangle@color
+   800  00150A  0009               	tblrd		*+
+   801  00150C  CFF5 F00B          	movff	tablat,glcdDrawRectangle@color+1
+   802  001510  0009               	tblrd		*+
+   803  001512  CFF5 F00C          	movff	tablat,glcdDrawRectangle@color+2
+   804  001516  000A               	tblrd		*-
+   805  001518  CFF5 F00D          	movff	tablat,glcdDrawRectangle@color+3
+   806  00151C  0E6C               	movlw	108
+   807  00151E  EC92  F00A         	call	_glcdDrawRectangle
+   808  001522  D72D               	goto	l128
+   809  001524                     __end_of_main:
+   810                           	opt stack 0
+   811                           tblptru	equ	0xFF8
+   812                           tblptrh	equ	0xFF7
+   813                           tblptrl	equ	0xFF6
+   814                           tablat	equ	0xFF5
+   815                           
+   816 ;; *************** function _init *****************
+   817 ;; Defined at:
+   818 ;;		line 20 in file "main.c"
+   819 ;; Parameters:    Size  Location     Type
+   820 ;;		None
+   821 ;; Auto vars:     Size  Location     Type
+   822 ;;		None
+   823 ;; Return value:  Size  Location     Type
+   824 ;;                  1    wreg      void 
+   825 ;; Registers used:
+   826 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+   827 ;; Tracked objects:
+   828 ;;		On entry : 0/0
+   829 ;;		On exit  : 0/0
+   830 ;;		Unchanged: 0/0
+   831 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   832 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   833 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   834 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   835 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   836 ;;Total ram usage:        0 bytes
+   837 ;; Hardware stack levels used:    1
+   838 ;; Hardware stack levels required when called:    5
+   839 ;; This function calls:
+   840 ;;		_initGLCD
+   841 ;; This function is called by:
+   842 ;;		_main
+   843 ;; This function uses a non-reentrant model
+   844 ;;
+   845                           
+   846                           	psect	text1
+   847  00172C                     __ptext1:
+   848                           	opt stack 0
+   849  00172C                     _init:
+   850                           	opt stack 25
+   851                           
+   852                           ;main.c: 25: LATA = 0x00;
+   853                           
+   854                           ;incstack = 0
+   855  00172C  0E00               	movlw	0
+   856  00172E  6E89               	movwf	3977,c	;volatile
+   857                           
+   858                           ;main.c: 26: LATB = 0x00;
+   859  001730  0E00               	movlw	0
+   860  001732  6E8A               	movwf	3978,c	;volatile
+   861                           
+   862                           ;main.c: 27: LATC = 0x00;
+   863  001734  0E00               	movlw	0
+   864  001736  6E8B               	movwf	3979,c	;volatile
+   865                           
+   866                           ;main.c: 28: LATD = 0x00;
+   867  001738  0E00               	movlw	0
+   868  00173A  6E8C               	movwf	3980,c	;volatile
+   869                           
+   870                           ;main.c: 29: LATE = 0x00;
+   871  00173C  0E00               	movlw	0
+   872  00173E  6E8D               	movwf	3981,c	;volatile
+   873                           
+   874                           ;main.c: 33: TRISA = 0xFF;
+   875  001740  6892               	setf	3986,c	;volatile
+   876                           
+   877                           ;main.c: 34: TRISB = 0xFF;
+   878  001742  6893               	setf	3987,c	;volatile
+   879                           
+   880                           ;main.c: 35: TRISC = 0b10000000;
+   881  001744  0E80               	movlw	128
+   882  001746  6E94               	movwf	3988,c	;volatile
+   883                           
+   884                           ;main.c: 39: TRISD = 0b00000001;
+   885  001748  0E01               	movlw	1
+   886  00174A  6E95               	movwf	3989,c	;volatile
+   887                           
+   888                           ;main.c: 45: TRISE = 0b00000100;
+   889  00174C  0E04               	movlw	4
+   890  00174E  6E96               	movwf	3990,c	;volatile
+   891                           
+   892                           ;main.c: 52: ADCON0 = 0x00;
+   893  001750  0E00               	movlw	0
+   894  001752  6EC2               	movwf	4034,c	;volatile
+   895                           
+   896                           ;main.c: 53: ADCON1 = 0b00001111;
+   897  001754  0E0F               	movlw	15
+   898  001756  6EC1               	movwf	4033,c	;volatile
+   899                           
+   900                           ;main.c: 57: initGLCD();
+   901  001758  EC37  F008         	call	_initGLCD	;wreg free
+   902  00175C  0012               	return		;funcret
+   903  00175E                     __end_of_init:
+   904                           	opt stack 0
+   905                           tblptru	equ	0xFF8
+   906                           tblptrh	equ	0xFF7
+   907                           tblptrl	equ	0xFF6
+   908                           tablat	equ	0xFF5
+   909                           
+   910 ;; *************** function _initGLCD *****************
+   911 ;; Defined at:
+   912 ;;		line 238 in file "GLCD_PIC_V1.1.c"
+   913 ;; Parameters:    Size  Location     Type
+   914 ;;		None
+   915 ;; Auto vars:     Size  Location     Type
+   916 ;;		None
+   917 ;; Return value:  Size  Location     Type
+   918 ;;                  1    wreg      void 
+   919 ;; Registers used:
+   920 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+   921 ;; Tracked objects:
+   922 ;;		On entry : 0/0
+   923 ;;		On exit  : 0/0
+   924 ;;		Unchanged: 0/0
+   925 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   926 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   927 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   928 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   929 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   930 ;;Total ram usage:        2 bytes
+   931 ;; Hardware stack levels used:    1
+   932 ;; Hardware stack levels required when called:    4
+   933 ;; This function calls:
+   934 ;;		_glcdDrawRectangle
+   935 ;;		_glcdSetCOLMOD
+   936 ;;		_glcdTransfer
+   937 ;;		_spiInit
+   938 ;; This function is called by:
+   939 ;;		_init
+   940 ;; This function uses a non-reentrant model
+   941 ;;
+   942                           
+   943                           	psect	text2
+   944  00106E                     __ptext2:
+   945                           	opt stack 0
+   946  00106E                     _initGLCD:
+   947                           	opt stack 25
+   948                           
+   949                           ;GLCD_PIC_V1.1.c: 262: LATDbits.LATD0 = 1;
+   950                           
+   951                           ;incstack = 0
+   952  00106E  808C               	bsf	3980,0,c	;volatile
+   953                           
+   954                           ;GLCD_PIC_V1.1.c: 263: LATDbits.LATD1 = 1;
+   955  001070  828C               	bsf	3980,1,c	;volatile
+   956                           
+   957                           ;GLCD_PIC_V1.1.c: 264: TRISDbits.TRISD0 = 0;
+   958  001072  9095               	bcf	3989,0,c	;volatile
+   959                           
+   960                           ;GLCD_PIC_V1.1.c: 265: TRISDbits.TRISD1 = 0;
+   961  001074  9295               	bcf	3989,1,c	;volatile
+   962                           
+   963                           ;GLCD_PIC_V1.1.c: 268: spiInit(4);
+   964  001076  0E04               	movlw	4
+   965  001078  EC7A  F00B         	call	_spiInit
+   966                           
+   967                           ;GLCD_PIC_V1.1.c: 272: _delay((unsigned long)((20)*(40000000/4000.0)));
+   968  00107C  0E02               	movlw	2
+   969  00107E  6E1B               	movwf	(??_initGLCD+1)& (0+255),c
+   970  001080  0E04               	movlw	4
+   971  001082  6E1A               	movwf	??_initGLCD& (0+255),c
+   972  001084  0EBA               	movlw	186
+   973  001086                     u257:
+   974  001086  2EE8               	decfsz	wreg,f,c
+   975  001088  D7FE               	bra	u257
+   976  00108A  2E1A               	decfsz	??_initGLCD& (0+255),f,c
+   977  00108C  D7FC               	bra	u257
+   978  00108E  2E1B               	decfsz	(??_initGLCD+1)& (0+255),f,c
+   979  001090  D7FA               	bra	u257
+   980  001092  D000               	nop2	
+   981                           
+   982                           ;GLCD_PIC_V1.1.c: 275: { glcdTransfer(INST_SWRESET, 1); _delay((unsigned long)((130)*(40
+      +                          000000/4000.0))); };
+   983  001094  0E01               	movlw	1
+   984  001096  6E04               	movwf	glcdTransfer@cmd,c
+   985  001098  0E47               	movlw	low GLCD_PIC@INST_SWRESET
+   986  00109A  6EF6               	movwf	tblptrl,c
+   987  00109C                     	if	1	;There is more than 1 active tblptr byte
+   988  00109C  0E10               	movlw	high GLCD_PIC@INST_SWRESET
+   989  00109E  6EF7               	movwf	tblptrh,c
+   990  0010A0                     	endif
+   991  0010A0                     	if	0	;There are less than 3 active tblptr bytes
+   992  0010A0                     	endif
+   993  0010A0  0008               	tblrd		*
+   994  0010A2  50F5               	movf	tablat,w,c
+   995  0010A4  ECAF  F00B         	call	_glcdTransfer
+   996  0010A8  0E07               	movlw	7
+   997  0010AA  6E1B               	movwf	(??_initGLCD+1)& (0+255),c
+   998  0010AC  0E99               	movlw	153
+   999  0010AE  6E1A               	movwf	??_initGLCD& (0+255),c
+  1000  0010B0  0E49               	movlw	73
+  1001  0010B2                     u267:
+  1002  0010B2  2EE8               	decfsz	wreg,f,c
+  1003  0010B4  D7FE               	bra	u267
+  1004  0010B6  2E1A               	decfsz	??_initGLCD& (0+255),f,c
+  1005  0010B8  D7FC               	bra	u267
+  1006  0010BA  2E1B               	decfsz	(??_initGLCD+1)& (0+255),f,c
+  1007  0010BC  D7FA               	bra	u267
+  1008  0010BE  F000               	nop	
+  1009                           
+  1010                           ;GLCD_PIC_V1.1.c: 277: { glcdTransfer(INST_SLPOUT, 1); _delay((unsigned long)((130)*(400
+      +                          00000/4000.0))); };
+  1011  0010C0  0E01               	movlw	1
+  1012  0010C2  6E04               	movwf	glcdTransfer@cmd,c
+  1013  0010C4  0E45               	movlw	low GLCD_PIC@INST_SLPOUT
+  1014  0010C6  6EF6               	movwf	tblptrl,c
+  1015  0010C8                     	if	1	;There is more than 1 active tblptr byte
+  1016  0010C8  0E10               	movlw	high GLCD_PIC@INST_SLPOUT
+  1017  0010CA  6EF7               	movwf	tblptrh,c
+  1018  0010CC                     	endif
+  1019  0010CC                     	if	0	;There are less than 3 active tblptr bytes
+  1020  0010CC                     	endif
+  1021  0010CC  0008               	tblrd		*
+  1022  0010CE  50F5               	movf	tablat,w,c
+  1023  0010D0  ECAF  F00B         	call	_glcdTransfer
+  1024  0010D4  0E07               	movlw	7
+  1025  0010D6  6E1B               	movwf	(??_initGLCD+1)& (0+255),c
+  1026  0010D8  0E99               	movlw	153
+  1027  0010DA  6E1A               	movwf	??_initGLCD& (0+255),c
+  1028  0010DC  0E49               	movlw	73
+  1029  0010DE                     u277:
+  1030  0010DE  2EE8               	decfsz	wreg,f,c
+  1031  0010E0  D7FE               	bra	u277
+  1032  0010E2  2E1A               	decfsz	??_initGLCD& (0+255),f,c
+  1033  0010E4  D7FC               	bra	u277
+  1034  0010E6  2E1B               	decfsz	(??_initGLCD+1)& (0+255),f,c
+  1035  0010E8  D7FA               	bra	u277
+  1036  0010EA  F000               	nop	
+  1037                           
+  1038                           ;GLCD_PIC_V1.1.c: 280: glcdTransfer(INST_FRMCTR1, 1);
+  1039  0010EC  0E01               	movlw	1
+  1040  0010EE  6E04               	movwf	glcdTransfer@cmd,c
+  1041  0010F0  0E33               	movlw	low GLCD_PIC@INST_FRMCTR1
+  1042  0010F2  6EF6               	movwf	tblptrl,c
+  1043  0010F4                     	if	1	;There is more than 1 active tblptr byte
+  1044  0010F4  0E10               	movlw	high GLCD_PIC@INST_FRMCTR1
+  1045  0010F6  6EF7               	movwf	tblptrh,c
+  1046  0010F8                     	endif
+  1047  0010F8                     	if	0	;There are less than 3 active tblptr bytes
+  1048  0010F8                     	endif
+  1049  0010F8  0008               	tblrd		*
+  1050  0010FA  50F5               	movf	tablat,w,c
+  1051  0010FC  ECAF  F00B         	call	_glcdTransfer
+  1052                           
+  1053                           ;GLCD_PIC_V1.1.c: 281: glcdTransfer(0x00, 0);
+  1054  001100  0E00               	movlw	0
+  1055  001102  6E04               	movwf	glcdTransfer@cmd,c
+  1056  001104  0E00               	movlw	0
+  1057  001106  ECAF  F00B         	call	_glcdTransfer
+  1058                           
+  1059                           ;GLCD_PIC_V1.1.c: 282: glcdTransfer(0x06, 0);
+  1060  00110A  0E00               	movlw	0
+  1061  00110C  6E04               	movwf	glcdTransfer@cmd,c
+  1062  00110E  0E06               	movlw	6
+  1063  001110  ECAF  F00B         	call	_glcdTransfer
+  1064                           
+  1065                           ;GLCD_PIC_V1.1.c: 283: glcdTransfer(0x03, 0);
+  1066  001114  0E00               	movlw	0
+  1067  001116  6E04               	movwf	glcdTransfer@cmd,c
+  1068  001118  0E03               	movlw	3
+  1069  00111A  ECAF  F00B         	call	_glcdTransfer
+  1070                           
+  1071                           ;GLCD_PIC_V1.1.c: 285: glcdTransfer(INST_FRMCTR2, 1);
+  1072  00111E  0E01               	movlw	1
+  1073  001120  6E04               	movwf	glcdTransfer@cmd,c
+  1074  001122  0E32               	movlw	low GLCD_PIC@INST_FRMCTR2
+  1075  001124  6EF6               	movwf	tblptrl,c
+  1076  001126                     	if	1	;There is more than 1 active tblptr byte
+  1077  001126  0E10               	movlw	high GLCD_PIC@INST_FRMCTR2
+  1078  001128  6EF7               	movwf	tblptrh,c
+  1079  00112A                     	endif
+  1080  00112A                     	if	0	;There are less than 3 active tblptr bytes
+  1081  00112A                     	endif
+  1082  00112A  0008               	tblrd		*
+  1083  00112C  50F5               	movf	tablat,w,c
+  1084  00112E  ECAF  F00B         	call	_glcdTransfer
+  1085                           
+  1086                           ;GLCD_PIC_V1.1.c: 286: glcdTransfer(0x01, 0);
+  1087  001132  0E00               	movlw	0
+  1088  001134  6E04               	movwf	glcdTransfer@cmd,c
+  1089  001136  0E01               	movlw	1
+  1090  001138  ECAF  F00B         	call	_glcdTransfer
+  1091                           
+  1092                           ;GLCD_PIC_V1.1.c: 287: glcdTransfer(0x2C, 0);
+  1093  00113C  0E00               	movlw	0
+  1094  00113E  6E04               	movwf	glcdTransfer@cmd,c
+  1095  001140  0E2C               	movlw	44
+  1096  001142  ECAF  F00B         	call	_glcdTransfer
+  1097                           
+  1098                           ;GLCD_PIC_V1.1.c: 288: glcdTransfer(0x2D, 0);
+  1099  001146  0E00               	movlw	0
+  1100  001148  6E04               	movwf	glcdTransfer@cmd,c
+  1101  00114A  0E2D               	movlw	45
+  1102  00114C  ECAF  F00B         	call	_glcdTransfer
+  1103                           
+  1104                           ;GLCD_PIC_V1.1.c: 290: glcdTransfer(INST_FRMCTR3, 1);
+  1105  001150  0E01               	movlw	1
+  1106  001152  6E04               	movwf	glcdTransfer@cmd,c
+  1107  001154  0E31               	movlw	low GLCD_PIC@INST_FRMCTR3
+  1108  001156  6EF6               	movwf	tblptrl,c
+  1109  001158                     	if	1	;There is more than 1 active tblptr byte
+  1110  001158  0E10               	movlw	high GLCD_PIC@INST_FRMCTR3
+  1111  00115A  6EF7               	movwf	tblptrh,c
+  1112  00115C                     	endif
+  1113  00115C                     	if	0	;There are less than 3 active tblptr bytes
+  1114  00115C                     	endif
+  1115  00115C  0008               	tblrd		*
+  1116  00115E  50F5               	movf	tablat,w,c
+  1117  001160  ECAF  F00B         	call	_glcdTransfer
+  1118                           
+  1119                           ;GLCD_PIC_V1.1.c: 291: glcdTransfer(0x01, 0);
+  1120  001164  0E00               	movlw	0
+  1121  001166  6E04               	movwf	glcdTransfer@cmd,c
+  1122  001168  0E01               	movlw	1
+  1123  00116A  ECAF  F00B         	call	_glcdTransfer
+  1124                           
+  1125                           ;GLCD_PIC_V1.1.c: 292: glcdTransfer(0x2C, 0);
+  1126  00116E  0E00               	movlw	0
+  1127  001170  6E04               	movwf	glcdTransfer@cmd,c
+  1128  001172  0E2C               	movlw	44
+  1129  001174  ECAF  F00B         	call	_glcdTransfer
+  1130                           
+  1131                           ;GLCD_PIC_V1.1.c: 293: glcdTransfer(0x2D, 0);
+  1132  001178  0E00               	movlw	0
+  1133  00117A  6E04               	movwf	glcdTransfer@cmd,c
+  1134  00117C  0E2D               	movlw	45
+  1135  00117E  ECAF  F00B         	call	_glcdTransfer
+  1136                           
+  1137                           ;GLCD_PIC_V1.1.c: 295: glcdTransfer(INST_INVCTR, 1);
+  1138  001182  0E01               	movlw	1
+  1139  001184  6E04               	movwf	glcdTransfer@cmd,c
+  1140  001186  0E30               	movlw	low GLCD_PIC@INST_INVCTR
+  1141  001188  6EF6               	movwf	tblptrl,c
+  1142  00118A                     	if	1	;There is more than 1 active tblptr byte
+  1143  00118A  0E10               	movlw	high GLCD_PIC@INST_INVCTR
+  1144  00118C  6EF7               	movwf	tblptrh,c
+  1145  00118E                     	endif
+  1146  00118E                     	if	0	;There are less than 3 active tblptr bytes
+  1147  00118E                     	endif
+  1148  00118E  0008               	tblrd		*
+  1149  001190  50F5               	movf	tablat,w,c
+  1150  001192  ECAF  F00B         	call	_glcdTransfer
+  1151                           
+  1152                           ;GLCD_PIC_V1.1.c: 296: glcdTransfer(0x00, 0);
+  1153  001196  0E00               	movlw	0
+  1154  001198  6E04               	movwf	glcdTransfer@cmd,c
+  1155  00119A  0E00               	movlw	0
+  1156  00119C  ECAF  F00B         	call	_glcdTransfer
+  1157                           
+  1158                           ;GLCD_PIC_V1.1.c: 299: glcdTransfer(INST_PWCTR1, 1);
+  1159  0011A0  0E01               	movlw	1
+  1160  0011A2  6E04               	movwf	glcdTransfer@cmd,c
+  1161  0011A4  0E2F               	movlw	low GLCD_PIC@INST_PWCTR1
+  1162  0011A6  6EF6               	movwf	tblptrl,c
+  1163  0011A8                     	if	1	;There is more than 1 active tblptr byte
+  1164  0011A8  0E10               	movlw	high GLCD_PIC@INST_PWCTR1
+  1165  0011AA  6EF7               	movwf	tblptrh,c
+  1166  0011AC                     	endif
+  1167  0011AC                     	if	0	;There are less than 3 active tblptr bytes
+  1168  0011AC                     	endif
+  1169  0011AC  0008               	tblrd		*
+  1170  0011AE  50F5               	movf	tablat,w,c
+  1171  0011B0  ECAF  F00B         	call	_glcdTransfer
+  1172                           
+  1173                           ;GLCD_PIC_V1.1.c: 300: glcdTransfer(0xA2, 0);
+  1174  0011B4  0E00               	movlw	0
+  1175  0011B6  6E04               	movwf	glcdTransfer@cmd,c
+  1176  0011B8  0EA2               	movlw	162
+  1177  0011BA  ECAF  F00B         	call	_glcdTransfer
+  1178                           
+  1179                           ;GLCD_PIC_V1.1.c: 301: glcdTransfer(0x02, 0);
+  1180  0011BE  0E00               	movlw	0
+  1181  0011C0  6E04               	movwf	glcdTransfer@cmd,c
+  1182  0011C2  0E02               	movlw	2
+  1183  0011C4  ECAF  F00B         	call	_glcdTransfer
+  1184                           
+  1185                           ;GLCD_PIC_V1.1.c: 302: glcdTransfer(0x84, 0);
+  1186  0011C8  0E00               	movlw	0
+  1187  0011CA  6E04               	movwf	glcdTransfer@cmd,c
+  1188  0011CC  0E84               	movlw	132
+  1189  0011CE  ECAF  F00B         	call	_glcdTransfer
+  1190                           
+  1191                           ;GLCD_PIC_V1.1.c: 304: glcdTransfer(INST_PWCTR2, 1);
+  1192  0011D2  0E01               	movlw	1
+  1193  0011D4  6E04               	movwf	glcdTransfer@cmd,c
+  1194  0011D6  0E2E               	movlw	low GLCD_PIC@INST_PWCTR2
+  1195  0011D8  6EF6               	movwf	tblptrl,c
+  1196  0011DA                     	if	1	;There is more than 1 active tblptr byte
+  1197  0011DA  0E10               	movlw	high GLCD_PIC@INST_PWCTR2
+  1198  0011DC  6EF7               	movwf	tblptrh,c
+  1199  0011DE                     	endif
+  1200  0011DE                     	if	0	;There are less than 3 active tblptr bytes
+  1201  0011DE                     	endif
+  1202  0011DE  0008               	tblrd		*
+  1203  0011E0  50F5               	movf	tablat,w,c
+  1204  0011E2  ECAF  F00B         	call	_glcdTransfer
+  1205                           
+  1206                           ;GLCD_PIC_V1.1.c: 305: glcdTransfer(0xC5, 0);
+  1207  0011E6  0E00               	movlw	0
+  1208  0011E8  6E04               	movwf	glcdTransfer@cmd,c
+  1209  0011EA  0EC5               	movlw	197
+  1210  0011EC  ECAF  F00B         	call	_glcdTransfer
+  1211                           
+  1212                           ;GLCD_PIC_V1.1.c: 307: glcdTransfer(INST_PWCTR3, 1);
+  1213  0011F0  0E01               	movlw	1
+  1214  0011F2  6E04               	movwf	glcdTransfer@cmd,c
+  1215  0011F4  0E2D               	movlw	low GLCD_PIC@INST_PWCTR3
+  1216  0011F6  6EF6               	movwf	tblptrl,c
+  1217  0011F8                     	if	1	;There is more than 1 active tblptr byte
+  1218  0011F8  0E10               	movlw	high GLCD_PIC@INST_PWCTR3
+  1219  0011FA  6EF7               	movwf	tblptrh,c
+  1220  0011FC                     	endif
+  1221  0011FC                     	if	0	;There are less than 3 active tblptr bytes
+  1222  0011FC                     	endif
+  1223  0011FC  0008               	tblrd		*
+  1224  0011FE  50F5               	movf	tablat,w,c
+  1225  001200  ECAF  F00B         	call	_glcdTransfer
+  1226                           
+  1227                           ;GLCD_PIC_V1.1.c: 308: glcdTransfer(0x0A, 0);
+  1228  001204  0E00               	movlw	0
+  1229  001206  6E04               	movwf	glcdTransfer@cmd,c
+  1230  001208  0E0A               	movlw	10
+  1231  00120A  ECAF  F00B         	call	_glcdTransfer
+  1232                           
+  1233                           ;GLCD_PIC_V1.1.c: 309: glcdTransfer(0x00, 0);
+  1234  00120E  0E00               	movlw	0
+  1235  001210  6E04               	movwf	glcdTransfer@cmd,c
+  1236  001212  0E00               	movlw	0
+  1237  001214  ECAF  F00B         	call	_glcdTransfer
+  1238                           
+  1239                           ;GLCD_PIC_V1.1.c: 311: glcdTransfer(INST_PWCTR4, 1);
+  1240  001218  0E01               	movlw	1
+  1241  00121A  6E04               	movwf	glcdTransfer@cmd,c
+  1242  00121C  0E2C               	movlw	low GLCD_PIC@INST_PWCTR4
+  1243  00121E  6EF6               	movwf	tblptrl,c
+  1244  001220                     	if	1	;There is more than 1 active tblptr byte
+  1245  001220  0E10               	movlw	high GLCD_PIC@INST_PWCTR4
+  1246  001222  6EF7               	movwf	tblptrh,c
+  1247  001224                     	endif
+  1248  001224                     	if	0	;There are less than 3 active tblptr bytes
+  1249  001224                     	endif
+  1250  001224  0008               	tblrd		*
+  1251  001226  50F5               	movf	tablat,w,c
+  1252  001228  ECAF  F00B         	call	_glcdTransfer
+  1253                           
+  1254                           ;GLCD_PIC_V1.1.c: 312: glcdTransfer(0x8A, 0);
+  1255  00122C  0E00               	movlw	0
+  1256  00122E  6E04               	movwf	glcdTransfer@cmd,c
+  1257  001230  0E8A               	movlw	138
+  1258  001232  ECAF  F00B         	call	_glcdTransfer
+  1259                           
+  1260                           ;GLCD_PIC_V1.1.c: 313: glcdTransfer(0x2A, 0);
+  1261  001236  0E00               	movlw	0
+  1262  001238  6E04               	movwf	glcdTransfer@cmd,c
+  1263  00123A  0E2A               	movlw	42
+  1264  00123C  ECAF  F00B         	call	_glcdTransfer
+  1265                           
+  1266                           ;GLCD_PIC_V1.1.c: 315: glcdTransfer(INST_PWCTR5, 1);
+  1267  001240  0E01               	movlw	1
+  1268  001242  6E04               	movwf	glcdTransfer@cmd,c
+  1269  001244  0E2B               	movlw	low GLCD_PIC@INST_PWCTR5
+  1270  001246  6EF6               	movwf	tblptrl,c
+  1271  001248                     	if	1	;There is more than 1 active tblptr byte
+  1272  001248  0E10               	movlw	high GLCD_PIC@INST_PWCTR5
+  1273  00124A  6EF7               	movwf	tblptrh,c
+  1274  00124C                     	endif
+  1275  00124C                     	if	0	;There are less than 3 active tblptr bytes
+  1276  00124C                     	endif
+  1277  00124C  0008               	tblrd		*
+  1278  00124E  50F5               	movf	tablat,w,c
+  1279  001250  ECAF  F00B         	call	_glcdTransfer
+  1280                           
+  1281                           ;GLCD_PIC_V1.1.c: 316: glcdTransfer(0x8A, 0);
+  1282  001254  0E00               	movlw	0
+  1283  001256  6E04               	movwf	glcdTransfer@cmd,c
+  1284  001258  0E8A               	movlw	138
+  1285  00125A  ECAF  F00B         	call	_glcdTransfer
+  1286                           
+  1287                           ;GLCD_PIC_V1.1.c: 317: glcdTransfer(0x2A, 0);
+  1288  00125E  0E00               	movlw	0
+  1289  001260  6E04               	movwf	glcdTransfer@cmd,c
+  1290  001262  0E2A               	movlw	42
+  1291  001264  ECAF  F00B         	call	_glcdTransfer
+  1292                           
+  1293                           ;GLCD_PIC_V1.1.c: 320: glcdTransfer(INST_VMCTR1, 1);
+  1294  001268  0E01               	movlw	1
+  1295  00126A  6E04               	movwf	glcdTransfer@cmd,c
+  1296  00126C  0E2A               	movlw	low GLCD_PIC@INST_VMCTR1
+  1297  00126E  6EF6               	movwf	tblptrl,c
+  1298  001270                     	if	1	;There is more than 1 active tblptr byte
+  1299  001270  0E10               	movlw	high GLCD_PIC@INST_VMCTR1
+  1300  001272  6EF7               	movwf	tblptrh,c
+  1301  001274                     	endif
+  1302  001274                     	if	0	;There are less than 3 active tblptr bytes
+  1303  001274                     	endif
+  1304  001274  0008               	tblrd		*
+  1305  001276  50F5               	movf	tablat,w,c
+  1306  001278  ECAF  F00B         	call	_glcdTransfer
+  1307                           
+  1308                           ;GLCD_PIC_V1.1.c: 321: glcdTransfer(0x3C, 0);
+  1309  00127C  0E00               	movlw	0
+  1310  00127E  6E04               	movwf	glcdTransfer@cmd,c
+  1311  001280  0E3C               	movlw	60
+  1312  001282  ECAF  F00B         	call	_glcdTransfer
+  1313                           
+  1314                           ;GLCD_PIC_V1.1.c: 323: glcdTransfer(INST_INVOFF, 1);
+  1315  001286  0E01               	movlw	1
+  1316  001288  6E04               	movwf	glcdTransfer@cmd,c
+  1317  00128A  0E42               	movlw	low GLCD_PIC@INST_INVOFF
+  1318  00128C  6EF6               	movwf	tblptrl,c
+  1319  00128E                     	if	1	;There is more than 1 active tblptr byte
+  1320  00128E  0E10               	movlw	high GLCD_PIC@INST_INVOFF
+  1321  001290  6EF7               	movwf	tblptrh,c
+  1322  001292                     	endif
+  1323  001292                     	if	0	;There are less than 3 active tblptr bytes
+  1324  001292                     	endif
+  1325  001292  0008               	tblrd		*
+  1326  001294  50F5               	movf	tablat,w,c
+  1327  001296  ECAF  F00B         	call	_glcdTransfer
+  1328                           
+  1329                           ;GLCD_PIC_V1.1.c: 331: glcdSetCOLMOD(18);
+  1330  00129A  0E12               	movlw	18
+  1331  00129C  EC52  F00B         	call	_glcdSetCOLMOD
+  1332                           
+  1333                           ;GLCD_PIC_V1.1.c: 334: glcdTransfer(INST_GAMSET, 1);
+  1334  0012A0  0E01               	movlw	1
+  1335  0012A2  6E04               	movwf	glcdTransfer@cmd,c
+  1336  0012A4  0E40               	movlw	low GLCD_PIC@INST_GAMSET
+  1337  0012A6  6EF6               	movwf	tblptrl,c
+  1338  0012A8                     	if	1	;There is more than 1 active tblptr byte
+  1339  0012A8  0E10               	movlw	high GLCD_PIC@INST_GAMSET
+  1340  0012AA  6EF7               	movwf	tblptrh,c
+  1341  0012AC                     	endif
+  1342  0012AC                     	if	0	;There are less than 3 active tblptr bytes
+  1343  0012AC                     	endif
+  1344  0012AC  0008               	tblrd		*
+  1345  0012AE  50F5               	movf	tablat,w,c
+  1346  0012B0  ECAF  F00B         	call	_glcdTransfer
+  1347                           
+  1348                           ;GLCD_PIC_V1.1.c: 335: glcdTransfer(0x01, 0);
+  1349  0012B4  0E00               	movlw	0
+  1350  0012B6  6E04               	movwf	glcdTransfer@cmd,c
+  1351  0012B8  0E01               	movlw	1
+  1352  0012BA  ECAF  F00B         	call	_glcdTransfer
+  1353                           
+  1354                           ;GLCD_PIC_V1.1.c: 337: glcdTransfer(INST_IDMOFF, 1);
+  1355  0012BE  0E01               	movlw	1
+  1356  0012C0  6E04               	movwf	glcdTransfer@cmd,c
+  1357  0012C2  0E36               	movlw	low GLCD_PIC@INST_IDMOFF
+  1358  0012C4  6EF6               	movwf	tblptrl,c
+  1359  0012C6                     	if	1	;There is more than 1 active tblptr byte
+  1360  0012C6  0E10               	movlw	high GLCD_PIC@INST_IDMOFF
+  1361  0012C8  6EF7               	movwf	tblptrh,c
+  1362  0012CA                     	endif
+  1363  0012CA                     	if	0	;There are less than 3 active tblptr bytes
+  1364  0012CA                     	endif
+  1365  0012CA  0008               	tblrd		*
+  1366  0012CC  50F5               	movf	tablat,w,c
+  1367  0012CE  ECAF  F00B         	call	_glcdTransfer
+  1368                           
+  1369                           ;GLCD_PIC_V1.1.c: 339: glcdTransfer(INST_NORON, 1);
+  1370  0012D2  0E01               	movlw	1
+  1371  0012D4  6E04               	movwf	glcdTransfer@cmd,c
+  1372  0012D6  0E43               	movlw	low GLCD_PIC@INST_NORON
+  1373  0012D8  6EF6               	movwf	tblptrl,c
+  1374  0012DA                     	if	1	;There is more than 1 active tblptr byte
+  1375  0012DA  0E10               	movlw	high GLCD_PIC@INST_NORON
+  1376  0012DC  6EF7               	movwf	tblptrh,c
+  1377  0012DE                     	endif
+  1378  0012DE                     	if	0	;There are less than 3 active tblptr bytes
+  1379  0012DE                     	endif
+  1380  0012DE  0008               	tblrd		*
+  1381  0012E0  50F5               	movf	tablat,w,c
+  1382  0012E2  ECAF  F00B         	call	_glcdTransfer
+  1383                           
+  1384                           ;GLCD_PIC_V1.1.c: 342: MADCTLbits.MX = 1;
+  1385  0012E6  8C1C               	bsf	_MADCTLbits,6,c
+  1386                           
+  1387                           ;GLCD_PIC_V1.1.c: 343: MADCTLbits.MY = 1;
+  1388  0012E8  8E1C               	bsf	_MADCTLbits,7,c
+  1389                           
+  1390                           ;GLCD_PIC_V1.1.c: 344: MADCTLbits.MV = 1;
+  1391  0012EA  8A1C               	bsf	_MADCTLbits,5,c
+  1392                           
+  1393                           ;GLCD_PIC_V1.1.c: 345: MADCTLbits.ML = 0;
+  1394  0012EC  981C               	bcf	_MADCTLbits,4,c
+  1395                           
+  1396                           ;GLCD_PIC_V1.1.c: 346: MADCTLbits.RGB = 0;
+  1397  0012EE  961C               	bcf	_MADCTLbits,3,c
+  1398                           
+  1399                           ;GLCD_PIC_V1.1.c: 347: MADCTLbits.MH = 0;
+  1400  0012F0  941C               	bcf	_MADCTLbits,2,c
+  1401                           
+  1402                           ;GLCD_PIC_V1.1.c: 348: { glcdTransfer(INST_MADCTL, 1); glcdTransfer(MADCTLbits.reg, 0);}
+      +                          ;
+  1403  0012F2  0E01               	movlw	1
+  1404  0012F4  6E04               	movwf	glcdTransfer@cmd,c
+  1405  0012F6  0E37               	movlw	low GLCD_PIC@INST_MADCTL
+  1406  0012F8  6EF6               	movwf	tblptrl,c
+  1407  0012FA                     	if	1	;There is more than 1 active tblptr byte
+  1408  0012FA  0E10               	movlw	high GLCD_PIC@INST_MADCTL
+  1409  0012FC  6EF7               	movwf	tblptrh,c
+  1410  0012FE                     	endif
+  1411  0012FE                     	if	0	;There are less than 3 active tblptr bytes
+  1412  0012FE                     	endif
+  1413  0012FE  0008               	tblrd		*
+  1414  001300  50F5               	movf	tablat,w,c
+  1415  001302  ECAF  F00B         	call	_glcdTransfer
+  1416  001306  0E00               	movlw	0
+  1417  001308  6E04               	movwf	glcdTransfer@cmd,c
+  1418  00130A  501C               	movf	_MADCTLbits,w,c
+  1419  00130C  ECAF  F00B         	call	_glcdTransfer
+  1420                           
+  1421                           ;GLCD_PIC_V1.1.c: 352: glcdDrawRectangle(0, GLCD_SIZE_HORZ, 0, GLCD_SIZE_VERT, BLACK);
+  1422  001310  0E6A               	movlw	low _GLCD_SIZE_HORZ
+  1423  001312  6EF6               	movwf	tblptrl,c
+  1424  001314                     	if	1	;There is more than 1 active tblptr byte
+  1425  001314  0E10               	movlw	high _GLCD_SIZE_HORZ
+  1426  001316  6EF7               	movwf	tblptrh,c
+  1427  001318                     	endif
+  1428  001318                     	if	0	;There are less than 3 active tblptr bytes
+  1429  001318                     	endif
+  1430  001318  0008               	tblrd		*
+  1431  00131A  CFF5 F007          	movff	tablat,glcdDrawRectangle@XE
+  1432  00131E  0E00               	movlw	0
+  1433  001320  6E08               	movwf	glcdDrawRectangle@YS,c
+  1434  001322  0E69               	movlw	low _GLCD_SIZE_VERT
+  1435  001324  6EF6               	movwf	tblptrl,c
+  1436  001326                     	if	1	;There is more than 1 active tblptr byte
+  1437  001326  0E10               	movlw	high _GLCD_SIZE_VERT
+  1438  001328  6EF7               	movwf	tblptrh,c
+  1439  00132A                     	endif
+  1440  00132A                     	if	0	;There are less than 3 active tblptr bytes
+  1441  00132A                     	endif
+  1442  00132A  0008               	tblrd		*
+  1443  00132C  CFF5 F009          	movff	tablat,glcdDrawRectangle@YE
+  1444  001330  0E25               	movlw	low _BLACK
+  1445  001332  6EF6               	movwf	tblptrl,c
+  1446  001334                     	if	1	;There is more than 1 active tblptr byte
+  1447  001334  0E10               	movlw	high _BLACK
+  1448  001336  6EF7               	movwf	tblptrh,c
+  1449  001338                     	endif
+  1450  001338                     	if	0	;There are less than 3 active tblptr bytes
+  1451  001338                     	endif
+  1452  001338  0009               	tblrd		*+
+  1453  00133A  CFF5 F00A          	movff	tablat,glcdDrawRectangle@color
+  1454  00133E  0009               	tblrd		*+
+  1455  001340  CFF5 F00B          	movff	tablat,glcdDrawRectangle@color+1
+  1456  001344  0009               	tblrd		*+
+  1457  001346  CFF5 F00C          	movff	tablat,glcdDrawRectangle@color+2
+  1458  00134A  000A               	tblrd		*-
+  1459  00134C  CFF5 F00D          	movff	tablat,glcdDrawRectangle@color+3
+  1460  001350  0E00               	movlw	0
+  1461  001352  EC92  F00A         	call	_glcdDrawRectangle
+  1462                           
+  1463                           ;GLCD_PIC_V1.1.c: 354: glcdTransfer(INST_DISPON, 1);
+  1464  001356  0E01               	movlw	1
+  1465  001358  6E04               	movwf	glcdTransfer@cmd,c
+  1466  00135A  0E3E               	movlw	low GLCD_PIC@INST_DISPON
+  1467  00135C  6EF6               	movwf	tblptrl,c
+  1468  00135E                     	if	1	;There is more than 1 active tblptr byte
+  1469  00135E  0E10               	movlw	high GLCD_PIC@INST_DISPON
+  1470  001360  6EF7               	movwf	tblptrh,c
+  1471  001362                     	endif
+  1472  001362                     	if	0	;There are less than 3 active tblptr bytes
+  1473  001362                     	endif
+  1474  001362  0008               	tblrd		*
+  1475  001364  50F5               	movf	tablat,w,c
+  1476  001366  ECAF  F00B         	call	_glcdTransfer
+  1477                           
+  1478                           ;GLCD_PIC_V1.1.c: 355: _delay((unsigned long)((10)*(40000000/4000.0)));
+  1479  00136A  0E82               	movlw	130
+  1480  00136C  6E1A               	movwf	??_initGLCD& (0+255),c
+  1481  00136E  0EDE               	movlw	222
+  1482  001370                     u287:
+  1483  001370  2EE8               	decfsz	wreg,f,c
+  1484  001372  D7FE               	bra	u287
+  1485  001374  2E1A               	decfsz	??_initGLCD& (0+255),f,c
+  1486  001376  D7FC               	bra	u287
+  1487  001378  0012               	return		;funcret
+  1488  00137A                     __end_of_initGLCD:
+  1489                           	opt stack 0
+  1490                           tblptru	equ	0xFF8
+  1491                           tblptrh	equ	0xFF7
+  1492                           tblptrl	equ	0xFF6
+  1493                           tablat	equ	0xFF5
+  1494                           wreg	equ	0xFE8
+  1495                           
+  1496 ;; *************** function _spiInit *****************
+  1497 ;; Defined at:
+  1498 ;;		line 54 in file "SPI_PIC.c"
+  1499 ;; Parameters:    Size  Location     Type
+  1500 ;;  divider         1    wreg     unsigned char 
+  1501 ;; Auto vars:     Size  Location     Type
+  1502 ;;  divider         1    0[COMRAM] unsigned char 
+  1503 ;; Return value:  Size  Location     Type
+  1504 ;;                  1    wreg      void 
+  1505 ;; Registers used:
+  1506 ;;		wreg, status,2, status,0
+  1507 ;; Tracked objects:
+  1508 ;;		On entry : 0/0
+  1509 ;;		On exit  : 0/0
+  1510 ;;		Unchanged: 0/0
+  1511 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1512 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1513 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1514 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1515 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1516 ;;Total ram usage:        1 bytes
+  1517 ;; Hardware stack levels used:    1
+  1518 ;; This function calls:
+  1519 ;;		Nothing
+  1520 ;; This function is called by:
+  1521 ;;		_initGLCD
+  1522 ;; This function uses a non-reentrant model
+  1523 ;;
+  1524                           
+  1525                           	psect	text3
+  1526  0016F4                     __ptext3:
+  1527                           	opt stack 0
+  1528  0016F4                     _spiInit:
+  1529                           	opt stack 28
+  1530                           
+  1531                           ;incstack = 0
+  1532                           ;spiInit@divider stored from wreg
+  1533  0016F4  6E01               	movwf	spiInit@divider,c
+  1534                           
+  1535                           ;SPI_PIC.c: 65: SSPCON1bits.SSPEN = 0;
+  1536  0016F6  9AC6               	bcf	4038,5,c	;volatile
+  1537                           
+  1538                           ;SPI_PIC.c: 66: SSPSTAT = 0x00;
+  1539  0016F8  0E00               	movlw	0
+  1540  0016FA  6EC7               	movwf	4039,c	;volatile
+  1541                           
+  1542                           ;SPI_PIC.c: 71: switch(divider){
+  1543  0016FC  D007               	goto	l160
+  1544  0016FE                     
+  1545                           ;SPI_PIC.c: 76: SSPCON1 = 0b00010001;
+  1546  0016FE  0E11               	movlw	17
+  1547  001700  D003               	goto	L3
+  1548  001702                     
+  1549                           ;SPI_PIC.c: 79: SSPCON1 = 0b00010010;
+  1550  001702  0E12               	movlw	18
+  1551  001704  D001               	goto	L3
+  1552  001706                     
+  1553                           ;SPI_PIC.c: 82: SSPCON1 = 0b00010000;
+  1554  001706  0E10               	movlw	16
+  1555  001708                     L3:
+  1556  001708  6EC6               	movwf	4038,c	;volatile
+  1557                           
+  1558                           ;SPI_PIC.c: 83: }
+  1559  00170A  D00B               	goto	l162
+  1560  00170C                     l160:
+  1561  00170C  5001               	movf	spiInit@divider,w,c
+  1562                           
+  1563                           ; Switch size 1, requested type "space"
+  1564                           ; Number of cases is 3, Range of values is 4 to 64
+  1565                           ; switch strategies available:
+  1566                           ; Name         Instructions Cycles
+  1567                           ; simple_byte           10     6 (average)
+  1568                           ;	Chosen strategy is simple_byte
+  1569  00170E  0A04               	xorlw	4	; case 4
+  1570  001710  B4D8               	btfsc	status,2,c
+  1571  001712  D7F9               	goto	l165
+  1572  001714  0A14               	xorlw	20	; case 16
+  1573  001716  B4D8               	btfsc	status,2,c
+  1574  001718  D7F2               	goto	l163
+  1575  00171A  0A50               	xorlw	80	; case 64
+  1576  00171C  B4D8               	btfsc	status,2,c
+  1577  00171E  D7F1               	goto	l164
+  1578  001720  D7F2               	goto	l165
+  1579  001722                     l162:
+  1580                           
+  1581                           ;SPI_PIC.c: 86: TRISCbits.TRISC5 = 0;
+  1582  001722  9A94               	bcf	3988,5,c	;volatile
+  1583                           
+  1584                           ;SPI_PIC.c: 87: TRISCbits.TRISC4 = 1;
+  1585  001724  8894               	bsf	3988,4,c	;volatile
+  1586                           
+  1587                           ;SPI_PIC.c: 88: TRISCbits.TRISC3 = 0;
+  1588  001726  9694               	bcf	3988,3,c	;volatile
+  1589                           
+  1590                           ;SPI_PIC.c: 91: SSPCON1bits.SSPEN = 1;
+  1591  001728  8AC6               	bsf	4038,5,c	;volatile
+  1592  00172A  0012               	return		;funcret
+  1593  00172C                     __end_of_spiInit:
+  1594                           	opt stack 0
+  1595                           tblptru	equ	0xFF8
+  1596                           tblptrh	equ	0xFF7
+  1597                           tblptrl	equ	0xFF6
+  1598                           tablat	equ	0xFF5
+  1599                           wreg	equ	0xFE8
+  1600                           status	equ	0xFD8
+  1601                           
+  1602 ;; *************** function _glcdSetCOLMOD *****************
+  1603 ;; Defined at:
+  1604 ;;		line 167 in file "GLCD_PIC_V1.1.c"
+  1605 ;; Parameters:    Size  Location     Type
+  1606 ;;  numBitsPerPi    1    wreg     unsigned char 
+  1607 ;; Auto vars:     Size  Location     Type
+  1608 ;;  numBitsPerPi    1    6[COMRAM] unsigned char 
+  1609 ;;  rawData         2    7[COMRAM] unsigned short 
+  1610 ;; Return value:  Size  Location     Type
+  1611 ;;                  1    wreg      void 
+  1612 ;; Registers used:
+  1613 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+  1614 ;; Tracked objects:
+  1615 ;;		On entry : 0/0
+  1616 ;;		On exit  : 0/0
+  1617 ;;		Unchanged: 0/0
+  1618 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1619 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1620 ;;      Locals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1621 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1622 ;;      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1623 ;;Total ram usage:        3 bytes
+  1624 ;; Hardware stack levels used:    1
+  1625 ;; Hardware stack levels required when called:    3
+  1626 ;; This function calls:
+  1627 ;;		_glcdTransfer
+  1628 ;; This function is called by:
+  1629 ;;		_initGLCD
+  1630 ;; This function uses a non-reentrant model
+  1631 ;;
+  1632                           
+  1633                           	psect	text4
+  1634  0016A4                     __ptext4:
+  1635                           	opt stack 0
+  1636  0016A4                     _glcdSetCOLMOD:
+  1637                           	opt stack 25
+  1638                           
+  1639                           ;incstack = 0
+  1640                           ;glcdSetCOLMOD@numBitsPerPixel stored from wreg
+  1641  0016A4  6E07               	movwf	glcdSetCOLMOD@numBitsPerPixel,c
+  1642                           
+  1643                           ;GLCD_PIC_V1.1.c: 176: unsigned short rawData;
+  1644                           ;GLCD_PIC_V1.1.c: 177: switch(numBitsPerPixel){
+  1645  0016A6  D00D               	goto	l295
+  1646  0016A8                     
+  1647                           ;GLCD_PIC_V1.1.c: 179: rawData = 0b00000011;
+  1648  0016A8  0E00               	movlw	0
+  1649  0016AA  6E09               	movwf	glcdSetCOLMOD@rawData+1,c
+  1650  0016AC  0E03               	movlw	3
+  1651  0016AE  D003               	goto	L5
+  1652  0016B0                     
+  1653                           ;GLCD_PIC_V1.1.c: 182: rawData = 0b00000101;
+  1654  0016B0  0E00               	movlw	0
+  1655  0016B2  6E09               	movwf	glcdSetCOLMOD@rawData+1,c
+  1656  0016B4  0E05               	movlw	5
+  1657  0016B6                     L5:
+  1658  0016B6  6E08               	movwf	glcdSetCOLMOD@rawData,c
+  1659                           
+  1660                           ;GLCD_PIC_V1.1.c: 186: break;
+  1661  0016B8  D00D               	goto	l297
+  1662  0016BA                     
+  1663                           ;GLCD_PIC_V1.1.c: 188: rawData = 0b00000110;
+  1664  0016BA  0E00               	movlw	0
+  1665  0016BC  6E09               	movwf	glcdSetCOLMOD@rawData+1,c
+  1666  0016BE  0E06               	movlw	6
+  1667  0016C0  D7FA               	goto	L5
+  1668  0016C2                     l295:
+  1669  0016C2  5007               	movf	glcdSetCOLMOD@numBitsPerPixel,w,c
+  1670                           
+  1671                           ; Switch size 1, requested type "space"
+  1672                           ; Number of cases is 3, Range of values is 12 to 18
+  1673                           ; switch strategies available:
+  1674                           ; Name         Instructions Cycles
+  1675                           ; simple_byte           10     6 (average)
+  1676                           ;	Chosen strategy is simple_byte
+  1677  0016C4  0A0C               	xorlw	12	; case 12
+  1678  0016C6  B4D8               	btfsc	status,2,c
+  1679  0016C8  D7EF               	goto	l296
+  1680  0016CA  0A1C               	xorlw	28	; case 16
+  1681  0016CC  B4D8               	btfsc	status,2,c
+  1682  0016CE  D7F0               	goto	l298
+  1683  0016D0  0A02               	xorlw	2	; case 18
+  1684  0016D2  D7F3               	goto	l300
+  1685  0016D4                     l297:
+  1686                           
+  1687                           ;GLCD_PIC_V1.1.c: 191: glcdTransfer(INST_COLMOD, 1);
+  1688  0016D4  0E01               	movlw	1
+  1689  0016D6  6E04               	movwf	glcdTransfer@cmd,c
+  1690  0016D8  0E34               	movlw	low GLCD_PIC@INST_COLMOD
+  1691  0016DA  6EF6               	movwf	tblptrl,c
+  1692  0016DC                     	if	1	;There is more than 1 active tblptr byte
+  1693  0016DC  0E10               	movlw	high GLCD_PIC@INST_COLMOD
+  1694  0016DE  6EF7               	movwf	tblptrh,c
+  1695  0016E0                     	endif
+  1696  0016E0                     	if	0	;There are less than 3 active tblptr bytes
+  1697  0016E0                     	endif
+  1698  0016E0  0008               	tblrd		*
+  1699  0016E2  50F5               	movf	tablat,w,c
+  1700  0016E4  ECAF  F00B         	call	_glcdTransfer
+  1701                           
+  1702                           ;GLCD_PIC_V1.1.c: 192: glcdTransfer(rawData, 0);
+  1703  0016E8  0E00               	movlw	0
+  1704  0016EA  6E04               	movwf	glcdTransfer@cmd,c
+  1705  0016EC  5008               	movf	glcdSetCOLMOD@rawData,w,c
+  1706  0016EE  ECAF  F00B         	call	_glcdTransfer
+  1707  0016F2  0012               	return		;funcret
+  1708  0016F4                     __end_of_glcdSetCOLMOD:
+  1709                           	opt stack 0
+  1710                           tblptru	equ	0xFF8
+  1711                           tblptrh	equ	0xFF7
+  1712                           tblptrl	equ	0xFF6
+  1713                           tablat	equ	0xFF5
+  1714                           wreg	equ	0xFE8
+  1715                           status	equ	0xFD8
+  1716                           
+  1717 ;; *************** function _glcdDrawRectangle *****************
+  1718 ;; Defined at:
+  1719 ;;		line 38 in file "GLCD_PIC_V1.1.c"
+  1720 ;; Parameters:    Size  Location     Type
+  1721 ;;  XS              1    wreg     unsigned char 
+  1722 ;;  XE              1    6[COMRAM] unsigned char 
+  1723 ;;  YS              1    7[COMRAM] unsigned char 
+  1724 ;;  YE              1    8[COMRAM] unsigned char 
+  1725 ;;  color           4    9[COMRAM] unsigned long 
+  1726 ;; Auto vars:     Size  Location     Type
+  1727 ;;  XS              1   24[COMRAM] unsigned char 
+  1728 ;;  i               2   19[COMRAM] unsigned short 
+  1729 ;;  colorData       3   21[COMRAM] unsigned char [3]
+  1730 ;;  numLoops        2   17[COMRAM] unsigned short 
+  1731 ;; Return value:  Size  Location     Type
+  1732 ;;                  1    wreg      void 
+  1733 ;; Registers used:
+  1734 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+  1735 ;; Tracked objects:
+  1736 ;;		On entry : 0/0
+  1737 ;;		On exit  : 0/0
+  1738 ;;		Unchanged: 0/0
+  1739 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1740 ;;      Params:         7       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1741 ;;      Locals:         8       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1742 ;;      Temps:          4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1743 ;;      Totals:        19       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1744 ;;Total ram usage:       19 bytes
+  1745 ;; Hardware stack levels used:    1
+  1746 ;; Hardware stack levels required when called:    3
+  1747 ;; This function calls:
+  1748 ;;		___wmul
+  1749 ;;		_glcdTransfer
+  1750 ;;		_spiSend
+  1751 ;; This function is called by:
+  1752 ;;		_main
+  1753 ;;		_initGLCD
+  1754 ;;		_glcdDrawPixel
+  1755 ;; This function uses a non-reentrant model
+  1756 ;;
+  1757                           
+  1758                           	psect	text5
+  1759  001524                     __ptext5:
+  1760                           	opt stack 0
+  1761  001524                     _glcdDrawRectangle:
+  1762                           	opt stack 25
+  1763                           
+  1764                           ;incstack = 0
+  1765                           ;glcdDrawRectangle@XS stored from wreg
+  1766  001524  6E19               	movwf	glcdDrawRectangle@XS,c
+  1767                           
+  1768                           ;GLCD_PIC_V1.1.c: 58: if(MADCTLbits.MX == 1 && MADCTLbits.MV ==1){
+  1769  001526  BC1C               	btfsc	_MADCTLbits,6,c
+  1770  001528  AA1C               	btfss	_MADCTLbits,5,c
+  1771  00152A  D005               	goto	l276
+  1772                           
+  1773                           ;GLCD_PIC_V1.1.c: 60: YS += 3;
+  1774  00152C  0E03               	movlw	3
+  1775  00152E  2608               	addwf	glcdDrawRectangle@YS,f,c
+  1776                           
+  1777                           ;GLCD_PIC_V1.1.c: 61: YE += 3;
+  1778  001530  0E03               	movlw	3
+  1779  001532  2609               	addwf	glcdDrawRectangle@YE,f,c
+  1780  001534  D015               	goto	l1232
+  1781  001536                     l276:
+  1782                           
+  1783                           ;GLCD_PIC_V1.1.c: 65: else if(MADCTLbits.MY == 1){
+  1784  001536  AE1C               	btfss	_MADCTLbits,7,c
+  1785  001538  D008               	goto	l278
+  1786                           
+  1787                           ;GLCD_PIC_V1.1.c: 67: YS += 2;
+  1788  00153A  0E02               	movlw	2
+  1789  00153C  2608               	addwf	glcdDrawRectangle@YS,f,c
+  1790                           
+  1791                           ;GLCD_PIC_V1.1.c: 68: YE += 2;
+  1792  00153E  0E02               	movlw	2
+  1793  001540  2609               	addwf	glcdDrawRectangle@YE,f,c
+  1794                           
+  1795                           ;GLCD_PIC_V1.1.c: 69: XS += 3;
+  1796  001542  0E03               	movlw	3
+  1797  001544  2619               	addwf	glcdDrawRectangle@XS,f,c
+  1798                           
+  1799                           ;GLCD_PIC_V1.1.c: 70: XE += 3;
+  1800  001546  0E03               	movlw	3
+  1801  001548  D00E               	goto	L7
+  1802  00154A                     l278:
+  1803                           
+  1804                           ;GLCD_PIC_V1.1.c: 72: else if(MADCTLbits.MX == 1){
+  1805  00154A  AC1C               	btfss	_MADCTLbits,6,c
+  1806  00154C  D007               	goto	l280
+  1807                           
+  1808                           ;GLCD_PIC_V1.1.c: 74: YS += 2;
+  1809  00154E  0E02               	movlw	2
+  1810  001550  2608               	addwf	glcdDrawRectangle@YS,f,c
+  1811                           
+  1812                           ;GLCD_PIC_V1.1.c: 75: YE += 2;
+  1813  001552  0E02               	movlw	2
+  1814  001554  2609               	addwf	glcdDrawRectangle@YE,f,c
+  1815                           
+  1816                           ;GLCD_PIC_V1.1.c: 76: XS += 1;
+  1817  001556  2A19               	incf	glcdDrawRectangle@XS,f,c
+  1818                           
+  1819                           ;GLCD_PIC_V1.1.c: 77: XE += 1;
+  1820  001558  2A07               	incf	glcdDrawRectangle@XE,f,c
+  1821                           
+  1822                           ;GLCD_PIC_V1.1.c: 78: }
+  1823  00155A  D006               	goto	l281
+  1824  00155C                     l280:
+  1825                           
+  1826                           ;GLCD_PIC_V1.1.c: 79: else{
+  1827                           ;GLCD_PIC_V1.1.c: 81: YS += 1;
+  1828  00155C  2A08               	incf	glcdDrawRectangle@YS,f,c
+  1829                           
+  1830                           ;GLCD_PIC_V1.1.c: 82: YE += 1;
+  1831  00155E  2A09               	incf	glcdDrawRectangle@YE,f,c
+  1832  001560                     l1232:
+  1833                           
+  1834                           ;GLCD_PIC_V1.1.c: 83: XS += 2;
+  1835  001560  0E02               	movlw	2
+  1836  001562  2619               	addwf	glcdDrawRectangle@XS,f,c
+  1837                           
+  1838                           ;GLCD_PIC_V1.1.c: 84: XE += 2;
+  1839  001564  0E02               	movlw	2
+  1840  001566                     L7:
+  1841  001566  2607               	addwf	glcdDrawRectangle@XE,f,c
+  1842  001568                     l281:
+  1843                           
+  1844                           ;GLCD_PIC_V1.1.c: 85: }
+  1845                           ;GLCD_PIC_V1.1.c: 89: glcdTransfer(INST_RASET, 1);
+  1846  001568  0E01               	movlw	1
+  1847  00156A  6E04               	movwf	glcdTransfer@cmd,c
+  1848  00156C  0E3C               	movlw	low GLCD_PIC@INST_RASET
+  1849  00156E  6EF6               	movwf	tblptrl,c
+  1850  001570                     	if	1	;There is more than 1 active tblptr byte
+  1851  001570  0E10               	movlw	high GLCD_PIC@INST_RASET
+  1852  001572  6EF7               	movwf	tblptrh,c
+  1853  001574                     	endif
+  1854  001574                     	if	0	;There are less than 3 active tblptr bytes
+  1855  001574                     	endif
+  1856  001574  0008               	tblrd		*
+  1857  001576  50F5               	movf	tablat,w,c
+  1858  001578  ECAF  F00B         	call	_glcdTransfer
+  1859                           
+  1860                           ;GLCD_PIC_V1.1.c: 90: glcdTransfer(0x00, 0);
+  1861  00157C  0E00               	movlw	0
+  1862  00157E  6E04               	movwf	glcdTransfer@cmd,c
+  1863  001580  0E00               	movlw	0
+  1864  001582  ECAF  F00B         	call	_glcdTransfer
+  1865                           
+  1866                           ;GLCD_PIC_V1.1.c: 91: glcdTransfer(XS, 0);
+  1867  001586  0E00               	movlw	0
+  1868  001588  6E04               	movwf	glcdTransfer@cmd,c
+  1869  00158A  5019               	movf	glcdDrawRectangle@XS,w,c
+  1870  00158C  ECAF  F00B         	call	_glcdTransfer
+  1871                           
+  1872                           ;GLCD_PIC_V1.1.c: 92: glcdTransfer(0x00, 0);
+  1873  001590  0E00               	movlw	0
+  1874  001592  6E04               	movwf	glcdTransfer@cmd,c
+  1875  001594  0E00               	movlw	0
+  1876  001596  ECAF  F00B         	call	_glcdTransfer
+  1877                           
+  1878                           ;GLCD_PIC_V1.1.c: 93: glcdTransfer(XE - 1, 0);
+  1879  00159A  0E00               	movlw	0
+  1880  00159C  6E04               	movwf	glcdTransfer@cmd,c
+  1881  00159E  0407               	decf	glcdDrawRectangle@XE,w,c
+  1882  0015A0  ECAF  F00B         	call	_glcdTransfer
+  1883                           
+  1884                           ;GLCD_PIC_V1.1.c: 97: glcdTransfer(INST_CASET, 1);
+  1885  0015A4  0E01               	movlw	1
+  1886  0015A6  6E04               	movwf	glcdTransfer@cmd,c
+  1887  0015A8  0E3D               	movlw	low GLCD_PIC@INST_CASET
+  1888  0015AA  6EF6               	movwf	tblptrl,c
+  1889  0015AC                     	if	1	;There is more than 1 active tblptr byte
+  1890  0015AC  0E10               	movlw	high GLCD_PIC@INST_CASET
+  1891  0015AE  6EF7               	movwf	tblptrh,c
+  1892  0015B0                     	endif
+  1893  0015B0                     	if	0	;There are less than 3 active tblptr bytes
+  1894  0015B0                     	endif
+  1895  0015B0  0008               	tblrd		*
+  1896  0015B2  50F5               	movf	tablat,w,c
+  1897  0015B4  ECAF  F00B         	call	_glcdTransfer
+  1898                           
+  1899                           ;GLCD_PIC_V1.1.c: 98: glcdTransfer(0x00, 0);
+  1900  0015B8  0E00               	movlw	0
+  1901  0015BA  6E04               	movwf	glcdTransfer@cmd,c
+  1902  0015BC  0E00               	movlw	0
+  1903  0015BE  ECAF  F00B         	call	_glcdTransfer
+  1904                           
+  1905                           ;GLCD_PIC_V1.1.c: 99: glcdTransfer(YS, 0);
+  1906  0015C2  0E00               	movlw	0
+  1907  0015C4  6E04               	movwf	glcdTransfer@cmd,c
+  1908  0015C6  5008               	movf	glcdDrawRectangle@YS,w,c
+  1909  0015C8  ECAF  F00B         	call	_glcdTransfer
+  1910                           
+  1911                           ;GLCD_PIC_V1.1.c: 100: glcdTransfer(0x00, 0);
+  1912  0015CC  0E00               	movlw	0
+  1913  0015CE  6E04               	movwf	glcdTransfer@cmd,c
+  1914  0015D0  0E00               	movlw	0
+  1915  0015D2  ECAF  F00B         	call	_glcdTransfer
+  1916                           
+  1917                           ;GLCD_PIC_V1.1.c: 101: glcdTransfer(YE - 1, 0);
+  1918  0015D6  0E00               	movlw	0
+  1919  0015D8  6E04               	movwf	glcdTransfer@cmd,c
+  1920  0015DA  0409               	decf	glcdDrawRectangle@YE,w,c
+  1921  0015DC  ECAF  F00B         	call	_glcdTransfer
+  1922                           
+  1923                           ;GLCD_PIC_V1.1.c: 103: glcdTransfer(INST_RAMWR, 1);
+  1924  0015E0  0E01               	movlw	1
+  1925  0015E2  6E04               	movwf	glcdTransfer@cmd,c
+  1926  0015E4  0E3B               	movlw	low GLCD_PIC@INST_RAMWR
+  1927  0015E6  6EF6               	movwf	tblptrl,c
+  1928  0015E8                     	if	1	;There is more than 1 active tblptr byte
+  1929  0015E8  0E10               	movlw	high GLCD_PIC@INST_RAMWR
+  1930  0015EA  6EF7               	movwf	tblptrh,c
+  1931  0015EC                     	endif
+  1932  0015EC                     	if	0	;There are less than 3 active tblptr bytes
+  1933  0015EC                     	endif
+  1934  0015EC  0008               	tblrd		*
+  1935  0015EE  50F5               	movf	tablat,w,c
+  1936  0015F0  ECAF  F00B         	call	_glcdTransfer
+  1937                           
+  1938                           ;GLCD_PIC_V1.1.c: 107: if((XE == XS) && (YE == YS)){
+  1939  0015F4  5019               	movf	glcdDrawRectangle@XS,w,c
+  1940  0015F6  1807               	xorwf	glcdDrawRectangle@XE,w,c
+  1941  0015F8  A4D8               	btfss	status,2,c
+  1942  0015FA  D014               	goto	l282
+  1943  0015FC  5008               	movf	glcdDrawRectangle@YS,w,c
+  1944  0015FE  1809               	xorwf	glcdDrawRectangle@YE,w,c
+  1945  001600  A4D8               	btfss	status,2,c
+  1946  001602  D010               	goto	l282
+  1947                           
+  1948                           ;GLCD_PIC_V1.1.c: 114: glcdTransfer(color & 0xFF, 0);
+  1949  001604  0E00               	movlw	0
+  1950  001606  6E04               	movwf	glcdTransfer@cmd,c
+  1951  001608  500A               	movf	glcdDrawRectangle@color,w,c
+  1952  00160A  ECAF  F00B         	call	_glcdTransfer
+  1953                           
+  1954                           ;GLCD_PIC_V1.1.c: 115: glcdTransfer((color >> 8) & 0xFF, 0);
+  1955  00160E  0E00               	movlw	0
+  1956  001610  6E04               	movwf	glcdTransfer@cmd,c
+  1957  001612  500B               	movf	glcdDrawRectangle@color+1,w,c
+  1958  001614  ECAF  F00B         	call	_glcdTransfer
+  1959                           
+  1960                           ;GLCD_PIC_V1.1.c: 116: glcdTransfer((color >> 16) & 0xFF, 0);
+  1961  001618  0E00               	movlw	0
+  1962  00161A  6E04               	movwf	glcdTransfer@cmd,c
+  1963  00161C  500C               	movf	glcdDrawRectangle@color+2,w,c
+  1964  00161E  ECAF  F00B         	call	_glcdTransfer
+  1965                           
+  1966                           ;GLCD_PIC_V1.1.c: 117: }
+  1967  001622  0012               	return	
+  1968  001624                     l282:
+  1969                           
+  1970                           ;GLCD_PIC_V1.1.c: 118: else{
+  1971                           ;GLCD_PIC_V1.1.c: 130: unsigned short numLoops = (XE - XS) * (YE - YS);
+  1972  001624  5019               	movf	glcdDrawRectangle@XS,w,c
+  1973  001626  6E0E               	movwf	??_glcdDrawRectangle& (0+255),c
+  1974  001628  6A0F               	clrf	(??_glcdDrawRectangle+1)& (0+255),c
+  1975  00162A  1E0E               	comf	??_glcdDrawRectangle,f,c
+  1976  00162C  1E0F               	comf	??_glcdDrawRectangle+1,f,c
+  1977  00162E  4A0E               	infsnz	??_glcdDrawRectangle,f,c
+  1978  001630  2A0F               	incf	??_glcdDrawRectangle+1,f,c
+  1979  001632  5007               	movf	glcdDrawRectangle@XE,w,c
+  1980  001634  240E               	addwf	??_glcdDrawRectangle,w,c
+  1981  001636  6E01               	movwf	___wmul@multiplier,c
+  1982  001638  0E00               	movlw	0
+  1983  00163A  200F               	addwfc	??_glcdDrawRectangle+1,w,c
+  1984  00163C  6E02               	movwf	___wmul@multiplier+1,c
+  1985  00163E  5008               	movf	glcdDrawRectangle@YS,w,c
+  1986  001640  6E10               	movwf	(??_glcdDrawRectangle+2)& (0+255),c
+  1987  001642  6A11               	clrf	(??_glcdDrawRectangle+3)& (0+255),c
+  1988  001644  1E10               	comf	??_glcdDrawRectangle+2,f,c
+  1989  001646  1E11               	comf	??_glcdDrawRectangle+3,f,c
+  1990  001648  4A10               	infsnz	??_glcdDrawRectangle+2,f,c
+  1991  00164A  2A11               	incf	??_glcdDrawRectangle+3,f,c
+  1992  00164C  5009               	movf	glcdDrawRectangle@YE,w,c
+  1993  00164E  2410               	addwf	??_glcdDrawRectangle+2,w,c
+  1994  001650  6E03               	movwf	___wmul@multiplicand,c
+  1995  001652  0E00               	movlw	0
+  1996  001654  2011               	addwfc	??_glcdDrawRectangle+3,w,c
+  1997  001656  6E04               	movwf	___wmul@multiplicand+1,c
+  1998  001658  ECC3  F00B         	call	___wmul	;wreg free
+  1999  00165C  C001  F012         	movff	?___wmul,glcdDrawRectangle@numLoops
+  2000  001660  C002  F013         	movff	?___wmul+1,glcdDrawRectangle@numLoops+1
+  2001                           
+  2002                           ;GLCD_PIC_V1.1.c: 131: unsigned char colorData[3];
+  2003                           ;GLCD_PIC_V1.1.c: 132: colorData[0] = color & 0xFF;
+  2004  001664  C00A  F016         	movff	glcdDrawRectangle@color,glcdDrawRectangle@colorData
+  2005                           
+  2006                           ;GLCD_PIC_V1.1.c: 133: colorData[1] = (color >> 8) & 0xFF;
+  2007  001668  C00B  F017         	movff	glcdDrawRectangle@color+1,glcdDrawRectangle@colorData+1
+  2008                           
+  2009                           ;GLCD_PIC_V1.1.c: 134: colorData[2] = (color >> 16) & 0xFF;
+  2010  00166C  C00C  F018         	movff	glcdDrawRectangle@color+2,glcdDrawRectangle@colorData+2
+  2011                           
+  2012                           ;GLCD_PIC_V1.1.c: 136: LATDbits.LATD0 = 0;
+  2013  001670  908C               	bcf	3980,0,c	;volatile
+  2014                           
+  2015                           ;GLCD_PIC_V1.1.c: 137: LATDbits.LATD1 = 1;
+  2016  001672  828C               	bsf	3980,1,c	;volatile
+  2017                           
+  2018                           ;GLCD_PIC_V1.1.c: 138: for(unsigned short i = 0; i < numLoops; i++){
+  2019  001674  0E00               	movlw	0
+  2020  001676  6E15               	movwf	glcdDrawRectangle@i+1,c
+  2021  001678  0E00               	movlw	0
+  2022  00167A  6E14               	movwf	glcdDrawRectangle@i,c
+  2023  00167C  D00B               	goto	l284
+  2024  00167E                     
+  2025                           ;GLCD_PIC_V1.1.c: 139: spiSend(colorData[0]);
+  2026  00167E  5016               	movf	glcdDrawRectangle@colorData,w,c
+  2027  001680  ECEE  F00B         	call	_spiSend
+  2028                           
+  2029                           ;GLCD_PIC_V1.1.c: 140: spiSend(colorData[1]);
+  2030  001684  5017               	movf	glcdDrawRectangle@colorData+1,w,c
+  2031  001686  ECEE  F00B         	call	_spiSend
+  2032                           
+  2033                           ;GLCD_PIC_V1.1.c: 141: spiSend(colorData[2]);
+  2034  00168A  5018               	movf	glcdDrawRectangle@colorData+2,w,c
+  2035  00168C  ECEE  F00B         	call	_spiSend
+  2036  001690  4A14               	infsnz	glcdDrawRectangle@i,f,c
+  2037  001692  2A15               	incf	glcdDrawRectangle@i+1,f,c
+  2038  001694                     l284:
+  2039  001694  5012               	movf	glcdDrawRectangle@numLoops,w,c
+  2040  001696  5C14               	subwf	glcdDrawRectangle@i,w,c
+  2041  001698  5013               	movf	glcdDrawRectangle@numLoops+1,w,c
+  2042  00169A  5815               	subwfb	glcdDrawRectangle@i+1,w,c
+  2043  00169C  A0D8               	btfss	status,0,c
+  2044  00169E  D7EF               	goto	l285
+  2045                           
+  2046                           ;GLCD_PIC_V1.1.c: 142: }
+  2047                           ;GLCD_PIC_V1.1.c: 143: LATDbits.LATD0 = 1;
+  2048  0016A0  808C               	bsf	3980,0,c	;volatile
+  2049  0016A2  0012               	return	
+  2050  0016A4                     __end_of_glcdDrawRectangle:
+  2051                           	opt stack 0
+  2052                           tblptru	equ	0xFF8
+  2053                           tblptrh	equ	0xFF7
+  2054                           tblptrl	equ	0xFF6
+  2055                           tablat	equ	0xFF5
+  2056                           wreg	equ	0xFE8
+  2057                           status	equ	0xFD8
+  2058                           
+  2059 ;; *************** function _glcdTransfer *****************
+  2060 ;; Defined at:
+  2061 ;;		line 18 in file "GLCD_PIC_V1.1.c"
+  2062 ;; Parameters:    Size  Location     Type
+  2063 ;;  byte            1    wreg     unsigned char 
+  2064 ;;  cmd             1    3[COMRAM] unsigned char 
+  2065 ;; Auto vars:     Size  Location     Type
+  2066 ;;  byte            1    5[COMRAM] unsigned char 
+  2067 ;; Return value:  Size  Location     Type
+  2068 ;;                  1    wreg      void 
+  2069 ;; Registers used:
+  2070 ;;		wreg, status,2, status,0, cstack
+  2071 ;; Tracked objects:
+  2072 ;;		On entry : 0/0
+  2073 ;;		On exit  : 0/0
+  2074 ;;		Unchanged: 0/0
+  2075 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  2076 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2077 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2078 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2079 ;;      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2080 ;;Total ram usage:        3 bytes
+  2081 ;; Hardware stack levels used:    1
+  2082 ;; Hardware stack levels required when called:    2
+  2083 ;; This function calls:
+  2084 ;;		_spiSend
+  2085 ;; This function is called by:
+  2086 ;;		_glcdDrawRectangle
+  2087 ;;		_glcdSetCOLMOD
+  2088 ;;		_initGLCD
+  2089 ;;		_glcdSetOrigin
+  2090 ;; This function uses a non-reentrant model
+  2091 ;;
+  2092                           
+  2093                           	psect	text6
+  2094  00175E                     __ptext6:
+  2095                           	opt stack 0
+  2096  00175E                     _glcdTransfer:
+  2097                           	opt stack 26
+  2098                           
+  2099                           ;incstack = 0
+  2100                           ;glcdTransfer@byte stored from wreg
+  2101  00175E  6E06               	movwf	glcdTransfer@byte,c
+  2102                           
+  2103                           ;GLCD_PIC_V1.1.c: 27: LATDbits.LATD1 = (cmd == 1) ? 0 : 1;
+  2104  001760  0404               	decf	glcdTransfer@cmd,w,c
+  2105  001762  B4D8               	btfsc	status,2,c
+  2106  001764  D003               	goto	u140
+  2107  001766  6A05               	clrf	??_glcdTransfer& (0+255),c
+  2108  001768  2A05               	incf	??_glcdTransfer& (0+255),f,c
+  2109  00176A  D001               	goto	u158
+  2110  00176C                     u140:
+  2111  00176C  6A05               	clrf	??_glcdTransfer& (0+255),c
+  2112  00176E                     u158:
+  2113  00176E  4605               	rlncf	??_glcdTransfer,f,c
+  2114  001770  508C               	movf	3980,w,c	;volatile
+  2115  001772  1805               	xorwf	??_glcdTransfer,w,c
+  2116  001774  0BFD               	andlw	-3
+  2117  001776  1805               	xorwf	??_glcdTransfer,w,c
+  2118  001778  6E8C               	movwf	3980,c	;volatile
+  2119                           
+  2120                           ;GLCD_PIC_V1.1.c: 31: LATDbits.LATD0 = 0;
+  2121  00177A  908C               	bcf	3980,0,c	;volatile
+  2122                           
+  2123                           ;GLCD_PIC_V1.1.c: 33: spiSend(byte);
+  2124  00177C  5006               	movf	glcdTransfer@byte,w,c
+  2125  00177E  ECEE  F00B         	call	_spiSend
+  2126                           
+  2127                           ;GLCD_PIC_V1.1.c: 35: LATDbits.LATD0 = 1;
+  2128  001782  808C               	bsf	3980,0,c	;volatile
+  2129  001784  0012               	return		;funcret
+  2130  001786                     __end_of_glcdTransfer:
+  2131                           	opt stack 0
+  2132                           tblptru	equ	0xFF8
+  2133                           tblptrh	equ	0xFF7
+  2134                           tblptrl	equ	0xFF6
+  2135                           tablat	equ	0xFF5
+  2136                           wreg	equ	0xFE8
+  2137                           status	equ	0xFD8
+  2138                           
+  2139 ;; *************** function _spiSend *****************
+  2140 ;; Defined at:
+  2141 ;;		line 33 in file "SPI_PIC.c"
+  2142 ;; Parameters:    Size  Location     Type
+  2143 ;;  val             1    wreg     unsigned char 
+  2144 ;; Auto vars:     Size  Location     Type
+  2145 ;;  val             1    2[COMRAM] unsigned char 
+  2146 ;; Return value:  Size  Location     Type
+  2147 ;;                  1    wreg      void 
+  2148 ;; Registers used:
+  2149 ;;		wreg, status,2, cstack
+  2150 ;; Tracked objects:
+  2151 ;;		On entry : 0/0
+  2152 ;;		On exit  : 0/0
+  2153 ;;		Unchanged: 0/0
+  2154 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  2155 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2156 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2157 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2158 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2159 ;;Total ram usage:        1 bytes
+  2160 ;; Hardware stack levels used:    1
+  2161 ;; Hardware stack levels required when called:    1
+  2162 ;; This function calls:
+  2163 ;;		_spiTransfer
+  2164 ;; This function is called by:
+  2165 ;;		_glcdTransfer
+  2166 ;;		_glcdDrawRectangle
+  2167 ;; This function uses a non-reentrant model
+  2168 ;;
+  2169                           
+  2170                           	psect	text7
+  2171  0017DC                     __ptext7:
+  2172                           	opt stack 0
+  2173  0017DC                     _spiSend:
+  2174                           	opt stack 26
+  2175                           
+  2176                           ;incstack = 0
+  2177                           ;spiSend@val stored from wreg
+  2178  0017DC  6E03               	movwf	spiSend@val,c
+  2179                           
+  2180                           ;SPI_PIC.c: 41: spiTransfer(val);
+  2181  0017DE  5003               	movf	spiSend@val,w,c
+  2182  0017E0  ECD6  F00B         	call	_spiTransfer
+  2183  0017E4  0012               	return		;funcret
+  2184  0017E6                     __end_of_spiSend:
+  2185                           	opt stack 0
+  2186                           tblptru	equ	0xFF8
+  2187                           tblptrh	equ	0xFF7
+  2188                           tblptrl	equ	0xFF6
+  2189                           tablat	equ	0xFF5
+  2190                           wreg	equ	0xFE8
+  2191                           status	equ	0xFD8
+  2192                           
+  2193 ;; *************** function _spiTransfer *****************
+  2194 ;; Defined at:
+  2195 ;;		line 12 in file "SPI_PIC.c"
+  2196 ;; Parameters:    Size  Location     Type
+  2197 ;;  byteToTransf    1    wreg     unsigned char 
+  2198 ;; Auto vars:     Size  Location     Type
+  2199 ;;  byteToTransf    1    1[COMRAM] unsigned char 
+  2200 ;; Return value:  Size  Location     Type
+  2201 ;;                  1    wreg      unsigned char 
+  2202 ;; Registers used:
+  2203 ;;		wreg, status,2
+  2204 ;; Tracked objects:
+  2205 ;;		On entry : 0/0
+  2206 ;;		On exit  : 0/0
+  2207 ;;		Unchanged: 0/0
+  2208 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  2209 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2210 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2211 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2212 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2213 ;;Total ram usage:        2 bytes
+  2214 ;; Hardware stack levels used:    1
+  2215 ;; This function calls:
+  2216 ;;		Nothing
+  2217 ;; This function is called by:
+  2218 ;;		_spiSend
+  2219 ;;		_spiReceive
+  2220 ;; This function uses a non-reentrant model
+  2221 ;;
+  2222                           
+  2223                           	psect	text8
+  2224  0017AC                     __ptext8:
+  2225                           	opt stack 0
+  2226  0017AC                     _spiTransfer:
+  2227                           	opt stack 26
+  2228                           
+  2229                           ;incstack = 0
+  2230                           ;spiTransfer@byteToTransfer stored from wreg
+  2231  0017AC  6E02               	movwf	spiTransfer@byteToTransfer,c
+  2232                           
+  2233                           ;SPI_PIC.c: 23: SSPBUF = byteToTransfer;
+  2234  0017AE  C002  FFC9         	movff	spiTransfer@byteToTransfer,4041	;volatile
+  2235  0017B2                     l938:
+  2236  0017B2  B69E               	btfsc	3998,3,c	;volatile
+  2237  0017B4  D002               	goto	u10
+  2238  0017B6  0E01               	movlw	1
+  2239  0017B8  D001               	goto	u12
+  2240  0017BA                     u10:
+  2241  0017BA  0E00               	movlw	0
+  2242  0017BC                     u12:
+  2243  0017BC  6E01               	movwf	??_spiTransfer& (0+255),c
+  2244  0017BE  B0C7               	btfsc	4039,0,c	;volatile
+  2245  0017C0  D002               	goto	u20
+  2246  0017C2  0E01               	movlw	1
+  2247  0017C4  D001               	goto	u22
+  2248  0017C6                     u20:
+  2249  0017C6  0E00               	movlw	0
+  2250  0017C8                     u22:
+  2251  0017C8  1001               	iorwf	??_spiTransfer,w,c
+  2252  0017CA  E1F3               	bnz	l938
+  2253                           
+  2254                           ;SPI_PIC.c: 30: return SSPBUF;
+  2255  0017CC  50C9               	movf	4041,w,c	;volatile
+  2256  0017CE  0012               	return	
+  2257  0017D0                     __end_of_spiTransfer:
+  2258                           	opt stack 0
+  2259                           tblptru	equ	0xFF8
+  2260                           tblptrh	equ	0xFF7
+  2261                           tblptrl	equ	0xFF6
+  2262                           tablat	equ	0xFF5
+  2263                           wreg	equ	0xFE8
+  2264                           status	equ	0xFD8
+  2265                           
+  2266 ;; *************** function ___wmul *****************
+  2267 ;; Defined at:
+  2268 ;;		line 15 in file "/Applications/microchip/xc8/v1.45/sources/common/Umul16.c"
+  2269 ;; Parameters:    Size  Location     Type
+  2270 ;;  multiplier      2    0[COMRAM] unsigned int 
+  2271 ;;  multiplicand    2    2[COMRAM] unsigned int 
+  2272 ;; Auto vars:     Size  Location     Type
+  2273 ;;  product         2    4[COMRAM] unsigned int 
+  2274 ;; Return value:  Size  Location     Type
+  2275 ;;                  2    0[COMRAM] unsigned int 
+  2276 ;; Registers used:
+  2277 ;;		wreg, status,2, status,0, prodl, prodh
+  2278 ;; Tracked objects:
+  2279 ;;		On entry : 0/0
+  2280 ;;		On exit  : 0/0
+  2281 ;;		Unchanged: 0/0
+  2282 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  2283 ;;      Params:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2284 ;;      Locals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2285 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2286 ;;      Totals:         6       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2287 ;;Total ram usage:        6 bytes
+  2288 ;; Hardware stack levels used:    1
+  2289 ;; This function calls:
+  2290 ;;		Nothing
+  2291 ;; This function is called by:
+  2292 ;;		_glcdDrawRectangle
+  2293 ;; This function uses a non-reentrant model
+  2294 ;;
+  2295                           
+  2296                           	psect	text9
+  2297  001786                     __ptext9:
+  2298                           	opt stack 0
+  2299  001786                     ___wmul:
+  2300                           	opt stack 27
+  2301                           
+  2302                           ;incstack = 0
+  2303  001786  5001               	movf	___wmul@multiplier,w,c
+  2304  001788  0203               	mulwf	___wmul@multiplicand,c
+  2305  00178A  CFF3 F005          	movff	prodl,___wmul@product
+  2306  00178E  CFF4 F006          	movff	prodh,___wmul@product+1
+  2307  001792  5001               	movf	___wmul@multiplier,w,c
+  2308  001794  0204               	mulwf	___wmul@multiplicand+1,c
+  2309  001796  50F3               	movf	prodl,w,c
+  2310  001798  2606               	addwf	___wmul@product+1,f,c
+  2311  00179A  5002               	movf	___wmul@multiplier+1,w,c
+  2312  00179C  0203               	mulwf	___wmul@multiplicand,c
+  2313  00179E  50F3               	movf	prodl,w,c
+  2314  0017A0  2606               	addwf	___wmul@product+1,f,c
+  2315  0017A2  C005  F001         	movff	___wmul@product,?___wmul
+  2316  0017A6  C006  F002         	movff	___wmul@product+1,?___wmul+1
+  2317  0017AA  0012               	return	
+  2318  0017AC                     __end_of___wmul:
+  2319                           	opt stack 0
+  2320                           tblptru	equ	0xFF8
+  2321                           tblptrh	equ	0xFF7
+  2322                           tblptrl	equ	0xFF6
+  2323                           tablat	equ	0xFF5
+  2324                           prodh	equ	0xFF4
+  2325                           prodl	equ	0xFF3
+  2326                           wreg	equ	0xFE8
+  2327                           status	equ	0xFD8
+  2328                           tblptru	equ	0xFF8
+  2329                           tblptrh	equ	0xFF7
+  2330                           tblptrl	equ	0xFF6
+  2331                           tablat	equ	0xFF5
+  2332                           prodh	equ	0xFF4
+  2333                           prodl	equ	0xFF3
+  2334                           wreg	equ	0xFE8
+  2335                           status	equ	0xFD8
+  2336                           
+  2337                           	psect	rparam
+  2338  0000                     tblptru	equ	0xFF8
+  2339                           tblptrh	equ	0xFF7
+  2340                           tblptrl	equ	0xFF6
+  2341                           tablat	equ	0xFF5
+  2342                           prodh	equ	0xFF4
+  2343                           prodl	equ	0xFF3
+  2344                           wreg	equ	0xFE8
+  2345                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    108
+    Data        0
+    BSS         1
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM          127     27      28
+    BANK0           128      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+    BANK8           256      0       0
+    BANK9           256      0       0
+    BANK10          256      0       0
+    BANK11          256      0       0
+    BANK12          256      0       0
+    BANK13          256      0       0
+    BANK14          256      0       0
+    BANK15          128      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    _init->_initGLCD
+    _initGLCD->_glcdDrawRectangle
+    _glcdSetCOLMOD->_glcdTransfer
+    _glcdDrawRectangle->___wmul
+    _glcdDrawRectangle->_glcdTransfer
+    _glcdTransfer->_spiSend
+    _spiSend->_spiTransfer
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _main in BANK8
+
+    None.
+
+Critical Paths under _main in BANK9
+
+    None.
+
+Critical Paths under _main in BANK10
+
+    None.
+
+Critical Paths under _main in BANK11
+
+    None.
+
+Critical Paths under _main in BANK12
+
+    None.
+
+Critical Paths under _main in BANK13
+
+    None.
+
+Critical Paths under _main in BANK14
+
+    None.
+
+Critical Paths under _main in BANK15
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0   25601
+                  _glcdDrawRectangle
+                               _init
+ ---------------------------------------------------------------------------------
+ (1) _init                                                 0     0      0   17390
+                           _initGLCD
+ ---------------------------------------------------------------------------------
+ (2) _initGLCD                                             2     2      0   17390
+                                             25 COMRAM     2     2      0
+                  _glcdDrawRectangle
+                      _glcdSetCOLMOD
+                       _glcdTransfer
+                            _spiInit
+ ---------------------------------------------------------------------------------
+ (3) _spiInit                                              1     1      0      15
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (3) _glcdSetCOLMOD                                        3     3      0    4606
+                                              6 COMRAM     3     3      0
+                       _glcdTransfer
+ ---------------------------------------------------------------------------------
+ (3) _glcdDrawRectangle                                   19    12      7    8211
+                                              6 COMRAM    19    12      7
+                             ___wmul
+                       _glcdTransfer
+                            _spiSend
+ ---------------------------------------------------------------------------------
+ (3) _glcdTransfer                                         3     2      1    4558
+                                              3 COMRAM     3     2      1
+                            _spiSend
+ ---------------------------------------------------------------------------------
+ (4) _spiSend                                              1     1      0      30
+                                              2 COMRAM     1     1      0
+                        _spiTransfer
+ ---------------------------------------------------------------------------------
+ (5) _spiTransfer                                          2     2      0      15
+                                              0 COMRAM     2     2      0
+ ---------------------------------------------------------------------------------
+ (4) ___wmul                                               6     2      4     311
+                                              0 COMRAM     6     2      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 5
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _glcdDrawRectangle
+     ___wmul
+     _glcdTransfer
+       _spiSend
+         _spiTransfer
+     _spiSend
+       _spiTransfer
+   _init
+     _initGLCD
+       _glcdDrawRectangle
+         ___wmul
+         _glcdTransfer
+           _spiSend
+             _spiTransfer
+         _spiSend
+           _spiTransfer
+       _glcdSetCOLMOD
+         _glcdTransfer
+           _spiSend
+             _spiTransfer
+       _glcdTransfer
+         _spiSend
+           _spiTransfer
+       _spiInit
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             F7F      0       0      37        0.0%
+EEDATA             400      0       0       0        0.0%
+BITBANK14          100      0       0      32        0.0%
+BANK14             100      0       0      33        0.0%
+BITBANK13          100      0       0      30        0.0%
+BANK13             100      0       0      31        0.0%
+BITBANK12          100      0       0      28        0.0%
+BANK12             100      0       0      29        0.0%
+BITBANK11          100      0       0      26        0.0%
+BANK11             100      0       0      27        0.0%
+BITBANK10          100      0       0      24        0.0%
+BANK10             100      0       0      25        0.0%
+BITBANK9           100      0       0      22        0.0%
+BANK9              100      0       0      23        0.0%
+BITBANK8           100      0       0      20        0.0%
+BANK8              100      0       0      21        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK15           80      0       0      35        0.0%
+BANK15              80      0       0      36        0.0%
+BITBANK0            80      0       0       4        0.0%
+BANK0               80      0       0       5        0.0%
+BITCOMRAM           7F      0       0       0        0.0%
+COMRAM              7F     1B      1C       1       22.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      1C      34        0.0%
+DATA                 0      0      1C       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
+Symbol Table                                                                                   Sun Jan 28 20:05:14 2018
+
+                       _SSPSTATbits 000FC7                      ??_glcdTransfer 0005  
+                                u10 17BA                                  u20 17C6  
+                                u12 17BC                                  u22 17C8  
+                       __CFG_CPD$ON 000000                 ___wmul@multiplicand 0003  
+                       __CFG_BORV$3 000000                        __CFG_CP0$OFF 000000  
+                      __CFG_CP1$OFF 000000                        __CFG_CP2$OFF 000000  
+                      __CFG_CP3$OFF 000000                                 l300 16BA  
+                               l160 170C                                 l128 137E  
+                               l162 1722                                 l163 16FE  
+                               l164 1702                                 l165 1706  
+                               l280 155C                                 l281 1568  
+                               l282 1624                                 l284 1694  
+                               l276 1536                                 l285 167E  
+                               l278 154A                                 l295 16C2  
+                               l296 16A8                                 l297 16D4  
+                               l298 16B0                                 l938 17B2  
+                      __CFG_CPB$OFF 000000                                 u140 176C  
+                               u158 176E                                 _RED 1019  
+                               u257 1086                                 u267 10B2  
+                               u277 10DE                                 u287 1370  
+         __end_ofGLCD_PIC@INST_TEON 1039                                 wreg 000FE8  
+                      __CFG_LVP$OFF 000000                        __CFG_WDT$OFF 000000  
+                              l1232 1560                                _BLUE 1009  
+                              _LATA 000F89                                _LATB 000F8A  
+                              _LATC 000F8B                                _LATD 000F8C  
+                              _LATE 000F8D                                _GREY 1021  
+                              _main 137A                                _init 172C  
+                              prodh 000FF4                                prodl 000FF3  
+                              start 0000                       __CFG_IESO$OFF 000000  
+                     __CFG_MCLRE$ON 000000                        ___param_bank 000000  
+                             ?_main 0001                               ?_init 0001  
+                             _BLACK 1025                    __end_of_INST_NOP 1069  
+                             _GREEN 100D                               _WHITE 101D  
+                             _TRISA 000F92                               _TRISB 000F93  
+                             _TRISC 000F94                               _TRISD 000F95  
+                             _TRISE 000F96                               _SSPIF 007CF3  
+                     __CFG_PWRT$OFF 000000                       __CFG_WRT0$OFF 000000  
+                     __CFG_WRT1$OFF 000000                       __CFG_WRT2$OFF 000000  
+                     __CFG_WRT3$OFF 000000                      __CFG_EBTR0$OFF 000000  
+                    __CFG_FCMEN$OFF 000000                      __CFG_EBTR1$OFF 000000  
+                    __CFG_EBTR2$OFF 000000                      __CFG_EBTR3$OFF 000000  
+                     __CFG_WRTB$OFF 000000                       __CFG_WRTC$OFF 000000  
+                     __CFG_WRTD$OFF 000000       __end_ofGLCD_PIC@INST_VMOFCTR2 102A  
+                    __CFG_EBTRB$OFF 000000                     __end_of_spiInit 172C  
+                             tablat 000FF5                     __end_of_spiSend 17E6  
+                             status 000FD8                      __CFG_PBADEN$ON 000000  
+                      __end_of_BLUE 100D                        __end_of_GREY 1025  
+                   __initialization 17D0                        __end_of_main 1524  
+                      __end_of_init 175E        glcdSetCOLMOD@numBitsPerPixel 0007  
+                    __CFG_OSC$HSPLL 000000                              ??_main 001C  
+                            ??_init 001C                       __activetblptr 000002  
+                            _ADCON0 000FC2                              _ADCON1 000FC1  
+                 _glcdDrawRectangle 1524                   __end_of_INST_TEON 1059  
+                            _INDIGO 1005                __end_of_glcdTransfer 1786  
+                            _ORANGE 1015                  ?_glcdDrawRectangle 0007  
+                            _VIOLET 1001                              _YELLOW 1011  
+                            _SSPBUF 000FC9                      __CFG_XINST$OFF 000000  
+         glcdDrawRectangle@numLoops 0012                 ??_glcdDrawRectangle 000E  
+                            ___wmul 1786                    __end_of_initGLCD 137A  
+                    __CFG_STVREN$ON 000000            __end_ofGLCD_PIC@INST_NOP 1049  
+                      ?_spiTransfer 0001                        __mediumconst 0000  
+                            tblptrh 000FF7                              tblptrl 000FF6  
+                            tblptru 000FF8                           ??_spiInit 0001  
+                         ??_spiSend 0003           __end_of_glcdDrawRectangle 16A4  
+                        __accesstop 0080             __end_of__initialization 17D2  
+                     __end_of_BLACK 1029                       ___rparam_used 000001  
+                     __end_of_GREEN 1011                       __end_of_WHITE 1021  
+       __end_ofGLCD_PIC@INST_GAMSET 1041         __end_ofGLCD_PIC@INST_COLMOD 1035  
+       __end_ofGLCD_PIC@INST_MADCTL 1038         __end_ofGLCD_PIC@INST_DISPON 103F  
+       __end_ofGLCD_PIC@INST_IDMOFF 1037                      __pcstackCOMRAM 0001  
+       __end_ofGLCD_PIC@INST_INVCTR 1031         __end_ofGLCD_PIC@INST_INVOFF 1043  
+       __end_ofGLCD_PIC@INST_PWCTR1 1030         __end_ofGLCD_PIC@INST_PWCTR2 102F  
+       __end_ofGLCD_PIC@INST_PWCTR3 102E         __end_ofGLCD_PIC@INST_PWCTR4 102D  
+       __end_ofGLCD_PIC@INST_PWCTR5 102C         __end_ofGLCD_PIC@INST_VMCTR1 102B  
+       __end_ofGLCD_PIC@INST_SLPOUT 1046                       _INST_VMOFCTR2 1049  
+             __end_of_glcdSetCOLMOD 16F4                             ?___wmul 0001  
+                glcdDrawRectangle@i 0014                  __end_of_INST_CASET 105E  
+                __end_of_INST_IDMON 1056                  __end_of_INST_INVON 1062  
+                __end_of_INST_RASET 105D                  __end_of_INST_RAMWR 105C  
+                __end_of_INST_TEOFF 105A                  __end_of_INST_NORON 1064  
+                __end_of_INST_PTLAR 105B                  __end_of_INST_SLPIN 1067  
+                __end_of_INST_PTLON 1065               __size_of_glcdTransfer 0028  
+        __size_of_glcdDrawRectangle 0180           spiTransfer@byteToTransfer 0002  
+                           _SSPCON1 000FC6                             _SSPSTAT 000FC7  
+                         ?_initGLCD 0001                             __Hparam 0000  
+                    _GLCD_SIZE_HORZ 106A                             __Lparam 0000  
+                    _GLCD_SIZE_VERT 1069                __end_of_INST_DISPOFF 1060  
+              __end_of_INST_FRMCTR1 1054                __end_of_INST_FRMCTR2 1053  
+              __end_of_INST_FRMCTR3 1052                     __size_of___wmul 0026  
+                      __psmallconst 1000                             __pcinit 17D0  
+                      _glcdTransfer 175E                             __ramtop 1000  
+                           __ptext0 137A                             __ptext1 172C  
+                           __ptext2 106E                             __ptext3 16F4  
+                           __ptext4 16A4                             __ptext5 1524  
+                           __ptext6 175E                             __ptext7 17DC  
+                           __ptext8 17AC                             __ptext9 1786  
+              __end_of_INST_SWRESET 1068                             _spiInit 16F4  
+                           _spiSend 17DC                __size_of_spiTransfer 0024  
+              end_of_initialization 17D2               GLCD_PIC@INST_VMOFCTR2 1029  
+                        ??_initGLCD 001A                       __Lmediumconst 0000  
+            __end_of_GLCD_SIZE_HORZ 106B                           _INST_TEON 1058  
+            __end_of_GLCD_SIZE_VERT 106A                    glcdTransfer@byte 0006  
+                    spiInit@divider 0001                           _TRISCbits 000F94  
+                         _TRISDbits 000F95                      __end_of_INDIGO 1009  
+                    __end_of_ORANGE 1019                      __end_of_VIOLET 1005  
+                    __end_of_YELLOW 1015        __end_ofGLCD_PIC@INST_DISPOFF 1040  
+      __end_ofGLCD_PIC@INST_FRMCTR1 1034        __end_ofGLCD_PIC@INST_FRMCTR2 1033  
+      __end_ofGLCD_PIC@INST_FRMCTR3 1032                      __end_of___wmul 17AC  
+      __end_ofGLCD_PIC@INST_SWRESET 1048                 start_initialization 17D0  
+                       __end_of_RED 101D              glcdDrawRectangle@color 000A  
+                          ??___wmul 0005                    __CFG_LPT1OSC$OFF 000000  
+__end_of_GLCD_ADDRESSABLE_SIZE_HORZ 106D          _GLCD_ADDRESSABLE_SIZE_HORZ 106C  
+__end_of_GLCD_ADDRESSABLE_SIZE_VERT 106C          _GLCD_ADDRESSABLE_SIZE_VERT 106B  
+                       __pbssCOMRAM 001C          __end_ofGLCD_PIC@INST_CASET 103E  
+        __end_ofGLCD_PIC@INST_IDMON 1036          __end_ofGLCD_PIC@INST_INVON 1042  
+        __end_ofGLCD_PIC@INST_RASET 103D          __end_ofGLCD_PIC@INST_RAMWR 103C  
+                      _INST_DISPOFF 105F          __end_ofGLCD_PIC@INST_TEOFF 103A  
+        __end_ofGLCD_PIC@INST_NORON 1044          __end_ofGLCD_PIC@INST_PTLAR 103B  
+        __end_ofGLCD_PIC@INST_SLPIN 1047          __end_ofGLCD_PIC@INST_PTLON 1045  
+                      _INST_FRMCTR1 1053                        _INST_FRMCTR2 1052  
+                      _INST_FRMCTR3 1051                   __size_of_initGLCD 030C  
+                      _INST_SWRESET 1067                   __CFG_CCP2MX$PORTC 000000  
+            __size_of_glcdSetCOLMOD 0050                         __smallconst 1000  
+               glcdDrawRectangle@XE 0007                 glcdDrawRectangle@YE 0009  
+               glcdDrawRectangle@XS 0019                 glcdDrawRectangle@YS 0008  
+               __end_of_INST_GAMSET 1061                            ?_spiInit 0001  
+               __end_of_INST_COLMOD 1055                            ?_spiSend 0001  
+               __end_of_INST_MADCTL 1058                 __end_of_INST_DISPON 105F  
+               __end_of_INST_IDMOFF 1057                GLCD_PIC@INST_DISPOFF 103F  
+               __end_of_INST_INVCTR 1051                 __end_of_INST_INVOFF 1063  
+              GLCD_PIC@INST_FRMCTR1 1033                GLCD_PIC@INST_FRMCTR2 1032  
+              GLCD_PIC@INST_FRMCTR3 1031                 __end_of_INST_PWCTR1 1050  
+               __end_of_INST_PWCTR2 104F                 __end_of_INST_PWCTR3 104E  
+               __end_of_INST_PWCTR4 104D                 __end_of_INST_PWCTR5 104C  
+               __end_of_INST_VMCTR1 104B                 __end_of_INST_SLPOUT 1066  
+                    ___wmul@product 0005                            _LATDbits 000F8C  
+              GLCD_PIC@INST_SWRESET 1047                            _INST_NOP 1068  
+                        spiSend@val 0003                    __CFG_WDTPS$32768 000000  
+                   glcdTransfer@cmd 0004                   ___wmul@multiplier 0001  
+                     ??_spiTransfer 0001                glcdSetCOLMOD@rawData 0008  
+                     _glcdSetCOLMOD 16A4                            __Hrparam 0000  
+                          __Lrparam 0000                  __CFG_BOREN$SBORDIS 000000  
+                       _INST_GAMSET 1060                         _INST_COLMOD 1054  
+                       _INST_MADCTL 1057                         _INST_DISPON 105E  
+                       _INST_IDMOFF 1056                         _INST_INVCTR 1050  
+                       _INST_INVOFF 1062                         _INST_PWCTR1 104F  
+                       _INST_PWCTR2 104E                         _INST_PWCTR3 104D  
+                       _INST_PWCTR4 104C                         _INST_PWCTR5 104B  
+                       _INST_VMCTR1 104A                         _INST_SLPOUT 1065  
+                  __size_of_spiInit 0038                    __size_of_spiSend 000A  
+             __end_of_INST_VMOFCTR2 104A                          _MADCTLbits 001C  
+               __end_of_spiTransfer 17D0                      ?_glcdSetCOLMOD 0001  
+                          _initGLCD 106E                 GLCD_PIC@INST_GAMSET 1040  
+               GLCD_PIC@INST_COLMOD 1034                 GLCD_PIC@INST_MADCTL 1037  
+               GLCD_PIC@INST_DISPON 103E                 GLCD_PIC@INST_IDMOFF 1036  
+                     __size_of_main 01AA                       __size_of_init 0032  
+               GLCD_PIC@INST_INVCTR 1030                 GLCD_PIC@INST_INVOFF 1042  
+               GLCD_PIC@INST_PWCTR1 102F                 GLCD_PIC@INST_PWCTR2 102E  
+               GLCD_PIC@INST_PWCTR3 102D                 GLCD_PIC@INST_PWCTR4 102C  
+               GLCD_PIC@INST_PWCTR5 102B                 GLCD_PIC@INST_VMCTR1 102A  
+               GLCD_PIC@INST_SLPOUT 1045                          _INST_CASET 105D  
+                        _INST_IDMON 1055                          _INST_INVON 1061  
+                        _INST_RASET 105C                          _INST_RAMWR 105B  
+                        _INST_TEOFF 1059                          _INST_NORON 1063  
+                        _INST_PTLAR 105A                          _INST_SLPIN 1066  
+                        _INST_PTLON 1064                  GLCD_PIC@INST_CASET 103D  
+                GLCD_PIC@INST_IDMON 1035                  GLCD_PIC@INST_INVON 1041  
+                GLCD_PIC@INST_RASET 103C                  GLCD_PIC@INST_RAMWR 103B  
+                GLCD_PIC@INST_TEOFF 1039                  GLCD_PIC@INST_NORON 1043  
+                GLCD_PIC@INST_PTLAR 103A                  GLCD_PIC@INST_SLPIN 1046  
+                GLCD_PIC@INST_PTLON 1044          glcdDrawRectangle@colorData 0016  
+                     ?_glcdTransfer 0004                         _spiTransfer 17AC  
+                 GLCD_PIC@INST_TEON 1038                         _SSPCON1bits 000FC6  
+                   ??_glcdSetCOLMOD 0007                    GLCD_PIC@INST_NOP 1048  

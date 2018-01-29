@@ -1,0 +1,118 @@
+MPASM  5.20                       USART18.ASM   7-21-2009  11:46:46         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 
+                      00002 #include <p18f4620.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC18F4620 processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2007 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      01331         LIST
+                      00003                 list P=18F4620, F=INHX32, C=160, N=80, ST=OFF, MM=OFF, R=DEC
+                      00004 
+                      00005 ;;;;;;Configuration Bits;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+02 1F 1E 81 81 0F C0 000006                 CONFIG OSC=HS, FCMEN=OFF, IESO=OFF
+       F E0 0F 40 
+                      00007                 CONFIG PWRT = OFF, BOREN = SBORDIS, BORV = 3
+                      00008                 CONFIG WDT = OFF, WDTPS = 32768
+                      00009                 CONFIG MCLRE = ON, LPT1OSC = OFF, PBADEN = OFF, CCP2MX = PORTC
+                      00010                 CONFIG STVREN = ON, LVP = OFF, XINST = OFF
+                      00011                 CONFIG DEBUG = OFF
+                      00012                 CONFIG CP0 = OFF, CP1 = OFF, CP2 = OFF, CP3 = OFF
+                      00013                 CONFIG CPB = OFF, CPD = OFF
+                      00014                 CONFIG WRT0 = OFF, WRT1 = OFF, WRT2 = OFF, WRT3 = OFF
+                      00015                 CONFIG WRTB = OFF, WRTC = OFF, WRTD = OFF
+                      00016                 CONFIG EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
+                      00017                 CONFIG EBTRB = OFF
+                      00018 
+  00000020            00019 TIMCNT  EQU     020H
+  00000021            00020 LPCNT   EQU     021H
+  00000022            00021 TDATA   EQU     022H
+                      00022 
+000000                00023         ORG     0
+000000 EF02 F000      00024         GOTO    INIT
+                      00025 
+                      00026 
+                      00027 
+                      00028 ;-----------------------------------------------
+                      00029 ; Initialization
+                      00030 ;   - set baud rate to be 9600K
+                      00031 ;   - port B as output
+                      00032 ;-----------------------------------------------
+                      00033 
+000004                00034 INIT
+000004 6A93           00035                 CLRF    TRISB   ;configure PORTB as output
+000006 9EF2           00036                 BCF             INTCON,GIE      ;disable global interrupt
+000008 9CF2           00037                 BCF             INTCON,PEIE             
+                      00038 
+00000A 0E80           00039                 movlw   B'10000000'
+00000C 6E94           00040                 movwf   TRISC   ;set RC7=USART RC, RC6=USART TX
+                      00041 
+00000E 0E0F           00042                 MOVLW   15      ;Baud rate 9600, assuming 10MHz oscillator
+000010 6EAF           00043                 MOVWF   SPBRG
+000012 6AAC           00044                 clrf    TXSTA   ;8 bits data, no parity, 1 stop
+                      00045 
+000014 6AAB           00046                 CLRF    RCSTA
+000016 8EAB           00047                 BSF             RCSTA,SPEN      ;enable single receive
+000018 88AB           00048                 BSF             RCSTA,CREN      ;continuous
+                      00049 
+00001A 8AAC           00050                 BSF             TXSTA,TXEN      ;enable tx
+                      00051 
+00001C 0E01           00052                 MOVLW   H'01'
+00001E 6E22           00053                 MOVWF   TDATA   ;Store the value 1 in TDATA
+                      00054 
+                      00055 
+                      00056 
+                      00057 
+                      00058 ;-----------------------------------------------
+                      00059 ; Main Program
+                      00060 ;-----------------------------------------------
+                      00061         
+000020 EC20 F000      00062 MAIN    CALL    S_WAIT
+000024 EC20 F000      00063                 CALL    S_WAIT
+000028 EC20 F000      00064                 CALL    S_WAIT
+MPASM  5.20                       USART18.ASM   7-21-2009  11:46:46         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00002C EC20 F000      00065                 CALL    S_WAIT
+000030 EC20 F000      00066                 CALL    S_WAIT
+000034 5022           00067                 MOVF    TDATA,W ;Load TDATA into W
+000036 6EAD           00068                 MOVWF   TXREG   ;Send it over RS232
+000038 6E81           00069                 MOVWF   PORTB   ;Display it on PORTB
+00003A 2A22           00070                 INCF    TDATA,F ;Increment TDATA
+                      00071 
+00003C EF10 F000      00072 ENDLP   goto    MAIN    ;Repeat
+                      00073 
+                      00074 ;-------------------------------
+                      00075 ; Delay Subroutine
+                      00076 ;-------------------------------
+                      00077 
+000040 0E81           00078 S_WAIT  MOVLW   081H
+000042 6E21           00079                 MOVWF   LPCNT
+                      00080 
+000044 0EFF           00081 TDEL    MOVLW   0FFH    
+000046 6E20           00082                 MOVWF   TIMCNT  
+                      00083 
+000048 2E20           00084 TIMLP   DECFSZ  TIMCNT,F        
+00004A EF24 F000      00085         GOTO    TIMLP
+00004E 2E21           00086                 DECFSZ  LPCNT,F
+000050 EF22 F000      00087                 GOTO    TDEL
+000054 0012           00088         RETURN  
+                      00089 
+                      00090         END
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

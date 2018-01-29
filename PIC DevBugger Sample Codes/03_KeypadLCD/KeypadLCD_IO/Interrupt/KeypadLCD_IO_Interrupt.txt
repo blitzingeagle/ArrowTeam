@@ -1,0 +1,18 @@
+Oscillator Used: 		External, 10 MHz
+Language: 			C MPLAB XC8
+LCD: 				Hitiachi HD44780 16x2
+KEYPAD: 			Matrix 4X4
+RTC:				Not Used
+Arduino:			Not Used
+A2D:				Not Used
+GLCD:				Not Used
+SD Card:			Not Used
+USB:				Not Used
+
+This code serves as an introduction to interrupts on the PIC in C.
+
+The first line of the character LCD cycles between "Chocoloate?" - "CHOCOLATE?!" with a delay in between.
+If a key is pressed on the keypad, the PIC's RB1 interrupt on change flag is set, and the execution of the
+main program will be interrupted to service the interrupt. In this case, the interrupt service routine
+consists of reading the key press data and printing the corresponding character to the second line of the
+character LCD.

@@ -1,0 +1,14 @@
+Oscillator Used: 		Internal, 8 MHz
+Language: 			C MPLAB XC8
+LCD: 				Hitiachi HD44780 16x2
+KEYPAD: 			Not Used
+RTC:				Not Used
+Arduino:			Not Used
+A2D:				Not Used
+GLCD:				Not Used
+SD Card:			Not Used
+USB:				Not Used
+
+This code displays "Hello World! :)" on the character LCD upon startup of the PIC. The code is quite simple.
+Note that the internal oscillator is used in this project. As such, the PIC will still be able to operate without
+the external oscillator.

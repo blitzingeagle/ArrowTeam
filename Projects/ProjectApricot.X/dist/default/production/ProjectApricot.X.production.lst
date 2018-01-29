@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
-                                                                                               Sun Jan 28 23:29:34 2018
+                                                                                               Mon Jan 29 10:31:20 2018
 
 Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	18F4620
@@ -629,7 +629,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    615 ;;
    616 ;; *************** function _main *****************
    617 ;; Defined at:
-   618 ;;		line 144 in file "main.c"
+   618 ;;		line 151 in file "main.c"
    619 ;; Parameters:    Size  Location     Type
    620 ;;		None
    621 ;; Auto vars:     Size  Location     Type
@@ -670,12 +670,12 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    651  00137A                     _main:
    652                           	opt stack 25
    653                           
-   654                           ;main.c: 145: init();
+   654                           ;main.c: 152: init();
    655                           
    656                           ;incstack = 0
    657  00137A  EC2A  F00D         	call	_init	;wreg free
    658                           
-   659                           ;main.c: 148: glcdDrawRectangle(0, 18, 0, GLCD_SIZE_VERT, RED);
+   659                           ;main.c: 155: glcdDrawRectangle(0, 18, 0, GLCD_SIZE_VERT, RED);
    660  00137E  0E12               	movlw	18
    661  001380  6E07               	movwf	glcdDrawRectangle@XE,c
    662  001382  0E00               	movlw	0
@@ -709,7 +709,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    690  0013B4  0E00               	movlw	0
    691  0013B6  ECBE  F00A         	call	_glcdDrawRectangle
    692                           
-   693                           ;main.c: 149: glcdDrawRectangle(18, 36, 0, GLCD_SIZE_VERT, ORANGE);
+   693                           ;main.c: 156: glcdDrawRectangle(18, 36, 0, GLCD_SIZE_VERT, ORANGE);
    694  0013BA  0E24               	movlw	36
    695  0013BC  6E07               	movwf	glcdDrawRectangle@XE,c
    696  0013BE  0E00               	movlw	0
@@ -743,7 +743,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    724  0013F0  0E12               	movlw	18
    725  0013F2  ECBE  F00A         	call	_glcdDrawRectangle
    726                           
-   727                           ;main.c: 150: glcdDrawRectangle(36, 54, 0, GLCD_SIZE_VERT, YELLOW);
+   727                           ;main.c: 157: glcdDrawRectangle(36, 54, 0, GLCD_SIZE_VERT, YELLOW);
    728  0013F6  0E36               	movlw	54
    729  0013F8  6E07               	movwf	glcdDrawRectangle@XE,c
    730  0013FA  0E00               	movlw	0
@@ -777,7 +777,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    758  00142C  0E24               	movlw	36
    759  00142E  ECBE  F00A         	call	_glcdDrawRectangle
    760                           
-   761                           ;main.c: 151: glcdDrawRectangle(54, 72, 0, GLCD_SIZE_VERT, GREEN);
+   761                           ;main.c: 158: glcdDrawRectangle(54, 72, 0, GLCD_SIZE_VERT, GREEN);
    762  001432  0E48               	movlw	72
    763  001434  6E07               	movwf	glcdDrawRectangle@XE,c
    764  001436  0E00               	movlw	0
@@ -811,7 +811,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    792  001468  0E36               	movlw	54
    793  00146A  ECBE  F00A         	call	_glcdDrawRectangle
    794                           
-   795                           ;main.c: 152: glcdDrawRectangle(72, 90, 0, GLCD_SIZE_VERT, BLUE);
+   795                           ;main.c: 159: glcdDrawRectangle(72, 90, 0, GLCD_SIZE_VERT, BLUE);
    796  00146E  0E5A               	movlw	90
    797  001470  6E07               	movwf	glcdDrawRectangle@XE,c
    798  001472  0E00               	movlw	0
@@ -845,7 +845,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    826  0014A4  0E48               	movlw	72
    827  0014A6  ECBE  F00A         	call	_glcdDrawRectangle
    828                           
-   829                           ;main.c: 153: glcdDrawRectangle(90, 108, 0, GLCD_SIZE_VERT, INDIGO);
+   829                           ;main.c: 160: glcdDrawRectangle(90, 108, 0, GLCD_SIZE_VERT, INDIGO);
    830  0014AA  0E6C               	movlw	108
    831  0014AC  6E07               	movwf	glcdDrawRectangle@XE,c
    832  0014AE  0E00               	movlw	0
@@ -879,7 +879,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    860  0014E0  0E5A               	movlw	90
    861  0014E2  ECBE  F00A         	call	_glcdDrawRectangle
    862                           
-   863                           ;main.c: 154: glcdDrawRectangle(108, 128, 0, GLCD_SIZE_VERT, VIOLET);
+   863                           ;main.c: 161: glcdDrawRectangle(108, 128, 0, GLCD_SIZE_VERT, VIOLET);
    864  0014E6  0E80               	movlw	128
    865  0014E8  6E07               	movwf	glcdDrawRectangle@XE,c
    866  0014EA  0E00               	movlw	0
@@ -913,23 +913,23 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    894  00151C  0E6C               	movlw	108
    895  00151E  ECBE  F00A         	call	_glcdDrawRectangle
    896                           
-   897                           ;main.c: 156: px_char letter = new_px_char(0b00000000000000111110000100010000,0b10001000
-      +                          100001000100001111100000);
-   898  001522  0E10               	movlw	16
+   897                           ;main.c: 163: px_char letter = new_px_char(0b00000000000000101101100110001111,0b10100000
+      +                          111000000000000000000000);
+   898  001522  0E8F               	movlw	143
    899  001524  6E01               	movwf	new_px_char@a,c
-   900  001526  0EE1               	movlw	225
+   900  001526  0ED9               	movlw	217
    901  001528  6E02               	movwf	new_px_char@a+1,c
-   902  00152A  0E03               	movlw	3
+   902  00152A  0E02               	movlw	2
    903  00152C  6E03               	movwf	new_px_char@a+2,c
    904  00152E  0E00               	movlw	0
    905  001530  6E04               	movwf	new_px_char@a+3,c
-   906  001532  0EE0               	movlw	224
+   906  001532  0E00               	movlw	0
    907  001534  6E05               	movwf	new_px_char@b,c
-   908  001536  0E43               	movlw	67
+   908  001536  0E00               	movlw	0
    909  001538  6E06               	movwf	new_px_char@b+1,c
-   910  00153A  0E84               	movlw	132
+   910  00153A  0EE0               	movlw	224
    911  00153C  6E07               	movwf	new_px_char@b+2,c
-   912  00153E  0E88               	movlw	136
+   912  00153E  0EA0               	movlw	160
    913  001540  6E08               	movwf	new_px_char@b+3,c
    914  001542  EC10  F00D         	call	_new_px_char	;wreg free
    915  001546  EE20  F037         	lfsr	2,main@letter
@@ -939,7 +939,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    919  001550  06E8               	decf	wreg,f,c
    920  001552  E2FC               	bc	u611
    921  001554                     
-   922                           ;main.c: 159: print_px_char(0, 0, letter);
+   922                           ;main.c: 166: print_px_char(0, 0, letter);
    923  001554  0E00               	movlw	0
    924  001556  6E22               	movwf	print_px_char@x+1,c
    925  001558  0E00               	movlw	0
@@ -3506,7 +3506,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
-Symbol Table                                                                                   Sun Jan 28 23:29:34 2018
+Symbol Table                                                                                   Mon Jan 29 10:31:20 2018
 
                     ?_print_px_char 0021                         _SSPSTATbits 000FC7  
                     ??_glcdTransfer 0005                                  u10 1AE2  

@@ -3994,7 +3994,7 @@ m <<= 1;
 }
 }
 
-# 144
+# 151
 void main(void) {
 init();
 
@@ -4007,7 +4007,7 @@ glcdDrawRectangle(72, 90, 0, GLCD_SIZE_VERT, BLUE);
 glcdDrawRectangle(90, 108, 0, GLCD_SIZE_VERT, INDIGO);
 glcdDrawRectangle(108, 128, 0, GLCD_SIZE_VERT, VIOLET);
 
-px_char letter = new_px_char(0b00000000000000111110000100010000,0b10001000100001000100001111100000);
+px_char letter = new_px_char(0b00000000000000101101100110001111,0b10100000111000000000000000000000);
 
 while(1) {
 print_px_char(0, 0, letter);

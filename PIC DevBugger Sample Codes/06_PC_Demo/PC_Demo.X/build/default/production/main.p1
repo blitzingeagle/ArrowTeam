@@ -3,7 +3,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S266 `*uc 1 `uc 1 `Vuc 1 `*uc 1 `uc 1 `Vuc 1 `Vuc 1 `Vuc 1 `Vuc 1 `Vuc 1 ]
 [n S266 . _dataTX _numBytesTX _numTransmits _dataRX _numBytesRX _numReceives _stateTX _stateRX _lastReceiveFERR _lastReceiveOERR ]
 [p mainexit ]
-"878 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f4620.h
+"878 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [v _LATA `Vuc ~T0 @X0 0 e@3977 ]
 "990
 [v _LATB `Vuc ~T0 @X0 0 e@3978 ]
@@ -29,7 +29,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
 "74 lcd.h
 [v _initLCD `(v ~T0 @X0 0 ef ]
-"3508 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f4620.h
+"3508 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [v _SPBRG `Vuc ~T0 @X0 0 e@4015 ]
 "3239
 [s S121 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -49,10 +49,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "3267
 [v _TXSTAbits `VS120 ~T0 @X0 0 e@4012 ]
 [v F2882 `(v ~T0 @X0 1 tf1`ul ]
-"164 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18.h
+"164 /Applications/microchip/xc8/v1.45/include/pic18.h
 [v __delay `JF2882 ~T0 @X0 0 e ]
 [p i __delay ]
-"3029 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f4620.h
+"3029 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [s S107 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S107 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
 "3039
@@ -100,9 +100,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RCIF `Vb ~T0 @X0 0 e@31989 ]
 "3496
 [v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
-"16 D:\Program Files (x86)\Microchip\xc8\v1.42\include\conio.h
+"16 /Applications/microchip/xc8/v1.45/include/conio.h
 [v _putch `(v ~T0 @X0 0 ef1`uc ]
-"187 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f4620.h
+"187 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
 "7835
 [v _TXIF `Vb ~T0 @X0 0 e@31988 ]
@@ -114,7 +114,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f4620.h: 50: extern volatile unsigned char PORTA @ 0xF80;
-"52 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f4620.h
+"52 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [; ;pic18f4620.h: 52: asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
 [; ;pic18f4620.h: 55: typedef union {

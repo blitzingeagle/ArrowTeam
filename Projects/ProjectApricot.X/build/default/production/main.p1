@@ -3233,58 +3233,58 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 270 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"144
+"151
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 144: void main(void) {
+[; ;main.c: 151: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 145: init();
-"145
-[e ( _init ..  ]
-[; ;main.c: 148: glcdDrawRectangle(0, 18, 0, GLCD_SIZE_VERT, RED);
-"148
-[e ( _glcdDrawRectangle (4 , , , , -> -> 0 `i `uc -> -> 18 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _RED ]
-[; ;main.c: 149: glcdDrawRectangle(18, 36, 0, GLCD_SIZE_VERT, ORANGE);
-"149
-[e ( _glcdDrawRectangle (4 , , , , -> -> 18 `i `uc -> -> 36 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _ORANGE ]
-[; ;main.c: 150: glcdDrawRectangle(36, 54, 0, GLCD_SIZE_VERT, YELLOW);
-"150
-[e ( _glcdDrawRectangle (4 , , , , -> -> 36 `i `uc -> -> 54 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _YELLOW ]
-[; ;main.c: 151: glcdDrawRectangle(54, 72, 0, GLCD_SIZE_VERT, GREEN);
-"151
-[e ( _glcdDrawRectangle (4 , , , , -> -> 54 `i `uc -> -> 72 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _GREEN ]
-[; ;main.c: 152: glcdDrawRectangle(72, 90, 0, GLCD_SIZE_VERT, BLUE);
+[; ;main.c: 152: init();
 "152
-[e ( _glcdDrawRectangle (4 , , , , -> -> 72 `i `uc -> -> 90 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _BLUE ]
-[; ;main.c: 153: glcdDrawRectangle(90, 108, 0, GLCD_SIZE_VERT, INDIGO);
-"153
-[e ( _glcdDrawRectangle (4 , , , , -> -> 90 `i `uc -> -> 108 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _INDIGO ]
-[; ;main.c: 154: glcdDrawRectangle(108, 128, 0, GLCD_SIZE_VERT, VIOLET);
-"154
-[e ( _glcdDrawRectangle (4 , , , , -> -> 108 `i `uc -> -> 128 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _VIOLET ]
+[e ( _init ..  ]
+[; ;main.c: 155: glcdDrawRectangle(0, 18, 0, GLCD_SIZE_VERT, RED);
+"155
+[e ( _glcdDrawRectangle (4 , , , , -> -> 0 `i `uc -> -> 18 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _RED ]
+[; ;main.c: 156: glcdDrawRectangle(18, 36, 0, GLCD_SIZE_VERT, ORANGE);
 "156
-[v _letter `S268 ~T0 @X0 1 a ]
-[; ;main.c: 156: px_char letter = new_px_char(0b00000000000000111110000100010000,0b10001000100001000100001111100000);
-[e = _letter ( _new_px_char (2 , -> -> 254224 `l `ul -> -2004597792 `ul ]
-[; ;main.c: 158: while(1) {
+[e ( _glcdDrawRectangle (4 , , , , -> -> 18 `i `uc -> -> 36 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _ORANGE ]
+[; ;main.c: 157: glcdDrawRectangle(36, 54, 0, GLCD_SIZE_VERT, YELLOW);
+"157
+[e ( _glcdDrawRectangle (4 , , , , -> -> 36 `i `uc -> -> 54 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _YELLOW ]
+[; ;main.c: 158: glcdDrawRectangle(54, 72, 0, GLCD_SIZE_VERT, GREEN);
 "158
+[e ( _glcdDrawRectangle (4 , , , , -> -> 54 `i `uc -> -> 72 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _GREEN ]
+[; ;main.c: 159: glcdDrawRectangle(72, 90, 0, GLCD_SIZE_VERT, BLUE);
+"159
+[e ( _glcdDrawRectangle (4 , , , , -> -> 72 `i `uc -> -> 90 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _BLUE ]
+[; ;main.c: 160: glcdDrawRectangle(90, 108, 0, GLCD_SIZE_VERT, INDIGO);
+"160
+[e ( _glcdDrawRectangle (4 , , , , -> -> 90 `i `uc -> -> 108 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _INDIGO ]
+[; ;main.c: 161: glcdDrawRectangle(108, 128, 0, GLCD_SIZE_VERT, VIOLET);
+"161
+[e ( _glcdDrawRectangle (4 , , , , -> -> 108 `i `uc -> -> 128 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _VIOLET ]
+"163
+[v _letter `S268 ~T0 @X0 1 a ]
+[; ;main.c: 163: px_char letter = new_px_char(0b00000000000000101101100110001111,0b10100000111000000000000000000000);
+[e = _letter ( _new_px_char (2 , -> -> 186767 `l `ul -> -1595932672 `ul ]
+[; ;main.c: 165: while(1) {
+"165
 [e :U 278 ]
 {
-[; ;main.c: 159: print_px_char(0, 0, letter);
-"159
+[; ;main.c: 166: print_px_char(0, 0, letter);
+"166
 [e ( _print_px_char (3 , , -> 0 `i -> 0 `i _letter ]
-"160
+"167
 }
 [e :U 277 ]
-"158
+"165
 [e $U 278  ]
 [e :U 279 ]
-[; ;main.c: 160: }
-[; ;main.c: 162: return;
-"162
+[; ;main.c: 167: }
+[; ;main.c: 169: return;
+"169
 [e $UE 276  ]
-[; ;main.c: 163: }
-"163
+[; ;main.c: 170: }
+"170
 [e :UE 276 ]
 }

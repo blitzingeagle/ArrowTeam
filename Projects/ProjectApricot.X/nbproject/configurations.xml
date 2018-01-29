@@ -6,7 +6,7 @@
                    projectFiles="true">
       <itemPath>GLCD_PIC.h</itemPath>
       <itemPath>SPI_PIC.h</itemPath>
-      <itemPath>configBits.h</itemPath>
+      <itemPath>config_bits.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

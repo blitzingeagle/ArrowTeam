@@ -3879,14 +3879,125 @@ ADCON1 = 0b00001111;
 initGLCD();
 }
 
-typedef unsigned long px_char;
+# 12 "/Applications/microchip/xc8/v1.45/include/stdbool.h"
+typedef unsigned char bool;
 
-# 66
+# 13 "/Applications/microchip/xc8/v1.45/include/stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 63 "main.c"
+typedef struct {
+uint32_t part[2];
+} px_char;
+
+px_char new_px_char(uint32_t a, uint32_t b) {
+px_char p;
+p.part[1] = a;
+p.part[0] = b;
+return p;
+}
+
+void print_px_char(int x, int y, px_char p) {
+uint32_t m = 0b1;
+for(int i = 0; i < 32; i++) {
+if(m & p.part[0]) glcdDrawPixel(i%5, i/5, BLACK);
+if(m & p.part[1]) glcdDrawPixel((i+32)%5, (i+32)/5, BLACK);
+
+m <<= 1;
+}
+}
+
+# 144
 void main(void) {
 init();
 
-
-while(1) {
 
 glcdDrawRectangle(0, 18, 0, GLCD_SIZE_VERT, RED);
 glcdDrawRectangle(18, 36, 0, GLCD_SIZE_VERT, ORANGE);
@@ -3895,5 +4006,12 @@ glcdDrawRectangle(54, 72, 0, GLCD_SIZE_VERT, GREEN);
 glcdDrawRectangle(72, 90, 0, GLCD_SIZE_VERT, BLUE);
 glcdDrawRectangle(90, 108, 0, GLCD_SIZE_VERT, INDIGO);
 glcdDrawRectangle(108, 128, 0, GLCD_SIZE_VERT, VIOLET);
+
+px_char letter = new_px_char(0b00000000000000111110000100010000,0b10001000100001000100001111100000);
+
+while(1) {
+print_px_char(0, 0, letter);
 }
+
+return;
 }

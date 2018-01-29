@@ -25,6 +25,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
 "200 GLCD_PIC.h
 [v _initGLCD `(v ~T0 @X0 0 ef ]
+"63 main.c
+[s S268 `ul -> 2 `i ]
+[n S268 . part ]
+"191 GLCD_PIC.h
+[v _glcdDrawPixel `(v ~T0 @X0 0 ef3`uc`uc`ul ]
 [p mainexit ]
 "188
 [v _glcdDrawRectangle `(v ~T0 @X0 0 ef5`uc`uc`uc`uc`ul ]
@@ -3122,50 +3127,164 @@ Version 3.2 HI-TECH Software Intermediate Code
 "58
 [e :UE 267 ]
 }
-[; ;main.c: 60: typedef unsigned long px_char;
+[; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;main.c: 63: typedef struct {
+[; ;main.c: 64: uint32_t part[2];
+[; ;main.c: 65: } px_char;
+"67
+[v _new_px_char `(S268 ~T0 @X0 1 ef2`ul`ul ]
+{
+[; ;main.c: 67: px_char new_px_char(uint32_t a, uint32_t b) {
+[e :U _new_px_char ]
+[v _a `ul ~T0 @X0 1 r1 ]
+[v _b `ul ~T0 @X0 1 r2 ]
+[f ]
+"68
+[v _p `S268 ~T0 @X0 1 a ]
+[; ;main.c: 68: px_char p;
+[; ;main.c: 69: p.part[1] = a;
+"69
+[e = *U + &U . _p 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _p 0 `ui `ux _a ]
+[; ;main.c: 70: p.part[0] = b;
+"70
+[e = *U + &U . _p 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _p 0 `ui `ux _b ]
+[; ;main.c: 71: return p;
+"71
+[e ) _p ]
+[e $UE 269  ]
+[; ;main.c: 72: }
+"72
+[e :UE 269 ]
+}
+"74
+[v _print_px_char `(v ~T0 @X0 1 ef3`i`i`S268 ]
+{
+[; ;main.c: 74: void print_px_char(int x, int y, px_char p) {
+[e :U _print_px_char ]
+[v _x `i ~T0 @X0 1 r1 ]
+[v _y `i ~T0 @X0 1 r2 ]
+[v _p `S268 ~T0 @X0 1 r3 ]
+[f ]
+"75
+[v _m `ul ~T0 @X0 1 a ]
+[; ;main.c: 75: uint32_t m = 0b1;
+[e = _m -> -> -> 1 `i `l `ul ]
+[; ;main.c: 76: for(int i = 0; i < 32; i++) {
+"76
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 32 `i 271  ]
+[e $U 272  ]
+[e :U 271 ]
+{
+[; ;main.c: 77: if(m & p.part[0]) glcdDrawPixel(i%5, i/5, BLACK);
+"77
+[e $ ! != & _m *U + &U . _p 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _p 0 `ui `ux -> -> 0 `i `ul 274  ]
+[e ( _glcdDrawPixel (3 , , -> % _i -> 5 `i `uc -> / _i -> 5 `i `uc _BLACK ]
+[e :U 274 ]
+[; ;main.c: 78: if(m & p.part[1]) glcdDrawPixel((i+32)%5, (i+32)/5, BLACK);
+"78
+[e $ ! != & _m *U + &U . _p 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _p 0 `ui `ux -> -> 0 `i `ul 275  ]
+[e ( _glcdDrawPixel (3 , , -> % + _i -> 32 `i -> 5 `i `uc -> / + _i -> 32 `i -> 5 `i `uc _BLACK ]
+[e :U 275 ]
+[; ;main.c: 80: m <<= 1;
+"80
+[e =<< _m -> 1 `i ]
+"81
+}
+"76
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 32 `i 271  ]
+[e :U 272 ]
+"81
+}
+[; ;main.c: 81: }
+[; ;main.c: 82: }
+"82
+[e :UE 270 ]
+}
 [v $root$_main `(v ~T0 @X0 0 e ]
-"66
+"144
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 66: void main(void) {
+[; ;main.c: 144: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 67: init();
-"67
+[; ;main.c: 145: init();
+"145
 [e ( _init ..  ]
-[; ;main.c: 70: while(1) {
-"70
-[e :U 270 ]
-{
-[; ;main.c: 72: glcdDrawRectangle(0, 18, 0, GLCD_SIZE_VERT, RED);
-"72
+[; ;main.c: 148: glcdDrawRectangle(0, 18, 0, GLCD_SIZE_VERT, RED);
+"148
 [e ( _glcdDrawRectangle (4 , , , , -> -> 0 `i `uc -> -> 18 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _RED ]
-[; ;main.c: 73: glcdDrawRectangle(18, 36, 0, GLCD_SIZE_VERT, ORANGE);
-"73
+[; ;main.c: 149: glcdDrawRectangle(18, 36, 0, GLCD_SIZE_VERT, ORANGE);
+"149
 [e ( _glcdDrawRectangle (4 , , , , -> -> 18 `i `uc -> -> 36 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _ORANGE ]
-[; ;main.c: 74: glcdDrawRectangle(36, 54, 0, GLCD_SIZE_VERT, YELLOW);
-"74
+[; ;main.c: 150: glcdDrawRectangle(36, 54, 0, GLCD_SIZE_VERT, YELLOW);
+"150
 [e ( _glcdDrawRectangle (4 , , , , -> -> 36 `i `uc -> -> 54 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _YELLOW ]
-[; ;main.c: 75: glcdDrawRectangle(54, 72, 0, GLCD_SIZE_VERT, GREEN);
-"75
+[; ;main.c: 151: glcdDrawRectangle(54, 72, 0, GLCD_SIZE_VERT, GREEN);
+"151
 [e ( _glcdDrawRectangle (4 , , , , -> -> 54 `i `uc -> -> 72 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _GREEN ]
-[; ;main.c: 76: glcdDrawRectangle(72, 90, 0, GLCD_SIZE_VERT, BLUE);
-"76
+[; ;main.c: 152: glcdDrawRectangle(72, 90, 0, GLCD_SIZE_VERT, BLUE);
+"152
 [e ( _glcdDrawRectangle (4 , , , , -> -> 72 `i `uc -> -> 90 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _BLUE ]
-[; ;main.c: 77: glcdDrawRectangle(90, 108, 0, GLCD_SIZE_VERT, INDIGO);
-"77
+[; ;main.c: 153: glcdDrawRectangle(90, 108, 0, GLCD_SIZE_VERT, INDIGO);
+"153
 [e ( _glcdDrawRectangle (4 , , , , -> -> 90 `i `uc -> -> 108 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _INDIGO ]
-[; ;main.c: 78: glcdDrawRectangle(108, 128, 0, GLCD_SIZE_VERT, VIOLET);
-"78
+[; ;main.c: 154: glcdDrawRectangle(108, 128, 0, GLCD_SIZE_VERT, VIOLET);
+"154
 [e ( _glcdDrawRectangle (4 , , , , -> -> 108 `i `uc -> -> 128 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _VIOLET ]
-"79
+"156
+[v _letter `S268 ~T0 @X0 1 a ]
+[; ;main.c: 156: px_char letter = new_px_char(0b00000000000000111110000100010000,0b10001000100001000100001111100000);
+[e = _letter ( _new_px_char (2 , -> -> 254224 `l `ul -> -2004597792 `ul ]
+[; ;main.c: 158: while(1) {
+"158
+[e :U 278 ]
+{
+[; ;main.c: 159: print_px_char(0, 0, letter);
+"159
+[e ( _print_px_char (3 , , -> 0 `i -> 0 `i _letter ]
+"160
 }
-[e :U 269 ]
-"70
-[e $U 270  ]
-[e :U 271 ]
-[; ;main.c: 79: }
-[; ;main.c: 80: }
-"80
-[e :UE 268 ]
+[e :U 277 ]
+"158
+[e $U 278  ]
+[e :U 279 ]
+[; ;main.c: 160: }
+[; ;main.c: 162: return;
+"162
+[e $UE 276  ]
+[; ;main.c: 163: }
+"163
+[e :UE 276 ]
 }

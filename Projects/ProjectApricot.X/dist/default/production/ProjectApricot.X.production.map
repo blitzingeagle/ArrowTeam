@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/Applications/microchip/xc8/v1.45/dat/en_msgs.txt -cs \
   -h+dist/default/production/ProjectApricot.X.production.sym \
   --cmf=dist/default/production/ProjectApricot.X.production.cmf -z \
-  -Q18F4620 -o/tmp/xc6Uea3Eq \
+  -Q18F4620 -o/tmp/xc1dgWXs1 \
   -Mdist/default/production/ProjectApricot.X.production.map -E1 -ver=XC8 \
   -ASTACK=080h-0f7fh -pstack=STACK -ACODE=00h-0FFFFh -ACONST=00h-0FFFFh \
   -ASMALLCONST=01000h-010FFhx240 -AMEDIUMCONST=01000h-0FFFFh \
@@ -25,7 +25,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcsAs8ROq.obj \
+  /tmp/xcxrgVh0v.obj \
   dist/default/production/ProjectApricot.X.production.obj 
 
 Object code version is 3.11
@@ -38,42 +38,52 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcsAs8ROq.obj
+/tmp/xcxrgVh0v.obj
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/production/ProjectApricot.X.production.obj
                 smallconst                         1000     1000       6E      800       0
-                text9                              1786     1786       26      837       0
-                text8                              17AC     17AC       24      837       0
-                text7                              17DC     17DC        A      837       0
-                text6                              175E     175E       28      837       0
-                text5                              1524     1524      180      837       0
-                text4                              16A4     16A4       50      837       0
-                text3                              16F4     16F4       38      837       0
-                text2                              106E     106E      30C      837       0
-                text1                              172C     172C       32      837       0
-                text0                              137A     137A      1AA      837       0
-                cstackCOMRAM                          1        1       1B        1       1
-                bssCOMRAM                            1C       1C        1        1       1
-                cinit                              17D0     17D0        C      837       0
+                text14                             1AAE     1AAE       26      837       0
+                text13                             1AD4     1AD4       24      837       0
+                text12                             1B04     1B04        A      837       0
+                text11                             1A86     1A86       28      837       0
+                text10                             157C     157C      180      837       0
+                text9                              1998     1998       50      837       0
+                text8                              19E8     19E8       38      837       0
+                text7                              106E     106E      30C      837       0
+                text6                              1A54     1A54       32      837       0
+                text5                              1A20     1A20       34      837       0
+                text4                              1836     1836       84      837       0
+                text3                              18BA     18BA       70      837       0
+                text2                              192A     192A       6E      837       0
+                text1                              16FC     16FC      13A      837       0
+                text0                              137A     137A      202      837       0
+                cstackCOMRAM                          1        1       3E        1       1
+                bssCOMRAM                            3F       3F        1        1       1
+                cinit                              1AF8     1AF8        C      837       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 init                                  0        0        4         0
-                text9                              1786     1786       26         0
-                text8                              17AC     17AC       24         0
-                text7                              17DC     17DC        A         0
-                text6                              175E     175E       28         0
-                text5                              1524     1524      180         0
-                text4                              16A4     16A4       50         0
-                text3                              16F4     16F4       38         0
-                text2                              106E     106E      30C         0
-                text1                              172C     172C       32         0
-                text0                              137A     137A      1AA         0
-                cinit                              17D0     17D0        C         0
+                text14                             1AAE     1AAE       26         0
+                text13                             1AD4     1AD4       24         0
+                text12                             1B04     1B04        A         0
+                text11                             1A86     1A86       28         0
+                text10                             157C     157C      180         0
+                text9                              1998     1998       50         0
+                text8                              19E8     19E8       38         0
+                text7                              106E     106E      30C         0
+                text6                              1A54     1A54       32         0
+                text5                              1A20     1A20       34         0
+                text4                              1836     1836       84         0
+                text3                              18BA     18BA       70         0
+                text2                              192A     192A       6E         0
+                text1                              16FC     16FC      13A         0
+                text0                              137A     137A      202         0
+                cinit                              1AF8     1AF8        C         0
 
         CLASS   CONST          
 
@@ -83,8 +93,8 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                cstackCOMRAM                          1        1       1B         1
-                bssCOMRAM                            1C       1C        1         1
+                cstackCOMRAM                          1        1       3E         1
+                bssCOMRAM                            3F       3F        1         1
 
         CLASS   ABS1           
 
@@ -141,9 +151,9 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                cstackCOMRAM                   000001  00001C  00001D         1       1  COMRAM  
+                cstackCOMRAM                   000001  00003F  000040         1       1  COMRAM  
                 smallconst                     001000  00006E  00106E       800       0  SMALLCON
-                text2                          00106E  000778  0017E6       837       0  CODE    
+                text7                          00106E  000AA0  001B0E       837       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -167,22 +177,25 @@ UNUSED ADDRESS RANGES
         BANK7            000700-0007FF              100
         BANK8            000800-0008FF              100
         BANK9            000900-0009FF              100
-        BIGRAM           00001D-000F7F              F63
+        BIGRAM           000040-000F7F              F40
         CODE             000004-000FFF              FFC
-                         0017E6-00FFFF             E81A
-        COMRAM           00001D-00007F               63
+                         001B0E-00FFFF             E4F2
+        COMRAM           000040-00007F               40
         CONST            000004-000FFF              FFC
-                         0017E6-00FFFF             E81A
+                         001B0E-00FFFF             E4F2
         EEDATA           F00000-F003FF              400
-        MEDIUMCONST      0017E6-00FFFF             E81A
+        MEDIUMCONST      001B0E-00FFFF             E4F2
         RAM              000080-000F7F              100
         SFR              000F80-000FFF               80
-        SMALLCONST       0017E6-00FFFF              100
+        SMALLCONST       001B0E-00FFFF              100
         STACK            000080-000F7F              F00
 
                                   Symbol Table
 
+?___awdiv                           cstackCOMRAM 000001
+?___awmod                           cstackCOMRAM 000001
 ?___wmul                            cstackCOMRAM 000001
+?_new_px_char                       cstackCOMRAM 000001
 GLCD_PIC@INST_CASET                 smallconst   00103D
 GLCD_PIC@INST_COLMOD                smallconst   001034
 GLCD_PIC@INST_DISPON                smallconst   00103E
@@ -222,7 +235,7 @@ _LATC                               (abs)        000F8B
 _LATD                               (abs)        000F8C
 _LATDbits                           (abs)        000F8C
 _LATE                               (abs)        000F8D
-_MADCTLbits                         bssCOMRAM    00001C
+_MADCTLbits                         bssCOMRAM    00003F
 _ORANGE                             smallconst   001015
 _RED                                smallconst   001019
 _SSPBUF                             (abs)        000FC9
@@ -335,7 +348,7 @@ __Hrparam                           rparam       000000
 __Hsfr                              sfr          000000
 __Hsmallconst                       smallconst   00106E
 __Hspace_0                          (abs)        30000E
-__Hspace_1                          (abs)        00001D
+__Hspace_1                          (abs)        000040
 __Hspace_2                          (abs)        000000
 __Hstack                            stack        000000
 __Hstruct                           struct       000000
@@ -343,6 +356,11 @@ __Htemp                             temp         000000
 __Htext                             text         000000
 __Htext0                            text0        000000
 __Htext1                            text1        000000
+__Htext10                           text10       000000
+__Htext11                           text11       000000
+__Htext12                           text12       000000
+__Htext13                           text13       000000
+__Htext14                           text14       000000
 __Htext2                            text2        000000
 __Htext3                            text3        000000
 __Htext4                            text4        000000
@@ -420,6 +438,11 @@ __Ltemp                             temp         000000
 __Ltext                             text         000000
 __Ltext0                            text0        000000
 __Ltext1                            text1        000000
+__Ltext10                           text10       000000
+__Ltext11                           text11       000000
+__Ltext12                           text12       000000
+__Ltext13                           text13       000000
+__Ltext14                           text14       000000
 __Ltext2                            text2        000000
 __Ltext3                            text3        000000
 __Ltext4                            text4        000000
@@ -429,14 +452,25 @@ __Ltext7                            text7        000000
 __Ltext8                            text8        000000
 __Ltext9                            text9        000000
 __S0                                (abs)        30000E
-__S1                                (abs)        00001D
+__S1                                (abs)        000040
 __S2                                (abs)        000000
+___awdiv                            text4        001836
+___awdiv@counter                    cstackCOMRAM 000005
+___awdiv@dividend                   cstackCOMRAM 000001
+___awdiv@divisor                    cstackCOMRAM 000003
+___awdiv@quotient                   cstackCOMRAM 000007
+___awdiv@sign                       cstackCOMRAM 000006
+___awmod                            text3        0018BA
+___awmod@counter                    cstackCOMRAM 000005
+___awmod@dividend                   cstackCOMRAM 000001
+___awmod@divisor                    cstackCOMRAM 000003
+___awmod@sign                       cstackCOMRAM 000006
 ___inthi_sp                         stack        000000
 ___intlo_sp                         stack        000000
 ___param_bank                       (abs)        000000
 ___rparam_used                      (abs)        000001
 ___sp                               stack        000000
-___wmul                             text9        001786
+___wmul                             text14       001AAE
 ___wmul@multiplicand                cstackCOMRAM 000003
 ___wmul@multiplier                  cstackCOMRAM 000001
 ___wmul@product                     cstackCOMRAM 000005
@@ -520,55 +554,76 @@ __end_of_RED                        smallconst   00101D
 __end_of_VIOLET                     smallconst   001005
 __end_of_WHITE                      smallconst   001021
 __end_of_YELLOW                     smallconst   001015
-__end_of___wmul                     text9        0017AC
-__end_of__initialization            cinit        0017D2
-__end_of_glcdDrawRectangle          text5        0016A4
-__end_of_glcdSetCOLMOD              text4        0016F4
-__end_of_glcdTransfer               text6        001786
-__end_of_init                       text1        00175E
-__end_of_initGLCD                   text2        00137A
-__end_of_main                       text0        001524
-__end_of_spiInit                    text3        00172C
-__end_of_spiSend                    text7        0017E6
-__end_of_spiTransfer                text8        0017D0
-__initialization                    cinit        0017D0
+__end_of___awdiv                    text4        0018BA
+__end_of___awmod                    text3        00192A
+__end_of___wmul                     text14       001AD4
+__end_of__initialization            cinit        001AFA
+__end_of_glcdDrawPixel              text2        001998
+__end_of_glcdDrawRectangle          text10       0016FC
+__end_of_glcdSetCOLMOD              text9        0019E8
+__end_of_glcdTransfer               text11       001AAE
+__end_of_init                       text6        001A86
+__end_of_initGLCD                   text7        00137A
+__end_of_main                       text0        00157C
+__end_of_new_px_char                text5        001A54
+__end_of_print_px_char              text1        001836
+__end_of_spiInit                    text8        001A20
+__end_of_spiSend                    text12       001B0E
+__end_of_spiTransfer                text13       001AF8
+__initialization                    cinit        001AF8
 __mediumconst                       mediumconst  000000
-__pbssCOMRAM                        bssCOMRAM    00001C
-__pcinit                            cinit        0017D0
+__pbssCOMRAM                        bssCOMRAM    00003F
+__pcinit                            cinit        001AF8
 __pcstackCOMRAM                     cstackCOMRAM 000001
 __psmallconst                       smallconst   001000
 __ptext0                            text0        00137A
-__ptext1                            text1        00172C
-__ptext2                            text2        00106E
-__ptext3                            text3        0016F4
-__ptext4                            text4        0016A4
-__ptext5                            text5        001524
-__ptext6                            text6        00175E
-__ptext7                            text7        0017DC
-__ptext8                            text8        0017AC
-__ptext9                            text9        001786
+__ptext1                            text1        0016FC
+__ptext10                           text10       00157C
+__ptext11                           text11       001A86
+__ptext12                           text12       001B04
+__ptext13                           text13       001AD4
+__ptext14                           text14       001AAE
+__ptext2                            text2        00192A
+__ptext3                            text3        0018BA
+__ptext4                            text4        001836
+__ptext5                            text5        001A20
+__ptext6                            text6        001A54
+__ptext7                            text7        00106E
+__ptext8                            text8        0019E8
+__ptext9                            text9        001998
 __ramtop                            ramtop       001000
+__size_of___awdiv                   (abs)        000000
+__size_of___awmod                   (abs)        000000
 __size_of___wmul                    (abs)        000000
+__size_of_glcdDrawPixel             (abs)        000000
 __size_of_glcdDrawRectangle         (abs)        000000
 __size_of_glcdSetCOLMOD             (abs)        000000
 __size_of_glcdTransfer              (abs)        000000
 __size_of_init                      (abs)        000000
 __size_of_initGLCD                  (abs)        000000
 __size_of_main                      (abs)        000000
+__size_of_new_px_char               (abs)        000000
+__size_of_print_px_char             (abs)        000000
 __size_of_spiInit                   (abs)        000000
 __size_of_spiSend                   (abs)        000000
 __size_of_spiTransfer               (abs)        000000
 __smallconst                        smallconst   001000
-_glcdDrawRectangle                  text5        001524
-_glcdSetCOLMOD                      text4        0016A4
-_glcdTransfer                       text6        00175E
-_init                               text1        00172C
-_initGLCD                           text2        00106E
+_glcdDrawPixel                      text2        00192A
+_glcdDrawRectangle                  text10       00157C
+_glcdSetCOLMOD                      text9        001998
+_glcdTransfer                       text11       001A86
+_init                               text6        001A54
+_initGLCD                           text7        00106E
 _main                               text0        00137A
-_spiInit                            text3        0016F4
-_spiSend                            text7        0017DC
-_spiTransfer                        text8        0017AC
-end_of_initialization               cinit        0017D2
+_new_px_char                        text5        001A20
+_print_px_char                      text1        0016FC
+_spiInit                            text8        0019E8
+_spiSend                            text12       001B04
+_spiTransfer                        text13       001AD4
+end_of_initialization               cinit        001AFA
+glcdDrawPixel@XS                    cstackCOMRAM 000020
+glcdDrawPixel@YS                    cstackCOMRAM 00001A
+glcdDrawPixel@color                 cstackCOMRAM 00001B
 glcdDrawRectangle@XE                cstackCOMRAM 000007
 glcdDrawRectangle@XS                cstackCOMRAM 000019
 glcdDrawRectangle@YE                cstackCOMRAM 000009
@@ -585,24 +640,68 @@ intlevel0                           text         000000
 intlevel1                           text         000000
 intlevel2                           text         000000
 intlevel3                           text         000000
+main@letter                         cstackCOMRAM 000037
+new_px_char@a                       cstackCOMRAM 000001
+new_px_char@b                       cstackCOMRAM 000005
+new_px_char@p                       cstackCOMRAM 000009
+print_px_char@i                     cstackCOMRAM 000035
+print_px_char@m                     cstackCOMRAM 000031
+print_px_char@p                     cstackCOMRAM 000025
+print_px_char@x                     cstackCOMRAM 000021
+print_px_char@y                     cstackCOMRAM 000023
 spiInit@divider                     cstackCOMRAM 000001
 spiSend@val                         cstackCOMRAM 000003
 spiTransfer@byteToTransfer          cstackCOMRAM 000002
 stackhi                             (abs)        000F7F
 stacklo                             (abs)        000080
 start                               init         000000
-start_initialization                cinit        0017D0
+start_initialization                cinit        001AF8
 
 
 FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 66 in file "main.c"
+		line 144 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-		None
+  letter          8   54[COMRAM] struct .
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
+      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         8       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:         8       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:        8 bytes
+ Hardware stack levels required when called:    6
+ This function calls:
+		_glcdDrawRectangle
+		_init
+		_new_px_char
+		_print_px_char
+ This function is called by:
+		Startup code after reset
+ This function uses a non-reentrant model
+
+
+ *************** function _print_px_char *****************
+ Defined at:
+		line 74 in file "main.c"
+ Parameters:    Size  Location     Type
+  x               2   32[COMRAM] int 
+  y               2   34[COMRAM] int 
+  p               8   36[COMRAM] struct .
+ Auto vars:     Size  Location     Type
+  i               2   52[COMRAM] int 
+  m               4   48[COMRAM] unsigned long 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -612,17 +711,144 @@ FUNCTION INFORMATION:
 		On exit  : 
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
-      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-Total ram usage:        0 bytes
- Hardware stack levels required when called:    6
+      Params:        12       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         6       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          4       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:        22       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:       22 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    5
+ This function calls:
+		___awdiv
+		___awmod
+		_glcdDrawPixel
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _glcdDrawPixel *****************
+ Defined at:
+		line 147 in file "GLCD_PIC_V1.1.c"
+ Parameters:    Size  Location     Type
+  XS              1    wreg     unsigned char 
+  YS              1   25[COMRAM] unsigned char 
+  color           4   26[COMRAM] unsigned long 
+ Auto vars:     Size  Location     Type
+  XS              1   31[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
+      Params:         5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:         7       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:        7 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    4
  This function calls:
 		_glcdDrawRectangle
-		_init
  This function is called by:
-		Startup code after reset
+		_print_px_char
+ This function uses a non-reentrant model
+
+
+ *************** function ___awmod *****************
+ Defined at:
+		line 8 in file "/Applications/microchip/xc8/v1.45/sources/common/awmod.c"
+ Parameters:    Size  Location     Type
+  dividend        2    0[COMRAM] int 
+  divisor         2    2[COMRAM] int 
+ Auto vars:     Size  Location     Type
+  sign            1    5[COMRAM] unsigned char 
+  counter         1    4[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  2    0[COMRAM] int 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
+      Params:         4       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         2       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:         6       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:        6 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_print_px_char
+ This function uses a non-reentrant model
+
+
+ *************** function ___awdiv *****************
+ Defined at:
+		line 8 in file "/Applications/microchip/xc8/v1.45/sources/common/awdiv.c"
+ Parameters:    Size  Location     Type
+  dividend        2    0[COMRAM] int 
+  divisor         2    2[COMRAM] int 
+ Auto vars:     Size  Location     Type
+  quotient        2    6[COMRAM] int 
+  sign            1    5[COMRAM] unsigned char 
+  counter         1    4[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  2    0[COMRAM] int 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
+      Params:         4       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         4       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:         8       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:        8 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_print_px_char
+ This function uses a non-reentrant model
+
+
+ *************** function _new_px_char *****************
+ Defined at:
+		line 67 in file "main.c"
+ Parameters:    Size  Location     Type
+  a               4    0[COMRAM] unsigned long 
+  b               4    4[COMRAM] unsigned long 
+ Auto vars:     Size  Location     Type
+  p               8    8[COMRAM] struct .
+ Return value:  Size  Location     Type
+                  8    0[COMRAM] struct .
+ Registers used:
+		wreg, fsr0l, fsr0h, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15
+      Params:         8       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Locals:         8       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:        16       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:       16 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
  This function uses a non-reentrant model
 
 
@@ -785,8 +1011,8 @@ Total ram usage:       19 bytes
 		_spiSend
  This function is called by:
 		_main
-		_initGLCD
 		_glcdDrawPixel
+		_initGLCD
  This function uses a non-reentrant model
 
 
@@ -919,15 +1145,25 @@ Total ram usage:        6 bytes
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
+/Applications/microchip/xc8/v1.45/sources/common/awmod.c
+		___awmod       		CODE           	18BA	0000	113
+
+/Applications/microchip/xc8/v1.45/sources/common/awmod.c estimated size: 113
+
+/Applications/microchip/xc8/v1.45/sources/common/awdiv.c
+		___awdiv       		CODE           	1836	0000	133
+
+/Applications/microchip/xc8/v1.45/sources/common/awdiv.c estimated size: 133
+
 /Applications/microchip/xc8/v1.45/sources/common/Umul16.c
-		___wmul        		CODE           	1786	0000	39
+		___wmul        		CODE           	1AAE	0000	39
 
 /Applications/microchip/xc8/v1.45/sources/common/Umul16.c estimated size: 39
 
 SPI_PIC.c
-		_spiTransfer   		CODE           	17AC	0000	37
-		_spiInit       		CODE           	16F4	0000	57
-		_spiSend       		CODE           	17DC	0000	11
+		_spiTransfer   		CODE           	1AD4	0000	37
+		_spiInit       		CODE           	19E8	0000	57
+		_spiSend       		CODE           	1B04	0000	11
 
 SPI_PIC.c estimated size: 105
 
@@ -968,7 +1204,7 @@ shared
 		GLCD_PIC@INST_FRMCTR2		SMALLCONST     	1032	0000	2
 		_INST_INVOFF   		SMALLCONST     	0000	0000	0
 		_INST_INVCTR   		SMALLCONST     	0000	0000	0
-		__initialization		CODE           	17D0	0000	3
+		__initialization		CODE           	1AF8	0000	3
 		GLCD_PIC@INST_INVOFF		SMALLCONST     	1042	0000	2
 		_INST_SLPIN    		SMALLCONST     	0000	0000	0
 		_GLCD_SIZE_VERT		SMALLCONST     	1069	0000	2
@@ -1015,16 +1251,19 @@ shared
 shared estimated size: 105
 
 GLCD_PIC_V1.1.c
-		_glcdDrawRectangle		CODE           	1524	0000	385
-		_glcdSetCOLMOD 		CODE           	16A4	0000	81
+		_glcdDrawPixel 		CODE           	192A	0000	111
+		_glcdDrawRectangle		CODE           	157C	0000	385
+		_glcdSetCOLMOD 		CODE           	1998	0000	81
 		_initGLCD      		CODE           	106E	0000	781
-		_glcdTransfer  		CODE           	175E	0000	41
+		_glcdTransfer  		CODE           	1A86	0000	41
 
-GLCD_PIC_V1.1.c estimated size: 1288
+GLCD_PIC_V1.1.c estimated size: 1399
 
 main.c
-		_init          		CODE           	172C	0000	51
-		_main          		CODE           	137A	0000	427
+		_init          		CODE           	1A54	0000	51
+		_main          		CODE           	137A	0000	515
+		_print_px_char 		CODE           	16FC	0000	315
+		_new_px_char   		CODE           	1A20	0000	53
 
-main.c estimated size: 478
+main.c estimated size: 934
 

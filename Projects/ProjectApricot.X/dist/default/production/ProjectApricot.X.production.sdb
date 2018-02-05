@@ -39,16 +39,24 @@
 [v _glcdSetCOLMOD glcdSetCOLMOD `(v  1 e 1 0 ]
 "238
 [v _initGLCD initGLCD `(v  1 e 1 0 ]
-"20 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+"21 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
 [v _init init `(v  1 e 1 0 ]
-"63
-[s S37 . 8 `[2]ul 1 part 8 0 ]
-"67
-[v _new_px_char new_px_char `(S37  1 e 8 0 ]
-"74
-[v _print_px_char print_px_char `(v  1 e 1 0 ]
-"151
+"61
+[v _draw_px_char draw_px_char `(v  1 e 1 0 ]
+"124
 [v _main main `(v  1 e 1 0 ]
+"104 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.h
+[s S37 . 8 `[2]ul 1 part 8 0 ]
+"12 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.c
+[v _new_px_char new_px_char `(S37  1 e 8 0 ]
+"104 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.h
+[s S37 . 8 `[2]ul 1 part 8 0 ]
+"19 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.c
+[v _px_map px_map `T(S37  1 e 8 0 ]
+"122
+[v _print_px_char print_px_char `(v  1 e 1 0 ]
+"126
+[v _print_px_string print_px_string `(v  1 e 1 0 ]
 "12 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/SPI_PIC.c
 [v _spiTransfer spiTransfer `(uc  1 e 1 0 ]
 "33
@@ -63,7 +71,7 @@
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
 "1214
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
-[s S363 . 1 `uc 1 LATD0 1 0 :1:0 
+[s S371 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -73,7 +81,7 @@
 `uc 1 LATD7 1 0 :1:7 
 ]
 "1241
-[s S372 . 1 `uc 1 LD0 1 0 :1:0 
+[s S380 . 1 `uc 1 LD0 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 `uc 1 LD2 1 0 :1:2 
 `uc 1 LD3 1 0 :1:3 
@@ -82,8 +90,8 @@
 `uc 1 LD6 1 0 :1:6 
 `uc 1 LD7 1 0 :1:7 
 ]
-[u S381 . 1 `S363 1 . 1 0 `S372 1 . 1 0 ]
-[v _LATDbits LATDbits `VES381  1 e 1 @3980 ]
+[u S389 . 1 `S371 1 . 1 0 `S380 1 . 1 0 ]
+[v _LATDbits LATDbits `VES389  1 e 1 @3980 ]
 "1326
 [v _LATE LATE `VEuc  1 e 1 @3981 ]
 "1378
@@ -92,7 +100,7 @@
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
 "1822
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
-[s S282 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S290 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -102,7 +110,7 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1854
-[s S291 . 1 `uc 1 RC0 1 0 :1:0 
+[s S299 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -111,11 +119,11 @@
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[u S300 . 1 `S282 1 . 1 0 `S291 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES300  1 e 1 @3988 ]
+[u S308 . 1 `S290 1 . 1 0 `S299 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES308  1 e 1 @3988 ]
 "2044
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
-[s S404 . 1 `uc 1 TRISD0 1 0 :1:0 
+[s S412 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -125,7 +133,7 @@
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "2076
-[s S413 . 1 `uc 1 RD0 1 0 :1:0 
+[s S421 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -134,8 +142,8 @@
 `uc 1 RD6 1 0 :1:6 
 `uc 1 RD7 1 0 :1:7 
 ]
-[u S422 . 1 `S404 1 . 1 0 `S413 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES422  1 e 1 @3989 ]
+[u S430 . 1 `S412 1 . 1 0 `S421 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES430  1 e 1 @3989 ]
 "2266
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
 "4442
@@ -144,30 +152,30 @@
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
 "4729
 [v _SSPCON1 SSPCON1 `VEuc  1 e 1 @4038 ]
-[s S254 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S262 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "4749
-[s S260 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S268 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[u S265 . 1 `S254 1 . 1 0 `S260 1 . 1 0 ]
-[v _SSPCON1bits SSPCON1bits `VES265  1 e 1 @4038 ]
+[u S273 . 1 `S262 1 . 1 0 `S268 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES273  1 e 1 @4038 ]
 "4799
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
-[s S125 . 1 `uc 1 . 1 0 :2:0 
+[s S133 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
 "4875
-[s S128 . 1 `uc 1 . 1 0 :5:0 
+[s S136 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S131 . 1 `uc 1 BF 1 0 :1:0 
+[s S139 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -176,50 +184,50 @@
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S140 . 1 `uc 1 . 1 0 :2:0 
+[s S148 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S145 . 1 `uc 1 . 1 0 :2:0 
+[s S153 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 A 1 0 :1:5 
 ]
-[s S150 . 1 `uc 1 . 1 0 :2:0 
+[s S158 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S155 . 1 `uc 1 . 1 0 :2:0 
+[s S163 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S160 . 1 `uc 1 . 1 0 :2:0 
+[s S168 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S163 . 1 `uc 1 . 1 0 :5:0 
+[s S171 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S166 . 1 `uc 1 . 1 0 :2:0 
+[s S174 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S171 . 1 `uc 1 . 1 0 :2:0 
+[s S179 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
 `uc 1 STOP 1 0 :1:4 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S177 . 1 `uc 1 . 1 0 :2:0 
+[s S185 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S182 . 1 `S125 1 . 1 0 `S128 1 . 1 0 `S131 1 . 1 0 `S140 1 . 1 0 `S145 1 . 1 0 `S150 1 . 1 0 `S155 1 . 1 0 `S160 1 . 1 0 `S163 1 . 1 0 `S166 1 . 1 0 `S171 1 . 1 0 `S177 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES182  1 e 1 @4039 ]
+[u S190 . 1 `S133 1 . 1 0 `S136 1 . 1 0 `S139 1 . 1 0 `S148 1 . 1 0 `S153 1 . 1 0 `S158 1 . 1 0 `S163 1 . 1 0 `S168 1 . 1 0 `S171 1 . 1 0 `S174 1 . 1 0 `S179 1 . 1 0 `S185 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES190  1 e 1 @4039 ]
 "5027
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
 "7579
@@ -274,21 +282,11 @@
 [v GLCD_PIC@INST_VMCTR1 INST_VMCTR1 `Cuc  1 s 1 INST_VMCTR1 ]
 "137
 [v _BLACK BLACK `Cul  1 e 4 0 ]
+"139
+[v _WHITE WHITE `Cul  1 e 4 0 ]
 "140
 [v _RED RED `Cul  1 e 4 0 ]
-"141
-[v _ORANGE ORANGE `Cul  1 e 4 0 ]
-"142
-[v _YELLOW YELLOW `Cul  1 e 4 0 ]
-"143
-[v _GREEN GREEN `Cul  1 e 4 0 ]
-"144
-[v _BLUE BLUE `Cul  1 e 4 0 ]
-"145
-[v _INDIGO INDIGO `Cul  1 e 4 0 ]
-"146
-[v _VIOLET VIOLET `Cul  1 e 4 0 ]
-[s S351 . 1 `uc 1 . 1 0 :1:0 
+[s S359 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 MH 1 0 :1:2 
 `uc 1 RGB 1 0 :1:3 
@@ -298,29 +296,71 @@
 `uc 1 MY 1 0 :1:7 
 ]
 "15 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/GLCD_PIC_V1.1.c
-[u S360 . 1 `S351 1 . 1 0 `uc 1 reg 1 0 ]
-[v _MADCTLbits MADCTLbits `S360  1 e 1 0 ]
-"151 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+[u S368 . 1 `S359 1 . 1 0 `uc 1 reg 1 0 ]
+[v _MADCTLbits MADCTLbits `S368  1 e 1 0 ]
+"124 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-[s S37 . 8 `[2]ul 1 part 8 0 ]
-"163
-[v main@letter letter `S37  1 a 8 54 ]
-"170
+"134
+[v main@eta eta `[23]uc  1 a 23 73 ]
+"135
+[v main@sec sec `i  1 a 2 98 ]
+"132
+[v main@F3027 F3027 `[23]uc  1 s 23 F3027 ]
+"147
 } 0
-"74
+"126 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.c
+[v _print_px_string print_px_string `(v  1 e 1 0 ]
+{
+"127
+[v print_px_string@idx idx `i  1 a 2 69 ]
+"126
+[v print_px_string@x x `i  1 p 2 59 ]
+[v print_px_string@y y `i  1 p 2 61 ]
+[v print_px_string@s s `*.35uc  1 p 2 63 ]
+"133
+} 0
+"122
 [v _print_px_char print_px_char `(v  1 e 1 0 ]
 {
-"76
-[v print_px_char@i i `i  1 a 2 52 ]
-"75
-[v print_px_char@m m `ul  1 a 4 48 ]
-"74
-[v print_px_char@x x `i  1 p 2 32 ]
-[v print_px_char@y y `i  1 p 2 34 ]
+[v print_px_char@x x `i  1 p 2 54 ]
+[v print_px_char@y y `i  1 p 2 56 ]
+[v print_px_char@c c `uc  1 p 1 58 ]
+"124
+} 0
+"19
+[v _px_map px_map `T(S37  1 e 8 0 ]
+{
+[v px_map@c c `uc  1 a 1 wreg ]
+[v px_map@c c `uc  1 a 1 wreg ]
+[v px_map@c c `uc  1 a 1 25 ]
+"120
+} 0
+"104 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.h
 [s S37 . 8 `[2]ul 1 part 8 0 ]
-[v print_px_char@p p `S37  1 p 8 36 ]
-"82
+"12 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.c
+[v _new_px_char new_px_char `(S37  1 e 8 0 ]
+{
+"13
+[v new_px_char@p p `S37  1 a 8 8 ]
+"12
+[v new_px_char@a a `ul  1 p 4 0 ]
+[v new_px_char@b b `ul  1 p 4 4 ]
+"17
+} 0
+"61 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+[v _draw_px_char draw_px_char `(v  1 e 1 0 ]
+{
+"63
+[v draw_px_char@i i `i  1 a 2 52 ]
+"62
+[v draw_px_char@m m `ul  1 a 4 48 ]
+"61
+[v draw_px_char@x x `i  1 p 2 32 ]
+[v draw_px_char@y y `i  1 p 2 34 ]
+[s S37 . 8 `[2]ul 1 part 8 0 ]
+[v draw_px_char@p p `S37  1 p 8 36 ]
+"69
 } 0
 "147 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/GLCD_PIC_V1.1.c
 [v _glcdDrawPixel glcdDrawPixel `(v  1 e 1 0 ]
@@ -348,31 +388,19 @@
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "11
-[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+[v ___awdiv@quotient quotient `i  1 a 2 12 ]
 "12
-[v ___awdiv@sign sign `uc  1 a 1 5 ]
-[v ___awdiv@counter counter `uc  1 a 1 4 ]
+[v ___awdiv@sign sign `uc  1 a 1 11 ]
+[v ___awdiv@counter counter `uc  1 a 1 10 ]
 "8
-[v ___awdiv@dividend dividend `i  1 p 2 0 ]
-[v ___awdiv@divisor divisor `i  1 p 2 2 ]
+[v ___awdiv@dividend dividend `i  1 p 2 6 ]
+[v ___awdiv@divisor divisor `i  1 p 2 8 ]
 "42
 } 0
-"63 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-[s S37 . 8 `[2]ul 1 part 8 0 ]
-"67
-[v _new_px_char new_px_char `(S37  1 e 8 0 ]
-{
-"68
-[v new_px_char@p p `S37  1 a 8 8 ]
-"67
-[v new_px_char@a a `ul  1 p 4 0 ]
-[v new_px_char@b b `ul  1 p 4 4 ]
-"72
-} 0
-"20
+"21 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
 [v _init init `(v  1 e 1 0 ]
 {
-"58
+"59
 } 0
 "238 /Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/GLCD_PIC_V1.1.c
 [v _initGLCD initGLCD `(v  1 e 1 0 ]

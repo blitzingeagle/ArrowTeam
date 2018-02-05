@@ -1,4 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
+[p mainexit ]
 "878 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [v _LATA `Vuc ~T0 @X0 0 e@3977 ]
 "990
@@ -23,16 +24,38 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADCON0 `Vuc ~T0 @X0 0 e@4034 ]
 "4442
 [v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
-"200 GLCD_PIC.h
-[v _initGLCD `(v ~T0 @X0 0 ef ]
-"63 main.c
-[s S268 `ul -> 2 `i ]
-[n S268 . part ]
-"191 GLCD_PIC.h
-[v _glcdDrawPixel `(v ~T0 @X0 0 ef3`uc`uc`ul ]
-[p mainexit ]
-"188
-[v _glcdDrawRectangle `(v ~T0 @X0 0 ef5`uc`uc`uc`uc`ul ]
+"7019
+[v _INT1IE `Vb ~T0 @X0 0 e@32643 ]
+"6378
+[s S258 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S258 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"6388
+[s S259 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S259 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"6398
+[s S260 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S260 . . GIEL GIEH ]
+"6377
+[u S257 `S258 1 `S259 1 `S260 1 ]
+[n S257 . . . . ]
+"6404
+[v _INTCONbits `VS257 ~T0 @X0 0 e@4082 ]
+"74 lcd.h
+[v _initLCD `(v ~T0 @X0 0 ef ]
+"195 /Applications/microchip/xc8/v1.45/include/stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+"71 lcd.h
+[v _lcdInst `(v ~T0 @X0 0 ef1`uc ]
+[v F2882 `(v ~T0 @X0 1 tf1`ul ]
+"164 /Applications/microchip/xc8/v1.45/include/pic18.h
+[v __delay `JF2882 ~T0 @X0 0 e ]
+[p i __delay ]
+"7021 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
+[v _INT1IF `Vb ~T0 @X0 0 e@32640 ]
+"187
+[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
+"16 /Applications/microchip/xc8/v1.45/include/conio.h
+[v _putch `(v ~T0 @X0 0 ef1`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2716,7 +2739,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-"12 config_bits.h
+"12 configBits.h
 [p x OSC=HSPLL ]
 "13
 [p x FCMEN=OFF ]
@@ -2782,509 +2805,232 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x EBTR3=OFF ]
 "64
 [p x EBTRB=OFF ]
-"80 GLCD_PIC.h
-[v _GLCD_ADDRESSABLE_SIZE_HORZ `Cuc ~T0 @X0 1 e ]
-[i _GLCD_ADDRESSABLE_SIZE_HORZ
--> -> 128 `i `uc
-]
-[; ;GLCD_PIC.h: 80: const unsigned char GLCD_ADDRESSABLE_SIZE_HORZ = 128;
-"81
-[v _GLCD_ADDRESSABLE_SIZE_VERT `Cuc ~T0 @X0 1 e ]
-[i _GLCD_ADDRESSABLE_SIZE_VERT
--> -> 160 `i `uc
-]
-[; ;GLCD_PIC.h: 81: const unsigned char GLCD_ADDRESSABLE_SIZE_VERT = 160;
-"84
-[v _GLCD_SIZE_HORZ `Cuc ~T0 @X0 1 e ]
-[i _GLCD_SIZE_HORZ
--> -> 128 `i `uc
-]
-[; ;GLCD_PIC.h: 84: const unsigned char GLCD_SIZE_HORZ = 128;
-"85
-[v _GLCD_SIZE_VERT `Cuc ~T0 @X0 1 e ]
-[i _GLCD_SIZE_VERT
--> -> 128 `i `uc
-]
-[; ;GLCD_PIC.h: 85: const unsigned char GLCD_SIZE_VERT = 128;
-"89
-[v _INST_NOP `Cuc ~T0 @X0 1 s ]
-[i _INST_NOP
--> -> 0 `i `uc
-]
-[; ;GLCD_PIC.h: 89: static const unsigned char INST_NOP = 0x00;
-"90
-[v _INST_SWRESET `Cuc ~T0 @X0 1 s ]
-[i _INST_SWRESET
--> -> 1 `i `uc
-]
-[; ;GLCD_PIC.h: 90: static const unsigned char INST_SWRESET = 0x01;
-"91
-[v _INST_SLPIN `Cuc ~T0 @X0 1 s ]
-[i _INST_SLPIN
--> -> 16 `i `uc
-]
-[; ;GLCD_PIC.h: 91: static const unsigned char INST_SLPIN = 0x10;
-"92
-[v _INST_SLPOUT `Cuc ~T0 @X0 1 s ]
-[i _INST_SLPOUT
--> -> 17 `i `uc
-]
-[; ;GLCD_PIC.h: 92: static const unsigned char INST_SLPOUT = 0x11;
-"93
-[v _INST_PTLON `Cuc ~T0 @X0 1 s ]
-[i _INST_PTLON
--> -> 18 `i `uc
-]
-[; ;GLCD_PIC.h: 93: static const unsigned char INST_PTLON = 0x12;
-"94
-[v _INST_NORON `Cuc ~T0 @X0 1 s ]
-[i _INST_NORON
--> -> 19 `i `uc
-]
-[; ;GLCD_PIC.h: 94: static const unsigned char INST_NORON = 0x13;
-"95
-[v _INST_INVOFF `Cuc ~T0 @X0 1 s ]
-[i _INST_INVOFF
--> -> 32 `i `uc
-]
-[; ;GLCD_PIC.h: 95: static const unsigned char INST_INVOFF = 0x20;
-"96
-[v _INST_INVON `Cuc ~T0 @X0 1 s ]
-[i _INST_INVON
--> -> 33 `i `uc
-]
-[; ;GLCD_PIC.h: 96: static const unsigned char INST_INVON = 0x21;
-"97
-[v _INST_GAMSET `Cuc ~T0 @X0 1 s ]
-[i _INST_GAMSET
--> -> 38 `i `uc
-]
-[; ;GLCD_PIC.h: 97: static const unsigned char INST_GAMSET = 0x26;
-"98
-[v _INST_DISPOFF `Cuc ~T0 @X0 1 s ]
-[i _INST_DISPOFF
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stdarg.h: 7: typedef void * va_list[1];
+[; ;stdarg.h: 10: extern void * __va_start(void);
+[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 43: struct __prbuf
+[; ;stdio.h: 44: {
+[; ;stdio.h: 45: char * ptr;
+[; ;stdio.h: 46: void (* func)(char);
+[; ;stdio.h: 47: };
+[; ;errno.h: 29: extern int errno;
+[; ;conio.h: 12: extern void init_uart(void);
+[; ;conio.h: 14: extern char getch(void);
+[; ;conio.h: 15: extern char getche(void);
+[; ;conio.h: 16: extern void putch(char);
+[; ;conio.h: 17: extern void ungetch(char);
+[; ;conio.h: 19: extern __bit kbhit(void);
+[; ;conio.h: 23: extern char * cgets(char *);
+[; ;conio.h: 24: extern void cputs(const char *);
+[; ;stdio.h: 88: extern int cprintf(char *, ...);
+[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 183: extern char * gets(char *);
+[; ;stdio.h: 184: extern int puts(const char *);
+[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 195: extern int printf(const char *, ...);
+"57 lcd.h
+[v _LCD_HORZ_LIMIT `Cuc ~T0 @X0 1 e ]
+[i _LCD_HORZ_LIMIT
 -> -> 40 `i `uc
 ]
-[; ;GLCD_PIC.h: 98: static const unsigned char INST_DISPOFF = 0x28;
-"99
-[v _INST_DISPON `Cuc ~T0 @X0 1 s ]
-[i _INST_DISPON
--> -> 41 `i `uc
-]
-[; ;GLCD_PIC.h: 99: static const unsigned char INST_DISPON = 0x29;
-"100
-[v _INST_CASET `Cuc ~T0 @X0 1 s ]
-[i _INST_CASET
--> -> 42 `i `uc
-]
-[; ;GLCD_PIC.h: 100: static const unsigned char INST_CASET = 0x2A;
-"101
-[v _INST_RASET `Cuc ~T0 @X0 1 s ]
-[i _INST_RASET
--> -> 43 `i `uc
-]
-[; ;GLCD_PIC.h: 101: static const unsigned char INST_RASET = 0x2B;
-"102
-[v _INST_RAMWR `Cuc ~T0 @X0 1 s ]
-[i _INST_RAMWR
--> -> 44 `i `uc
-]
-[; ;GLCD_PIC.h: 102: static const unsigned char INST_RAMWR = 0x2C;
-"103
-[v _INST_PTLAR `Cuc ~T0 @X0 1 s ]
-[i _INST_PTLAR
--> -> 48 `i `uc
-]
-[; ;GLCD_PIC.h: 103: static const unsigned char INST_PTLAR = 0x30;
-"104
-[v _INST_TEOFF `Cuc ~T0 @X0 1 s ]
-[i _INST_TEOFF
--> -> 52 `i `uc
-]
-[; ;GLCD_PIC.h: 104: static const unsigned char INST_TEOFF = 0x34;
-"105
-[v _INST_TEON `Cuc ~T0 @X0 1 s ]
-[i _INST_TEON
--> -> 53 `i `uc
-]
-[; ;GLCD_PIC.h: 105: static const unsigned char INST_TEON = 0x35;
-"106
-[v _INST_MADCTL `Cuc ~T0 @X0 1 s ]
-[i _INST_MADCTL
--> -> 54 `i `uc
-]
-[; ;GLCD_PIC.h: 106: static const unsigned char INST_MADCTL = 0x36;
-"107
-[v _INST_IDMOFF `Cuc ~T0 @X0 1 s ]
-[i _INST_IDMOFF
--> -> 56 `i `uc
-]
-[; ;GLCD_PIC.h: 107: static const unsigned char INST_IDMOFF = 0x38;
-"108
-[v _INST_IDMON `Cuc ~T0 @X0 1 s ]
-[i _INST_IDMON
--> -> 57 `i `uc
-]
-[; ;GLCD_PIC.h: 108: static const unsigned char INST_IDMON = 0x39;
-"109
-[v _INST_COLMOD `Cuc ~T0 @X0 1 s ]
-[i _INST_COLMOD
--> -> 58 `i `uc
-]
-[; ;GLCD_PIC.h: 109: static const unsigned char INST_COLMOD = 0x3A;
-"110
-[v _INST_FRMCTR1 `Cuc ~T0 @X0 1 s ]
-[i _INST_FRMCTR1
--> -> 177 `i `uc
-]
-[; ;GLCD_PIC.h: 110: static const unsigned char INST_FRMCTR1 = 0xB1;
-"111
-[v _INST_FRMCTR2 `Cuc ~T0 @X0 1 s ]
-[i _INST_FRMCTR2
--> -> 178 `i `uc
-]
-[; ;GLCD_PIC.h: 111: static const unsigned char INST_FRMCTR2 = 0xB2;
-"112
-[v _INST_FRMCTR3 `Cuc ~T0 @X0 1 s ]
-[i _INST_FRMCTR3
--> -> 179 `i `uc
-]
-[; ;GLCD_PIC.h: 112: static const unsigned char INST_FRMCTR3 = 0xB3;
-"113
-[v _INST_INVCTR `Cuc ~T0 @X0 1 s ]
-[i _INST_INVCTR
--> -> 180 `i `uc
-]
-[; ;GLCD_PIC.h: 113: static const unsigned char INST_INVCTR = 0xB4;
-"114
-[v _INST_PWCTR1 `Cuc ~T0 @X0 1 s ]
-[i _INST_PWCTR1
--> -> 192 `i `uc
-]
-[; ;GLCD_PIC.h: 114: static const unsigned char INST_PWCTR1 = 0xC0;
-"115
-[v _INST_PWCTR2 `Cuc ~T0 @X0 1 s ]
-[i _INST_PWCTR2
--> -> 193 `i `uc
-]
-[; ;GLCD_PIC.h: 115: static const unsigned char INST_PWCTR2 = 0xC1;
-"116
-[v _INST_PWCTR3 `Cuc ~T0 @X0 1 s ]
-[i _INST_PWCTR3
--> -> 194 `i `uc
-]
-[; ;GLCD_PIC.h: 116: static const unsigned char INST_PWCTR3 = 0xC2;
-"117
-[v _INST_PWCTR4 `Cuc ~T0 @X0 1 s ]
-[i _INST_PWCTR4
--> -> 195 `i `uc
-]
-[; ;GLCD_PIC.h: 117: static const unsigned char INST_PWCTR4 = 0xC3;
-"118
-[v _INST_PWCTR5 `Cuc ~T0 @X0 1 s ]
-[i _INST_PWCTR5
--> -> 196 `i `uc
-]
-[; ;GLCD_PIC.h: 118: static const unsigned char INST_PWCTR5 = 0xC4;
-"119
-[v _INST_VMCTR1 `Cuc ~T0 @X0 1 s ]
-[i _INST_VMCTR1
--> -> 197 `i `uc
-]
-[; ;GLCD_PIC.h: 119: static const unsigned char INST_VMCTR1 = 0xC5;
-"120
-[v _INST_VMOFCTR2 `Cuc ~T0 @X0 1 s ]
-[i _INST_VMOFCTR2
--> -> 199 `i `uc
-]
-[; ;GLCD_PIC.h: 120: static const unsigned char INST_VMOFCTR2 = 0xC7;
-"137
-[v _BLACK `Cul ~T0 @X0 1 e ]
-[i _BLACK
--> -> -> 0 `i `l `ul
-]
-[; ;GLCD_PIC.h: 137: const unsigned long BLACK = 0x000000;
-"138
-[v _GREY `Cul ~T0 @X0 1 e ]
-[i _GREY
--> -> 8421504 `l `ul
-]
-[; ;GLCD_PIC.h: 138: const unsigned long GREY = 0x808080;
-"139
-[v _WHITE `Cul ~T0 @X0 1 e ]
-[i _WHITE
--> -> 16777215 `l `ul
-]
-[; ;GLCD_PIC.h: 139: const unsigned long WHITE = 0xFFFFFF;
-"140
-[v _RED `Cul ~T0 @X0 1 e ]
-[i _RED
--> -> 16711680 `l `ul
-]
-[; ;GLCD_PIC.h: 140: const unsigned long RED = 0xFF0000;
-"141
-[v _ORANGE `Cul ~T0 @X0 1 e ]
-[i _ORANGE
--> -> 16747520 `l `ul
-]
-[; ;GLCD_PIC.h: 141: const unsigned long ORANGE = 0xFF8C00;
-"142
-[v _YELLOW `Cul ~T0 @X0 1 e ]
-[i _YELLOW
--> -> 16776960 `l `ul
-]
-[; ;GLCD_PIC.h: 142: const unsigned long YELLOW = 0xFFFF00;
-"143
-[v _GREEN `Cul ~T0 @X0 1 e ]
-[i _GREEN
--> -> 65280 `ui `ul
-]
-[; ;GLCD_PIC.h: 143: const unsigned long GREEN = 0x00FF00;
-"144
-[v _BLUE `Cul ~T0 @X0 1 e ]
-[i _BLUE
--> -> -> 255 `i `l `ul
-]
-[; ;GLCD_PIC.h: 144: const unsigned long BLUE = 0x0000FF;
-"145
-[v _INDIGO `Cul ~T0 @X0 1 e ]
-[i _INDIGO
--> -> 4915330 `l `ul
-]
-[; ;GLCD_PIC.h: 145: const unsigned long INDIGO = 0x4B0082;
-"146
-[v _VIOLET `Cul ~T0 @X0 1 e ]
-[i _VIOLET
--> -> 9699539 `l `ul
-]
-[; ;GLCD_PIC.h: 146: const unsigned long VIOLET = 0x9400D3;
-[; ;GLCD_PIC.h: 166: typedef union{
-[; ;GLCD_PIC.h: 167: struct{
-[; ;GLCD_PIC.h: 168: unsigned :1;
-[; ;GLCD_PIC.h: 169: unsigned :1;
-[; ;GLCD_PIC.h: 170: unsigned MH :1;
-[; ;GLCD_PIC.h: 171: unsigned RGB :1;
-[; ;GLCD_PIC.h: 172: unsigned ML :1;
-[; ;GLCD_PIC.h: 173: unsigned MV :1;
-[; ;GLCD_PIC.h: 174: unsigned MX :1;
-[; ;GLCD_PIC.h: 175: unsigned MY :1;
-[; ;GLCD_PIC.h: 176: };
-[; ;GLCD_PIC.h: 177: unsigned char reg;
-[; ;GLCD_PIC.h: 178: }MADCTLbits_t;
-[; ;GLCD_PIC.h: 181: extern MADCTLbits_t MADCTLbits;
-[; ;GLCD_PIC.h: 185: void glcdTransfer(unsigned char byte, unsigned char cmd);
-[; ;GLCD_PIC.h: 188: void glcdDrawRectangle(unsigned char XS, unsigned char XE, unsigned char YS, unsigned char YE, unsigned long color);
-[; ;GLCD_PIC.h: 191: void glcdDrawPixel(unsigned char XS, unsigned char YS, unsigned long color);
-[; ;GLCD_PIC.h: 196: void glcdSetCOLMOD(unsigned char numBitsPerPixel);
-[; ;GLCD_PIC.h: 197: void glcdSetOrigin(unsigned char corner);
-[; ;GLCD_PIC.h: 200: void initGLCD(void);
-"20 main.c
-[v _init `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 20: void init(void) {
-[e :U _init ]
-[f ]
-[; ;main.c: 25: LATA = 0x00;
-"25
-[e = _LATA -> -> 0 `i `uc ]
-[; ;main.c: 26: LATB = 0x00;
-"26
-[e = _LATB -> -> 0 `i `uc ]
-[; ;main.c: 27: LATC = 0x00;
-"27
-[e = _LATC -> -> 0 `i `uc ]
-[; ;main.c: 28: LATD = 0x00;
-"28
-[e = _LATD -> -> 0 `i `uc ]
-[; ;main.c: 29: LATE = 0x00;
-"29
-[e = _LATE -> -> 0 `i `uc ]
-[; ;main.c: 33: TRISA = 0xFF;
-"33
-[e = _TRISA -> -> 255 `i `uc ]
-[; ;main.c: 34: TRISB = 0xFF;
-"34
-[e = _TRISB -> -> 255 `i `uc ]
-[; ;main.c: 35: TRISC = 0b10000000;
-"35
-[e = _TRISC -> -> 128 `i `uc ]
-[; ;main.c: 39: TRISD = 0b00000001;
-"39
-[e = _TRISD -> -> 1 `i `uc ]
-[; ;main.c: 45: TRISE = 0b00000100;
-"45
-[e = _TRISE -> -> 4 `i `uc ]
-[; ;main.c: 52: ADCON0 = 0x00;
-"52
-[e = _ADCON0 -> -> 0 `i `uc ]
-[; ;main.c: 53: ADCON1 = 0b00001111;
-"53
-[e = _ADCON1 -> -> 15 `i `uc ]
-[; ;main.c: 57: initGLCD();
-"57
-[e ( _initGLCD ..  ]
-[; ;main.c: 58: }
+[; ;lcd.h: 57: const unsigned char LCD_HORZ_LIMIT = 40;
 "58
-[e :UE 267 ]
-}
-[; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;main.c: 63: typedef struct {
-[; ;main.c: 64: uint32_t part[2];
-[; ;main.c: 65: } px_char;
-"67
-[v _new_px_char `(S268 ~T0 @X0 1 ef2`ul`ul ]
-{
-[; ;main.c: 67: px_char new_px_char(uint32_t a, uint32_t b) {
-[e :U _new_px_char ]
-[v _a `ul ~T0 @X0 1 r1 ]
-[v _b `ul ~T0 @X0 1 r2 ]
-[f ]
+[v _LCD_VERT_LIMIT `Cuc ~T0 @X0 1 e ]
+[i _LCD_VERT_LIMIT
+-> -> 2 `i `uc
+]
+[; ;lcd.h: 58: const unsigned char LCD_VERT_LIMIT = 2;
+"61
+[v _LCD_SIZE_HORZ `Cuc ~T0 @X0 1 e ]
+[i _LCD_SIZE_HORZ
+-> -> 16 `i `uc
+]
+[; ;lcd.h: 61: const unsigned char LCD_SIZE_HORZ = 16;
+"62
+[v _LCD_SIZE_VERT `Cuc ~T0 @X0 1 e ]
+[i _LCD_SIZE_VERT
+-> -> 2 `i `uc
+]
+[; ;lcd.h: 62: const unsigned char LCD_SIZE_VERT = 2;
+"64
+[v _LCD_RIGHT `Cuc ~T0 @X0 1 e ]
+[i _LCD_RIGHT
+-> -> 1 `i `uc
+]
+[; ;lcd.h: 64: const unsigned char LCD_RIGHT = 1;
+"65
+[v _LCD_LEFT `Cuc ~T0 @X0 1 e ]
+[i _LCD_LEFT
+-> -> 0 `i `uc
+]
+[; ;lcd.h: 65: const unsigned char LCD_LEFT = 0;
 "68
-[v _p `S268 ~T0 @X0 1 a ]
-[; ;main.c: 68: px_char p;
-[; ;main.c: 69: p.part[1] = a;
-"69
-[e = *U + &U . _p 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _p 0 `ui `ux _a ]
-[; ;main.c: 70: p.part[0] = b;
-"70
-[e = *U + &U . _p 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _p 0 `ui `ux _b ]
-[; ;main.c: 71: return p;
-"71
-[e ) _p ]
-[e $UE 269  ]
-[; ;main.c: 72: }
-"72
-[e :UE 269 ]
-}
-"74
-[v _print_px_char `(v ~T0 @X0 1 ef3`i`i`S268 ]
-{
-[; ;main.c: 74: void print_px_char(int x, int y, px_char p) {
-[e :U _print_px_char ]
-[v _x `i ~T0 @X0 1 r1 ]
-[v _y `i ~T0 @X0 1 r2 ]
-[v _p `S268 ~T0 @X0 1 r3 ]
-[f ]
-"75
-[v _m `ul ~T0 @X0 1 a ]
-[; ;main.c: 75: uint32_t m = 0b1;
-[e = _m -> -> -> 1 `i `l `ul ]
-[; ;main.c: 76: for(int i = 0; i < 32; i++) {
-"76
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 32 `i 271  ]
-[e $U 272  ]
-[e :U 271 ]
-{
-[; ;main.c: 77: if(m & p.part[0]) glcdDrawPixel(i%5, i/5, BLACK);
-"77
-[e $ ! != & _m *U + &U . _p 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _p 0 `ui `ux -> -> 0 `i `ul 274  ]
-[e ( _glcdDrawPixel (3 , , -> % _i -> 5 `i `uc -> / _i -> 5 `i `uc _BLACK ]
-[e :U 274 ]
-[; ;main.c: 78: if(m & p.part[1]) glcdDrawPixel((i+32)%5, (i+32)/5, BLACK);
-"78
-[e $ ! != & _m *U + &U . _p 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _p 0 `ui `ux -> -> 0 `i `ul 275  ]
-[e ( _glcdDrawPixel (3 , , -> % + _i -> 32 `i -> 5 `i `uc -> / + _i -> 32 `i -> 5 `i `uc _BLACK ]
-[e :U 275 ]
-[; ;main.c: 80: m <<= 1;
-"80
-[e =<< _m -> 1 `i ]
-"81
-}
-"76
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 32 `i 271  ]
-[e :U 272 ]
-"81
-}
-[; ;main.c: 81: }
-[; ;main.c: 82: }
-"82
-[e :UE 270 ]
-}
+[v _LCDinterruptState `uc ~T0 @X0 1 s ]
+[; ;lcd.h: 68: static unsigned char LCDinterruptState;
+[; ;lcd.h: 71: void lcdInst(char data);
+[; ;lcd.h: 72: void putch(char data);
+[; ;lcd.h: 73: void lcdNibble(char data);
+[; ;lcd.h: 74: void initLCD(void);
+[; ;lcd.h: 75: void lcd_set_cursor(unsigned char x, unsigned char y);
+[; ;lcd.h: 76: void lcd_shift_cursor(unsigned char numChars, unsigned char direction);
+[; ;lcd.h: 77: void lcd_shift_display(unsigned char numChars, unsigned char direction);
+"26 main.c
+[v _keys `Cuc ~T0 @X0 -> 0 `x e ]
+[i _keys
+:U ..
+-> 49 `c
+-> 50 `c
+-> 51 `c
+-> 65 `c
+-> 52 `c
+-> 53 `c
+-> 54 `c
+-> 66 `c
+-> 55 `c
+-> 56 `c
+-> 57 `c
+-> 67 `c
+-> 42 `c
+-> 48 `c
+-> 35 `c
+-> 68 `c
+-> 0 `c
+..
+]
+[; ;main.c: 26: const char keys[] = "123A456B789C*0#D";
+[; ;main.c: 28: enum menu_state {
+[; ;main.c: 30: };
 [v $root$_main `(v ~T0 @X0 0 e ]
-"151
+"32
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 151: void main(void) {
+[; ;main.c: 32: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 152: init();
-"152
-[e ( _init ..  ]
-[; ;main.c: 155: glcdDrawRectangle(0, 18, 0, GLCD_SIZE_VERT, RED);
-"155
-[e ( _glcdDrawRectangle (4 , , , , -> -> 0 `i `uc -> -> 18 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _RED ]
-[; ;main.c: 156: glcdDrawRectangle(18, 36, 0, GLCD_SIZE_VERT, ORANGE);
-"156
-[e ( _glcdDrawRectangle (4 , , , , -> -> 18 `i `uc -> -> 36 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _ORANGE ]
-[; ;main.c: 157: glcdDrawRectangle(36, 54, 0, GLCD_SIZE_VERT, YELLOW);
-"157
-[e ( _glcdDrawRectangle (4 , , , , -> -> 36 `i `uc -> -> 54 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _YELLOW ]
-[; ;main.c: 158: glcdDrawRectangle(54, 72, 0, GLCD_SIZE_VERT, GREEN);
-"158
-[e ( _glcdDrawRectangle (4 , , , , -> -> 54 `i `uc -> -> 72 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _GREEN ]
-[; ;main.c: 159: glcdDrawRectangle(72, 90, 0, GLCD_SIZE_VERT, BLUE);
-"159
-[e ( _glcdDrawRectangle (4 , , , , -> -> 72 `i `uc -> -> 90 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _BLUE ]
-[; ;main.c: 160: glcdDrawRectangle(90, 108, 0, GLCD_SIZE_VERT, INDIGO);
-"160
-[e ( _glcdDrawRectangle (4 , , , , -> -> 90 `i `uc -> -> 108 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _INDIGO ]
-[; ;main.c: 161: glcdDrawRectangle(108, 128, 0, GLCD_SIZE_VERT, VIOLET);
-"161
-[e ( _glcdDrawRectangle (4 , , , , -> -> 108 `i `uc -> -> 128 `i `uc -> -> 0 `i `uc _GLCD_SIZE_VERT _VIOLET ]
-"163
-[v _letter `S268 ~T0 @X0 1 a ]
-[; ;main.c: 163: px_char letter = new_px_char(0b00000000000000101101100110001111,0b10100000111000000000000000000000);
-[e = _letter ( _new_px_char (2 , -> -> 186767 `l `ul -> -1595932672 `ul ]
-[; ;main.c: 165: while(1) {
-"165
-[e :U 278 ]
+[; ;main.c: 38: LATA = 0x00;
+"38
+[e = _LATA -> -> 0 `i `uc ]
+[; ;main.c: 39: LATB = 0x00;
+"39
+[e = _LATB -> -> 0 `i `uc ]
+[; ;main.c: 40: LATC = 0x00;
+"40
+[e = _LATC -> -> 0 `i `uc ]
+[; ;main.c: 41: LATD = 0x00;
+"41
+[e = _LATD -> -> 0 `i `uc ]
+[; ;main.c: 42: LATE = 0x00;
+"42
+[e = _LATE -> -> 0 `i `uc ]
+[; ;main.c: 46: TRISA = 0xFF;
+"46
+[e = _TRISA -> -> 255 `i `uc ]
+[; ;main.c: 47: TRISB = 0xFF;
+"47
+[e = _TRISB -> -> 255 `i `uc ]
+[; ;main.c: 48: TRISC = 0x00;
+"48
+[e = _TRISC -> -> 0 `i `uc ]
+[; ;main.c: 49: TRISD = 0x00;
+"49
+[e = _TRISD -> -> 0 `i `uc ]
+[; ;main.c: 50: TRISE = 0x00;
+"50
+[e = _TRISE -> -> 0 `i `uc ]
+[; ;main.c: 53: ADCON0 = 0x00;
+"53
+[e = _ADCON0 -> -> 0 `i `uc ]
+[; ;main.c: 54: ADCON1 = 0b00001111;
+"54
+[e = _ADCON1 -> -> 15 `i `uc ]
+[; ;main.c: 57: INT1IE = 1;
+"57
+[e = _INT1IE -> -> 1 `i `b ]
+[; ;main.c: 58: (INTCONbits.GIE = 1);
+"58
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 61: initLCD();
+"61
+[e ( _initLCD ..  ]
+[; ;main.c: 64: while(1) {
+"64
+[e :U 268 ]
 {
-[; ;main.c: 166: print_px_char(0, 0, letter);
-"166
-[e ( _print_px_char (3 , , -> 0 `i -> 0 `i _letter ]
-"167
+[; ;main.c: 65: printf("Chocolate? ");
+"65
+[e ( _printf :s 1C ]
+[; ;main.c: 66: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
+"66
+[e ( _lcdInst (1 -> -> 128 `i `uc ]
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;main.c: 67: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"67
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;main.c: 68: printf("CHOCOLATE?!");
+"68
+[e ( _printf :s 2C ]
+[; ;main.c: 69: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
+"69
+[e ( _lcdInst (1 -> -> 128 `i `uc ]
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;main.c: 70: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"70
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"71
 }
-[e :U 277 ]
-"165
-[e $U 278  ]
-[e :U 279 ]
-[; ;main.c: 167: }
-[; ;main.c: 169: return;
-"169
-[e $UE 276  ]
-[; ;main.c: 170: }
-"170
-[e :UE 276 ]
+[e :U 267 ]
+"64
+[e $U 268  ]
+[e :U 269 ]
+[; ;main.c: 71: }
+[; ;main.c: 72: }
+"72
+[e :UE 266 ]
 }
+[v $root$_interruptHandler `(v ~T0 @X0 0 e ]
+[v F2984 `(v ~T0 @X0 1 tf ]
+"74
+[v _interruptHandler `IF2984 ~T0 @X0 1 e ]
+{
+[; ;main.c: 74: void interrupt interruptHandler(void){
+[e :U _interruptHandler ]
+[f ]
+[; ;main.c: 85: if(INT1IF){
+"85
+[e $ ! _INT1IF 271  ]
+{
+[; ;main.c: 89: lcdInst(0xC0);;
+"89
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+"90
+[v _keypress `uc ~T0 @X0 1 a ]
+[; ;main.c: 90: unsigned char keypress = (PORTB & 0xF0) >> 4;
+[e = _keypress -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
+[; ;main.c: 91: putch(keys[keypress]);
+"91
+[e ( _putch (1 *U + &U _keys * -> _keypress `ux -> -> # *U &U _keys `ui `ux ]
+[; ;main.c: 92: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
+"92
+[e ( _lcdInst (1 -> -> 128 `i `uc ]
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;main.c: 94: INT1IF = 0;
+"94
+[e = _INT1IF -> -> 0 `i `b ]
+"95
+}
+[e :U 271 ]
+[; ;main.c: 95: }
+[; ;main.c: 96: }
+"96
+[e :UE 270 ]
+}
+[p f _printf 8388608 ]
+[a 2C 67 72 79 67 79 76 65 84 69 63 33 0 ]
+[a 1C 67 104 111 99 111 108 97 116 101 63 32 0 ]

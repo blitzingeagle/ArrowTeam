@@ -1,0 +1,719 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"104 px_ascii.h
+[s S1 `ul -> 2 `i ]
+[n S1 . part ]
+"111
+[v _draw_px_char `(v ~T0 @X0 0 ef3`i`i`S1 ]
+[; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;px_ascii.h: 104: typedef struct {
+[; ;px_ascii.h: 105: uint32_t part[2];
+[; ;px_ascii.h: 106: } px_char;
+[; ;px_ascii.h: 108: px_char new_px_char(uint32_t a, uint32_t b);
+[; ;px_ascii.h: 109: inline px_char px_map(char c);
+[; ;px_ascii.h: 111: void draw_px_char(int x, int y, px_char p);
+[; ;px_ascii.h: 112: void print_px_char(int x, int y, char c);
+[; ;px_ascii.h: 113: void print_px_string(int x, int y, char *s);
+"12 px_ascii.c
+[v _new_px_char `(S1 ~T0 @X0 1 ef2`ul`ul ]
+{
+[; ;px_ascii.c: 12: px_char new_px_char(uint32_t a, uint32_t b) {
+[e :U _new_px_char ]
+[v _a `ul ~T0 @X0 1 r1 ]
+[v _b `ul ~T0 @X0 1 r2 ]
+[f ]
+"13
+[v _p `S1 ~T0 @X0 1 a ]
+[; ;px_ascii.c: 13: px_char p;
+[; ;px_ascii.c: 14: p.part[1] = a;
+"14
+[e = *U + &U . _p 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _p 0 `ui `ux _a ]
+[; ;px_ascii.c: 15: p.part[0] = b;
+"15
+[e = *U + &U . _p 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _p 0 `ui `ux _b ]
+[; ;px_ascii.c: 16: return p;
+"16
+[e ) _p ]
+[e $UE 2  ]
+[; ;px_ascii.c: 17: }
+"17
+[e :UE 2 ]
+}
+[v F38 `(S1 ~T0 @X0 1 tf1`uc ]
+"19
+[v _px_map `TF38 ~T0 @X0 1 e ]
+{
+[; ;px_ascii.c: 19: inline px_char px_map(char c) {
+[e :U _px_map ]
+[v _c `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;px_ascii.c: 21: switch(c) {
+"21
+[e $U 5  ]
+{
+[; ;px_ascii.c: 22: case 32: return new_px_char(0b00000000000000000000000000000000,0b00000000000000000000000000000000);
+"22
+[e :U 6 ]
+[e ) ( _new_px_char (2 , -> -> -> 0 `i `l `ul -> -> -> 0 `i `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 23: case 33: return new_px_char(0b00000000000000001000000000100001,0b00001000010000100001000000000000);
+"23
+[e :U 7 ]
+[e ) ( _new_px_char (2 , -> -> 32801 `ui `ul -> -> 138547200 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 24: case 34: return new_px_char(0b00000000000000000000000000000000,0b00000000101001010010100000000000);
+"24
+[e :U 8 ]
+[e ) ( _new_px_char (2 , -> -> -> 0 `i `l `ul -> -> 10823680 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 25: case 35: return new_px_char(0b00000000000000010100101011111010,0b10111110101001010000000000000000);
+"25
+[e :U 9 ]
+[e ) ( _new_px_char (2 , -> -> 84730 `l `ul -> -1096482816 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 26: case 36: return new_px_char(0b00000000000100011111010010100011,0b10001010010111110001000000000000);
+"26
+[e :U 10 ]
+[e ) ( _new_px_char (2 , -> -> 1176739 `l `ul -> -1973481472 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 27: case 37: return new_px_char(0b00000000001001101010101000010001,0b00010000101010101100100000000000);
+"27
+[e :U 11 ]
+[e ) ( _new_px_char (2 , -> -> 2533905 `l `ul -> -> 279627776 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 28: case 38: return new_px_char(0b00000000010110010011100100101000,0b10001010010100010000000000000000);
+"28
+[e :U 12 ]
+[e ) ( _new_px_char (2 , -> -> 5847336 `l `ul -> -1974403072 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 29: case 39: return new_px_char(0b00000000000000000000000000000000,0b00000000010000100001000000000000);
+"29
+[e :U 13 ]
+[e ) ( _new_px_char (2 , -> -> -> 0 `i `l `ul -> -> 4329472 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 30: case 40: return new_px_char(0b00000100000100001000001000010000,0b10000100001000100001000100000000);
+"30
+[e :U 14 ]
+[e ) ( _new_px_char (2 , -> -> 68190736 `l `ul -> -2078142208 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 31: case 41: return new_px_char(0b00000001000100001000100001000010,0b00010000100000100001000001000000);
+"31
+[e :U 15 ]
+[e ) ( _new_px_char (2 , -> -> 17860674 `l `ul -> -> 276959296 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 32: case 42: return new_px_char(0b00000000000000000000000000000001,0b00101010111010101001000000000000);
+"32
+[e :U 16 ]
+[e ) ( _new_px_char (2 , -> -> -> 1 `i `l `ul -> -> 720015360 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 33: case 43: return new_px_char(0b00000000000000000000010000100111,0b11001000010000000000000000000000);
+"33
+[e :U 17 ]
+[e ) ( _new_px_char (2 , -> -> -> 1063 `i `l `ul -> -935329792 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 34: case 44: return new_px_char(0b00000001000100011000000000000000,0b00000000000000000000000000000000);
+"34
+[e :U 18 ]
+[e ) ( _new_px_char (2 , -> -> 17924096 `l `ul -> -> -> 0 `i `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 35: case 45: return new_px_char(0b00000000000000000000000000000111,0b11000000000000000000000000000000);
+"35
+[e :U 19 ]
+[e ) ( _new_px_char (2 , -> -> -> 7 `i `l `ul -> -1073741824 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 36: case 46: return new_px_char(0b00000010001110001000000000000000,0b00000000000000000000000000000000);
+"36
+[e :U 20 ]
+[e ) ( _new_px_char (2 , -> -> 37257216 `l `ul -> -> -> 0 `i `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 37: case 47: return new_px_char(0b00000000000001000010001000010001,0b00010000100010000100000000000000);
+"37
+[e :U 21 ]
+[e ) ( _new_px_char (2 , -> -> 270865 `l `ul -> -> 277364736 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 38: case 48: return new_px_char(0b00000000000000001000101010001100,0b01100011000110001010100010000000);
+"38
+[e :U 22 ]
+[e ) ( _new_px_char (2 , -> -> 35468 `ui `ul -> -> 1662560384 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 39: case 49: return new_px_char(0b00000000000000111110010000100001,0b00001000010000101001100010000000);
+"39
+[e :U 23 ]
+[e ) ( _new_px_char (2 , -> -> 255009 `l `ul -> -> 138582144 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 40: case 50: return new_px_char(0b00000000000000111110000100010001,0b00010001000010001100010111000000);
+"40
+[e :U 24 ]
+[e ) ( _new_px_char (2 , -> -> 254225 `l `ul -> -> 285787584 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 41: case 51: return new_px_char(0b00000000000000011101000110000100,0b00011100010001000100001111100000);
+"41
+[e :U 25 ]
+[e ) ( _new_px_char (2 , -> -> 119172 `l `ul -> -> 474235872 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 42: case 52: return new_px_char(0b00000000000000010000100011111010,0b01010100101001100010000100000000);
+"42
+[e :U 26 ]
+[e ) ( _new_px_char (2 , -> -> 67834 `l `ul -> -> 1420173568 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 43: case 53: return new_px_char(0b00000000000000011101000110000100,0b00100110110100001000011111100000);
+"43
+[e :U 27 ]
+[e ) ( _new_px_char (2 , -> -> 119172 `l `ul -> -> 651200480 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 44: case 54: return new_px_char(0b00000000000000011101000110001100,0b01011110000100001100010111000000);
+"44
+[e :U 28 ]
+[e ) ( _new_px_char (2 , -> -> 119180 `l `ul -> -> 1578157504 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 45: case 55: return new_px_char(0b00000000000000000100001000010001,0b00001000100001000100001111100000);
+"45
+[e :U 29 ]
+[e ) ( _new_px_char (2 , -> -> -> 16913 `i `l `ul -> -> 142885856 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 46: case 56: return new_px_char(0b00000000000000011101000110001100,0b01011101000110001100010111000000);
+"46
+[e :U 30 ]
+[e ) ( _new_px_char (2 , -> -> 119180 `l `ul -> -> 1561904576 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 47: case 57: return new_px_char(0b00000000000000011101000110000100,0b00111101000110001100010111000000);
+"47
+[e :U 31 ]
+[e ) ( _new_px_char (2 , -> -> 119172 `l `ul -> -> 1025033664 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 48: case 58: return new_px_char(0b00000000000000001000111000100000,0b00000000010001110001000000000000);
+"48
+[e :U 32 ]
+[e ) ( _new_px_char (2 , -> -> 36384 `ui `ul -> -> 4657152 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 49: case 59: return new_px_char(0b00000001000100011000000000000001,0b00011100010000000000000000000000);
+"49
+[e :U 33 ]
+[e ) ( _new_px_char (2 , -> -> 17924097 `l `ul -> -> 473956352 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 50: case 60: return new_px_char(0b00000000010000010000010000010000,0b01000100010001000100000000000000);
+"50
+[e :U 34 ]
+[e ) ( _new_px_char (2 , -> -> 4260880 `l `ul -> -> 1145323520 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 51: case 61: return new_px_char(0b00000000000000000001111100000000,0b00111110000000000000000000000000);
+"51
+[e :U 35 ]
+[e ) ( _new_px_char (2 , -> -> -> 7936 `i `l `ul -> -> 1040187392 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 52: case 62: return new_px_char(0b00000000000001000100010001000100,0b00010000010000010000010000000000);
+"52
+[e :U 36 ]
+[e ) ( _new_px_char (2 , -> -> 279620 `l `ul -> -> 272696320 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 53: case 63: return new_px_char(0b00000000000100000000010000100010,0b00100001000110001011100000000000);
+"53
+[e :U 37 ]
+[e ) ( _new_px_char (2 , -> -> 1049634 `l `ul -> -> 555268096 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 54: case 64: return new_px_char(0b00000000011110000010110110101101,0b01110011000110001011100000000000);
+"54
+[e :U 38 ]
+[e ) ( _new_px_char (2 , -> -> 7876013 `l `ul -> -> 1930999808 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 55: case 65: return new_px_char(0b00000000000000100011000110001111,0b11100011000110001010100010000000);
+"55
+[e :U 39 ]
+[e ) ( _new_px_char (2 , -> -> 143759 `l `ul -> -484923264 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 56: case 66: return new_px_char(0b00000000000000011111001010010100,0b10011101001010010100100111100000);
+"56
+[e :U 40 ]
+[e ) ( _new_px_char (2 , -> -> 127636 `l `ul -> -1658238496 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 57: case 67: return new_px_char(0b00000000000000011101000100001000,0b01000010000100001100010111000000);
+"57
+[e :U 41 ]
+[e ) ( _new_px_char (2 , -> -> 119048 `l `ul -> -> 1108395456 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 58: case 68: return new_px_char(0b00000000000000011111001010010100,0b10100101001010010100100111100000);
+"58
+[e :U 42 ]
+[e ) ( _new_px_char (2 , -> -> 127636 `l `ul -> -1524020768 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 59: case 69: return new_px_char(0b00000000000000111110000100001000,0b01011110000100001000011111100000);
+"59
+[e :U 43 ]
+[e ) ( _new_px_char (2 , -> -> 254216 `l `ul -> -> 1578141664 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 60: case 70: return new_px_char(0b00000000000000000010000100001000,0b01011110000100001000011111100000);
+"60
+[e :U 44 ]
+[e ) ( _new_px_char (2 , -> -> -> 8456 `i `l `ul -> -> 1578141664 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 61: case 71: return new_px_char(0b00000000000000011101000110001110,0b01000010000100001100010111000000);
+"61
+[e :U 45 ]
+[e ) ( _new_px_char (2 , -> -> 119182 `l `ul -> -> 1108395456 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 62: case 72: return new_px_char(0b00000000000000100011000110001100,0b01111111000110001100011000100000);
+"62
+[e :U 46 ]
+[e ) ( _new_px_char (2 , -> -> 143756 `l `ul -> -> 2132330016 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 63: case 73: return new_px_char(0b00000000000000011100010000100001,0b00001000010000100001000111000000);
+"63
+[e :U 47 ]
+[e ) ( _new_px_char (2 , -> -> 115745 `l `ul -> -> 138547648 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 64: case 74: return new_px_char(0b00000000000000001100100101000010,0b00010000100001000010001110000000);
+"64
+[e :U 48 ]
+[e ) ( _new_px_char (2 , -> -> 51522 `ui `ul -> -> 277095296 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 65: case 75: return new_px_char(0b00000000000000100011000101001001,0b01000110010101001100011000100000);
+"65
+[e :U 49 ]
+[e ) ( _new_px_char (2 , -> -> 143689 `l `ul -> -> 1179960864 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 66: case 76: return new_px_char(0b00000000000000111110000100001000,0b01000010000100001000010000100000);
+"66
+[e :U 50 ]
+[e ) ( _new_px_char (2 , -> -> 254216 `l `ul -> -> 1108378656 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 67: case 77: return new_px_char(0b00000000000000100011000110001100,0b01101011010111011100011000100000);
+"67
+[e :U 51 ]
+[e ) ( _new_px_char (2 , -> -> 143756 `l `ul -> -> 1801307680 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 68: case 78: return new_px_char(0b00000000000000100011000111001110,0b01101011010110011100111000100000);
+"68
+[e :U 52 ]
+[e ) ( _new_px_char (2 , -> -> 143822 `l `ul -> -> 1801047584 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 69: case 79: return new_px_char(0b00000000000000011101000110001100,0b01100011000110001100010111000000);
+"69
+[e :U 53 ]
+[e ) ( _new_px_char (2 , -> -> 119180 `l `ul -> -> 1662567872 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 70: case 80: return new_px_char(0b00000000000000000010000100001000,0b01011111000110001100010111100000);
+"70
+[e :U 54 ]
+[e ) ( _new_px_char (2 , -> -> -> 8456 `i `l `ul -> -> 1595459040 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 71: case 81: return new_px_char(0b00000000010000011101010110001100,0b01100011000110001100010111000000);
+"71
+[e :U 55 ]
+[e ) ( _new_px_char (2 , -> -> 4314508 `l `ul -> -> 1662567872 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 72: case 82: return new_px_char(0b00000000000000100011000101001001,0b01011111000110001100010111100000);
+"72
+[e :U 56 ]
+[e ) ( _new_px_char (2 , -> -> 143689 `l `ul -> -> 1595459040 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 73: case 83: return new_px_char(0b00000000000000011101000110000100,0b00011100000100001100010111000000);
+"73
+[e :U 57 ]
+[e ) ( _new_px_char (2 , -> -> 119172 `l `ul -> -> 470861248 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 74: case 84: return new_px_char(0b00000000000000001000010000100001,0b00001000010000100001001111100000);
+"74
+[e :U 58 ]
+[e ) ( _new_px_char (2 , -> -> 33825 `ui `ul -> -> 138548192 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 75: case 85: return new_px_char(0b00000000000000011101000110001100,0b01100011000110001100011000100000);
+"75
+[e :U 59 ]
+[e ) ( _new_px_char (2 , -> -> 119180 `l `ul -> -> 1662567968 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 76: case 86: return new_px_char(0b00000000000000001000010001010010,0b10100011000110001100011000100000);
+"76
+[e :U 60 ]
+[e ) ( _new_px_char (2 , -> -> 33874 `ui `ul -> -1558657504 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 77: case 87: return new_px_char(0b00000000000000010101010110101101,0b01101011000110001100011000100000);
+"77
+[e :U 61 ]
+[e ) ( _new_px_char (2 , -> -> 87469 `l `ul -> -> 1796785696 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 78: case 88: return new_px_char(0b00000000000000100011000101010010,0b10001000101001010100011000100000);
+"78
+[e :U 62 ]
+[e ) ( _new_px_char (2 , -> -> 143698 `l `ul -> -2002434528 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 79: case 89: return new_px_char(0b00000000000000001000010000100001,0b00001000101001010100011000100000);
+"79
+[e :U 63 ]
+[e ) ( _new_px_char (2 , -> -> 33825 `ui `ul -> -> 145049120 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 80: case 90: return new_px_char(0b00000000000000111110000100010000,0b10001000100001000100001111100000);
+"80
+[e :U 64 ]
+[e ) ( _new_px_char (2 , -> -> 254224 `l `ul -> -2004597792 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 81: case 91: return new_px_char(0b00000111000010000100001000010000,0b10000100001000010000100111000000);
+"81
+[e :U 65 ]
+[e ) ( _new_px_char (2 , -> -> 117981712 `l `ul -> -2078209600 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 82: case 92: return new_px_char(0b00000000010000100000100001000001,0b00000100001000001000010000000000);
+"82
+[e :U 66 ]
+[e ) ( _new_px_char (2 , -> -> 4327489 `l `ul -> -> 69239808 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 83: case 93: return new_px_char(0b00000111001000010000100001000010,0b00010000100001000010000111000000);
+"83
+[e :U 67 ]
+[e ) ( _new_px_char (2 , -> -> 119605314 `l `ul -> -> 277094848 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 84: case 94: return new_px_char(0b00000000000000000000000000000000,0b00000001000101010001000000000000);
+"84
+[e :U 68 ]
+[e ) ( _new_px_char (2 , -> -> -> 0 `i `l `ul -> -> 18157568 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 85: case 95: return new_px_char(0b00001111100000000000000000000000,0b00000000000000000000000000000000);
+"85
+[e :U 69 ]
+[e ) ( _new_px_char (2 , -> -> 260046848 `l `ul -> -> -> 0 `i `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 86: case 96: return new_px_char(0b00000000000000000000000000000000,0b00000000000001000001000011000000);
+"86
+[e :U 70 ]
+[e ) ( _new_px_char (2 , -> -> -> 0 `i `l `ul -> -> 266432 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 87: case 97: return new_px_char(0b00000000000000101101100110001111,0b10100000111000000000000000000000);
+"87
+[e :U 71 ]
+[e ) ( _new_px_char (2 , -> -> 186767 `l `ul -> -1595932672 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 88: case 98: return new_px_char(0b00000000000000011111000110001100,0b01100010111100001000010000100000);
+"88
+[e :U 72 ]
+[e ) ( _new_px_char (2 , -> -> 127372 `l `ul -> -> 1659929632 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 89: case 99: return new_px_char(0b00000000000000011101000100001000,0b01100010111000000000000000000000);
+"89
+[e :U 73 ]
+[e ) ( _new_px_char (2 , -> -> 119048 `l `ul -> -> 1658847232 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 90: case 100: return new_px_char(0b00000000000000111101000110001100,0b01100011111010000100001000000000);
+"90
+[e :U 74 ]
+[e ) ( _new_px_char (2 , -> -> 250252 `l `ul -> -> 1676165632 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 91: case 101: return new_px_char(0b00000000000000011101000100001111,0b11100010111000000000000000000000);
+"91
+[e :U 75 ]
+[e ) ( _new_px_char (2 , -> -> 119055 `l `ul -> -488636416 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 92: case 102: return new_px_char(0b00000000000000000100001000010000,0b10011110001000010100100110000000);
+"92
+[e :U 76 ]
+[e ) ( _new_px_char (2 , -> -> -> 16912 `i `l `ul -> -1641985664 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 93: case 103: return new_px_char(0b00000111010001100001111010001100,0b01100010111000000000000000000000);
+"93
+[e :U 77 ]
+[e ) ( _new_px_char (2 , -> -> 122035852 `l `ul -> -> 1658847232 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 94: case 104: return new_px_char(0b00000000000000100011000110001100,0b01100110110100001000010000100000);
+"94
+[e :U 78 ]
+[e ) ( _new_px_char (2 , -> -> 143756 `l `ul -> -> 1724941344 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 95: case 105: return new_px_char(0b00000000000000011100010000100001,0b00001000011000000001000000000000);
+"95
+[e :U 79 ]
+[e ) ( _new_px_char (2 , -> -> 115745 `l `ul -> -> 140513280 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 96: case 106: return new_px_char(0b00000011001001010010100001000010,0b00010000100001100000000100000000);
+"96
+[e :U 80 ]
+[e ) ( _new_px_char (2 , -> -> 52766786 `l `ul -> -> 277217536 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 97: case 107: return new_px_char(0b00000000000000100010100100101000,0b11001010100100001000010000100000);
+"97
+[e :U 81 ]
+[e ) ( _new_px_char (2 , -> -> 141608 `l `ul -> -896498656 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 98: case 108: return new_px_char(0b00000000000000011100010000100001,0b00001000010000100001000011000000);
+"98
+[e :U 82 ]
+[e ) ( _new_px_char (2 , -> -> 115745 `l `ul -> -> 138547392 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 99: case 109: return new_px_char(0b00000000000000100011010110101101,0b01101010101100000000000000000000);
+"99
+[e :U 83 ]
+[e ) ( _new_px_char (2 , -> -> 144813 `l `ul -> -> 1789919232 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 100: case 110: return new_px_char(0b00000000000000100011000110001100,0b01100110110100000000000000000000);
+"100
+[e :U 84 ]
+[e ) ( _new_px_char (2 , -> -> 143756 `l `ul -> -> 1724907520 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 101: case 111: return new_px_char(0b00000000000000011101000110001100,0b01100010111000000000000000000000);
+"101
+[e :U 85 ]
+[e ) ( _new_px_char (2 , -> -> 119180 `l `ul -> -> 1658847232 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 102: case 112: return new_px_char(0b00000000100001000010111110000100,0b00100000111100000000000000000000);
+"102
+[e :U 86 ]
+[e ) ( _new_px_char (2 , -> -> 8662916 `l `ul -> -> 552599552 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 103: case 113: return new_px_char(0b00001000010000100001111010001100,0b01100011111000000000000000000000);
+"103
+[e :U 87 ]
+[e ) ( _new_px_char (2 , -> -> 138550924 `l `ul -> -> 1675624448 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 104: case 114: return new_px_char(0b00000000000000000010000100001000,0b01100110110100000000000000000000);
+"104
+[e :U 88 ]
+[e ) ( _new_px_char (2 , -> -> -> 8456 `i `l `ul -> -> 1724907520 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 105: case 115: return new_px_char(0b00000000000000011101000101000001,0b10100010111000000000000000000000);
+"105
+[e :U 89 ]
+[e ) ( _new_px_char (2 , -> -> 119105 `l `ul -> -1562378240 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 106: case 116: return new_px_char(0b00000000000000011001001000010000,0b10000100111100010000100000000000);
+"106
+[e :U 90 ]
+[e ) ( _new_px_char (2 , -> -> 102928 `l `ul -> -2064578560 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 107: case 117: return new_px_char(0b00000000000000101101100110001100,0b01100011000100000000000000000000);
+"107
+[e :U 91 ]
+[e ) ( _new_px_char (2 , -> -> 186764 `l `ul -> -> 1661992960 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 108: case 118: return new_px_char(0b00000000000000001000101001010100,0b01100011000100000000000000000000);
+"108
+[e :U 92 ]
+[e ) ( _new_px_char (2 , -> -> 35412 `ui `ul -> -> 1661992960 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 109: case 119: return new_px_char(0b00000000000000010101010110101101,0b01100011000100000000000000000000);
+"109
+[e :U 93 ]
+[e ) ( _new_px_char (2 , -> -> 87469 `l `ul -> -> 1661992960 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 110: case 120: return new_px_char(0b00000000000000100010101000100001,0b00010101000100000000000000000000);
+"110
+[e :U 94 ]
+[e ) ( _new_px_char (2 , -> -> 141857 `l `ul -> -> 353370112 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 111: case 121: return new_px_char(0b00000111010001100001011011001100,0b01100011000100000000000000000000);
+"111
+[e :U 95 ]
+[e ) ( _new_px_char (2 , -> -> 122033868 `l `ul -> -> 1661992960 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 112: case 122: return new_px_char(0b00000000000000111110000100010001,0b00010001111100000000000000000000);
+"112
+[e :U 96 ]
+[e ) ( _new_px_char (2 , -> -> 254225 `l `ul -> -> 300941312 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 113: case 123: return new_px_char(0b00001100000100001000010000100000,0b11001000010000100001001100000000);
+"113
+[e :U 97 ]
+[e ) ( _new_px_char (2 , -> -> 202408992 `l `ul -> -935193856 `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 114: case 124: return new_px_char(0b00000000000100001000010000100001,0b00001000010000100001000000000000);
+"114
+[e :U 98 ]
+[e ) ( _new_px_char (2 , -> -> 1082401 `l `ul -> -> 138547200 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 115: case 125: return new_px_char(0b00000001100100001000010000100110,0b00001000010000100001000001100000);
+"115
+[e :U 99 ]
+[e ) ( _new_px_char (2 , -> -> 26248230 `l `ul -> -> 138547296 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 116: case 126: return new_px_char(0b00000000000000000000000000000000,0b00000000100110101100100000000000);
+"116
+[e :U 100 ]
+[e ) ( _new_px_char (2 , -> -> -> 0 `i `l `ul -> -> 10143744 `l `ul ]
+[e $UE 3  ]
+[; ;px_ascii.c: 117: default: return new_px_char(0b00000000000000000000000000000000,0b00000000000000000000000000000000);
+"117
+[e :U 101 ]
+[e ) ( _new_px_char (2 , -> -> -> 0 `i `l `ul -> -> -> 0 `i `l `ul ]
+[e $UE 3  ]
+"118
+}
+[; ;px_ascii.c: 118: }
+[e $U 4  ]
+"21
+[e :U 5 ]
+[e [\ _c , $ -> -> 32 `i `uc 6
+ , $ -> -> 33 `i `uc 7
+ , $ -> -> 34 `i `uc 8
+ , $ -> -> 35 `i `uc 9
+ , $ -> -> 36 `i `uc 10
+ , $ -> -> 37 `i `uc 11
+ , $ -> -> 38 `i `uc 12
+ , $ -> -> 39 `i `uc 13
+ , $ -> -> 40 `i `uc 14
+ , $ -> -> 41 `i `uc 15
+ , $ -> -> 42 `i `uc 16
+ , $ -> -> 43 `i `uc 17
+ , $ -> -> 44 `i `uc 18
+ , $ -> -> 45 `i `uc 19
+ , $ -> -> 46 `i `uc 20
+ , $ -> -> 47 `i `uc 21
+ , $ -> -> 48 `i `uc 22
+ , $ -> -> 49 `i `uc 23
+ , $ -> -> 50 `i `uc 24
+ , $ -> -> 51 `i `uc 25
+ , $ -> -> 52 `i `uc 26
+ , $ -> -> 53 `i `uc 27
+ , $ -> -> 54 `i `uc 28
+ , $ -> -> 55 `i `uc 29
+ , $ -> -> 56 `i `uc 30
+ , $ -> -> 57 `i `uc 31
+ , $ -> -> 58 `i `uc 32
+ , $ -> -> 59 `i `uc 33
+ , $ -> -> 60 `i `uc 34
+ , $ -> -> 61 `i `uc 35
+ , $ -> -> 62 `i `uc 36
+ , $ -> -> 63 `i `uc 37
+ , $ -> -> 64 `i `uc 38
+ , $ -> -> 65 `i `uc 39
+ , $ -> -> 66 `i `uc 40
+ , $ -> -> 67 `i `uc 41
+ , $ -> -> 68 `i `uc 42
+ , $ -> -> 69 `i `uc 43
+ , $ -> -> 70 `i `uc 44
+ , $ -> -> 71 `i `uc 45
+ , $ -> -> 72 `i `uc 46
+ , $ -> -> 73 `i `uc 47
+ , $ -> -> 74 `i `uc 48
+ , $ -> -> 75 `i `uc 49
+ , $ -> -> 76 `i `uc 50
+ , $ -> -> 77 `i `uc 51
+ , $ -> -> 78 `i `uc 52
+ , $ -> -> 79 `i `uc 53
+ , $ -> -> 80 `i `uc 54
+ , $ -> -> 81 `i `uc 55
+ , $ -> -> 82 `i `uc 56
+ , $ -> -> 83 `i `uc 57
+ , $ -> -> 84 `i `uc 58
+ , $ -> -> 85 `i `uc 59
+ , $ -> -> 86 `i `uc 60
+ , $ -> -> 87 `i `uc 61
+ , $ -> -> 88 `i `uc 62
+ , $ -> -> 89 `i `uc 63
+ , $ -> -> 90 `i `uc 64
+ , $ -> -> 91 `i `uc 65
+ , $ -> -> 92 `i `uc 66
+ , $ -> -> 93 `i `uc 67
+ , $ -> -> 94 `i `uc 68
+ , $ -> -> 95 `i `uc 69
+ , $ -> -> 96 `i `uc 70
+ , $ -> -> 97 `i `uc 71
+ , $ -> -> 98 `i `uc 72
+ , $ -> -> 99 `i `uc 73
+ , $ -> -> 100 `i `uc 74
+ , $ -> -> 101 `i `uc 75
+ , $ -> -> 102 `i `uc 76
+ , $ -> -> 103 `i `uc 77
+ , $ -> -> 104 `i `uc 78
+ , $ -> -> 105 `i `uc 79
+ , $ -> -> 106 `i `uc 80
+ , $ -> -> 107 `i `uc 81
+ , $ -> -> 108 `i `uc 82
+ , $ -> -> 109 `i `uc 83
+ , $ -> -> 110 `i `uc 84
+ , $ -> -> 111 `i `uc 85
+ , $ -> -> 112 `i `uc 86
+ , $ -> -> 113 `i `uc 87
+ , $ -> -> 114 `i `uc 88
+ , $ -> -> 115 `i `uc 89
+ , $ -> -> 116 `i `uc 90
+ , $ -> -> 117 `i `uc 91
+ , $ -> -> 118 `i `uc 92
+ , $ -> -> 119 `i `uc 93
+ , $ -> -> 120 `i `uc 94
+ , $ -> -> 121 `i `uc 95
+ , $ -> -> 122 `i `uc 96
+ , $ -> -> 123 `i `uc 97
+ , $ -> -> 124 `i `uc 98
+ , $ -> -> 125 `i `uc 99
+ , $ -> -> 126 `i `uc 100
+ 101 ]
+"118
+[e :U 4 ]
+[; ;px_ascii.c: 120: }
+"120
+[e :UE 3 ]
+}
+"122
+[v _print_px_char `(v ~T0 @X0 1 ef3`i`i`uc ]
+{
+[; ;px_ascii.c: 122: void print_px_char(int x, int y, char c) {
+[e :U _print_px_char ]
+[v _x `i ~T0 @X0 1 r1 ]
+[v _y `i ~T0 @X0 1 r2 ]
+[v _c `uc ~T0 @X0 1 r3 ]
+[f ]
+[; ;px_ascii.c: 123: draw_px_char(x, y, px_map(c));
+"123
+[e ( _draw_px_char (3 , , _x _y ( _px_map (1 _c ]
+[; ;px_ascii.c: 124: }
+"124
+[e :UE 102 ]
+}
+"126
+[v _print_px_string `(v ~T0 @X0 1 ef3`i`i`*uc ]
+{
+[; ;px_ascii.c: 126: void print_px_string(int x, int y, char *s) {
+[e :U _print_px_string ]
+[v _x `i ~T0 @X0 1 r1 ]
+[v _y `i ~T0 @X0 1 r2 ]
+[v _s `*uc ~T0 @X0 1 r3 ]
+[f ]
+"127
+[v _idx `i ~T0 @X0 1 a ]
+[; ;px_ascii.c: 127: int idx = 0;
+[e = _idx -> 0 `i ]
+[; ;px_ascii.c: 128: while(s[idx] != '\0') {
+"128
+[e $U 104  ]
+[e :U 105 ]
+{
+[; ;px_ascii.c: 129: print_px_char(x+idx*(5+1), y, s[idx]);
+"129
+[e ( _print_px_char (3 , , + _x * _idx + -> 5 `i -> 1 `i _y *U + _s * -> _idx `x -> -> # *U _s `i `x ]
+[; ;px_ascii.c: 131: idx++;
+"131
+[e ++ _idx -> 1 `i ]
+"132
+}
+[e :U 104 ]
+"128
+[e $ != -> *U + _s * -> _idx `x -> -> # *U _s `i `x `ui -> 0 `ui 105  ]
+[e :U 106 ]
+[; ;px_ascii.c: 132: }
+[; ;px_ascii.c: 133: }
+"133
+[e :UE 103 ]
+}

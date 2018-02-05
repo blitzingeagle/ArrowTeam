@@ -2957,7 +2957,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 57: initLCD();
 "57
 [e ( _initLCD ..  ]
-[; ;main.c: 60: while(1){
+[; ;main.c: 60: while(1) {
 "60
 [e :U 268 ]
 {

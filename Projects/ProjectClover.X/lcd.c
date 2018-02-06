@@ -8,6 +8,9 @@
 
 #include "lcd.h"
 
+/****************************** Private variables *****************************/
+static unsigned char LCDinterruptState;
+
 void lcdInst(char data){
     /* Sends a command to a display control register.
      * 

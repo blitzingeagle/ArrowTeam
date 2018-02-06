@@ -64,9 +64,6 @@ const unsigned char LCD_SIZE_VERT = 2; // Number of visible rows
 const unsigned char LCD_RIGHT = 1;
 const unsigned char LCD_LEFT = 0;
 
-/****************************** Private variables *****************************/
-static unsigned char LCDinterruptState;
-
 /****************************** Public Interfaces *****************************/
 void lcdInst(char data);
 void putch(char data);

@@ -4,12 +4,10 @@
  * 
  * Created on August 13, 2017, 6:00 PM
  * 
- * Description: Demonstration of GLCD initialization, and the fundamental
- *              graphics "function", drawing rectangles. Drawing pixels are also
- *              demonstrated as a special case of drawing rectangles.
- * 
  * Preconditions:
  *   1. GLCD is in a PIC socket
+ *   2. LCD is in a PIC socket
+ *   3. Keypad is in a PIC socket
  */
 
 /***** Includes *****/
@@ -21,44 +19,10 @@
 #include "px_ascii.h"
 #include "lcd.h"
 #include "I2C.h"
+#include "program_states.h"
 
 /***** Constants *****/
-const char keys[] = "123A456B789C*0#D"; 
-
-enum PROG_STATES {
-    STATE_STANDBY,
-    STATE_PROMPT_COMPARTMENT_COUNT,
-    STATE_PROMPT_FASTENER_SET,
-    NUM_STATES
-} program_state;
-
-void FUNC_STATE_STANDBY(void) {
-    printf("Load fasteners &");
-    __lcd_newline();
-    printf("Press to start.");
-    __lcd_display_control(1, 1, 1);
-}
-
-void FUNC_STATE_PROMPT_COMPARTMENT_COUNT(void) {
-    printf("# assembly steps");
-    __lcd_newline();
-    printf("(4-8) >");
-}
-
-void FUNC_STATE_PROMPT_FASTENER_SET(void) {
-    printf("Fastener set");
-    __lcd_newline();
-    printf("Fasteners >");
-}
-
-void (*PROG_FUNC[NUM_STATES])(void);
-
-void init_program_states() {
-    program_state = STATE_STANDBY;
-    PROG_FUNC[STATE_STANDBY] = FUNC_STATE_STANDBY;
-    PROG_FUNC[STATE_PROMPT_COMPARTMENT_COUNT] = FUNC_STATE_PROMPT_COMPARTMENT_COUNT;
-    PROG_FUNC[STATE_PROMPT_FASTENER_SET] = FUNC_STATE_PROMPT_FASTENER_SET;
-}
+const char keys[] = "123B456N789S*0#W";
 
 void init(void) {
     // <editor-fold defaultstate="collapsed" desc="Machine Configuration">
@@ -128,12 +92,22 @@ void main(void) {
     glcdDrawRectangle(0, GLCD_SIZE_VERT, 14, 110, BLACK);
     glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
     
-    print_px_string(0, 0, "Jan 28, 2018  11:50 PM");
+    print_px_string(0, 0, "Jan 28, 2018 11:50 PM");
     
     char eta[] = "ETA:     - min -- sec\0";
+    unsigned int sec = 180;
     
     while(1) {
+        eta[9] = '0' + (sec/60);
+        eta[15] = '0' + ((sec%60)/10);
+        eta[16] = '0' + ((sec%60)%10);
+        glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
+        print_px_string(0, 114, eta);
+        __delay_ms(1000);
         
+        if(program_state == STATE_EXECUTE) {
+            sec--;
+        }
     }
     
     return;
@@ -143,6 +117,7 @@ void interrupt interruptHandler(void) {
     if(INT1IF) {
         /* Interrupt on change handler for RB1. */
         unsigned char keypress = (PORTB & 0xF0) >> 4;
+        unsigned char key = keys[keypress];
         bool state_changed = true;
         
         switch(program_state) {
@@ -150,16 +125,79 @@ void interrupt interruptHandler(void) {
                 program_state = STATE_PROMPT_COMPARTMENT_COUNT;
                 break;
             case STATE_PROMPT_COMPARTMENT_COUNT:
-                if('4' <= keys[keypress] && keys[keypress] <= '8') {
+                if('4' <= key && key <= '8') {
+                    program_status.compartment_count = key - '0';
+                    program_status.compartment_count_index = 0;
+                    memset(program_status.set_count, 0, sizeof(program_status.set_count[0][0]) * 8 * 4);
                     program_state = STATE_PROMPT_FASTENER_SET;
                 }
-                
                 break;
             case STATE_PROMPT_FASTENER_SET:
-                putch(keys[keypress]);
-                
-                state_changed = false;
-                
+                if('A' <= key && key <= 'Z') {
+                    char leaf_index = trie_node_leaf_index(key);
+                    if(leaf_index < 4) {
+                        program_status.buffer[program_status.buffer_index++] = key;
+                        putch(key);
+                        program_status.trie_ptr = program_status.trie_ptr->children[leaf_index];
+                    }
+                    state_changed = false;
+                } else if(key == '*' && program_status.buffer_index > 0) {
+                    lcd_shift_cursor(1, 0);
+                    putch(' ');
+                    lcd_shift_cursor(1, 0);
+                    program_status.buffer[--program_status.buffer_index] = '\0';
+                    program_status.trie_ptr = program_status.trie_ptr->parent;
+                    state_changed = false;
+                } else if(key == '#' && program_status.buffer_index > 0) {
+                    if(strcmp(program_status.buffer,"BB") != 0 && strcmp(program_status.buffer,"BNN") != 0) {
+                        program_state = STATE_PROMPT_FASTENER_SET_QUANTITY;
+                    } else {
+                        state_changed = false;
+                    }
+                }
+                break;
+            case STATE_PROMPT_FASTENER_SET_QUANTITY:
+                if('1' <= key && key <= '4') {
+                    program_status.set_count_tmp = key - '0';
+                    program_state = STATE_PREVIEW_FASTENER_SET;
+                } else {
+                    state_changed = false;
+                }
+                break;
+            case STATE_PREVIEW_FASTENER_SET:
+                if(key == '#') {
+                    while(program_status.trie_ptr != program_status.trie_ptr->parent) {
+                        char c = program_status.trie_ptr->letter;
+                        char p = (c <= 'N') ? ((c == 'B') ? 0 : 1) : ((c == 'S') ? 2 : 3);
+                        program_status.set_count[program_status.compartment_count_index][p] += program_status.set_count_tmp;
+                        program_status.trie_ptr = program_status.trie_ptr->parent;
+                    }
+                    ;
+                    if(++program_status.compartment_count_index < program_status.compartment_count) {
+                        program_state = STATE_PROMPT_FASTENER_SET;
+                    } else {
+                        program_state = STATE_CONFIRM_SETS;
+                    }
+                } else if(key == '*') {
+                    program_state = STATE_PROMPT_FASTENER_SET;
+                } else {
+                    state_changed = false;
+                }
+                break;
+            case STATE_CONFIRM_SETS:
+                if(key == '*') {
+                    program_state = STATE_PROMPT_COMPARTMENT_COUNT;
+                } else if(key == '#') {
+                    program_state = STATE_EXECUTE;
+                } else if('1' <= key && key <= '0'+program_status.compartment_count) {
+                    program_status.compartment_count_index = key - '1';
+                    program_state = STATE_REVIEW_SET;
+                } else {
+                    state_changed = false;
+                }
+                break;
+            case STATE_REVIEW_SET:
+                program_state = STATE_CONFIRM_SETS;
                 break;
             default:
                 program_state = STATE_STANDBY;

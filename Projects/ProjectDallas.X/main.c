@@ -1,28 +1,27 @@
 /*
  * File:   main.c
- * Author: Michael Ding
- *
- * Created on July 18, 2016, 12:11 PM
+ * Author: Morris Chen
  * 
- * Edited by Tyler Gamvrelis, summer 2017
- * 
- * Description: Demonstration of setting the real-time clock (RTC) and reading
- *              values back from it.
+ * Created on February 22, 2018, 6:00 PM
  * 
  * Preconditions:
- *   1. Jumpers JP6, and JP7 in the RTC module are shorted
- *   2. RTC chip is properly situated in its socket
- *   3. CR2032 20 mm coin battery is properly situated in its socket and is not
- *      low on charge
+ *   1. GLCD is in a PIC socket
+ *   2. LCD is in a PIC socket
+ *   3. Keypad is in a PIC socket
  */
 
 /***** Includes *****/
 #include <xc.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "config_bits.h"
 #include "lcd.h"
 #include "I2C.h"
 #include "GLCD_PIC.h"
+#include "SPI_PIC.h"
+#include "px_ascii.h"
+#include "protocol_manager.h"
 
 /***** Macros *****/
 #define __bcd_to_num(num) (num & 0x0F) + ((num & 0xF0)>>4)*10
@@ -42,7 +41,6 @@ const char happynewyear[7] = {  0x00, // 45 Seconds
 };
 
 void main(void) {
-
     // <editor-fold defaultstate="collapsed" desc="Machine Configuration">
     /********************************* PIN I/O ********************************/
     /* Write outputs to LATx, read inputs from PORTx. Here, all latches (LATx)
@@ -71,9 +69,13 @@ void main(void) {
     
     /* Initialize LCD. */
     initLCD();
+    initGLCD();
+    
+    glcdDrawRectangle(0, GLCD_SIZE_VERT, 0, 14, RED);
+    glcdDrawRectangle(0, GLCD_SIZE_VERT, 14, 110, BLACK);
+    glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
     
     I2C_Master_Init(100000); //Initialize I2C Master with 100 kHz clock
-    di(); // Disable all interrupts
     
     /* Set the time in the RTC.
      * 
@@ -107,6 +109,15 @@ void main(void) {
         printf("%02x/%02x/%02x", time[6],time[5],time[4]); // Print date in YY/MM/DD
         __lcd_newline();
         printf("%02x:%02x:%02x", time[2],time[1],time[0]); // HH:MM:SS
+        
+        use_protocol(SPI);
+        glcdDrawRectangle(0, GLCD_SIZE_VERT, 0, 14, GREEN);
+        char buffer[22];
+        int a = 5, b = 3;
+        sprintf(buffer, "%02x:%02x:%02x", time[2], time[1], time[0]);
+        print_px_string(0, 0, buffer);
+        use_protocol(I2C);
+        
         __delay_ms(1000);
     }
 }

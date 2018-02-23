@@ -7,6 +7,10 @@
       <itemPath>I2C.h</itemPath>
       <itemPath>configBits.h</itemPath>
       <itemPath>lcd.h</itemPath>
+      <itemPath>SPI_PIC.h</itemPath>
+      <itemPath>GLCD_PIC.h</itemPath>
+      <itemPath>px_ascii.h</itemPath>
+      <itemPath>protocol_manager.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -18,6 +22,10 @@
       <itemPath>main.c</itemPath>
       <itemPath>I2C.c</itemPath>
       <itemPath>lcd.c</itemPath>
+      <itemPath>SPI_PIC.c</itemPath>
+      <itemPath>GLCD_PIC.c</itemPath>
+      <itemPath>px_ascii.c</itemPath>
+      <itemPath>protocol_manager.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -42,7 +50,7 @@
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>1.45</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>4</platform>
       </toolsSet>
       <compileType>
         <linkerTool>

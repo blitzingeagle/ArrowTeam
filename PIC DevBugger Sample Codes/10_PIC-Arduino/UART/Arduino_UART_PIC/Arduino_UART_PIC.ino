@@ -44,7 +44,7 @@ void setup() {
 void loop() {
   /* Wait to receive the message from the main PIC. */
   while(mySerial.available() < 1){ continue; }
-
+  
   /* Write received byte to the LCD using ASCII encoding.
    * The received byte can also be seen on your PC under
    * Tools -> Serial Monitor. */

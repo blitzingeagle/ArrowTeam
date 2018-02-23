@@ -84,41 +84,6 @@ const unsigned char GLCD_ADDRESSABLE_SIZE_VERT = 160; // 160 pixel
 const unsigned char GLCD_SIZE_HORZ = 128;    // 0 to 127 --> 128 pixels
 const unsigned char GLCD_SIZE_VERT = 128;    // 0 to 127 --> 128 pixels
 
-/* Display command codes (write only, since we don't have hardware to read).
- * These are static which makes them only visible to this compilation unit. */
-static const unsigned char INST_NOP = 0x00;         // Empty processor cycle
-static const unsigned char INST_SWRESET = 0x01;     // All registers to default state
-static const unsigned char INST_SLPIN = 0x10;       // Enter sleep mode
-static const unsigned char INST_SLPOUT = 0x11;      // Exit sleep mode
-static const unsigned char INST_PTLON = 0x12;       // Partial mode on
-static const unsigned char INST_NORON = 0x13;       // Partial mode off (normal)
-static const unsigned char INST_INVOFF = 0x20;      // Display inversion off
-static const unsigned char INST_INVON = 0x21;       // Display inversion on
-static const unsigned char INST_GAMSET = 0x26;      // Set gamma
-static const unsigned char INST_DISPOFF = 0x28;     // Turn off display
-static const unsigned char INST_DISPON = 0x29;      // Turn on display
-static const unsigned char INST_CASET = 0x2A;       // Set column address
-static const unsigned char INST_RASET = 0x2B;       // Set row address
-static const unsigned char INST_RAMWR = 0x2C;       // Enables RAM writes
-static const unsigned char INST_PTLAR = 0x30;       // Partial start/end address
-static const unsigned char INST_TEOFF = 0x34;       // Tearing effect off
-static const unsigned char INST_TEON = 0x35;        // Tearing effect on
-static const unsigned char INST_MADCTL  = 0x36;     // Memory data access control
-static const unsigned char INST_IDMOFF = 0x38;      // Idle mode off
-static const unsigned char INST_IDMON = 0x39;       // Idle mode on
-static const unsigned char INST_COLMOD = 0x3A;      // Interface pixel format
-static const unsigned char INST_FRMCTR1 = 0xB1;     // Frame rate control (normal mode/full colors)
-static const unsigned char INST_FRMCTR2 = 0xB2;     // Frame rate control (idle mode/8-colors)
-static const unsigned char INST_FRMCTR3 = 0xB3;     // Frame rate control (partial mode/full colors)
-static const unsigned char INST_INVCTR = 0xB4;      // Display inversion control
-static const unsigned char INST_PWCTR1 = 0xC0;      // Power control1
-static const unsigned char INST_PWCTR2 = 0xC1;      // Power control2
-static const unsigned char INST_PWCTR3 = 0xC2;      // Power control3
-static const unsigned char INST_PWCTR4 = 0xC3;      // Power control4
-static const unsigned char INST_PWCTR5 = 0xC4;      // Power control5
-static const unsigned char INST_VMCTR1 = 0xC5;      // VCOM control 1
-static const unsigned char INST_VMOFCTR2 = 0xC7;    // VCOM control 2	
-
 /* 18-bit color depth information here.
  * 
  * Each color is encoded by 3 bytes. For each byte, the 6 most significant bits
@@ -200,3 +165,4 @@ void glcdSetOrigin(unsigned char corner);
 void initGLCD(void);
 
 #endif	/* GLCD_PIC_H */
+

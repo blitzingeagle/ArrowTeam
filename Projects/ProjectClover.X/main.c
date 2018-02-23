@@ -2,7 +2,7 @@
  * File:   main.c
  * Author: Morris Chen
  * 
- * Created on August 13, 2017, 6:00 PM
+ * Created on February 4, 2018, 6:44 PM
  * 
  * Preconditions:
  *   1. GLCD is in a PIC socket

@@ -38,9 +38,9 @@ void I2C_Master_Init(const unsigned long clockFreq){
     TRISCbits.TRISC4 = 1; // SDA (data) pin
     
     /* See PIC18F4620 datasheet, section 17.4 for I2C configuration. */
-    SSPSTAT = 0b10000000; // Disable slew rate control for cleaner signals
     SSPCON1 = 0b00101000; // Clear errors & enable the serial port in master mode
     SSPCON2 = 0b00000000; // Set entire I2C operation to idle
+    SSPSTAT = 0b10000000; // Disable slew rate control for cleaner signals
     
     /* See section 17.4.6 in the PIC18F4620 datasheet for master mode details.
      * Below, the baud rate is configured by writing to the SSPADD<6:0>

@@ -1,18 +1,18 @@
-Microchip MPLAB XC8 Compiler V1.42 ()
+Microchip MPLAB XC8 Compiler V1.45 ()
 
 Linker command line:
 
--W-3 --edf=D:\Program Files (x86)\Microchip\xc8\v1.42\dat\en_msgs.txt -cs \
-  -h+dist/default/production\KeypadUART.X.production.sym \
-  --cmf=dist/default/production\KeypadUART.X.production.cmf -z -Q18F2550 \
-  -oC:\Users\Admin\AppData\Local\Temp\s1eg.2 \
-  -Mdist/default/production/KeypadUART.X.production.map -E1 -ver=XC8 \
-  -ASTACK=064h-07ffh -pstack=STACK -ACODE=00h-07FFFh -ACONST=00h-07FFFh \
-  -ASMALLCONST=0800h-08FFhx120 -AMEDIUMCONST=0800h-07FFFh -ACOMRAM=01h-05Fh \
-  -AABS1=00h-07FFh -ABIGRAM=01h-07FFh -ARAM=060h-0FFh,0100h-01FFhx7 \
-  -ABANK0=060h-0FFh -ABANK1=0100h-01FFh -ABANK2=0200h-02FFh \
-  -ABANK3=0300h-03FFh -ABANK4=0400h-04FFh -ABANK5=0500h-05FFh \
-  -ABANK6=0600h-06FFh -ABANK7=0700h-07FFh -ASFR=0F60h-0FFFh \
+-W-3 --edf=/Applications/microchip/xc8/v1.45/dat/en_msgs.txt -cs \
+  -h+dist/default/production/KeypadUART.X.production.sym \
+  --cmf=dist/default/production/KeypadUART.X.production.cmf -z -Q18F2550 \
+  -o/tmp/xcvW2xgZj -Mdist/default/production/KeypadUART.X.production.map \
+  -E1 -ver=XC8 -ASTACK=06Ah-07ffh -pstack=STACK -ACODE=00h-07FFFh \
+  -ACONST=00h-07FFFh -ASMALLCONST=0800h-08FFhx120 \
+  -AMEDIUMCONST=0800h-07FFFh -ACOMRAM=01h-05Fh -AABS1=00h-07FFh \
+  -ABIGRAM=01h-07FFh -ARAM=060h-0FFh,0100h-01FFhx7 -ABANK0=060h-0FFh \
+  -ABANK1=0100h-01FFh -ABANK2=0200h-02FFh -ABANK3=0300h-03FFh \
+  -ABANK4=0400h-04FFh -ABANK5=0500h-05FFh -ABANK6=0600h-06FFh \
+  -ABANK7=0700h-07FFh -ASFR=0F60h-0FFFh \
   -preset_vec=00h,intcode=08h,intcodelo,powerup,init -pramtop=0800h \
   -psmallconst=SMALLCONST -pmediumconst=MEDIUMCONST -pconst=CONST \
   -AFARRAM=00h-00h -ACONFIG=0300000h-030000Dh -pconfig=CONFIG \
@@ -22,8 +22,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\Admin\AppData\Local\Temp\s1eg.obj \
-  dist/default/production\KeypadUART.X.production.obj 
+  /tmp/xcKFaLFMD.obj dist/default/production/KeypadUART.X.production.obj 
 
 Object code version is 3.11
 
@@ -35,28 +34,28 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Admin\AppData\Local\Temp\s1eg.obj
+/tmp/xcKFaLFMD.obj
                 init                                  E        E        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
-dist/default/production\KeypadUART.X.production.obj
+dist/default/production/KeypadUART.X.production.obj
                 intcode                               8        8        6        4       0
-                temp                                 4C       4C        1        1       1
-                intcode_body                         12       12      1D0        4       0
-                text6                               1E2      1E2       CC        4       0
-                text5                               346      346       84        4       0
-                text4                               3CA      3CA       74        4       0
-                text3                               2AE      2AE       98        4       0
-                text2                               43E      43E       64        4       0
-                text1                               510      510       32        4       0
-                text0                               4DC      4DC       34        4       0
-                cstackCOMRAM                          1        1       24        1       1
-                cstackBANK0                          60       60        4       60       1
-                dataCOMRAM                           47       47        5        1       1
-                bssCOMRAM                            25       25       22        1       1
-                cinit                               4A2      4A2       3A        4       0
-                idataCOMRAM                         542      542        5        4       0
+                temp                                 4A       4A        1        1       1
+                intcode_body                         12       12      1F0        4       0
+                text6                               202      202       CE        4       0
+                text5                               368      368       84        4       0
+                text4                               3EC      3EC       74        4       0
+                text3                               2D0      2D0       98        4       0
+                text2                               460      460       64        4       0
+                text1                               532      532       32        4       0
+                text0                               4FE      4FE       34        4       0
+                cstackCOMRAM                         23       23       22        1       1
+                cstackBANK0                          60       60        A       60       1
+                dataCOMRAM                           45       45        5        1       1
+                bssCOMRAM                             1        1       22        1       1
+                cinit                               4C4      4C4       3A        4       0
+                idataCOMRAM                         564      564        5        4       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -65,16 +64,16 @@ TOTAL           Name                               Link     Load   Length     Sp
                 intcode                               8        8        6         0
                 init                                  E        E        4         0
                 reset_vec                             0        0        4         0
-                intcode_body                         12       12      1D0         0
-                text6                               1E2      1E2       CC         0
-                text5                               346      346       84         0
-                text4                               3CA      3CA       74         0
-                text3                               2AE      2AE       98         0
-                text2                               43E      43E       64         0
-                text1                               510      510       32         0
-                text0                               4DC      4DC       34         0
-                cinit                               4A2      4A2       3A         0
-                idataCOMRAM                         542      542        5         0
+                intcode_body                         12       12      1F0         0
+                text6                               202      202       CE         0
+                text5                               368      368       84         0
+                text4                               3EC      3EC       74         0
+                text3                               2D0      2D0       98         0
+                text2                               460      460       64         0
+                text1                               532      532       32         0
+                text0                               4FE      4FE       34         0
+                cinit                               4C4      4C4       3A         0
+                idataCOMRAM                         564      564        5         0
 
         CLASS   CONST          
 
@@ -83,10 +82,10 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                temp                                 4C       4C        1         1
-                cstackCOMRAM                          1        1       24         1
-                dataCOMRAM                           47       47        5         1
-                bssCOMRAM                            25       25       22         1
+                temp                                 4A       4A        1         1
+                cstackCOMRAM                         23       23       22         1
+                dataCOMRAM                           45       45        5         1
+                bssCOMRAM                             1        1       22         1
 
         CLASS   ABS1           
 
@@ -95,7 +94,7 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   RAM            
 
         CLASS   BANK0          
-                cstackBANK0                          60       60        4         1
+                cstackBANK0                          60       60        A         1
 
         CLASS   BANK1          
 
@@ -128,9 +127,9 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                cstackCOMRAM                   000001  00004C  00004D         1       1  COMRAM  
-                intcode                        000008  00053F  000547         4       0  CODE    
-                cstackBANK0                    000060  000004  000064        60       1  BANK0   
+                bssCOMRAM                      000001  00004A  00004B         1       1  COMRAM  
+                intcode                        000008  000561  000569         4       0  CODE    
+                cstackBANK0                    000060  00000A  00006A        60       1  BANK0   
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -138,7 +137,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK0            000064-0000FF               9C
+        BANK0            00006A-0000FF               96
         BANK1            000100-0001FF              100
         BANK2            000200-0002FF              100
         BANK3            000300-0003FF              100
@@ -146,31 +145,31 @@ UNUSED ADDRESS RANGES
         BANK5            000500-0005FF              100
         BANK6            000600-0006FF              100
         BANK7            000700-0007FF              100
-        BIGRAM           00004D-00005F               13
-                         000064-0007FF              79C
+        BIGRAM           00004B-00005F               15
+                         00006A-0007FF              796
         CODE             000004-000007                4
-                         000547-007FFF             7AB9
-        COMRAM           00004D-00005F               13
+                         000569-007FFF             7A97
+        COMRAM           00004B-00005F               15
         CONST            000004-000007                4
-                         000547-007FFF             7AB9
+                         000569-007FFF             7A97
         EEDATA           F00000-F000FF              100
         MEDIUMCONST      000800-007FFF             7800
-        RAM              000064-0007FF              100
+        RAM              00006A-0007FF              100
         SFR              000F60-000FFF               A0
         SMALLCONST       000800-007FFF              100
-        STACK            000064-0007FF              79C
+        STACK            00006A-0007FF              796
 
                                   Symbol Table
 
-?___aldiv                         cstackCOMRAM 000012
-Keypad@dataEnd                    dataCOMRAM   00004B
-Keypad@dataOut                    bssCOMRAM    000046
-UART_Init@baud                    cstackCOMRAM 000020
+?___aldiv                         cstackCOMRAM 000038
+Keypad@dataEnd                    dataCOMRAM   000049
+Keypad@dataOut                    bssCOMRAM    000022
+UART_Init@baud                    cstackCOMRAM 000040
 _ADCON0bits                       (abs)        000FC2
 _ADCON1                           (abs)        000FC1
 _ADIE                             (abs)        007CEE
 _INTCONbits                       (abs)        000FF2
-_KPDState                         dataCOMRAM   00004A
+_KPDState                         dataCOMRAM   000048
 _LATA                             (abs)        000F89
 _LATAbits                         (abs)        000F89
 _LATB                             (abs)        000F8A
@@ -195,9 +194,9 @@ _TXIE                             (abs)        007CEC
 _TXIF                             (abs)        007CF4
 _TXREG                            (abs)        000FAD
 _TXSTAbits                        (abs)        000FAC
-_UART                             dataCOMRAM   000047
-_UART_Init                        text5        000346
-_UARTinterruptState               bssCOMRAM    000029
+_UART                             dataCOMRAM   000045
+_UART_Init                        text5        000368
+_UARTinterruptState               bssCOMRAM    000005
 __CFG_BOR$ON                      (abs)        000000
 __CFG_BORV$3                      (abs)        000000
 __CFG_CCP2MX$ON                   (abs)        000000
@@ -291,11 +290,11 @@ __Hrparam                         rparam       000000
 __Hsfr                            sfr          000000
 __Hsmallconst                     smallconst   000000
 __Hspace_0                        (abs)        30000E
-__Hspace_1                        (abs)        000064
+__Hspace_1                        (abs)        00006A
 __Hspace_2                        (abs)        000000
 __Hstack                          stack        000000
 __Hstruct                         struct       000000
-__Htemp                           temp         00004D
+__Htemp                           temp         00004B
 __Htext                           text         000000
 __Htext0                          text0        000000
 __Htext1                          text1        000000
@@ -364,7 +363,7 @@ __Lspace_1                        (abs)        000000
 __Lspace_2                        (abs)        000000
 __Lstack                          stack        000000
 __Lstruct                         struct       000000
-__Ltemp                           temp         00004C
+__Ltemp                           temp         00004A
 __Ltext                           text         000000
 __Ltext0                          text0        000000
 __Ltext1                          text1        000000
@@ -374,14 +373,14 @@ __Ltext4                          text4        000000
 __Ltext5                          text5        000000
 __Ltext6                          text6        000000
 __S0                              (abs)        30000E
-__S1                              (abs)        000064
+__S1                              (abs)        00006A
 __S2                              (abs)        000000
-___aldiv                          text6        0001E2
-___aldiv@counter                  cstackCOMRAM 00001A
-___aldiv@dividend                 cstackCOMRAM 000012
-___aldiv@divisor                  cstackCOMRAM 000016
-___aldiv@quotient                 cstackCOMRAM 00001C
-___aldiv@sign                     cstackCOMRAM 00001B
+___aldiv                          text6        000202
+___aldiv@counter                  cstackBANK0  000060
+___aldiv@dividend                 cstackCOMRAM 000038
+___aldiv@divisor                  cstackCOMRAM 00003C
+___aldiv@quotient                 cstackBANK0  000062
+___aldiv@sign                     cstackBANK0  000061
 ___inthi_sp                       stack        000000
 ___intlo_sp                       stack        000000
 ___param_bank                     (abs)        000000
@@ -389,32 +388,32 @@ ___rparam_used                    (abs)        000001
 ___sp                             stack        000000
 __accesstop                       (abs)        000060
 __activetblptr                    (abs)        000002
-__end_of_UART_Init                text5        0003CA
-__end_of___aldiv                  text6        0002AE
-__end_of__initialization          cinit        0004CE
-__end_of_interruptHandlerUART     intcode_body 0001E2
-__end_of_keypadRoutineUART        text2        0004A2
-__end_of_machineConfig            text1        000542
-__end_of_main                     text0        000510
-__end_of_readKeyboard             text4        00043E
-__end_of_uartTransmitBlocking     text3        000346
-__initialization                  cinit        0004A2
+__end_of_UART_Init                text5        0003EC
+__end_of___aldiv                  text6        0002D0
+__end_of__initialization          cinit        0004F0
+__end_of_interruptHandlerUART     intcode_body 000202
+__end_of_keypadRoutineUART        text2        0004C4
+__end_of_machineConfig            text1        000564
+__end_of_main                     text0        000532
+__end_of_readKeyboard             text4        000460
+__end_of_uartTransmitBlocking     text3        000368
+__initialization                  cinit        0004C4
 __mediumconst                     mediumconst  000000
-__pbssCOMRAM                      bssCOMRAM    000025
-__pcinit                          cinit        0004A2
+__pbssCOMRAM                      bssCOMRAM    000001
+__pcinit                          cinit        0004C4
 __pcstackBANK0                    cstackBANK0  000060
-__pcstackCOMRAM                   cstackCOMRAM 000001
-__pdataCOMRAM                     dataCOMRAM   000047
-__pidataCOMRAM                    idataCOMRAM  000542
+__pcstackCOMRAM                   cstackCOMRAM 000023
+__pdataCOMRAM                     dataCOMRAM   000045
+__pidataCOMRAM                    idataCOMRAM  000564
 __pintcode                        intcode      000008
 __pintcode_body                   intcode_body 000012
-__ptext0                          text0        0004DC
-__ptext1                          text1        000510
-__ptext2                          text2        00043E
-__ptext3                          text3        0002AE
-__ptext4                          text4        0003CA
-__ptext5                          text5        000346
-__ptext6                          text6        0001E2
+__ptext0                          text0        0004FE
+__ptext1                          text1        000532
+__ptext2                          text2        000460
+__ptext3                          text3        0002D0
+__ptext4                          text4        0003EC
+__ptext5                          text5        000368
+__ptext6                          text6        000202
 __ramtop                          ramtop       000800
 __size_of_UART_Init               (abs)        000000
 __size_of___aldiv                 (abs)        000000
@@ -425,31 +424,32 @@ __size_of_main                    (abs)        000000
 __size_of_readKeyboard            (abs)        000000
 __size_of_uartTransmitBlocking    (abs)        000000
 __smallconst                      smallconst   000000
-_arr_dataRX                       bssCOMRAM    00002A
+_arr_dataRX                       bssCOMRAM    000006
 _interruptHandlerUART             intcode      000008
-_keypadFlags                      bssCOMRAM    000025
-_keypadRoutineUART                text2        00043E
-_machineConfig                    text1        000510
-_main                             text0        0004DC
-_readKeyboard                     text4        0003CA
-_uart                             bssCOMRAM    00003A
-_uartTransmitBlocking             text3        0002AE
-btemp                             temp         00004C
-end_of_initialization             cinit        0004CE
-int$flags                         temp         00004C
+_keypadFlags                      bssCOMRAM    000001
+_keypadRoutineUART                text2        000460
+_machineConfig                    text1        000532
+_main                             text0        0004FE
+_readKeyboard                     text4        0003EC
+_uart                             bssCOMRAM    000016
+_uartTransmitBlocking             text3        0002D0
+btemp                             temp         00004A
+end_of_initialization             cinit        0004F0
+int$flags                         temp         00004A
 int_func                          intcode_body 000012
 intlevel0                         text         000000
 intlevel1                         text         000000
 intlevel2                         text         000000
 intlevel3                         text         000000
-readKeyboard@i                    cstackCOMRAM 000012
+readKeyboard@i                    cstackCOMRAM 000038
 stackhi                           (abs)        0007FF
-stacklo                           (abs)        000064
+stacklo                           (abs)        00006A
 start                             init         00000E
-start_initialization              cinit        0004A2
-uartTransmitBlocking@data         cstackCOMRAM 000012
-uartTransmitBlocking@numBytes     cstackCOMRAM 000014
-uartTransmitBlocking@numTransmits cstackCOMRAM 000016
+start_initialization              cinit        0004C4
+uartTransmitBlocking@data         cstackCOMRAM 000038
+uartTransmitBlocking@numBytes     cstackCOMRAM 00003A
+uartTransmitBlocking@numTransmits cstackCOMRAM 00003C
+wtemp6                            temp         00004B
 
 
 FUNCTION INFORMATION:
@@ -550,11 +550,11 @@ Total ram usage:        1 bytes
  Defined at:
 		line 22 in file "UART_PIC.c"
  Parameters:    Size  Location     Type
-  data            2   17[COMRAM] PTR unsigned char 
+  data            2   21[COMRAM] PTR unsigned char 
 		 -> Keypad@dataEnd(1), Keypad@dataOut(1), 
-  numBytes        1   19[COMRAM] unsigned char 
+  numBytes        1   23[COMRAM] unsigned char 
  Auto vars:     Size  Location     Type
-  numTransmits    1   21[COMRAM] unsigned char 
+  numTransmits    1   25[COMRAM] unsigned char 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -584,7 +584,7 @@ Total ram usage:        5 bytes
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-  i               1   17[COMRAM] unsigned char 
+  i               1   21[COMRAM] unsigned char 
  Return value:  Size  Location     Type
                   1    wreg      unsigned char 
  Registers used:
@@ -614,7 +614,7 @@ Total ram usage:        1 bytes
  Defined at:
 		line 200 in file "UART_PIC.c"
  Parameters:    Size  Location     Type
-  baud            4   31[COMRAM] long 
+  baud            4   29[COMRAM] long 
  Auto vars:     Size  Location     Type
 		None
  Return value:  Size  Location     Type
@@ -642,16 +642,16 @@ Total ram usage:        8 bytes
 
  *************** function ___aldiv *****************
  Defined at:
-		line 8 in file "D:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\aldiv.c"
+		line 8 in file "/Applications/microchip/xc8/v1.45/sources/common/aldiv.c"
  Parameters:    Size  Location     Type
-  dividend        4   17[COMRAM] long 
-  divisor         4   21[COMRAM] long 
+  dividend        4   21[COMRAM] long 
+  divisor         4   25[COMRAM] long 
  Auto vars:     Size  Location     Type
-  quotient        4   27[COMRAM] long 
-  sign            1   26[COMRAM] unsigned char 
-  counter         1   25[COMRAM] unsigned char 
+  quotient        4    2[BANK0 ] long 
+  sign            1    1[BANK0 ] unsigned char 
+  counter         1    0[BANK0 ] unsigned char 
  Return value:  Size  Location     Type
-                  4   17[COMRAM] long 
+                  4   21[COMRAM] long 
  Registers used:
 		wreg, status,2, status,0
  Tracked objects:
@@ -660,9 +660,9 @@ Total ram usage:        8 bytes
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
       Params:         8       0       0       0       0       0       0       0       0
-      Locals:         6       0       0       0       0       0       0       0       0
+      Locals:         0       6       0       0       0       0       0       0       0
       Temps:          0       0       0       0       0       0       0       0       0
-      Totals:        14       0       0       0       0       0       0       0       0
+      Totals:         8       6       0       0       0       0       0       0       0
 Total ram usage:       14 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    1
@@ -691,9 +691,9 @@ Total ram usage:       14 bytes
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
       Params:         0       0       0       0       0       0       0       0       0
       Locals:         0       0       0       0       0       0       0       0       0
-      Temps:         17       0       0       0       0       0       0       0       0
-      Totals:        17       0       0       0       0       0       0       0       0
-Total ram usage:       17 bytes
+      Temps:         21       0       0       0       0       0       0       0       0
+      Totals:        21       0       0       0       0       0       0       0       0
+Total ram usage:       21 bytes
  Hardware stack levels used:    1
  This function calls:
 		Nothing
@@ -707,39 +707,39 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 UART_PIC.c
-		_UART_Init     		CODE           	0346	0000	133
-		_uartTransmitBlocking		CODE           	02AE	0000	153
+		_UART_Init     		CODE           	0368	0000	133
+		_uartTransmitBlocking		CODE           	02D0	0000	153
 
 UART_PIC.c estimated size: 286
 
 Keypad.c
-		_readKeyboard  		CODE           	03CA	0000	117
-		_keypadRoutineUART		CODE           	043E	0000	101
+		_readKeyboard  		CODE           	03EC	0000	117
+		_keypadRoutineUART		CODE           	0460	0000	101
 
 Keypad.c estimated size: 218
 
+/Applications/microchip/xc8/v1.45/sources/common/aldiv.c
+		___aldiv       		CODE           	0202	0000	207
+
+/Applications/microchip/xc8/v1.45/sources/common/aldiv.c estimated size: 207
+
 shared
-		__initialization		CODE           	04A2	0000	45
+		__initialization		CODE           	04C4	0000	45
 
 shared estimated size: 45
 
-D:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\aldiv.c
-		___aldiv       		CODE           	01E2	0000	205
-
-D:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\aldiv.c estimated size: 205
-
 interruptUART.c
-		_interruptHandlerUART		CODE           	0008	0000	471
+		_interruptHandlerUART		CODE           	0008	0000	503
 
-interruptUART.c estimated size: 471
+interruptUART.c estimated size: 503
 
 main.c
-		_main          		CODE           	04DC	0000	53
+		_main          		CODE           	04FE	0000	53
 
 main.c estimated size: 53
 
 machineConfig.c
-		_machineConfig 		CODE           	0510	0000	51
+		_machineConfig 		CODE           	0532	0000	51
 
 machineConfig.c estimated size: 51
 

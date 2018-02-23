@@ -36,7 +36,7 @@ cstackCOMRAM COMRAM 1 1 1 64 1
 smallconst SMALLCONST 0 1000 1000 86 1
 dataCOMRAM COMRAM 1 65 65 17 1
 bssCOMRAM COMRAM 1 7C 7C 1 1
-$/tmp/xc5ExLM70.obj
+$/tmp/xco2a2VMu.obj
 idloc IDLOC 0 200000 200000 8 1
 init CODE 0 0 0 4 1
 config CONFIG 0 300000 300000 E 1
@@ -250,21 +250,21 @@ $dist/default/production/ProjectApricot.X.production.obj
 2CC2 text10 CODE >354:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/GLCD_PIC_V1.1.c
 2CD6 text10 CODE >355:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/GLCD_PIC_V1.1.c
 2CE4 text10 CODE >356:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/GLCD_PIC_V1.1.c
-34A0 text9 CODE >21:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34A0 text9 CODE >26:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34A4 text9 CODE >27:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34A8 text9 CODE >28:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34AC text9 CODE >29:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34B0 text9 CODE >30:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34B4 text9 CODE >34:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34B6 text9 CODE >35:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34B8 text9 CODE >36:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34BC text9 CODE >40:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34C0 text9 CODE >46:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34C4 text9 CODE >53:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34C8 text9 CODE >54:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34CC text9 CODE >58:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34D0 text9 CODE >59:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34A0 text9 CODE >20:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34A0 text9 CODE >25:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34A4 text9 CODE >26:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34A8 text9 CODE >27:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34AC text9 CODE >28:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34B0 text9 CODE >29:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34B4 text9 CODE >33:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34B6 text9 CODE >34:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34B8 text9 CODE >35:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34BC text9 CODE >39:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34C0 text9 CODE >45:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34C4 text9 CODE >52:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34C8 text9 CODE >53:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34CC text9 CODE >57:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34D0 text9 CODE >58:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
 3250 text8 CODE >8:/Applications/microchip/xc8/v1.45/sources/common/awdiv.c
 3250 text8 CODE >14:/Applications/microchip/xc8/v1.45/sources/common/awdiv.c
 3254 text8 CODE >15:/Applications/microchip/xc8/v1.45/sources/common/awdiv.c
@@ -320,14 +320,14 @@ $dist/default/production/ProjectApricot.X.production.obj
 336A text6 CODE >161:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/GLCD_PIC_V1.1.c
 338E text6 CODE >164:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/GLCD_PIC_V1.1.c
 33B0 text6 CODE >165:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/GLCD_PIC_V1.1.c
+3066 text5 CODE >60:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
 3066 text5 CODE >61:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-3066 text5 CODE >62:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-3076 text5 CODE >63:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-3092 text5 CODE >64:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-310C text5 CODE >65:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-318E text5 CODE >67:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-3198 text5 CODE >63:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-31A6 text5 CODE >69:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+3076 text5 CODE >62:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+3092 text5 CODE >63:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+310C text5 CODE >64:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+318E text5 CODE >66:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+3198 text5 CODE >62:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+31A6 text5 CODE >68:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
 343A text4 CODE >12:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.c
 343A text4 CODE >14:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.c
 344A text4 CODE >15:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.c
@@ -442,46 +442,46 @@ $dist/default/production/ProjectApricot.X.production.obj
 3216 text1 CODE >131:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.c
 321A text1 CODE >128:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.c
 321A text1 CODE >132:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/px_ascii.c
+2CE6 text0 CODE >123:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
 2CE6 text0 CODE >124:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2CE6 text0 CODE >125:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2CEA text0 CODE >128:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2D26 text0 CODE >129:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2D62 text0 CODE >130:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2D9E text0 CODE >132:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2DBA text0 CODE >134:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2DCC text0 CODE >135:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2DD4 text0 CODE >137:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2DD6 text0 CODE >138:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2DF0 text0 CODE >139:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2E1E text0 CODE >140:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2E54 text0 CODE >141:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2E90 text0 CODE >142:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2EAC text0 CODE >143:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2EC2 text0 CODE >137:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-2EC2 text0 CODE >144:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
-34D2 cinit CODE >1685:/tmp/xcGbp0BCb
-34D2 cinit CODE >1687:/tmp/xcGbp0BCb
-34D2 cinit CODE >1690:/tmp/xcGbp0BCb
-34D2 cinit CODE >1710:/tmp/xcGbp0BCb
-34D4 cinit CODE >1711:/tmp/xcGbp0BCb
-34D6 cinit CODE >1712:/tmp/xcGbp0BCb
-34D8 cinit CODE >1713:/tmp/xcGbp0BCb
-34DA cinit CODE >1714:/tmp/xcGbp0BCb
-34DC cinit CODE >1715:/tmp/xcGbp0BCb
-34DE cinit CODE >1716:/tmp/xcGbp0BCb
-34E2 cinit CODE >1717:/tmp/xcGbp0BCb
-34E6 cinit CODE >1718:/tmp/xcGbp0BCb
-34E6 cinit CODE >1719:/tmp/xcGbp0BCb
-34E8 cinit CODE >1720:/tmp/xcGbp0BCb
-34EC cinit CODE >1721:/tmp/xcGbp0BCb
-34EE cinit CODE >1722:/tmp/xcGbp0BCb
-34F0 cinit CODE >1723:/tmp/xcGbp0BCb
-34F2 cinit CODE >1727:/tmp/xcGbp0BCb
-34F4 cinit CODE >1733:/tmp/xcGbp0BCb
-34F4 cinit CODE >1736:/tmp/xcGbp0BCb
-34F6 cinit CODE >1737:/tmp/xcGbp0BCb
-34F8 cinit CODE >1738:/tmp/xcGbp0BCb
-34FA cinit CODE >1739:/tmp/xcGbp0BCb
+2CEA text0 CODE >127:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2D26 text0 CODE >128:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2D62 text0 CODE >129:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2D9E text0 CODE >131:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2DBA text0 CODE >133:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2DCC text0 CODE >134:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2DD4 text0 CODE >136:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2DD6 text0 CODE >137:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2DF0 text0 CODE >138:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2E1E text0 CODE >139:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2E54 text0 CODE >140:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2E90 text0 CODE >141:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2EAC text0 CODE >142:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2EC2 text0 CODE >136:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+2EC2 text0 CODE >143:/Users/morris/Documents/Github/ArrowTeam/Projects/ProjectApricot.X/main.c
+34D2 cinit CODE >1685:/tmp/xcEZ2Go26
+34D2 cinit CODE >1687:/tmp/xcEZ2Go26
+34D2 cinit CODE >1690:/tmp/xcEZ2Go26
+34D2 cinit CODE >1710:/tmp/xcEZ2Go26
+34D4 cinit CODE >1711:/tmp/xcEZ2Go26
+34D6 cinit CODE >1712:/tmp/xcEZ2Go26
+34D8 cinit CODE >1713:/tmp/xcEZ2Go26
+34DA cinit CODE >1714:/tmp/xcEZ2Go26
+34DC cinit CODE >1715:/tmp/xcEZ2Go26
+34DE cinit CODE >1716:/tmp/xcEZ2Go26
+34E2 cinit CODE >1717:/tmp/xcEZ2Go26
+34E6 cinit CODE >1718:/tmp/xcEZ2Go26
+34E6 cinit CODE >1719:/tmp/xcEZ2Go26
+34E8 cinit CODE >1720:/tmp/xcEZ2Go26
+34EC cinit CODE >1721:/tmp/xcEZ2Go26
+34EE cinit CODE >1722:/tmp/xcEZ2Go26
+34F0 cinit CODE >1723:/tmp/xcEZ2Go26
+34F2 cinit CODE >1727:/tmp/xcEZ2Go26
+34F4 cinit CODE >1733:/tmp/xcEZ2Go26
+34F4 cinit CODE >1736:/tmp/xcEZ2Go26
+34F6 cinit CODE >1737:/tmp/xcEZ2Go26
+34F8 cinit CODE >1738:/tmp/xcEZ2Go26
+34FA cinit CODE >1739:/tmp/xcEZ2Go26
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -505,7 +505,7 @@ __end_of_INDIGO 1009 0 SMALLCONST 0 smallconst dist/default/production/ProjectAp
 __size_of_initGLCD 0 0 ABS 0 - dist/default/production/ProjectApricot.X.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production/ProjectApricot.X.production.obj
 _new_px_char 343A 0 CODE 0 text4 dist/default/production/ProjectApricot.X.production.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xc5ExLM70.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xco2a2VMu.obj
 __end_ofGLCD_PIC@INST_NOP 1049 0 SMALLCONST 0 smallconst dist/default/production/ProjectApricot.X.production.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/ProjectApricot.X.production.obj
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production/ProjectApricot.X.production.obj
@@ -520,10 +520,10 @@ _LATB F8A 0 ABS 0 - dist/default/production/ProjectApricot.X.production.obj
 _LATC F8B 0 ABS 0 - dist/default/production/ProjectApricot.X.production.obj
 _LATD F8C 0 ABS 0 - dist/default/production/ProjectApricot.X.production.obj
 _LATE F8D 0 ABS 0 - dist/default/production/ProjectApricot.X.production.obj
-___sp 0 0 STACK 2 stack /tmp/xc5ExLM70.obj
+___sp 0 0 STACK 2 stack /tmp/xco2a2VMu.obj
 _init 34A0 0 CODE 0 text9 dist/default/production/ProjectApricot.X.production.obj
 _main 2CE6 0 CODE 0 text0 dist/default/production/ProjectApricot.X.production.obj
-start 0 0 CODE 0 init /tmp/xc5ExLM70.obj
+start 0 0 CODE 0 init /tmp/xco2a2VMu.obj
 __size_of___awdiv 0 0 ABS 0 - dist/default/production/ProjectApricot.X.production.obj
 __size_of___awmod 0 0 ABS 0 - dist/default/production/ProjectApricot.X.production.obj
 glcdDrawRectangle@numLoops 12 0 COMRAM 1 cstackCOMRAM dist/default/production/ProjectApricot.X.production.obj
@@ -539,11 +539,11 @@ __end_of_GLCD_ADDRESSABLE_SIZE_VERT 106C 0 SMALLCONST 0 smallconst dist/default/
 ___awmod@sign 6 0 COMRAM 1 cstackCOMRAM dist/default/production/ProjectApricot.X.production.obj
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/ProjectApricot.X.production.obj
 __end_of_VIOLET 1005 0 SMALLCONST 0 smallconst dist/default/production/ProjectApricot.X.production.obj
-__accesstop 80 0 ABS 0 - /tmp/xc5ExLM70.obj
-intlevel0 0 0 CODE 0 text /tmp/xc5ExLM70.obj
-intlevel1 0 0 CODE 0 text /tmp/xc5ExLM70.obj
-intlevel2 0 0 CODE 0 text /tmp/xc5ExLM70.obj
-intlevel3 0 0 CODE 0 text /tmp/xc5ExLM70.obj
+__accesstop 80 0 ABS 0 - /tmp/xco2a2VMu.obj
+intlevel0 0 0 CODE 0 text /tmp/xco2a2VMu.obj
+intlevel1 0 0 CODE 0 text /tmp/xco2a2VMu.obj
+intlevel2 0 0 CODE 0 text /tmp/xco2a2VMu.obj
+intlevel3 0 0 CODE 0 text /tmp/xco2a2VMu.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/ProjectApricot.X.production.obj
 _initGLCD 29DA 0 CODE 0 text10 dist/default/production/ProjectApricot.X.production.obj
 print_px_char@c 3B 0 COMRAM 1 cstackCOMRAM dist/default/production/ProjectApricot.X.production.obj
@@ -568,8 +568,8 @@ _ADCON0 FC2 0 ABS 0 - dist/default/production/ProjectApricot.X.production.obj
 _ADCON1 FC1 0 ABS 0 - dist/default/production/ProjectApricot.X.production.obj
 _glcdDrawPixel 3344 0 CODE 0 text6 dist/default/production/ProjectApricot.X.production.obj
 ___awdiv@dividend 7 0 COMRAM 1 cstackCOMRAM dist/default/production/ProjectApricot.X.production.obj
-___inthi_sp 0 0 STACK 2 stack /tmp/xc5ExLM70.obj
-___intlo_sp 0 0 STACK 2 stack /tmp/xc5ExLM70.obj
+___inthi_sp 0 0 STACK 2 stack /tmp/xco2a2VMu.obj
+___intlo_sp 0 0 STACK 2 stack /tmp/xco2a2VMu.obj
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/ProjectApricot.X.production.obj
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production/ProjectApricot.X.production.obj
 __end_of___wmul 354C 0 CODE 0 text17 dist/default/production/ProjectApricot.X.production.obj
@@ -669,7 +669,7 @@ GLCD_PIC@INST_PWCTR2 102E 0 SMALLCONST 0 smallconst dist/default/production/Proj
 GLCD_PIC@INST_PWCTR3 102D 0 SMALLCONST 0 smallconst dist/default/production/ProjectApricot.X.production.obj
 GLCD_PIC@INST_PWCTR4 102C 0 SMALLCONST 0 smallconst dist/default/production/ProjectApricot.X.production.obj
 GLCD_PIC@INST_PWCTR5 102B 0 SMALLCONST 0 smallconst dist/default/production/ProjectApricot.X.production.obj
-__smallconst 1000 0 SMALLCONST 0 smallconst /tmp/xc5ExLM70.obj
+__smallconst 1000 0 SMALLCONST 0 smallconst /tmp/xco2a2VMu.obj
 __end_of_spiInit 343A 0 CODE 0 text11 dist/default/production/ProjectApricot.X.production.obj
 __end_of_spiSend 3592 0 CODE 0 text15 dist/default/production/ProjectApricot.X.production.obj
 __end_of_new_px_char 346E 0 CODE 0 text4 dist/default/production/ProjectApricot.X.production.obj
@@ -817,8 +817,8 @@ __end_of_INST_COLMOD 1055 0 SMALLCONST 0 smallconst dist/default/production/Proj
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production/ProjectApricot.X.production.obj
 __end_of_INST_DISPON 105F 0 SMALLCONST 0 smallconst dist/default/production/ProjectApricot.X.production.obj
 __end_ofGLCD_PIC@INST_VMCTR1 102B 0 SMALLCONST 0 smallconst dist/default/production/ProjectApricot.X.production.obj
-stackhi F7F 0 ABS 0 - /tmp/xc5ExLM70.obj
-stacklo 80 0 ABS 0 - /tmp/xc5ExLM70.obj
+stackhi F7F 0 ABS 0 - /tmp/xco2a2VMu.obj
+stacklo 80 0 ABS 0 - /tmp/xco2a2VMu.obj
 _spiTransfer 354C 0 CODE 0 text16 dist/default/production/ProjectApricot.X.production.obj
 __Lintcode 0 0 CODE 0 intcode dist/default/production/ProjectApricot.X.production.obj
 __Lintret 0 0 ABS 0 intret dist/default/production/ProjectApricot.X.production.obj
@@ -889,7 +889,7 @@ __Ltext16 0 0 ABS 0 text16 dist/default/production/ProjectApricot.X.production.o
 __Ltext17 0 0 ABS 0 text17 dist/default/production/ProjectApricot.X.production.obj
 _spiInit 3402 0 CODE 0 text11 dist/default/production/ProjectApricot.X.production.obj
 _spiSend 3588 0 CODE 0 text15 dist/default/production/ProjectApricot.X.production.obj
-__ramtop 1000 0 RAM 0 ramtop /tmp/xc5ExLM70.obj
+__ramtop 1000 0 RAM 0 ramtop /tmp/xco2a2VMu.obj
 __Lpowerup 0 0 CODE 0 powerup dist/default/production/ProjectApricot.X.production.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/ProjectApricot.X.production.obj
 __end_ofGLCD_PIC@INST_CASET 103E 0 SMALLCONST 0 smallconst dist/default/production/ProjectApricot.X.production.obj

@@ -51,3 +51,4 @@ void loop() {
   arr[0] = mySerial.read();
   lcd.print(arr);
 }
+

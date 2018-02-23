@@ -1,11 +1,11 @@
-Microchip MPLAB XC8 Compiler V1.43 ()
+Microchip MPLAB XC8 Compiler V1.45 ()
 
 Linker command line:
 
--W-3 --edf=D:\Program Files (x86)\Microchip\xc8\v1.43\dat\en_msgs.txt -cs \
-  -h+dist/default/production\PIC_I2C_Arduino.X.production.sym \
-  --cmf=dist/default/production\PIC_I2C_Arduino.X.production.cmf -z \
-  -Q18F4620 -oC:\Users\Admin\AppData\Local\Temp\s3fg.2 \
+-W-3 --edf=/Applications/microchip/xc8/v1.45/dat/en_msgs.txt -cs \
+  -h+dist/default/production/PIC_I2C_Arduino.X.production.sym \
+  --cmf=dist/default/production/PIC_I2C_Arduino.X.production.cmf -z \
+  -Q18F4620 -o/tmp/xc3uphtXX \
   -Mdist/default/production/PIC_I2C_Arduino.X.production.map -E1 -ver=XC8 \
   -ASTACK=080h-0f7fh -pstack=STACK -ACODE=00h-0FFFFh -ACONST=00h-0FFFFh \
   -ASMALLCONST=01000h-010FFhx240 -AMEDIUMCONST=01000h-0FFFFh \
@@ -25,8 +25,8 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\Admin\AppData\Local\Temp\s3fg.obj \
-  dist/default/production\PIC_I2C_Arduino.X.production.obj 
+  /tmp/xcl3Cci98.obj \
+  dist/default/production/PIC_I2C_Arduino.X.production.obj 
 
 Object code version is 3.11
 
@@ -38,11 +38,11 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Admin\AppData\Local\Temp\s3fg.obj
+/tmp/xcl3Cci98.obj
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
-dist/default/production\PIC_I2C_Arduino.X.production.obj
+dist/default/production/PIC_I2C_Arduino.X.production.obj
                 smallconst                         1000     1000       1A      800       0
                 text11                             1138     1138       82      80D       0
                 text10                             1238     1238       5C      80D       0
@@ -868,7 +868,7 @@ Total ram usage:        8 bytes
 
  *************** function ___lldiv *****************
  Defined at:
-		line 8 in file "D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lldiv.c"
+		line 8 in file "/Applications/microchip/xc8/v1.45/sources/common/lldiv.c"
  Parameters:    Size  Location     Type
   dividend        4    0[COMRAM] unsigned long 
   divisor         4    4[COMRAM] unsigned long 
@@ -911,6 +911,11 @@ I2C.c
 
 I2C.c estimated size: 178
 
+/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+		___lldiv       		CODE           	1138	0000	131
+
+/Applications/microchip/xc8/v1.45/sources/common/lldiv.c estimated size: 131
+
 shared
 		_LCD_LEFT      		SMALLCONST     	1012	0000	2
 		_keys          		SMALLCONST     	1001	0000	18
@@ -930,11 +935,6 @@ lcd.c
 		_initLCD       		CODE           	1294	0000	77
 
 lcd.c estimated size: 246
-
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lldiv.c
-		___lldiv       		CODE           	1138	0000	131
-
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lldiv.c estimated size: 131
 
 main.c
 		_main          		CODE           	101A	0000	287

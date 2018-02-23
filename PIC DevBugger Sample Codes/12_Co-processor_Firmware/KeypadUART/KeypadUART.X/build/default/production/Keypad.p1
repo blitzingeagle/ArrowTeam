@@ -8,7 +8,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "42
 [s S323 `uc 1 `uc 1 `uc 1 ]
 [n S323 . f_disabled_to_enabled f_enabled_to_disabled sending_f_first ]
-"2645 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"2645 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [v _LATB `Vuc ~T0 @X0 0 e@3978 ]
 "2260
 [s S91 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -60,7 +60,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "2545
 [v _LATA `Vuc ~T0 @X0 0 e@3977 ]
 [v F3316 `(v ~T0 @X0 1 tf1`ul ]
-"164 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18.h
+"164 /Applications/microchip/xc8/v1.45/include/pic18.h
 [v __delay `JF3316 ~T0 @X0 0 e ]
 [p i __delay ]
 "76 UART_PIC.h
@@ -69,7 +69,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f2550.h: 50: extern volatile unsigned short UFRM @ 0xF66;
-"52 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"52 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [; ;pic18f2550.h: 52: asm("UFRM equ 0F66h");
 [; <" UFRM equ 0F66h ;# ">
 [; ;pic18f2550.h: 57: extern volatile unsigned char UFRML @ 0xF66;

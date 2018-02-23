@@ -1,9 +1,9 @@
 
 
-Microchip Technology PIC18 LITE Macro Assembler V1.43 build -156212558 
-                                                                                               Fri Sep 15 00:37:57 2017
+Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
+                                                                                               Mon Feb 12 12:50:43 2018
 
-Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250354
+Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	18F4620
      2                           	fnconf	rparam,??,?,0
      3                           	opt	pw 120
@@ -28,8 +28,8 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
     22                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
     23                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
     24  0000                     
-    25                           ; Version 1.43
-    26                           ; Generated 25/07/2017 GMT
+    25                           ; Version 1.45
+    26                           ; Generated 16/11/2017 GMT
     27                           ; 
     28                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
     29                           ; All rights reserved.
@@ -1438,7 +1438,7 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
   1365                           
   1366 ;; *************** function ___lldiv *****************
   1367 ;; Defined at:
-  1368 ;;		line 8 in file "D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lldiv.c"
+  1368 ;;		line 8 in file "/Applications/microchip/xc8/v1.45/sources/common/lldiv.c"
   1369 ;; Parameters:    Size  Location     Type
   1370 ;;  dividend        4    0[COMRAM] unsigned long 
   1371 ;;  divisor         4    4[COMRAM] unsigned long 
@@ -1817,8 +1817,8 @@ DATA                 0      0      20       3        0.0%
 CODE                 0      0       0       0        0.0%
 
 
-Microchip Technology PIC18 Macro Assembler V1.43 build -156212558 
-Symbol Table                                                                                   Fri Sep 15 00:37:57 2017
+Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
+Symbol Table                                                                                   Mon Feb 12 12:50:43 2018
 
                          l71 1088                           l65 1078                           l66 110E  
                          l74 10E6                           l76 10EE                  __CFG_CPD$ON 000000  

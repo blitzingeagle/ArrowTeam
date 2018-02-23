@@ -3950,3 +3950,69 @@ inline px_char px_map(char c);
 void draw_px_char(int x, int y, px_char p);
 void print_px_char(int x, int y, char c);
 void print_px_string(int x, int y, char *s);
+
+# 20 "main.c"
+void init(void) {
+
+# 25
+LATA = 0x00;
+LATB = 0x00;
+LATC = 0x00;
+LATD = 0x00;
+LATE = 0x00;
+
+# 33
+TRISA = 0xFF;
+TRISB = 0xFF;
+TRISC = 0b10000000;
+
+# 39
+TRISD = 0b00000001;
+
+# 45
+TRISE = 0b00000100;
+
+# 52
+ADCON0 = 0x00;
+ADCON1 = 0b00001111;
+
+
+
+initGLCD();
+}
+
+void draw_px_char(int x, int y, px_char p) {
+uint32_t m = 0b1;
+for(int i = 0; i < 32; i++) {
+if(m & p.part[0]) glcdDrawPixel(x+i%5, y+i/5, BLACK);
+if(m & p.part[1]) glcdDrawPixel(x+(i+32)%5, y+(i+32)/5, BLACK);
+
+m <<= 1;
+}
+}
+
+# 123
+void main(void) {
+init();
+
+
+glcdDrawRectangle(0, GLCD_SIZE_VERT, 0, 14, RED);
+glcdDrawRectangle(0, GLCD_SIZE_VERT, 14, 110, BLACK);
+glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
+
+print_px_string(0, 0, "Jan 28, 2018  11:50 PM");
+
+char eta[] = "ETA:     - min -- sec\0";
+int sec = 180;
+
+while(sec-- > 0) {
+eta[9] = '0' + (sec/60);
+eta[15] = '0' + ((sec%60)/10);
+eta[16] = '0' + ((sec%60)%10);
+glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
+print_px_string(0, 114, eta);
+_delay((unsigned long)((1000)*(40000000/4000.0)));
+}
+
+return;
+}

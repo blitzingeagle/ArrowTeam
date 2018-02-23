@@ -13,7 +13,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _machineConfig `(v ~T0 @X0 0 ef ]
 "82 UART_PIC.h
 [v _UART_Init `(v ~T0 @X0 0 ef1`l ]
-"4202 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"4202 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [s S170 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S170 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
 "4212
@@ -31,10 +31,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "4230
 [v _TXSTAbits `VS169 ~T0 @X0 0 e@4012 ]
 [v F3316 `(v ~T0 @X0 1 tf1`ul ]
-"164 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18.h
+"164 /Applications/microchip/xc8/v1.45/include/pic18.h
 [v __delay `JF3316 ~T0 @X0 0 e ]
 [p i __delay ]
-"2835 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"2835 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
 "2551
 [s S105 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -54,7 +54,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f2550.h: 50: extern volatile unsigned short UFRM @ 0xF66;
-"52 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"52 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [; ;pic18f2550.h: 52: asm("UFRM equ 0F66h");
 [; <" UFRM equ 0F66h ;# ">
 [; ;pic18f2550.h: 57: extern volatile unsigned char UFRML @ 0xF66;

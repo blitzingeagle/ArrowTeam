@@ -7,7 +7,7 @@
   200008h - 2FFFFFh
   30000Eh - 30003Fh
   
- dist/default/production\PIC_I2C_Arduino.X.production.hex ranges:
+ dist/default/production/PIC_I2C_Arduino.X.production.hex ranges:
   0h - 3h
   1000h - 1018h
   101Ah - 136Bh
@@ -25,7 +25,7 @@
   T = Trailing code
   & = Find & replace opcode
   X = Find & delete opcode
-  1 = dist/default/production\PIC_I2C_Arduino.X.production.hex
+  1 = dist/default/production/PIC_I2C_Arduino.X.production.hex
 00000000: 1111------------------------------------------------------------
 00001000: 1111111111111111111111111-11111111111111111111111111111111111111
 00001040: 1111111111111111111111111111111111111111111111111111111111111111

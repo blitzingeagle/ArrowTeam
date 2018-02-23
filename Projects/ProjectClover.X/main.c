@@ -92,7 +92,7 @@ void main(void) {
     glcdDrawRectangle(0, GLCD_SIZE_VERT, 14, 110, BLACK);
     glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
     
-    print_px_string(0, 0, "Jan 28, 2018 11:50 PM");
+    print_px_string(0, 0, "Feb 06, 2018 1:26 PM");
     
     char eta[] = "ETA:     - min -- sec\0";
     unsigned int sec = 180;
@@ -113,6 +113,8 @@ void main(void) {
     return;
 }
 
+#define min(X, Y) (((X) < (Y)) ? (X) : (Y))
+
 void interrupt interruptHandler(void) {
     if(INT1IF) {
         /* Interrupt on change handler for RB1. */
@@ -121,23 +123,32 @@ void interrupt interruptHandler(void) {
         bool state_changed = true;
         
         switch(program_state) {
-            case STATE_STANDBY:
-                program_state = STATE_PROMPT_COMPARTMENT_COUNT;
+            case STATE_STANDBY: // Key pressed on standby mode
+                program_state = STATE_PROMPT_COMPARTMENT_COUNT; // Proceed to prompt for number of compartments
                 break;
-            case STATE_PROMPT_COMPARTMENT_COUNT:
-                if('4' <= key && key <= '8') {
-                    program_status.compartment_count = key - '0';
-                    program_status.compartment_count_index = 0;
+            case STATE_PROMPT_COMPARTMENT_COUNT: // Key pressed while prompting for compartment count
+                if('4' <= key && key <= '8') { // Check if input admissible
+                    program_status.compartment_count = key - '0'; // Store compartment count
+                    program_status.compartment_count_index = 0; // Start compartment index at 0
+                    // Reset the B, N, S, and W for each compartment to 0
                     memset(program_status.set_count, 0, sizeof(program_status.set_count[0][0]) * 8 * 4);
-                    program_state = STATE_PROMPT_FASTENER_SET;
+                    // Fill buffer with null terminators
+                    for(char i = 0 ; i < 8; i++) program_status.buffer[i] = '\0';
+                    program_state = STATE_PROMPT_FASTENER_SET; // Proceed to prompt for fastener set contents
                 }
                 break;
-            case STATE_PROMPT_FASTENER_SET:
-                if('A' <= key && key <= 'Z') {
+            case STATE_PROMPT_FASTENER_SET: // Key pressed while prompting for fastener set contents
+                if('A' <= key && key <= 'Z') { // Check if input is uppercase alphabet
                     char leaf_index = trie_node_leaf_index(key);
                     if(leaf_index < 4) {
                         program_status.buffer[program_status.buffer_index++] = key;
                         putch(key);
+                        switch(key) {
+                            case 'B': program_status.B++; break;
+                            case 'N': program_status.N++; break;
+                            case 'S': program_status.S++; break;
+                            case 'W': program_status.W++; break;
+                        }
                         program_status.trie_ptr = program_status.trie_ptr->children[leaf_index];
                     }
                     state_changed = false;
@@ -145,11 +156,24 @@ void interrupt interruptHandler(void) {
                     lcd_shift_cursor(1, 0);
                     putch(' ');
                     lcd_shift_cursor(1, 0);
-                    program_status.buffer[--program_status.buffer_index] = '\0';
+                    char x = program_status.buffer[--program_status.buffer_index];
+                    switch(x) {
+                        case 'B': program_status.B--; break;
+                        case 'N': program_status.N--; break;
+                        case 'S': program_status.S--; break;
+                        case 'W': program_status.W--; break;
+                    }
+                    program_status.buffer[program_status.buffer_index] = '\0';
                     program_status.trie_ptr = program_status.trie_ptr->parent;
                     state_changed = false;
                 } else if(key == '#' && program_status.buffer_index > 0) {
                     if(strcmp(program_status.buffer,"BB") != 0 && strcmp(program_status.buffer,"BNN") != 0) {
+                        program_status.max_quantity = 4;
+                        if(program_status.B > 0) program_status.max_quantity = min(4/(program_status.B + program_status.N + program_status.S + program_status.W), 2/program_status.B);
+                        if(program_status.N > 0) program_status.max_quantity = min(program_status.max_quantity, 3/program_status.N);
+                        if(program_status.S > 0) program_status.max_quantity = min(program_status.max_quantity, 2/program_status.S);
+                        if(program_status.W > 0) program_status.max_quantity = min(program_status.max_quantity, 4/program_status.W);
+                        
                         program_state = STATE_PROMPT_FASTENER_SET_QUANTITY;
                     } else {
                         state_changed = false;
@@ -157,7 +181,7 @@ void interrupt interruptHandler(void) {
                 }
                 break;
             case STATE_PROMPT_FASTENER_SET_QUANTITY:
-                if('1' <= key && key <= '4') {
+                if('1' <= key && key <= ('0' + program_status.max_quantity)) {
                     program_status.set_count_tmp = key - '0';
                     program_state = STATE_PREVIEW_FASTENER_SET;
                 } else {

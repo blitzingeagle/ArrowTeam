@@ -2,7 +2,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "55 UART_PIC.h
 [s S322 `*uc 1 `uc 1 `Vuc 1 `*uc 1 `uc 1 `Vuc 1 `Vuc 1 `Vuc 1 `Vuc 1 `Vuc 1 ]
 [n S322 . _dataTX _numBytesTX _numTransmits _dataRX _numBytesRX _numReceives _stateTX _stateRX _lastReceiveFERR _lastReceiveOERR ]
-"8962 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"8962 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [v _TXIF `Vb ~T0 @X0 0 e@31988 ]
 "7405
 [s S315 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -25,7 +25,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "31 interruptUART.c
 [c E3323 0 1 .. ]
 [n E3323 . UART_STATE_BUSY UART_STATE_READY  ]
-"8644 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"8644 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [v _RCIF `Vb ~T0 @X0 0 e@31989 ]
 "3992
 [s S156 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -58,7 +58,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f2550.h: 50: extern volatile unsigned short UFRM @ 0xF66;
-"52 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"52 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [; ;pic18f2550.h: 52: asm("UFRM equ 0F66h");
 [; <" UFRM equ 0F66h ;# ">
 [; ;pic18f2550.h: 57: extern volatile unsigned char UFRML @ 0xF66;

@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/Applications/microchip/xc8/v1.45/dat/en_msgs.txt -cs \
   -h+dist/default/production/ProjectApricot.X.production.sym \
   --cmf=dist/default/production/ProjectApricot.X.production.cmf -z \
-  -Q18F4620 -o/tmp/xcpmrcYZe \
+  -Q18F4620 -o/tmp/xcF56A8lC \
   -Mdist/default/production/ProjectApricot.X.production.map -E1 -ver=XC8 \
   -ASTACK=080h-0f7fh -pstack=STACK -ACODE=00h-0FFFFh -ACONST=00h-0FFFFh \
   -ASMALLCONST=01000h-010FFhx240 -AMEDIUMCONST=01000h-0FFFFh \
@@ -25,7 +25,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xc5ExLM70.obj \
+  /tmp/xco2a2VMu.obj \
   dist/default/production/ProjectApricot.X.production.obj 
 
 Object code version is 3.11
@@ -38,7 +38,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xc5ExLM70.obj
+/tmp/xco2a2VMu.obj
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
@@ -714,7 +714,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 124 in file "main.c"
+		line 123 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -875,7 +875,7 @@ Total ram usage:       16 bytes
 
  *************** function _draw_px_char *****************
  Defined at:
-		line 61 in file "main.c"
+		line 60 in file "main.c"
  Parameters:    Size  Location     Type
   x               2   32[COMRAM] int 
   y               2   34[COMRAM] int 
@@ -1007,7 +1007,7 @@ Total ram usage:        8 bytes
 
  *************** function _init *****************
  Defined at:
-		line 21 in file "main.c"
+		line 20 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type

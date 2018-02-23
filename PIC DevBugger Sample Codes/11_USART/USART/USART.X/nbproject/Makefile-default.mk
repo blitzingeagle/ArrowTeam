@@ -19,7 +19,7 @@ endif
 endif
 
 # Environment
-MKDIR=gnumkdir -p
+MKDIR=mkdir -p
 RM=rm -f 
 MV=mv 
 CP=cp 
@@ -98,7 +98,7 @@ ${OBJECTDIR}/_ext/1472/usart18.o: ../usart18.asm  nbproject/Makefile-${CND_CONF}
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/usart18.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/usart18.o 
-	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/_ext/1472/usart18.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -d__DEBUG -d__MPLAB_DEBUGGER_PK3=1 -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/_ext/1472/usart18.lst\" -e\"${OBJECTDIR}/_ext/1472/usart18.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/_ext/1472/usart18.o\" \"../usart18.asm\" 
+	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/_ext/1472/usart18.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -d__DEBUG -d__MPLAB_DEBUGGER_PK3=1 -q -p$(MP_PROCESSOR_OPTION) -u  -l\\\"${OBJECTDIR}/_ext/1472/usart18.lst\\\" -e\\\"${OBJECTDIR}/_ext/1472/usart18.err\\\" $(ASM_OPTIONS)    -o\\\"${OBJECTDIR}/_ext/1472/usart18.o\\\" \\\"../usart18.asm\\\" 
 	@${DEP_GEN} -d "${OBJECTDIR}/_ext/1472/usart18.o"
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/usart18.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
 	
@@ -107,7 +107,7 @@ ${OBJECTDIR}/_ext/1472/usart18.o: ../usart18.asm  nbproject/Makefile-${CND_CONF}
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/usart18.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/usart18.o 
-	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/_ext/1472/usart18.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/_ext/1472/usart18.lst\" -e\"${OBJECTDIR}/_ext/1472/usart18.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/_ext/1472/usart18.o\" \"../usart18.asm\" 
+	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/_ext/1472/usart18.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -q -p$(MP_PROCESSOR_OPTION) -u  -l\\\"${OBJECTDIR}/_ext/1472/usart18.lst\\\" -e\\\"${OBJECTDIR}/_ext/1472/usart18.err\\\" $(ASM_OPTIONS)    -o\\\"${OBJECTDIR}/_ext/1472/usart18.o\\\" \\\"../usart18.asm\\\" 
 	@${DEP_GEN} -d "${OBJECTDIR}/_ext/1472/usart18.o"
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/usart18.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
 	
@@ -141,7 +141,7 @@ endif
 # Enable dependency checking
 .dep.inc: .depcheck-impl
 
-DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
+DEPFILES=$(shell "${PATH_TO_IDE_BIN}"mplabwildcard ${POSSIBLE_DEPFILES})
 ifneq (${DEPFILES},)
 include ${DEPFILES}
 endif

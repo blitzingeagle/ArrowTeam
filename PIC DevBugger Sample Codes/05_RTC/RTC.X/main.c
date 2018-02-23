@@ -31,13 +31,13 @@ void RTC_setTime(void);
 
 /***** Constants *****/
 const char keys[] = "123A456B789C*0#D";
-const char happynewyear[7] = {  0x45, // 45 Seconds 
-                                0x59, // 59 Minutes
-                                0x23, // 24 hour mode, set to 23:00
-                                0x00, // Sunday
-                                0x31, // 31st
-                                0x12, // December
-                                0x17  // 2017
+const char happynewyear[7] = {  0x00, // 45 Seconds 
+                                0x43, // 59 Minutes
+                                0x16, // 24 hour mode, set to 23:00
+                                0x02, // Tues
+                                0x20, // 20th
+                                0x02, // Feb
+                                0x18  // 2018
 };
 
 void main(void) {

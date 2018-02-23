@@ -10,6 +10,7 @@
       <itemPath>px_ascii.h</itemPath>
       <itemPath>I2C.h</itemPath>
       <itemPath>lcd.h</itemPath>
+      <itemPath>program_states.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -24,6 +25,7 @@
       <itemPath>px_ascii.c</itemPath>
       <itemPath>I2C.c</itemPath>
       <itemPath>lcd.c</itemPath>
+      <itemPath>program_states.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

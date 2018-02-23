@@ -1,11 +1,11 @@
-Microchip MPLAB XC8 Compiler V1.42 ()
+Microchip MPLAB XC8 Compiler V1.45 ()
 
 Linker command line:
 
--W-3 --edf=D:\Program Files (x86)\Microchip\xc8\v1.42\dat\en_msgs.txt -cs \
-  -h+dist/default/production\PIC_UART_Arduino.X.production.sym \
-  --cmf=dist/default/production\PIC_UART_Arduino.X.production.cmf -z \
-  -Q18F4620 -oC:\Users\Admin\AppData\Local\Temp\sfac.2 \
+-W-3 --edf=/Applications/microchip/xc8/v1.45/dat/en_msgs.txt -cs \
+  -h+dist/default/production/PIC_UART_Arduino.X.production.sym \
+  --cmf=dist/default/production/PIC_UART_Arduino.X.production.cmf -z \
+  -Q18F4620 -o/tmp/xcAnKWSdk \
   -Mdist/default/production/PIC_UART_Arduino.X.production.map -E1 -ver=XC8 \
   -ASTACK=080h-0f7fh -pstack=STACK -ACODE=00h-0FFFFh -ACONST=00h-0FFFFh \
   -ASMALLCONST=01000h-010FFhx240 -AMEDIUMCONST=01000h-0FFFFh \
@@ -25,8 +25,8 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\Admin\AppData\Local\Temp\sfac.obj \
-  dist/default/production\PIC_UART_Arduino.X.production.obj 
+  /tmp/xcotaLkER.obj \
+  dist/default/production/PIC_UART_Arduino.X.production.obj 
 
 Object code version is 3.11
 
@@ -38,11 +38,11 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Admin\AppData\Local\Temp\sfac.obj
+/tmp/xcotaLkER.obj
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
-dist/default/production\PIC_UART_Arduino.X.production.obj
+dist/default/production/PIC_UART_Arduino.X.production.obj
                 smallconst                         1000     1000        8      800       0
                 text3                              1008     1008       CC      804       0
                 text2                              116E     116E       82      804       0
@@ -551,7 +551,7 @@ Total ram usage:        8 bytes
 
  *************** function ___aldiv *****************
  Defined at:
-		line 8 in file "D:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\aldiv.c"
+		line 8 in file "/Applications/microchip/xc8/v1.45/sources/common/aldiv.c"
  Parameters:    Size  Location     Type
   dividend        4    0[COMRAM] long 
   divisor         4    4[COMRAM] long 
@@ -591,6 +591,11 @@ UART_PIC.c
 
 UART_PIC.c estimated size: 286
 
+/Applications/microchip/xc8/v1.45/sources/common/aldiv.c
+		___aldiv       		CODE           	1008	0000	205
+
+/Applications/microchip/xc8/v1.45/sources/common/aldiv.c estimated size: 205
+
 shared
 		_LCD_LEFT      		SMALLCONST     	1001	0000	2
 		_LCD_RIGHT     		SMALLCONST     	1002	0000	2
@@ -601,11 +606,6 @@ shared
 		_LCD_SIZE_HORZ 		SMALLCONST     	1004	0000	2
 
 shared estimated size: 55
-
-D:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\aldiv.c
-		___aldiv       		CODE           	1008	0000	205
-
-D:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\aldiv.c estimated size: 205
 
 main.c
 		_main          		CODE           	11F0	0000	109

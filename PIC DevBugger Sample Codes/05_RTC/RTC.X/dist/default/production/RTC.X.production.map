@@ -1,32 +1,31 @@
-Microchip MPLAB XC8 Compiler V1.43 ()
+Microchip MPLAB XC8 Compiler V1.45 ()
 
 Linker command line:
 
--W-3 --edf=D:\Program Files (x86)\Microchip\xc8\v1.43\dat\en_msgs.txt -cs \
-  -h+dist/default/production\RTC.X.production.sym \
-  --cmf=dist/default/production\RTC.X.production.cmf -z -Q18F4620 \
-  -oC:\Users\Admin\AppData\Local\Temp\sjv4.2 \
-  -Mdist/default/production/RTC.X.production.map -E1 -ver=XC8 \
-  -ASTACK=080h-0f7fh -pstack=STACK -ACODE=00h-0FFFFh -ACONST=00h-0FFFFh \
-  -ASMALLCONST=01000h-010FFhx240 -AMEDIUMCONST=01000h-0FFFFh \
-  -ACOMRAM=01h-07Fh -AABS1=00h-0F7Fh -ABIGRAM=01h-0F7Fh \
-  -ARAM=080h-0FFh,0100h-01FFhx14,0F00h-0F7Fh -ABANK0=080h-0FFh \
-  -ABANK1=0100h-01FFh -ABANK2=0200h-02FFh -ABANK3=0300h-03FFh \
-  -ABANK4=0400h-04FFh -ABANK5=0500h-05FFh -ABANK6=0600h-06FFh \
-  -ABANK7=0700h-07FFh -ABANK8=0800h-08FFh -ABANK9=0900h-09FFh \
-  -ABANK10=0A00h-0AFFh -ABANK11=0B00h-0BFFh -ABANK12=0C00h-0CFFh \
-  -ABANK13=0D00h-0DFFh -ABANK14=0E00h-0EFFh -ABANK15=0F00h-0F7Fh \
-  -ASFR=0F80h-0FFFh -preset_vec=00h,intcode,intcodelo,powerup,init \
-  -pramtop=01000h -psmallconst=SMALLCONST -pmediumconst=MEDIUMCONST \
-  -pconst=CONST -AFARRAM=00h-00h -ACONFIG=0300000h-030000Dh -pconfig=CONFIG \
+-W-3 --edf=/Applications/microchip/xc8/v1.45/dat/en_msgs.txt -cs \
+  -h+dist/default/production/RTC.X.production.sym \
+  --cmf=dist/default/production/RTC.X.production.cmf -z -Q18F4620 \
+  -o/tmp/xcsRy5MID -Mdist/default/production/RTC.X.production.map -E1 \
+  -ver=XC8 -ASTACK=080h-0f7fh -pstack=STACK -ACODE=00h-0FFFFh \
+  -ACONST=00h-0FFFFh -ASMALLCONST=01000h-010FFhx240 \
+  -AMEDIUMCONST=01000h-0FFFFh -ACOMRAM=01h-07Fh -AABS1=00h-0F7Fh \
+  -ABIGRAM=01h-0F7Fh -ARAM=080h-0FFh,0100h-01FFhx14,0F00h-0F7Fh \
+  -ABANK0=080h-0FFh -ABANK1=0100h-01FFh -ABANK2=0200h-02FFh \
+  -ABANK3=0300h-03FFh -ABANK4=0400h-04FFh -ABANK5=0500h-05FFh \
+  -ABANK6=0600h-06FFh -ABANK7=0700h-07FFh -ABANK8=0800h-08FFh \
+  -ABANK9=0900h-09FFh -ABANK10=0A00h-0AFFh -ABANK11=0B00h-0BFFh \
+  -ABANK12=0C00h-0CFFh -ABANK13=0D00h-0DFFh -ABANK14=0E00h-0EFFh \
+  -ABANK15=0F00h-0F7Fh -ASFR=0F80h-0FFFh \
+  -preset_vec=00h,intcode,intcodelo,powerup,init -pramtop=01000h \
+  -psmallconst=SMALLCONST -pmediumconst=MEDIUMCONST -pconst=CONST \
+  -AFARRAM=00h-00h -ACONFIG=0300000h-030000Dh -pconfig=CONFIG \
   -AIDLOC=0200000h-0200007h -pidloc=IDLOC -AEEDATA=0F00000h-0F003FFh \
   -peeprom_data=EEDATA \
   -prdata=COMRAM,nvrram=COMRAM,nvbit=COMRAM,rbss=COMRAM,rbit=COMRAM \
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\Admin\AppData\Local\Temp\sjv4.obj \
-  dist/default/production\RTC.X.production.obj 
+  /tmp/xcWBmnG2R.obj dist/default/production/RTC.X.production.obj 
 
 Object code version is 3.11
 
@@ -38,11 +37,11 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Admin\AppData\Local\Temp\sjv4.obj
+/tmp/xcWBmnG2R.obj
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
-dist/default/production\RTC.X.production.obj
+dist/default/production/RTC.X.production.obj
                 smallconst                         1000     1000       58      800       0
                 text15                             1366     1366       82      82C       0
                 text14                             1466     1466       5C      82C       0
@@ -604,7 +603,7 @@ Total ram usage:       10 bytes
 
  *************** function _printf *****************
  Defined at:
-		line 464 in file "D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\doprnt.c"
+		line 464 in file "/Applications/microchip/xc8/v1.45/sources/common/doprnt.c"
  Parameters:    Size  Location     Type
   f               2    7[COMRAM] PTR const unsigned char 
 		 -> STR_2(15), STR_1(15), 
@@ -678,7 +677,7 @@ Total ram usage:        1 bytes
 
  *************** function _isdigit *****************
  Defined at:
-		line 8 in file "D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\isdigit.c"
+		line 8 in file "/Applications/microchip/xc8/v1.45/sources/common/isdigit.c"
  Parameters:    Size  Location     Type
   c               1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -707,7 +706,7 @@ Total ram usage:        3 bytes
 
  *************** function ___wmul *****************
  Defined at:
-		line 15 in file "D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\Umul16.c"
+		line 15 in file "/Applications/microchip/xc8/v1.45/sources/common/Umul16.c"
  Parameters:    Size  Location     Type
   multiplier      2    0[COMRAM] unsigned int 
   multiplicand    2    2[COMRAM] unsigned int 
@@ -737,7 +736,7 @@ Total ram usage:        6 bytes
 
  *************** function ___lwdiv *****************
  Defined at:
-		line 8 in file "D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lwdiv.c"
+		line 8 in file "/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c"
  Parameters:    Size  Location     Type
   dividend        2    0[COMRAM] unsigned int 
   divisor         2    2[COMRAM] unsigned int 
@@ -1050,7 +1049,7 @@ Total ram usage:        8 bytes
 
  *************** function ___lldiv *****************
  Defined at:
-		line 8 in file "D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lldiv.c"
+		line 8 in file "/Applications/microchip/xc8/v1.45/sources/common/lldiv.c"
  Parameters:    Size  Location     Type
   dividend        4    0[COMRAM] unsigned long 
   divisor         4    4[COMRAM] unsigned long 
@@ -1083,10 +1082,10 @@ Total ram usage:       13 bytes
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\doprnt.c
+/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
 		_printf        		CODE           	1058	0000	501
 
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\doprnt.c estimated size: 501
+/Applications/microchip/xc8/v1.45/sources/common/doprnt.c estimated size: 501
 
 I2C.c
 		_I2C_Master_Read		CODE           	1586	0000	37
@@ -1098,15 +1097,25 @@ I2C.c
 
 I2C.c estimated size: 178
 
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\isdigit.c
-		_isdigit       		CODE           	15AA	0000	31
+/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+		___lwdiv       		CODE           	14C2	0000	83
 
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\isdigit.c estimated size: 31
+/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c estimated size: 83
 
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\Umul16.c
+/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+		___lldiv       		CODE           	1366	0000	131
+
+/Applications/microchip/xc8/v1.45/sources/common/lldiv.c estimated size: 131
+
+/Applications/microchip/xc8/v1.45/sources/common/Umul16.c
 		___wmul        		CODE           	1560	0000	39
 
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\Umul16.c estimated size: 39
+/Applications/microchip/xc8/v1.45/sources/common/Umul16.c estimated size: 39
+
+/Applications/microchip/xc8/v1.45/sources/common/isdigit.c
+		_isdigit       		CODE           	15AA	0000	31
+
+/Applications/microchip/xc8/v1.45/sources/common/isdigit.c estimated size: 31
 
 shared
 		_LCD_LEFT      		SMALLCONST     	1021	0000	2
@@ -1129,16 +1138,6 @@ lcd.c
 		_initLCD       		CODE           	1514	0000	77
 
 lcd.c estimated size: 246
-
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lwdiv.c
-		___lwdiv       		CODE           	14C2	0000	83
-
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lwdiv.c estimated size: 83
-
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lldiv.c
-		___lldiv       		CODE           	1366	0000	131
-
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lldiv.c estimated size: 131
 
 main.c
 		_main          		CODE           	124C	0000	283

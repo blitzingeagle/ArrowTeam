@@ -18,6 +18,11 @@ void FUNC_STATE_PROMPT_FASTENER_SET(void) {
     program_status.buffer_index = 0;
     program_status.trie_ptr = &fastener_trie.nodes[0];
     
+    program_status.B = 0;
+    program_status.N = 0;
+    program_status.S = 0;
+    program_status.W = 0;
+    
     printf("Fastener set %d", program_status.compartment_count_index + 1);
     __lcd_newline();
     printf("Fasteners >");
@@ -26,7 +31,12 @@ void FUNC_STATE_PROMPT_FASTENER_SET(void) {
 void FUNC_STATE_PROMPT_FASTENER_SET_QUANTITY(void) {
     printf("Set %d: %s", program_status.compartment_count_index + 1, program_status.buffer);
     __lcd_newline();
-    printf("Qty (1-4) >");
+    if(program_status.max_quantity == 1) {
+        printf("Qty (1) >");
+    } else {
+        printf("Qty (1-%d) >", program_status.max_quantity);
+    }
+    
 }
 
 void FUNC_STATE_PREVIEW_FASTENER_SET(void) {

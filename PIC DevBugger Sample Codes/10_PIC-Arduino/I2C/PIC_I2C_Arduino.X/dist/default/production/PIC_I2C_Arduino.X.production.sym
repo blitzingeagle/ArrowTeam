@@ -334,9 +334,9 @@ idloc 200000 200007 IDLOC 200000 0
 cstackCOMRAM 1 20 COMRAM 1 1
 text0 101A 136B CODE 101A 0
 %locals
-dist/default/production\PIC_I2C_Arduino.X.production.obj
-D:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4620.h
-C:\Users\Admin\AppData\Local\Temp\s3fg.
+dist/default/production/PIC_I2C_Arduino.X.production.obj
+/Applications/microchip/xc8/v1.45/include/pic18f4620.h
+/tmp/xcioiZpnM
 1080 1304 0 CODE 0
 1082 1304 0 CODE 0
 1085 1304 0 CODE 0
@@ -468,7 +468,7 @@ I2C.c
 43 1246 0 CODE 0
 48 124A 0 CODE 0
 49 1292 0 CODE 0
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lldiv.c
+/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
 8 1138 0 CODE 0
 14 1138 0 CODE 0
 15 1148 0 CODE 0

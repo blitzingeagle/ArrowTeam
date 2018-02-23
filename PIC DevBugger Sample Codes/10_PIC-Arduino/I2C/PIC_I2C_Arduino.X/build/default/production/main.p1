@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"878 D:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4620.h
+"878 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [v _LATA `Vuc ~T0 @X0 0 e@3977 ]
 "990
 [v _LATB `Vuc ~T0 @X0 0 e@3978 ]
@@ -34,7 +34,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _I2C_Master_Write `(v ~T0 @X0 0 ef1`ui ]
 "25
 [v _I2C_Master_Stop `(v ~T0 @X0 0 ef ]
-"193 D:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4620.h
+"193 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [s S11 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S11 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
 "203
@@ -55,13 +55,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
 "27 I2C.h
 [v _I2C_Master_Read `(uc ~T0 @X0 0 ef1`uc ]
-"16 D:\Program Files (x86)\Microchip\xc8\v1.43\include\conio.h
+"16 /Applications/microchip/xc8/v1.45/include/conio.h
 [v _putch `(v ~T0 @X0 0 ef1`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f4620.h: 50: extern volatile unsigned char PORTA @ 0xF80;
-"52 D:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4620.h
+"52 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [; ;pic18f4620.h: 52: asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
 [; ;pic18f4620.h: 55: typedef union {

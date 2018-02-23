@@ -373,9 +373,9 @@ idloc 200000 200007 IDLOC 200000 0
 cstackCOMRAM 1 29 COMRAM 1 1
 text1 1058 1629 CODE 1058 0
 %locals
-dist/default/production\RTC.X.production.obj
-D:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4620.h
-C:\Users\Admin\AppData\Local\Temp\sjv4.
+dist/default/production/RTC.X.production.obj
+/Applications/microchip/xc8/v1.45/include/pic18f4620.h
+/tmp/xcsruFdbk
 1159 1602 0 CODE 0
 1161 1602 0 CODE 0
 1164 1602 0 CODE 0
@@ -421,7 +421,7 @@ main.c
 108 1330 0 CODE 0
 109 134E 0 CODE 0
 88 1364 0 CODE 0
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\doprnt.c
+/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
 464 1058 0 CODE 0
 533 1058 0 CODE 0
 536 1060 0 CODE 0
@@ -473,16 +473,16 @@ lcd.c
 33 15CC 0 CODE 0
 34 15D2 0 CODE 0
 35 15DA 0 CODE 0
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\isdigit.c
+/Applications/microchip/xc8/v1.45/sources/common/isdigit.c
 8 15AA 0 CODE 0
 14 15AC 0 CODE 0
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\Umul16.c
+/Applications/microchip/xc8/v1.45/sources/common/Umul16.c
 15 1560 0 CODE 0
 37 1560 0 CODE 0
 38 156C 0 CODE 0
 39 1574 0 CODE 0
 52 157C 0 CODE 0
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lwdiv.c
+/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
 8 14C2 0 CODE 0
 14 14C2 0 CODE 0
 15 14CA 0 CODE 0
@@ -568,7 +568,7 @@ I2C.c
 43 1474 0 CODE 0
 48 1478 0 CODE 0
 49 14C0 0 CODE 0
-D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lldiv.c
+/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
 8 1366 0 CODE 0
 14 1366 0 CODE 0
 15 1376 0 CODE 0

@@ -30,6 +30,11 @@ struct PROG_STATUS {
     char buffer[8];
     char buffer_index;
     struct trie_node *trie_ptr;
+    char B;
+    char N;
+    char S;
+    char W;
+    char max_quantity;
 } program_status;
 
 void (*PROG_FUNC[NUM_STATES])(void);

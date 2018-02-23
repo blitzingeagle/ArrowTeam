@@ -5,7 +5,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "36 UART_PIC.c
 [c E3323 0 1 .. ]
 [n E3323 . UART_STATE_BUSY UART_STATE_READY  ]
-"4202 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"4202 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [s S170 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S170 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
 "4212
@@ -23,17 +23,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 "4230
 [v _TXSTAbits `VS169 ~T0 @X0 0 e@4012 ]
 [v F3316 `(v ~T0 @X0 1 tf1`ul ]
-"164 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18.h
+"164 /Applications/microchip/xc8/v1.45/include/pic18.h
 [v __delay `JF3316 ~T0 @X0 0 e ]
 [p i __delay ]
-"8962 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"8962 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [v _TXIF `Vb ~T0 @X0 0 e@31988 ]
 "8916
 [v _TRMT `Vb ~T0 @X0 0 e@32097 ]
-"43 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18.h
+"43 /Applications/microchip/xc8/v1.45/include/pic18.h
 [v ___nop `(v ~T0 @X0 0 ef ]
 [p i ___nop ]
-"7405 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"7405 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [s S315 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S315 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
 "7415
@@ -90,7 +90,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f2550.h: 50: extern volatile unsigned short UFRM @ 0xF66;
-"52 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"52 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [; ;pic18f2550.h: 52: asm("UFRM equ 0F66h");
 [; <" UFRM equ 0F66h ;# ">
 [; ;pic18f2550.h: 57: extern volatile unsigned char UFRML @ 0xF66;

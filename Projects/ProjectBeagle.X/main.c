@@ -1,37 +1,12 @@
-/* 
- * File:   main.c
- * Author: Morris Chen
- *
- * Created on February 02, 2018, 2:32 PM
- */
+#include <xc.h>
 
-#include "main.h"
-#include "GLCD_PIC.h"
-#include "px_ascii.h"
-
-Operation operations[8];
-int currentMachineMode = MODE_STANDBY;
-static bit SEND;
-
-/* Initialize local variables. */
-unsigned char mem[3]; // Initialize array to check for triple-A sequence
-unsigned char counter = 0; // Increments each time a byte is sent
-unsigned char keypress; // Stores the data corresponding to the last key press
-unsigned char data; // Holds the data to be sent/received
-
-
-void draw_px_char(int x, int y, px_char p) {
-    uint32_t m = 0b1;
-    for(int i = 0; i < 32; i++) {
-        if(m & p.part[0]) glcdDrawPixel(x+i%PX_CHAR_WIDTH, y+i/PX_CHAR_WIDTH, BLACK);
-        if(m & p.part[1]) glcdDrawPixel(x+(i+32)%PX_CHAR_WIDTH, y+(i+32)/PX_CHAR_WIDTH, BLACK);
-
-        m <<= 1;
-    }
-}
-
+#include <stdio.h>
+#include "configBits.h"
+#include "lcd.h"
+ 
+int tick_count=0x0;
+ 
 void main(void) {
-    
     // <editor-fold defaultstate="collapsed" desc="Machine Configuration">
     /********************************* PIN I/O ********************************/
     /* Write outputs to LATx, read inputs from PORTx. Here, all latches (LATx)
@@ -46,7 +21,10 @@ void main(void) {
      * are configured. 0 --> output; 1 --> input. Default is  1. */
     TRISA = 0xFF; // All inputs (this is the default, but is explicated here for learning purposes)
     TRISB = 0xFF;
-    TRISC = 0x00;
+    TRISC = 0b10000000; /* RC3 is SCK/SCL (SPI/I2C),
+                         * RC4 is SDA (I2C),
+                         * RC5 is SDA (SPI),
+                         * RC6 and RC7 are UART TX and RX, respectively. */
     TRISD = 0x00; // All output mode on port D for the LCD
     TRISE = 0x00;
     
@@ -55,118 +33,47 @@ void main(void) {
     ADCON1 = 0b00001111; // Set all A/D ports to digital (pg. 222)
     // </editor-fold>
     
-    INT1IE = 1; // Enable RB1 (keypad data available) interrupt
-    ei(); // Enable all interrupts
-    
     /* Initialize LCD. */
     initLCD();
-    initGLCD();
-  
-    /* Initialize I2C Master with 100 kHz clock. */  
-    I2C_Master_Init(100000); 
-    //I2C_Master_Start(); // Start condition
     
-   // I2C_Master_Write(0b00010000); // 7-bit Arduino slave address + write
-    //I2C_Master_Stop();
-    
-    //SEND = 1;
-    
-    glcdDrawRectangle(0, GLCD_SIZE_VERT, 0, 128, WHITE);
-    print_px_string(0, 14, "HELLO WORLD!");
-    
-    unsigned char time[7]; // Create a byte array to hold time read from RTC
-    unsigned char i; // Loop counter
-    
-    while (1) {
-        if (currentMachineMode == MODE_STANDBY) enterStandby();
-            
-        while (currentMachineMode == MODE_INPUT) {
-            if (getInputMode() == MODE_EMPTY_INPUT) askForOperationInput();
-            else if (getInputMode() == MODE_INPUT_DESTINATION) askForDestination();
-            else if (getInputMode() == MODE_INPUT_DIET) askForDietType();
-            else if (getInputMode() == MODE_INPUT_DIET_NUM) askForDietNum();
-            else if (getInputMode() == MODE_INPUT_PROMPT) showPrompt();
-            else if (getInputMode() == MODE_SHOW_INPUT) {
-                int opNum = getDisplayedOperationNum();
-                Operation operation = operations[opNum];
-                showInput(opNum, DIETS[operation.dietType - 1], operation.dietNum, operation.destination);
-            }
-        }
-    }
-}
-
-void enterStandby(void) {
-    setOperationNum(0);
-    
-    char output[16];
-    char message[] = "Please load fasteners and press any button to start. ";
-    int len = strlen(message);
     __lcd_clear();
-    __lcd_home();
+    printf("START");
     
-    __lcd_display_control(1, 0, 0);
+    T1CON = 0x01;               //Configure Timer1 interrupt
+    PIE1bits.TMR1IE = 1;           
+    INTCONbits.PEIE = 1;
+    RCONbits.IPEN=0x01;
+    IPR1bits.TMR1IP=0x01;            // TMR1 high priority ,TMR1 Overflow Interrupt Priority bit
+    INTCONbits.GIE = 1;
+    PIR1bits.TMR1IF = 0;
+    T0CON=0X00;
+    INTCONbits.T0IE = 1;               // Enable interrupt on TMR0 overflow
+    INTCON2bits.TMR0IP=0x00;        
+    T0CONbits.TMR0ON = 1;
     
-    while (currentMachineMode == MODE_STANDBY) {
-        for (int i = 0; i<len-16 && currentMachineMode == MODE_STANDBY; i++) {
-            strncpy(output, message+i, 16);
-            printf("%s", output);
-            __delay_ms(150);
-            if (i == 0 | i == len - 17) __delay_ms(450);
+    while(1) {
+        if(tick_count % 153 == 0) {
             __lcd_clear();
+            printf("%d", tick_count/153);
         }
     }
-    __lcd_display_control(1, 1, 0);
 }
-
-
-
-
-void createOperation(void) { 
-    operations[getOperationNum()].destination = getNewDestination();
-    operations[getOperationNum()].dietNum = getNewDietNum();
-    operations[getOperationNum()].dietType = getNewDietType();
-    setOperationNum(getOperationNum() + 1);
-    setOperationReady(0);
-}
-
-void interrupt interruptHandler(void){
-    /* This function is mapped to the interrupt vector, and so is called when
-     * any interrupt occurs to handle it. Note that if any interrupt is enabled,
-     * and it does not have a handler to clear it, then unexpected behavior will
-     * occur, perhaps even causing the PIC to reset.
-     *
-     * Arguments: none
-     * 
-     * Returns: none
-     */
-    
-    if (INT1IF) {
+ 
+void interrupt tc_int(void) {            // High priority interrupt
+    if(TMR1IE && TMR1IF) {
+        TMR1IF=0;
+        ++tick_count;
         
-        unsigned char keypress = (PORTB & 0xF0) >> 4;
-        
-        if (currentMachineMode == MODE_STANDBY) {
-            __lcd_clear();
-            __lcd_home();
-            currentMachineMode = MODE_INPUT;
-            setInputMode(MODE_EMPTY_INPUT);
-        }
-        else if (currentMachineMode == MODE_INPUT) {
-            processInputInterrupt(keypress);
-            if (getInputMode() == MODE_NO_INPUT) currentMachineMode = MODE_STANDBY;
-            if (isOperationReady()) createOperation();
-        }
-        
-        /*
-        if(SEND){
-            data = keys[keypress];
-            
-            I2C_Master_Start(); // Start condition
-            I2C_Master_Write(0b00010000); // 7-bit Arduino slave address + write
-            I2C_Master_Write(data); // Write key press data
-            I2C_Master_Stop();
-        }*/
-        
-        INT1IF = 0;
+        TRISC=1;
+        LATCbits.LATC4 = 0x01;
     }
-    
+}
+ 
+void interrupt low_priority LowIsr(void) {    // Low priority interrupt
+    if(INTCONbits.T0IF && INTCONbits.T0IE) {  // If Timer flag is set & Interrupt is enabled
+        INTCONbits.T0IF = 0;            // Clear the interrupt flag 
+        ADCON1=0x0F;
+        TRISB=0x0CF;
+        LATBbits.LATB5 = 0x01;          // Toggle a bit 
+    }
 }

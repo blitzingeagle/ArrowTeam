@@ -1,9 +1,9 @@
 
 
-Microchip Technology PIC18 LITE Macro Assembler V1.43 build -156212558 
-                                                                                               Fri Sep 15 00:39:56 2017
+Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
+                                                                                               Tue Feb 20 16:43:35 2018
 
-Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250354
+Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	18F4620
      2                           	fnconf	rparam,??,?,0
      3                           	opt	pw 120
@@ -31,8 +31,8 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
     25                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
     26                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
     27  0000                     
-    28                           ; Version 1.43
-    29                           ; Generated 25/07/2017 GMT
+    28                           ; Version 1.45
+    29                           ; Generated 16/11/2017 GMT
     30                           ; 
     31                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
     32                           ; All rights reserved.
@@ -109,13 +109,13 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
     95                           	opt stack 0
     96  00101A                     _happynewyear:
     97                           	opt stack 0
-    98  00101A  45                 	db	69
-    99  00101B  59                 	db	89
-   100  00101C  23                 	db	35
-   101  00101D  00                 	db	0
-   102  00101E  31                 	db	49
-   103  00101F  12                 	db	18
-   104  001020  17                 	db	23
+    98  00101A  00                 	db	0
+    99  00101B  43                 	db	67
+   100  00101C  16                 	db	22
+   101  00101D  02                 	db	2
+   102  00101E  20                 	db	32
+   103  00101F  02                 	db	2
+   104  001020  18                 	db	24
    105  001021                     __end_of_happynewyear:
    106                           	opt stack 0
    107  001021                     _LCD_LEFT:
@@ -652,7 +652,7 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
    633                           
    634 ;; *************** function _printf *****************
    635 ;; Defined at:
-   636 ;;		line 464 in file "D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\doprnt.c"
+   636 ;;		line 464 in file "/Applications/microchip/xc8/v1.45/sources/common/doprnt.c"
    637 ;; Parameters:    Size  Location     Type
    638 ;;  f               2    7[COMRAM] PTR const unsigned char 
    639 ;;		 -> STR_2(15), STR_1(15), 
@@ -1173,7 +1173,7 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
   1144                           
   1145 ;; *************** function _isdigit *****************
   1146 ;; Defined at:
-  1147 ;;		line 8 in file "D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\isdigit.c"
+  1147 ;;		line 8 in file "/Applications/microchip/xc8/v1.45/sources/common/isdigit.c"
   1148 ;; Parameters:    Size  Location     Type
   1149 ;;  c               1    wreg     unsigned char 
   1150 ;; Auto vars:     Size  Location     Type
@@ -1247,7 +1247,7 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
   1213                           
   1214 ;; *************** function ___wmul *****************
   1215 ;; Defined at:
-  1216 ;;		line 15 in file "D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\Umul16.c"
+  1216 ;;		line 15 in file "/Applications/microchip/xc8/v1.45/sources/common/Umul16.c"
   1217 ;; Parameters:    Size  Location     Type
   1218 ;;  multiplier      2    0[COMRAM] unsigned int 
   1219 ;;  multiplicand    2    2[COMRAM] unsigned int 
@@ -1321,7 +1321,7 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
   1282                           
   1283 ;; *************** function ___lwdiv *****************
   1284 ;; Defined at:
-  1285 ;;		line 8 in file "D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lwdiv.c"
+  1285 ;;		line 8 in file "/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c"
   1286 ;; Parameters:    Size  Location     Type
   1287 ;;  dividend        2    0[COMRAM] unsigned int 
   1288 ;;  divisor         2    2[COMRAM] unsigned int 
@@ -2244,7 +2244,7 @@ Microchip Technology Omniscient Code Generator v1.43 (Free mode) build 201707250
   2151                           
   2152 ;; *************** function ___lldiv *****************
   2153 ;; Defined at:
-  2154 ;;		line 8 in file "D:\Program Files (x86)\Microchip\xc8\v1.43\sources\common\lldiv.c"
+  2154 ;;		line 8 in file "/Applications/microchip/xc8/v1.45/sources/common/lldiv.c"
   2155 ;; Parameters:    Size  Location     Type
   2156 ;;  dividend        4    0[COMRAM] unsigned long 
   2157 ;;  divisor         4    4[COMRAM] unsigned long 
@@ -2658,8 +2658,8 @@ DATA                 0      0      29       3        0.0%
 CODE                 0      0       0       0        0.0%
 
 
-Microchip Technology PIC18 Macro Assembler V1.43 build -156212558 
-Symbol Table                                                                                   Fri Sep 15 00:39:56 2017
+Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
+Symbol Table                                                                                   Tue Feb 20 16:43:35 2018
 
                          l67 1292                           l68 12CE                           u15 1422  
                          u16 1424                           u25 1462                           u26 1464  

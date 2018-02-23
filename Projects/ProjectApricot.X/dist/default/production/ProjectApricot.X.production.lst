@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
-                                                                                               Fri Feb  2 15:05:05 2018
+                                                                                               Thu Feb 22 21:11:34 2018
 
 Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	18F4620
@@ -810,7 +810,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    796 ;;
    797 ;; *************** function _main *****************
    798 ;; Defined at:
-   799 ;;		line 124 in file "main.c"
+   799 ;;		line 123 in file "main.c"
    800 ;; Parameters:    Size  Location     Type
    801 ;;		None
    802 ;; Auto vars:     Size  Location     Type
@@ -853,12 +853,12 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    834  002CE6                     _main:
    835                           	opt stack 23
    836                           
-   837                           ;main.c: 125: init();
+   837                           ;main.c: 124: init();
    838                           
    839                           ;incstack = 0
    840  002CE6  EC50  F01A         	call	_init	;wreg free
    841                           
-   842                           ;main.c: 128: glcdDrawRectangle(0, GLCD_SIZE_VERT, 0, 14, RED);
+   842                           ;main.c: 127: glcdDrawRectangle(0, GLCD_SIZE_VERT, 0, 14, RED);
    843  002CEA  0E69               	movlw	low _GLCD_SIZE_VERT
    844  002CEC  6EF6               	movwf	tblptrl,c
    845  002CEE                     	if	1	;There is more than 1 active tblptr byte
@@ -892,7 +892,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    873  002D20  0E00               	movlw	0
    874  002D22  EC73  F017         	call	_glcdDrawRectangle
    875                           
-   876                           ;main.c: 129: glcdDrawRectangle(0, GLCD_SIZE_VERT, 14, 110, BLACK);
+   876                           ;main.c: 128: glcdDrawRectangle(0, GLCD_SIZE_VERT, 14, 110, BLACK);
    877  002D26  0E69               	movlw	low _GLCD_SIZE_VERT
    878  002D28  6EF6               	movwf	tblptrl,c
    879  002D2A                     	if	1	;There is more than 1 active tblptr byte
@@ -926,7 +926,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    907  002D5C  0E00               	movlw	0
    908  002D5E  EC73  F017         	call	_glcdDrawRectangle
    909                           
-   910                           ;main.c: 130: glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
+   910                           ;main.c: 129: glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
    911  002D62  0E69               	movlw	low _GLCD_SIZE_VERT
    912  002D64  6EF6               	movwf	tblptrl,c
    913  002D66                     	if	1	;There is more than 1 active tblptr byte
@@ -960,7 +960,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    941  002D98  0E00               	movlw	0
    942  002D9A  EC73  F017         	call	_glcdDrawRectangle
    943                           
-   944                           ;main.c: 132: print_px_string(0, 0, "Jan 28, 2018  11:50 PM");
+   944                           ;main.c: 131: print_px_string(0, 0, "Jan 28, 2018  11:50 PM");
    945  002D9E  0E00               	movlw	0
    946  002DA0  6E3D               	movwf	print_px_string@x+1,c
    947  002DA2  0E00               	movlw	0
@@ -975,7 +975,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    956  002DB4  6E41               	movwf	print_px_string@s+1,c
    957  002DB6  ECD4  F018         	call	_print_px_string	;wreg free
    958                           
-   959                           ;main.c: 134: char eta[] = "ETA:     - min -- sec\0";
+   959                           ;main.c: 133: char eta[] = "ETA:     - min -- sec\0";
    960  002DBA  EE20  F065         	lfsr	2,main@F3027
    961  002DBE  EE10  F04A         	lfsr	1,main@eta
    962  002DC2  0E16               	movlw	22
@@ -984,16 +984,16 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    965  002DC8  06E8               	decf	wreg,f,c
    966  002DCA  E2FC               	bc	u2631
    967                           
-   968                           ;main.c: 135: int sec = 180;
+   968                           ;main.c: 134: int sec = 180;
    969  002DCC  0E00               	movlw	0
    970  002DCE  6E64               	movwf	main@sec+1,c
    971  002DD0  0EB4               	movlw	180
    972  002DD2  6E63               	movwf	main@sec,c
    973                           
-   974                           ;main.c: 137: while(sec-- > 0) {
+   974                           ;main.c: 136: while(sec-- > 0) {
    975  002DD4  D076               	goto	l143
    976  002DD6                     
-   977                           ;main.c: 138: eta[9] = '0' + (sec/60);
+   977                           ;main.c: 137: eta[9] = '0' + (sec/60);
    978  002DD6  C063  F007         	movff	main@sec,___awdiv@dividend
    979  002DDA  C064  F008         	movff	main@sec+1,___awdiv@dividend+1
    980  002DDE  0E00               	movlw	0
@@ -1005,7 +1005,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    986  002DEC  0F30               	addlw	48
    987  002DEE  6E53               	movwf	main@eta+9,c
    988                           
-   989                           ;main.c: 139: eta[15] = '0' + ((sec%60)/10);
+   989                           ;main.c: 138: eta[15] = '0' + ((sec%60)/10);
    990  002DF0  0E00               	movlw	0
    991  002DF2  6E04               	movwf	___awmod@divisor+1,c
    992  002DF4  0E3C               	movlw	60
@@ -1024,7 +1024,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   1005  002E1A  0F30               	addlw	48
   1006  002E1C  6E59               	movwf	main@eta+15,c
   1007                           
-  1008                           ;main.c: 140: eta[16] = '0' + ((sec%60)%10);
+  1008                           ;main.c: 139: eta[16] = '0' + ((sec%60)%10);
   1009  002E1E  0E00               	movlw	0
   1010  002E20  6E04               	movwf	___awmod@divisor+1,c
   1011  002E22  0E3C               	movlw	60
@@ -1035,7 +1035,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   1016  002E32  C001  F061         	movff	?___awmod,_main$1145
   1017  002E36  C002  F062         	movff	?___awmod+1,_main$1145+1
   1018                           
-  1019                           ;main.c: 140: eta[16] = '0' + ((sec%60)%10);
+  1019                           ;main.c: 139: eta[16] = '0' + ((sec%60)%10);
   1020  002E3A  C061  F001         	movff	_main$1145,___awmod@dividend
   1021  002E3E  C062  F002         	movff	_main$1145+1,___awmod@dividend+1
   1022  002E42  0E00               	movlw	0
@@ -1047,7 +1047,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   1028  002E50  0F30               	addlw	48
   1029  002E52  6E5A               	movwf	main@eta+16,c
   1030                           
-  1031                           ;main.c: 141: glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
+  1031                           ;main.c: 140: glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
   1032  002E54  0E69               	movlw	low _GLCD_SIZE_VERT
   1033  002E56  6EF6               	movwf	tblptrl,c
   1034  002E58                     	if	1	;There is more than 1 active tblptr byte
@@ -1081,7 +1081,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   1062  002E8A  0E00               	movlw	0
   1063  002E8C  EC73  F017         	call	_glcdDrawRectangle
   1064                           
-  1065                           ;main.c: 142: print_px_string(0, 114, eta);
+  1065                           ;main.c: 141: print_px_string(0, 114, eta);
   1066  002E90  0E00               	movlw	0
   1067  002E92  6E3D               	movwf	print_px_string@x+1,c
   1068  002E94  0E00               	movlw	0
@@ -1096,7 +1096,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   1077  002EA6  6E41               	movwf	print_px_string@s+1,c
   1078  002EA8  ECD4  F018         	call	_print_px_string	;wreg free
   1079                           
-  1080                           ;main.c: 143: _delay((unsigned long)((1000)*(40000000/4000.0)));
+  1080                           ;main.c: 142: _delay((unsigned long)((1000)*(40000000/4000.0)));
   1081  002EAC  0E33               	movlw	51
   1082  002EAE  6E49               	movwf	(??_main+1)& (0+255),c
   1083  002EB0  0EBB               	movlw	187
@@ -4317,7 +4317,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   4278                           
   4279 ;; *************** function _draw_px_char *****************
   4280 ;; Defined at:
-  4281 ;;		line 61 in file "main.c"
+  4281 ;;		line 60 in file "main.c"
   4282 ;; Parameters:    Size  Location     Type
   4283 ;;  x               2   32[COMRAM] int 
   4284 ;;  y               2   34[COMRAM] int 
@@ -4361,7 +4361,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   4317  003066                     _draw_px_char:
   4318                           	opt stack 23
   4319                           
-  4320                           ;main.c: 62: uint32_t m = 0b1;
+  4320                           ;main.c: 61: uint32_t m = 0b1;
   4321                           
   4322                           ;incstack = 0
   4323  003066  0E01               	movlw	1
@@ -4373,7 +4373,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   4329  003072  0E00               	movlw	0
   4330  003074  6E34               	movwf	draw_px_char@m+3,c
   4331                           
-  4332                           ;main.c: 63: for(int i = 0; i < 32; i++) {
+  4332                           ;main.c: 62: for(int i = 0; i < 32; i++) {
   4333  003076  0E00               	movlw	0
   4334  003078  6E36               	movwf	draw_px_char@i+1,c
   4335  00307A  0E00               	movlw	0
@@ -4391,7 +4391,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   4347  003090  0012               	return	
   4348  003092                     l132:
   4349                           
-  4350                           ;main.c: 64: if(m & p.part[0]) glcdDrawPixel(x+i%5, y+i/5, BLACK);
+  4350                           ;main.c: 63: if(m & p.part[0]) glcdDrawPixel(x+i%5, y+i/5, BLACK);
   4351  003092  5031               	movf	draw_px_char@m,w,c
   4352  003094  1425               	andwf	draw_px_char@p,w,c
   4353  003096  6E2D               	movwf	??_draw_px_char& (0+255),c
@@ -4448,7 +4448,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   4404  003108  ECA2  F019         	call	_glcdDrawPixel
   4405  00310C                     l134:
   4406                           
-  4407                           ;main.c: 65: if(m & p.part[1]) glcdDrawPixel(x+(i+32)%5, y+(i+32)/5, BLACK);
+  4407                           ;main.c: 64: if(m & p.part[1]) glcdDrawPixel(x+(i+32)%5, y+(i+32)/5, BLACK);
   4408  00310C  5031               	movf	draw_px_char@m,w,c
   4409  00310E  1429               	andwf	draw_px_char@p+4,w,c
   4410  003110  6E2D               	movwf	??_draw_px_char& (0+255),c
@@ -4513,7 +4513,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   4469  00318A  ECA2  F019         	call	_glcdDrawPixel
   4470  00318E                     l135:
   4471                           
-  4472                           ;main.c: 67: m <<= 1;
+  4472                           ;main.c: 66: m <<= 1;
   4473  00318E  90D8               	bcf	status,0,c
   4474  003190  3631               	rlcf	draw_px_char@m,f,c
   4475  003192  3632               	rlcf	draw_px_char@m+1,f,c
@@ -4945,7 +4945,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   4886                           
   4887 ;; *************** function _init *****************
   4888 ;; Defined at:
-  4889 ;;		line 21 in file "main.c"
+  4889 ;;		line 20 in file "main.c"
   4890 ;; Parameters:    Size  Location     Type
   4891 ;;		None
   4892 ;; Auto vars:     Size  Location     Type
@@ -4984,55 +4984,55 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   4920  0034A0                     _init:
   4921                           	opt stack 25
   4922                           
-  4923                           ;main.c: 26: LATA = 0x00;
+  4923                           ;main.c: 25: LATA = 0x00;
   4924                           
   4925                           ;incstack = 0
   4926  0034A0  0E00               	movlw	0
   4927  0034A2  6E89               	movwf	3977,c	;volatile
   4928                           
-  4929                           ;main.c: 27: LATB = 0x00;
+  4929                           ;main.c: 26: LATB = 0x00;
   4930  0034A4  0E00               	movlw	0
   4931  0034A6  6E8A               	movwf	3978,c	;volatile
   4932                           
-  4933                           ;main.c: 28: LATC = 0x00;
+  4933                           ;main.c: 27: LATC = 0x00;
   4934  0034A8  0E00               	movlw	0
   4935  0034AA  6E8B               	movwf	3979,c	;volatile
   4936                           
-  4937                           ;main.c: 29: LATD = 0x00;
+  4937                           ;main.c: 28: LATD = 0x00;
   4938  0034AC  0E00               	movlw	0
   4939  0034AE  6E8C               	movwf	3980,c	;volatile
   4940                           
-  4941                           ;main.c: 30: LATE = 0x00;
+  4941                           ;main.c: 29: LATE = 0x00;
   4942  0034B0  0E00               	movlw	0
   4943  0034B2  6E8D               	movwf	3981,c	;volatile
   4944                           
-  4945                           ;main.c: 34: TRISA = 0xFF;
+  4945                           ;main.c: 33: TRISA = 0xFF;
   4946  0034B4  6892               	setf	3986,c	;volatile
   4947                           
-  4948                           ;main.c: 35: TRISB = 0xFF;
+  4948                           ;main.c: 34: TRISB = 0xFF;
   4949  0034B6  6893               	setf	3987,c	;volatile
   4950                           
-  4951                           ;main.c: 36: TRISC = 0b10000000;
+  4951                           ;main.c: 35: TRISC = 0b10000000;
   4952  0034B8  0E80               	movlw	128
   4953  0034BA  6E94               	movwf	3988,c	;volatile
   4954                           
-  4955                           ;main.c: 40: TRISD = 0b00000001;
+  4955                           ;main.c: 39: TRISD = 0b00000001;
   4956  0034BC  0E01               	movlw	1
   4957  0034BE  6E95               	movwf	3989,c	;volatile
   4958                           
-  4959                           ;main.c: 46: TRISE = 0b00000100;
+  4959                           ;main.c: 45: TRISE = 0b00000100;
   4960  0034C0  0E04               	movlw	4
   4961  0034C2  6E96               	movwf	3990,c	;volatile
   4962                           
-  4963                           ;main.c: 53: ADCON0 = 0x00;
+  4963                           ;main.c: 52: ADCON0 = 0x00;
   4964  0034C4  0E00               	movlw	0
   4965  0034C6  6EC2               	movwf	4034,c	;volatile
   4966                           
-  4967                           ;main.c: 54: ADCON1 = 0b00001111;
+  4967                           ;main.c: 53: ADCON1 = 0b00001111;
   4968  0034C8  0E0F               	movlw	15
   4969  0034CA  6EC1               	movwf	4033,c	;volatile
   4970                           
-  4971                           ;main.c: 58: initGLCD();
+  4971                           ;main.c: 57: initGLCD();
   4972  0034CC  ECED  F014         	call	_initGLCD	;wreg free
   4973  0034D0  0012               	return		;funcret
   4974  0034D2                     __end_of_init:
@@ -6954,7 +6954,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
-Symbol Table                                                                                   Fri Feb  2 15:05:05 2018
+Symbol Table                                                                                   Thu Feb 22 21:11:34 2018
 
               _print_px_string$1146 0044                      ?_print_px_char 0037  
                        _SSPSTATbits 000FC7                      ??_glcdTransfer 0005  

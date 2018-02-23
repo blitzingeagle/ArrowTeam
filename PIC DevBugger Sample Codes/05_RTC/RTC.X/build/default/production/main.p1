@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"878 D:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4620.h
+"878 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [v _LATA `Vuc ~T0 @X0 0 e@3977 ]
 "990
 [v _LATB `Vuc ~T0 @X0 0 e@3978 ]
@@ -28,7 +28,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _initLCD `(v ~T0 @X0 0 ef ]
 "22 I2C.h
 [v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
-"6378 D:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4620.h
+"6378 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [s S258 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S258 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
 "6388
@@ -53,16 +53,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 "71 lcd.h
 [v _lcdInst `(v ~T0 @X0 0 ef1`uc ]
 [v F2882 `(v ~T0 @X0 1 tf1`ul ]
-"164 D:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18.h
+"164 /Applications/microchip/xc8/v1.45/include/pic18.h
 [v __delay `JF2882 ~T0 @X0 0 e ]
 [p i __delay ]
-"195 D:\Program Files (x86)\Microchip\xc8\v1.43\include\stdio.h
+"195 /Applications/microchip/xc8/v1.45/include/stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f4620.h: 50: extern volatile unsigned char PORTA @ 0xF80;
-"52 D:\Program Files (x86)\Microchip\xc8\v1.43\include\pic18f4620.h
+"52 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [; ;pic18f4620.h: 52: asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
 [; ;pic18f4620.h: 55: typedef union {
@@ -2918,28 +2918,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _happynewyear `Cuc ~T0 @X0 -> 7 `i e ]
 [i _happynewyear
 :U ..
--> -> 69 `i `uc
-"35
--> -> 89 `i `uc
-"36
--> -> 35 `i `uc
-"37
 -> -> 0 `i `uc
+"35
+-> -> 67 `i `uc
+"36
+-> -> 22 `i `uc
+"37
+-> -> 2 `i `uc
 "38
--> -> 49 `i `uc
+-> -> 32 `i `uc
 "39
--> -> 18 `i `uc
+-> -> 2 `i `uc
 "41
--> -> 23 `i `uc
+-> -> 24 `i `uc
 ..
 ]
-[; ;main.c: 34: const char happynewyear[7] = { 0x45,
-[; ;main.c: 35: 0x59,
-[; ;main.c: 36: 0x23,
-[; ;main.c: 37: 0x00,
-[; ;main.c: 38: 0x31,
-[; ;main.c: 39: 0x12,
-[; ;main.c: 40: 0x17
+[; ;main.c: 34: const char happynewyear[7] = { 0x00,
+[; ;main.c: 35: 0x43,
+[; ;main.c: 36: 0x16,
+[; ;main.c: 37: 0x02,
+[; ;main.c: 38: 0x20,
+[; ;main.c: 39: 0x02,
+[; ;main.c: 40: 0x18
 [; ;main.c: 41: };
 [v $root$_main `(v ~T0 @X0 0 e ]
 "43

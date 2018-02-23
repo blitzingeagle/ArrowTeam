@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"6809 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"6809 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [s S299 :2 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
 [n S299 . SCS IOFS OSTS IRCF IDLEN ]
 "6816
@@ -104,7 +104,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f2550.h: 50: extern volatile unsigned short UFRM @ 0xF66;
-"52 D:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f2550.h
+"52 /Applications/microchip/xc8/v1.45/include/pic18f2550.h
 [; ;pic18f2550.h: 52: asm("UFRM equ 0F66h");
 [; <" UFRM equ 0F66h ;# ">
 [; ;pic18f2550.h: 57: extern volatile unsigned char UFRML @ 0xF66;

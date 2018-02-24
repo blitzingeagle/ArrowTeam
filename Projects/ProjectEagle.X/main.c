@@ -23,6 +23,7 @@
 #include "px_ascii.h"
 #include "protocol_manager.h"
 #include "program_states.h"
+#include "RTC.h"
 
 /***** Macros *****/
 #define __bcd_to_num(num) (num & 0x0F) + ((num & 0xF0)>>4)*10
@@ -32,14 +33,6 @@ void RTC_setTime(void);
 
 /***** Constants *****/
 const char keys[] = "123B456N789S*0#W";
-const char happynewyear[7] = {  0x00, // 45 Seconds 
-                                0x43, // 59 Minutes
-                                0x16, // 24 hour mode, set to 23:00
-                                0x02, // Tues
-                                0x20, // 20th
-                                0x02, // Feb
-                                0x18  // 2018
-};
 
 void init(void) {
     // <editor-fold defaultstate="collapsed" desc="Machine Configuration">
@@ -103,29 +96,14 @@ void main(void) {
     
     /* Declare local variables. */
     unsigned char time[7]; // Create a byte array to hold time read from RTC
-    unsigned char i; // Loop counter
     
     /* Main loop. */
     while(1) {
-        /* Reset RTC memory pointer. */
-        I2C_Master_Start(); // Start condition
-        I2C_Master_Write(0b11010000); // 7 bit RTC address + Write
-        I2C_Master_Write(0x00); // Set memory pointer to seconds
-        I2C_Master_Stop(); // Stop condition
-
-        /* Read current time. */
-        I2C_Master_Start(); // Start condition
-        I2C_Master_Write(0b11010001); // 7 bit RTC address + Read
-        for(i = 0; i < 6; i++){
-            time[i] = I2C_Master_Read(ACK); // Read with ACK to continue reading
-        }
-        time[6] = I2C_Master_Read(NACK); // Final Read with NACK
-        I2C_Master_Stop(); // Stop condition
+        RTC_read_time(time);
         
         use_protocol(SPI);
         glcdDrawRectangle(0, GLCD_SIZE_VERT, 0, 14, RED);
         char buffer[22];
-        int a = 5, b = 3;
         sprintf(buffer, "%02x/%02x/%02x     %02x:%02x:%02x", time[5], time[4], time[6], time[2], time[1], time[0]);
         print_px_string(1, 1, buffer);
         use_protocol(I2C);
@@ -145,22 +123,3 @@ void interrupt interruptHandler(void) {
     }
 }
 
-void RTC_setTime(void){
-    /* Writes the happynewyear array to the RTC memory.
-     *
-     * Arguments: none
-     *
-     * Returns: none
-     */
-    
-    I2C_Master_Start(); // Start condition
-    I2C_Master_Write(0b11010000); //7 bit RTC address + Write
-    I2C_Master_Write(0x00); // Set memory pointer to seconds
-    
-    /* Write array. */
-    for(char i=0; i<7; i++){
-        I2C_Master_Write(happynewyear[i]);
-    }
-    
-    I2C_Master_Stop(); //Stop condition
-}

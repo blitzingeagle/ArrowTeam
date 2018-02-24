@@ -12,6 +12,7 @@
       <itemPath>protocol_manager.h</itemPath>
       <itemPath>program_states.h</itemPath>
       <itemPath>config_bits.h</itemPath>
+      <itemPath>RTC.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -28,6 +29,7 @@
       <itemPath>px_ascii.c</itemPath>
       <itemPath>protocol_manager.c</itemPath>
       <itemPath>program_states.c</itemPath>
+      <itemPath>RTC.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

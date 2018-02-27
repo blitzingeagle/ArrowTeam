@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c I2C.c lcd.c SPI_PIC.c GLCD_PIC.c px_ascii.c protocol_manager.c program_states.c RTC.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c I2C.c lcd.c SPI_PIC.c GLCD_PIC.c px_ascii.c protocol_manager.c program_states.c RTC.c UART_PIC.c arduino_cmd.c history.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/I2C.p1 ${OBJECTDIR}/lcd.p1 ${OBJECTDIR}/SPI_PIC.p1 ${OBJECTDIR}/GLCD_PIC.p1 ${OBJECTDIR}/px_ascii.p1 ${OBJECTDIR}/protocol_manager.p1 ${OBJECTDIR}/program_states.p1 ${OBJECTDIR}/RTC.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/I2C.p1.d ${OBJECTDIR}/lcd.p1.d ${OBJECTDIR}/SPI_PIC.p1.d ${OBJECTDIR}/GLCD_PIC.p1.d ${OBJECTDIR}/px_ascii.p1.d ${OBJECTDIR}/protocol_manager.p1.d ${OBJECTDIR}/program_states.p1.d ${OBJECTDIR}/RTC.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/I2C.p1 ${OBJECTDIR}/lcd.p1 ${OBJECTDIR}/SPI_PIC.p1 ${OBJECTDIR}/GLCD_PIC.p1 ${OBJECTDIR}/px_ascii.p1 ${OBJECTDIR}/protocol_manager.p1 ${OBJECTDIR}/program_states.p1 ${OBJECTDIR}/RTC.p1 ${OBJECTDIR}/UART_PIC.p1 ${OBJECTDIR}/arduino_cmd.p1 ${OBJECTDIR}/history.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/I2C.p1.d ${OBJECTDIR}/lcd.p1.d ${OBJECTDIR}/SPI_PIC.p1.d ${OBJECTDIR}/GLCD_PIC.p1.d ${OBJECTDIR}/px_ascii.p1.d ${OBJECTDIR}/protocol_manager.p1.d ${OBJECTDIR}/program_states.p1.d ${OBJECTDIR}/RTC.p1.d ${OBJECTDIR}/UART_PIC.p1.d ${OBJECTDIR}/arduino_cmd.p1.d ${OBJECTDIR}/history.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/I2C.p1 ${OBJECTDIR}/lcd.p1 ${OBJECTDIR}/SPI_PIC.p1 ${OBJECTDIR}/GLCD_PIC.p1 ${OBJECTDIR}/px_ascii.p1 ${OBJECTDIR}/protocol_manager.p1 ${OBJECTDIR}/program_states.p1 ${OBJECTDIR}/RTC.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/I2C.p1 ${OBJECTDIR}/lcd.p1 ${OBJECTDIR}/SPI_PIC.p1 ${OBJECTDIR}/GLCD_PIC.p1 ${OBJECTDIR}/px_ascii.p1 ${OBJECTDIR}/protocol_manager.p1 ${OBJECTDIR}/program_states.p1 ${OBJECTDIR}/RTC.p1 ${OBJECTDIR}/UART_PIC.p1 ${OBJECTDIR}/arduino_cmd.p1 ${OBJECTDIR}/history.p1
 
 # Source Files
-SOURCEFILES=main.c I2C.c lcd.c SPI_PIC.c GLCD_PIC.c px_ascii.c protocol_manager.c program_states.c RTC.c
+SOURCEFILES=main.c I2C.c lcd.c SPI_PIC.c GLCD_PIC.c px_ascii.c protocol_manager.c program_states.c RTC.c UART_PIC.c arduino_cmd.c history.c
 
 
 CFLAGS=
@@ -165,6 +165,30 @@ ${OBJECTDIR}/RTC.p1: RTC.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/RTC.d ${OBJECTDIR}/RTC.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/RTC.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/UART_PIC.p1: UART_PIC.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/UART_PIC.p1.d 
+	@${RM} ${OBJECTDIR}/UART_PIC.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/UART_PIC.p1  UART_PIC.c 
+	@-${MV} ${OBJECTDIR}/UART_PIC.d ${OBJECTDIR}/UART_PIC.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/UART_PIC.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/arduino_cmd.p1: arduino_cmd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/arduino_cmd.p1.d 
+	@${RM} ${OBJECTDIR}/arduino_cmd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/arduino_cmd.p1  arduino_cmd.c 
+	@-${MV} ${OBJECTDIR}/arduino_cmd.d ${OBJECTDIR}/arduino_cmd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/arduino_cmd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/history.p1: history.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/history.p1.d 
+	@${RM} ${OBJECTDIR}/history.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/history.p1  history.c 
+	@-${MV} ${OBJECTDIR}/history.d ${OBJECTDIR}/history.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/history.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -237,6 +261,30 @@ ${OBJECTDIR}/RTC.p1: RTC.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/RTC.p1  RTC.c 
 	@-${MV} ${OBJECTDIR}/RTC.d ${OBJECTDIR}/RTC.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/RTC.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/UART_PIC.p1: UART_PIC.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/UART_PIC.p1.d 
+	@${RM} ${OBJECTDIR}/UART_PIC.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/UART_PIC.p1  UART_PIC.c 
+	@-${MV} ${OBJECTDIR}/UART_PIC.d ${OBJECTDIR}/UART_PIC.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/UART_PIC.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/arduino_cmd.p1: arduino_cmd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/arduino_cmd.p1.d 
+	@${RM} ${OBJECTDIR}/arduino_cmd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/arduino_cmd.p1  arduino_cmd.c 
+	@-${MV} ${OBJECTDIR}/arduino_cmd.d ${OBJECTDIR}/arduino_cmd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/arduino_cmd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/history.p1: history.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/history.p1.d 
+	@${RM} ${OBJECTDIR}/history.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/history.p1  history.c 
+	@-${MV} ${OBJECTDIR}/history.d ${OBJECTDIR}/history.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/history.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

@@ -13,6 +13,9 @@
       <itemPath>program_states.h</itemPath>
       <itemPath>config_bits.h</itemPath>
       <itemPath>RTC.h</itemPath>
+      <itemPath>UART_PIC.h</itemPath>
+      <itemPath>arduino_cmd.h</itemPath>
+      <itemPath>history.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -30,6 +33,9 @@
       <itemPath>protocol_manager.c</itemPath>
       <itemPath>program_states.c</itemPath>
       <itemPath>RTC.c</itemPath>
+      <itemPath>UART_PIC.c</itemPath>
+      <itemPath>arduino_cmd.c</itemPath>
+      <itemPath>history.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

@@ -9,6 +9,7 @@
 #define	PROGRAM_STATES_H
 
 #include "lcd.h"
+#include "history.h"
 
 enum PROG_STATES {
     STATE_STANDBY,
@@ -19,6 +20,8 @@ enum PROG_STATES {
     STATE_CONFIRM_SETS,
     STATE_REVIEW_SET,
     STATE_EXECUTE,
+    STATE_HISTORY,
+    STATE_HISTORY_PAGE_1,
     NUM_STATES
 } program_state;
 
@@ -35,6 +38,9 @@ struct PROG_STATUS {
     char S;
     char W;
     char max_quantity;
+    char history_cnt;
+    char history_index;
+    struct History history[4];
 } program_status;
 
 void (*PROG_FUNC[NUM_STATES])(void);
@@ -47,6 +53,8 @@ void FUNC_STATE_PREVIEW_FASTENER_SET(void);
 void FUNC_STATE_CONFIRM_SETS(void);
 void FUNC_STATE_REVIEW_SET(void);
 void FUNC_STATE_EXECUTE(void);
+void FUNC_STATE_HISTORY(void);
+void FUNC_STATE_HISTORY_PAGE_1(void);
 
 void init_program_states(void);
 void program_states_interrupt(unsigned char key);

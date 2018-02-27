@@ -24,6 +24,8 @@
 #include "protocol_manager.h"
 #include "program_states.h"
 #include "RTC.h"
+#include "UART_PIC.h"
+#include "arduino_cmd.h"
 
 /***** Macros *****/
 #define __bcd_to_num(num) (num & 0x0F) + ((num & 0xF0)>>4)*10
@@ -82,6 +84,11 @@ void init(void) {
     /* Initialize I2C */
     I2C_Master_Init(100000); //Initialize I2C Master with 100 kHz clock
     
+    /* Initialize UART */
+    INTCONbits.GIE = 1;
+    INTCONbits.PEIE = 1;
+    UART_Init(9600); // Baud rate 9600
+    
     /* Initialize Program States */
     init_program_states();
     
@@ -92,10 +99,10 @@ void init(void) {
 void main(void) {
     init();
     
-    FUNC_STATE_STANDBY();
+    FUNC_STATE_STANDBY(); // Start program in standby mode
     
     /* Declare local variables. */
-    unsigned char time[7]; // Create a byte array to hold time read from RTC
+    unsigned char time[7];
     
     /* Main loop. */
     while(1) {
@@ -103,10 +110,14 @@ void main(void) {
         
         use_protocol(SPI);
         glcdDrawRectangle(0, GLCD_SIZE_VERT, 0, 14, RED);
+        
         char buffer[22];
         sprintf(buffer, "%02x/%02x/%02x     %02x:%02x:%02x", time[5], time[4], time[6], time[2], time[1], time[0]);
         print_px_string(1, 1, buffer);
+        
         use_protocol(I2C);
+        
+        arduino_send_fastener_data();
         
         __delay_ms(1000);
     }
@@ -120,6 +131,15 @@ void interrupt interruptHandler(void) {
         program_states_interrupt(key);
         
         INT1IF = 0;  // Clear interrupt flag bit to signify it's been handled
+        return;
     }
+    
+    /* Handle UART interrupt */
+    UART_interrupt();
+}
+
+// TODO: Interface functions for UART_interrupt
+void tmp(void (*TX_interface)(void), void (*RX_interface)(void)) {
+    if(TX_interface) TX_interface();
 }
 

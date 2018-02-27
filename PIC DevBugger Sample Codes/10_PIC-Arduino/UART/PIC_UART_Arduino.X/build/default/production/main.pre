@@ -3909,6 +3909,9 @@ ADCON0 = 0x00;
 ADCON1 = 0b00001111;
 
 
+INTCONbits.GIE = 1;
+INTCONbits.PEIE = 1;
+
 
 UART_Init(9600);
 
@@ -3916,8 +3919,74 @@ UART_Init(9600);
 unsigned char arr[1] = {'H'};
 while(1){
 
-uartTransmitBlocking(arr, 1);
+uartTransmitIT(arr, 1);
+uartReceiveIT(1);
 _delay((unsigned long)((1000)*(40000000/4000.0)));
+}
+}
+
+void interrupt interruptHandlerUART(void){
+
+# 79
+if(TXIF){
+
+UARTinterruptState = INTCONbits.GIE;
+(INTCONbits.GIE = 0);
+TXREG = UART -> _dataTX[UART -> _numTransmits];
+INTCONbits.GIE = UARTinterruptState;
+
+UART -> _numTransmits++;
+
+
+if((UART -> _numTransmits) == (UART -> _numBytesTX)){
+TXIE = 0;
+
+
+UART -> _stateTX = UART_STATE_READY;
+}
+
+TRISCbits.TRISC0 = 0;
+LATCbits.LATC0 = 1;
+}
+
+
+if(RCIF){
+
+# 104
+if(RCSTAbits.FERR){
+
+# 108
+UART -> _lastReceiveFERR = 1;
+}
+else{
+UART -> _lastReceiveFERR = 0;
+}
+
+
+UARTinterruptState = INTCONbits.GIE;
+(INTCONbits.GIE = 0);
+UART -> _dataRX[UART -> _numReceives] = RCREG;
+INTCONbits.GIE = UARTinterruptState;
+
+# 122
+if(RCSTAbits.OERR){
+
+RCSTAbits.CREN = 0;
+RCSTAbits.CREN = 1;
+}
+else{
+UART -> _lastReceiveOERR = 0;
+}
+
+UART -> _numReceives++;
+
+
+if(UART -> _numReceives >= UART -> _numBytesRX){
+RCIE = 0;
+
+
+UART -> _stateRX = UART_STATE_READY;
+}
 }
 }
 

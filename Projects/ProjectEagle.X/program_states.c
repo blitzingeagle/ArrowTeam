@@ -2,13 +2,15 @@
 #include <string.h>
 
 #include "program_states.h"
+#include "RTC.h"
+#include "history.h"
 
 #define min(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 void FUNC_STATE_STANDBY(void) {
-    printf("Load fasteners &");
+    printf("<1> to start");
     __lcd_newline();
-    printf("Press to start.");
+    printf("<2> for history");
     __lcd_display_control(1, 1, 1);
 }
 
@@ -65,10 +67,31 @@ void FUNC_STATE_EXECUTE(void) {
     printf("Executing...");
     __lcd_newline();
     
-    TRISCbits.TRISC0 = 0;
-    LATCbits.LATC0 = 1;
+    program_status.history[program_status.history_cnt++] = make_history(program_status.set_count, program_status.compartment_count);
+    
+//    TRISCbits.TRISC0 = 0;
+//    LATCbits.LATC0 = 1;
     
 //    PORTCbits.PORTC0;
+}
+
+void FUNC_STATE_HISTORY(void) {
+    if(program_status.history_cnt) {
+        for(int i = 0; i < program_status.history_cnt; i++) {
+            lcd_set_cursor(i*8%16,i*8/16);
+            printf("%d %02x/%02x", i+1, program_status.history[i].time[5], program_status.history[i].time[4]);
+        }
+    } else {
+        printf("No logs present.");
+        __lcd_newline();
+    }
+}
+
+void FUNC_STATE_HISTORY_PAGE_1(void) {
+    char i = program_status.history_index;
+    printf("%02x/%02x %02x:%02x:%02x", program_status.history[i].time[5], program_status.history[i].time[4], program_status.history[i].time[2], program_status.history[i].time[1], program_status.history[i].time[0]);
+    __lcd_newline();
+    printf("%d step assembly.", program_status.history[i].steps);
 }
 
 void init_program_states(void) {
@@ -81,28 +104,47 @@ void init_program_states(void) {
     PROG_FUNC[STATE_CONFIRM_SETS] = FUNC_STATE_CONFIRM_SETS;
     PROG_FUNC[STATE_REVIEW_SET] = FUNC_STATE_REVIEW_SET;
     PROG_FUNC[STATE_EXECUTE] = FUNC_STATE_EXECUTE;
+    PROG_FUNC[STATE_HISTORY] = FUNC_STATE_HISTORY;
     
     init_fastener_trie();
     program_status.compartment_count_index = 0;
     program_status.buffer_index = 0;
     program_status.trie_ptr = &fastener_trie.nodes[0];
+    program_status.history_cnt = 0;
 }
+
+void reset_fastener_prompt() {
+    // Reset the B, N, S, and W for each compartment to 0
+    program_status.B = 0;
+    program_status.N = 0;
+    program_status.S = 0;
+    program_status.W = 0;
+    // Fill buffer with null terminators
+    memset(program_status.buffer, '\0', 8);
+    program_status.buffer_index = 0;
+}
+
+#include "GLCD_PIC.h"
+#include "px_ascii.h"
+#include "protocol_manager.h"
 
 void program_states_interrupt(unsigned char key) {
     bool state_changed = true;
 
     switch(program_state) {
         case STATE_STANDBY: // Key pressed on standby mode
-            program_state = STATE_PROMPT_COMPARTMENT_COUNT; // Proceed to prompt for number of compartments
+            if(key == '1') {
+                program_state = STATE_PROMPT_COMPARTMENT_COUNT; // Proceed to prompt for number of compartments
+            } else if(key == '2') {
+                program_state = STATE_HISTORY;
+            }
             break;
         case STATE_PROMPT_COMPARTMENT_COUNT: // Key pressed while prompting for compartment count
             if('4' <= key && key <= '8') { // Check if input admissible
                 program_status.compartment_count = key - '0'; // Store compartment count
                 program_status.compartment_count_index = 0; // Start compartment index at 0
-                // Reset the B, N, S, and W for each compartment to 0
                 memset(program_status.set_count, 0, sizeof(program_status.set_count[0][0]) * 8 * 4);
-                // Fill buffer with null terminators
-                memset(program_status.buffer, '\0', 8);
+                reset_fastener_prompt();
                 program_state = STATE_PROMPT_FASTENER_SET; // Proceed to prompt for fastener set contents
             }
             break;
@@ -147,7 +189,15 @@ void program_states_interrupt(unsigned char key) {
                 } else {
                     state_changed = false;
                 }
+            } else {
+                state_changed = false;
             }
+            use_protocol(SPI);
+            char buffer[22];
+            glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
+            sprintf(buffer, "B:%d N:%d S:%d W:%d Tot:%d", program_status.B, program_status.N, program_status.S, program_status.W, program_status.buffer_index);
+            print_px_string(1, 114, buffer);
+            use_protocol(I2C);
             break;
         case STATE_PROMPT_FASTENER_SET_QUANTITY:
             if('1' <= key && key <= ('0' + program_status.max_quantity)) {
@@ -165,15 +215,14 @@ void program_states_interrupt(unsigned char key) {
                     program_status.set_count[program_status.compartment_count_index][p] += program_status.set_count_tmp;
                     program_status.trie_ptr = program_status.trie_ptr->parent;
                 }
-                ;
                 if(++program_status.compartment_count_index < program_status.compartment_count) {
-                    memset(program_status.buffer, '\0', 8);
+                    reset_fastener_prompt();
                     program_state = STATE_PROMPT_FASTENER_SET;
                 } else {
                     program_state = STATE_CONFIRM_SETS;
                 }
             } else if(key == '*') {
-                memset(program_status.buffer, '\0', 8);
+                reset_fastener_prompt();
                 program_state = STATE_PROMPT_FASTENER_SET;
             } else {
                 state_changed = false;
@@ -193,6 +242,12 @@ void program_states_interrupt(unsigned char key) {
             break;
         case STATE_REVIEW_SET:
             program_state = STATE_CONFIRM_SETS;
+            break;
+        case STATE_HISTORY:
+            if('1' <= key && key <= '9') {
+                program_status.history_index = key - '1';
+                program_state = STATE_HISTORY_PAGE_1;
+            }
             break;
         default:
             program_state = STATE_STANDBY;
@@ -218,6 +273,7 @@ void init_children(char *letters, struct trie_node *node, struct trie_node **tri
 
 void init_fastener_trie(void) {
     struct trie_node *trie_ptr = &fastener_trie.nodes[0];
+    trie_ptr->letter = 'A';
     trie_ptr->parent = &fastener_trie.nodes[0];
     trie_ptr++;
     init_children("BNSW", &fastener_trie.nodes[0], &trie_ptr);

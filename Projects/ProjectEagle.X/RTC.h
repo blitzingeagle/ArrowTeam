@@ -8,7 +8,7 @@
 #ifndef RTC_H
 #define	RTC_H
 
-void RTC_set_time(const char *setTime);
+void RTC_set_time(char *setTime);
 void RTC_read_time(char *time);
 
 #endif	/* RTC_H */

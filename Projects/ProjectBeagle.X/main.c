@@ -39,6 +39,7 @@ void main(void) {
     __lcd_clear();
     printf("START");
     
+    /*
     T1CON = 0x01;               //Configure Timer1 interrupt
     PIE1bits.TMR1IE = 1;           
     INTCONbits.PEIE = 1;
@@ -57,23 +58,52 @@ void main(void) {
             printf("%d", tick_count/153);
         }
     }
+    */
+    
+    INTCONbits.GIE = 1;
+    INTCONbits.PEIE = 1;
+    
+    T0CONbits.T08BIT = 0;
+    T0CONbits.T0CS = 0;
+    T0CONbits.PSA = 0;
+    T0CONbits.T0PS2 = 1;
+    T0CONbits.T0PS1 = 1;
+    T0CONbits.T0PS0 = 0;
+    TMR0H = 0x67;
+    TMR0L = 0x69;
+    T0CONbits.TMR0ON = 1;
+    TMR0IE = 1;
+    
+    while(1);
 }
  
-void interrupt tc_int(void) {            // High priority interrupt
-    if(TMR1IE && TMR1IF) {
-        TMR1IF=0;
+void interrupt interruptHandler(void) {
+    
+    if(TMR0IF) {
+        TMR0IF = 0;
+        
         ++tick_count;
         
-        TRISC=1;
-        LATCbits.LATC4 = 0x01;
+        __lcd_clear();
+        printf("%d", tick_count);
     }
 }
- 
-void interrupt low_priority LowIsr(void) {    // Low priority interrupt
-    if(INTCONbits.T0IF && INTCONbits.T0IE) {  // If Timer flag is set & Interrupt is enabled
-        INTCONbits.T0IF = 0;            // Clear the interrupt flag 
-        ADCON1=0x0F;
-        TRISB=0x0CF;
-        LATBbits.LATB5 = 0x01;          // Toggle a bit 
-    }
-}
+
+//void interrupt tc_int(void) {            // High priority interrupt
+//    if(TMR1IE && TMR1IF) {
+//        TMR1IF=0;
+//        ++tick_count;
+//        
+//        TRISC=1;
+//        LATCbits.LATC4 = 0x01;
+//    }
+//}
+// 
+//void interrupt low_priority LowIsr(void) {    // Low priority interrupt
+//    if(INTCONbits.T0IF && INTCONbits.T0IE) {  // If Timer flag is set & Interrupt is enabled
+//        INTCONbits.T0IF = 0;            // Clear the interrupt flag 
+//        ADCON1=0x0F;
+//        TRISB=0x0CF;
+//        LATBbits.LATB5 = 0x01;          // Toggle a bit 
+//    }
+//}

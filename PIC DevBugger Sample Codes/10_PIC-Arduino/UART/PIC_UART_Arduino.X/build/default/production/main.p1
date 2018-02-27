@@ -27,14 +27,90 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADCON0 `Vuc ~T0 @X0 0 e@4034 ]
 "4442
 [v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
+"6378
+[s S258 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S258 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"6388
+[s S259 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S259 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"6398
+[s S260 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S260 . . GIEL GIEH ]
+"6377
+[u S257 `S258 1 `S259 1 `S260 1 ]
+[n S257 . . . . ]
+"6404
+[v _INTCONbits `VS257 ~T0 @X0 0 e@4082 ]
 "82 UART_PIC.h
 [v _UART_Init `(v ~T0 @X0 0 ef1`l ]
-"76
-[v _uartTransmitBlocking `(v ~T0 @X0 0 ef2`*uc`uc ]
+"77
+[v _uartTransmitIT `(v ~T0 @X0 0 ef2`*uc`uc ]
+"79
+[v _uartReceiveIT `(v ~T0 @X0 0 ef1`uc ]
 [v F2882 `(v ~T0 @X0 1 tf1`ul ]
 "164 /Applications/microchip/xc8/v1.45/include/pic18.h
 [v __delay `JF2882 ~T0 @X0 0 e ]
 [p i __delay ]
+"7835 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
+[v _TXIF `Vb ~T0 @X0 0 e@31988 ]
+"3484
+[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
+"7833
+[v _TXIE `Vb ~T0 @X0 0 e@31980 ]
+"93 main.c
+[c E2976 0 1 .. ]
+[n E2976 . UART_STATE_BUSY UART_STATE_READY  ]
+"1833 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
+[s S65 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S65 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"1843
+[s S66 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S66 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+"1832
+[u S64 `S65 1 `S66 1 ]
+[n S64 . . . ]
+"1854
+[v _TRISCbits `VS64 ~T0 @X0 0 e@3988 ]
+"1108
+[s S44 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S44 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
+"1118
+[s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S45 . LC0 LC1 LC2 LC3 LC4 LC5 LC6 LC7 ]
+"1107
+[u S43 `S44 1 `S45 1 ]
+[n S43 . . . ]
+"1129
+[v _LATCbits `VS43 ~T0 @X0 0 e@3979 ]
+"7465
+[v _RCIF `Vb ~T0 @X0 0 e@31989 ]
+"3029
+[s S107 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S107 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"3039
+[s S108 :3 `uc 1 :1 `uc 1 ]
+[n S108 . . ADEN ]
+"3043
+[s S109 :5 `uc 1 :1 `uc 1 ]
+[n S109 . . SRENA ]
+"3047
+[s S110 :6 `uc 1 :1 `uc 1 ]
+[n S110 . . RC8_9 ]
+"3051
+[s S111 :6 `uc 1 :1 `uc 1 ]
+[n S111 . . RC9 ]
+"3055
+[s S112 :1 `uc 1 ]
+[n S112 . RCD8 ]
+"3028
+[u S106 `S107 1 `S108 1 `S109 1 `S110 1 `S111 1 `S112 1 ]
+[n S106 . . . . . . . ]
+"3059
+[v _RCSTAbits `VS106 ~T0 @X0 0 e@4011 ]
+"3496
+[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
+"7463
+[v _RCIE `Vb ~T0 @X0 0 e@31981 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2934,37 +3010,185 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 53: ADCON1 = 0b00001111;
 "53
 [e = _ADCON1 -> -> 15 `i `uc ]
-[; ;main.c: 57: UART_Init(9600);
+[; ;main.c: 56: INTCONbits.GIE = 1;
+"56
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 57: INTCONbits.PEIE = 1;
 "57
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;main.c: 60: UART_Init(9600);
+"60
 [e ( _UART_Init (1 -> -> 9600 `i `l ]
 [v F3010 `uc ~T0 @X0 -> -> 1 `i `ux s ]
 [i F3010
 :U ..
-"60
+"63
 -> -> 72 `ui `uc
 ..
 ]
 [v _arr `uc ~T0 @X0 -> -> 1 `i `ux a ]
-[; ;main.c: 60: unsigned char arr[1] = {'H'};
+[; ;main.c: 63: unsigned char arr[1] = {'H'};
 [e = _arr F3010 ]
-[; ;main.c: 61: while(1){
-"61
+[; ;main.c: 64: while(1){
+"64
 [e :U 269 ]
 {
-[; ;main.c: 63: uartTransmitBlocking(arr, 1);
-"63
-[e ( _uartTransmitBlocking (2 , &U _arr -> -> 1 `i `uc ]
-[; ;main.c: 64: _delay((unsigned long)((1000)*(40000000/4000.0)));
-"64
+[; ;main.c: 66: uartTransmitIT(arr, 1);
+"66
+[e ( _uartTransmitIT (2 , &U _arr -> -> 1 `i `uc ]
+[; ;main.c: 67: uartReceiveIT(1);
+"67
+[e ( _uartReceiveIT (1 -> -> 1 `i `uc ]
+[; ;main.c: 68: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"68
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-"65
+"69
 }
 [e :U 268 ]
-"61
+"64
 [e $U 269  ]
 [e :U 270 ]
-[; ;main.c: 65: }
-[; ;main.c: 66: }
-"66
+[; ;main.c: 69: }
+[; ;main.c: 70: }
+"70
 [e :UE 267 ]
+}
+[v $root$_interruptHandlerUART `(v ~T0 @X0 0 e ]
+[v F3014 `(v ~T0 @X0 1 tf ]
+"72
+[v _interruptHandlerUART `IF3014 ~T0 @X0 1 e ]
+{
+[; ;main.c: 72: void interrupt interruptHandlerUART(void){
+[e :U _interruptHandlerUART ]
+[f ]
+[; ;main.c: 79: if(TXIF){
+"79
+[e $ ! _TXIF 272  ]
+{
+[; ;main.c: 81: UARTinterruptState = INTCONbits.GIE;
+"81
+[e = _UARTinterruptState . . _INTCONbits 1 7 ]
+[; ;main.c: 82: (INTCONbits.GIE = 0);
+"82
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;main.c: 83: TXREG = UART -> _dataTX[UART -> _numTransmits];
+"83
+[e = _TXREG *U + . *U _UART 0 * -> . *U _UART 2 `ux -> -> # *U . *U _UART 0 `ui `ux ]
+[; ;main.c: 84: INTCONbits.GIE = UARTinterruptState;
+"84
+[e = . . _INTCONbits 1 7 _UARTinterruptState ]
+[; ;main.c: 86: UART -> _numTransmits++;
+"86
+[e ++ . *U _UART 2 -> -> 1 `i `uc ]
+[; ;main.c: 89: if((UART -> _numTransmits) == (UART -> _numBytesTX)){
+"89
+[e $ ! == -> . *U _UART 2 `i -> . *U _UART 1 `i 273  ]
+{
+[; ;main.c: 90: TXIE = 0;
+"90
+[e = _TXIE -> -> 0 `i `b ]
+[; ;main.c: 93: UART -> _stateTX = UART_STATE_READY;
+"93
+[e = . *U _UART 6 -> . `E2976 1 `uc ]
+"94
+}
+[e :U 273 ]
+[; ;main.c: 94: }
+[; ;main.c: 96: TRISCbits.TRISC0 = 0;
+"96
+[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 97: LATCbits.LATC0 = 1;
+"97
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+"98
+}
+[e :U 272 ]
+[; ;main.c: 98: }
+[; ;main.c: 101: if(RCIF){
+"101
+[e $ ! _RCIF 274  ]
+{
+[; ;main.c: 104: if(RCSTAbits.FERR){
+"104
+[e $ ! != -> . . _RCSTAbits 0 2 `i -> -> -> 0 `i `Vuc `i 275  ]
+{
+[; ;main.c: 108: UART -> _lastReceiveFERR = 1;
+"108
+[e = . *U _UART 8 -> -> 1 `i `uc ]
+"109
+}
+[; ;main.c: 109: }
+[e $U 276  ]
+"110
+[e :U 275 ]
+[; ;main.c: 110: else{
+{
+[; ;main.c: 111: UART -> _lastReceiveFERR = 0;
+"111
+[e = . *U _UART 8 -> -> 0 `i `uc ]
+"112
+}
+[e :U 276 ]
+[; ;main.c: 112: }
+[; ;main.c: 115: UARTinterruptState = INTCONbits.GIE;
+"115
+[e = _UARTinterruptState . . _INTCONbits 1 7 ]
+[; ;main.c: 116: (INTCONbits.GIE = 0);
+"116
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;main.c: 117: UART -> _dataRX[UART -> _numReceives] = RCREG;
+"117
+[e = *U + . *U _UART 3 * -> . *U _UART 5 `ux -> -> # *U . *U _UART 3 `ui `ux _RCREG ]
+[; ;main.c: 118: INTCONbits.GIE = UARTinterruptState;
+"118
+[e = . . _INTCONbits 1 7 _UARTinterruptState ]
+[; ;main.c: 122: if(RCSTAbits.OERR){
+"122
+[e $ ! != -> . . _RCSTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 277  ]
+{
+[; ;main.c: 124: RCSTAbits.CREN = 0;
+"124
+[e = . . _RCSTAbits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 125: RCSTAbits.CREN = 1;
+"125
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+"126
+}
+[; ;main.c: 126: }
+[e $U 278  ]
+"127
+[e :U 277 ]
+[; ;main.c: 127: else{
+{
+[; ;main.c: 128: UART -> _lastReceiveOERR = 0;
+"128
+[e = . *U _UART 9 -> -> 0 `i `uc ]
+"129
+}
+[e :U 278 ]
+[; ;main.c: 129: }
+[; ;main.c: 131: UART -> _numReceives++;
+"131
+[e ++ . *U _UART 5 -> -> 1 `i `uc ]
+[; ;main.c: 134: if(UART -> _numReceives >= UART -> _numBytesRX){
+"134
+[e $ ! >= -> . *U _UART 5 `i -> . *U _UART 4 `i 279  ]
+{
+[; ;main.c: 135: RCIE = 0;
+"135
+[e = _RCIE -> -> 0 `i `b ]
+[; ;main.c: 138: UART -> _stateRX = UART_STATE_READY;
+"138
+[e = . *U _UART 7 -> . `E2976 1 `uc ]
+"139
+}
+[e :U 279 ]
+"140
+}
+[e :U 274 ]
+[; ;main.c: 139: }
+[; ;main.c: 140: }
+[; ;main.c: 141: }
+"141
+[e :UE 271 ]
 }

@@ -9,7 +9,7 @@
 
 #include "I2C.h"
 
-void RTC_set_time(const char *setTime) {
+void RTC_set_time(char *setTime) {
     /* Writes the setTime array to the RTC memory.
      *
      * @param setTime - 2 digit hex encoded decimal in the format

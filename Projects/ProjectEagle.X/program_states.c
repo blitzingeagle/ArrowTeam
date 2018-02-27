@@ -55,6 +55,7 @@ void FUNC_STATE_PREVIEW_FASTENER_SET(void) {
 void FUNC_STATE_CONFIRM_SETS(void) {
     printf("Confirm sets?");
     __lcd_newline();
+    printf("%d step assembly", program_status.compartment_count);
 }
 
 void FUNC_STATE_REVIEW_SET(void) {
@@ -91,7 +92,7 @@ void FUNC_STATE_HISTORY_PAGE_1(void) {
     char i = program_status.history_index;
     printf("%02x/%02x %02x:%02x:%02x", program_status.history[i].time[5], program_status.history[i].time[4], program_status.history[i].time[2], program_status.history[i].time[1], program_status.history[i].time[0]);
     __lcd_newline();
-    printf("%d step assembly.", program_status.history[i].steps);
+    printf("%d step assembly", program_status.history[i].steps);
 }
 
 void init_program_states(void) {
@@ -105,6 +106,7 @@ void init_program_states(void) {
     PROG_FUNC[STATE_REVIEW_SET] = FUNC_STATE_REVIEW_SET;
     PROG_FUNC[STATE_EXECUTE] = FUNC_STATE_EXECUTE;
     PROG_FUNC[STATE_HISTORY] = FUNC_STATE_HISTORY;
+    PROG_FUNC[STATE_HISTORY_PAGE_1] = FUNC_STATE_HISTORY_PAGE_1;
     
     init_fastener_trie();
     program_status.compartment_count_index = 0;
@@ -246,7 +248,12 @@ void program_states_interrupt(unsigned char key) {
         case STATE_HISTORY:
             if('1' <= key && key <= '9') {
                 program_status.history_index = key - '1';
-                program_state = STATE_HISTORY_PAGE_1;
+                if(program_status.history_index < program_status.history_cnt)
+                    program_state = STATE_HISTORY_PAGE_1;
+                else
+                    program_state = STATE_STANDBY;
+            } else {
+                program_state = STATE_STANDBY;
             }
             break;
         default:

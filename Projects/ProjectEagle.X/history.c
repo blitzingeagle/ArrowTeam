@@ -13,5 +13,7 @@ struct History make_history(char **set_count, char steps) {
         }
     }
     
+    history.steps = steps;
+    
     return history;
 }

@@ -13,8 +13,13 @@ const char* cmd_begin = "CMDB";
 const char* cmd_end = "CMDE";
 const char* template_fastener_data = "{\"cmd\":\"f_data\",\"data\":[%d,%d,%d,%d,%d,%d,%d,%d]}";
 
+const char* template_gate_drop = "{\"cmd\":\"gate_drop\"}";
+const char* template_gate_return = "{\"cmd\":\"gate_return\"}";
+
 void arduino_ping(void);
-void arduino_send_fastener_data(void);
+void arduino_send_gate_return(void);
+void arduino_send_gate_drop(void);
+void arduino_send_fastener_data(char **set_count);
 
 #endif	/* ARDUINO_CMD_H */
 

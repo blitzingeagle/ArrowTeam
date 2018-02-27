@@ -26,6 +26,7 @@
 #include "RTC.h"
 #include "UART_PIC.h"
 #include "arduino_cmd.h"
+#include "DigitalIO_PIC.h"
 
 /***** Macros *****/
 #define __bcd_to_num(num) (num & 0x0F) + ((num & 0xF0)>>4)*10
@@ -84,15 +85,28 @@ void init(void) {
     /* Initialize I2C */
     I2C_Master_Init(100000); //Initialize I2C Master with 100 kHz clock
     
-    /* Initialize UART */
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
+    
+    /* Initialize UART */
     UART_Init(9600); // Baud rate 9600
     
     /* Initialize Program States */
     init_program_states();
     
     INT1IE = 1; // Enable RB1 (keypad data available) interrupt
+    
+    T0CONbits.T08BIT = 0;
+    T0CONbits.T0CS = 0;
+    T0CONbits.PSA = 0;
+    T0CONbits.T0PS2 = 1;
+    T0CONbits.T0PS1 = 0;
+    T0CONbits.T0PS0 = 1;
+    TMR0H = 0x67;
+    TMR0L = 0x69;
+    T0CONbits.TMR0ON = 1;
+    TMR0IE = 1;
+    
     ei(); // Enable all interrupts
 }
 
@@ -102,28 +116,93 @@ void main(void) {
     FUNC_STATE_STANDBY(); // Start program in standby mode
     
     /* Declare local variables. */
-    unsigned char time[7];
+    
     
     /* Main loop. */
     while(1) {
-        RTC_read_time(time);
+        if(program_status.operating) {
+            program_status.history[(program_status.history_cnt++)%4] = make_history(program_status.set_count, program_status.compartment_count);
+            
+            use_protocol(SPI);
+            glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
+            char buffer[22];
+            sprintf(buffer, "%d step assembly", program_status.compartment_count);
+            print_px_string(1, 115, buffer);
+            
+            arduino_send_gate_return();
+            
+            program_status.operating = false;
+            
+            __delay_ms(5000);
+            
+            arduino_send_gate_drop();
+            
+            program_state = STATE_STANDBY;
+            __lcd_clear();
+            __lcd_home();
+            PROG_FUNC[program_state]();
+        }
+//        if(program_status.operating) {
+//            printf("Operating...");
+//            
+//            
+//            
+//            program_status.operating = 0;
+//        }
         
-        use_protocol(SPI);
-        glcdDrawRectangle(0, GLCD_SIZE_VERT, 0, 14, RED);
+        __delay_ms(500);
+//        if(program_status.operating) {
+//            arduino_send_gate_return();
+//            arduino_send_fastener_data(program_status.set_count);
+//            
+//            printf("Operating...");
+//            
+//            __delay_ms(5000);
+//            
+//            program_status.operating = 0;
+//        }
         
-        char buffer[22];
-        sprintf(buffer, "%02x/%02x/%02x     %02x:%02x:%02x", time[5], time[4], time[6], time[2], time[1], time[0]);
-        print_px_string(1, 1, buffer);
-        
-        use_protocol(I2C);
-        
-        arduino_send_fastener_data();
-        
-        __delay_ms(1000);
+//        if(program_status.operating) {
+//            use_protocol(SPI);
+//            glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
+//            char buffer[22];
+//            sprintf(buffer, "%d step assembly", program_status.compartment_count);
+//            print_px_string(1, 115, buffer);
+//            use_protocol(I2C);
+//            
+//            arduino_send_gate_return();
+//            arduino_send_fastener_data(program_status.set_count);
+//            printf("Operating..."); 
+//            
+//            __delay_ms(5000);
+//            
+//            program_status.operating = 0;
+//            program_state = STATE_STANDBY;
+//            
+//            __lcd_clear();
+//            __lcd_home();
+//            PROG_FUNC[program_state]();
+//        }
     }
 }
 
+unsigned char time[7];
+
 void interrupt interruptHandler(void) {
+    if(TMR0IF) {
+        TMR0IF = 0;
+        
+        use_protocol(I2C);
+        RTC_read_time(time);
+
+        use_protocol(SPI);
+        glcdDrawRectangle(0, GLCD_SIZE_VERT, 0, 14, RED);
+
+        char buffer[22];
+        sprintf(buffer, "%02x/%02x/%02x     %02x:%02x:%02x", time[5], time[4], time[6], time[2], time[1], time[0]);
+        print_px_string(1, 1, buffer);
+    }
+    
     if(INT1IF) { /* Interrupt on change handler for RB1. */
         unsigned char keypress = (PORTB & 0xF0) >> 4;
         unsigned char key = keys[keypress];
@@ -136,6 +215,9 @@ void interrupt interruptHandler(void) {
     
     /* Handle UART interrupt */
     UART_interrupt();
+    
+//    /* Handle DigitalIO interrupt */
+//    DigitalIO_interrupt();
 }
 
 // TODO: Interface functions for UART_interrupt

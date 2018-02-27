@@ -8,7 +8,11 @@
 #define min(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 void FUNC_STATE_STANDBY(void) {
-    printf("<1> to start");
+    if(program_status.operating) {
+        printf("<1> to resume");
+    } else {
+        printf("<1> to start");
+    }
     __lcd_newline();
     printf("<2> for history");
     __lcd_display_control(1, 1, 1);
@@ -68,8 +72,6 @@ void FUNC_STATE_EXECUTE(void) {
     printf("Executing...");
     __lcd_newline();
     
-    program_status.history[program_status.history_cnt++] = make_history(program_status.set_count, program_status.compartment_count);
-    
 //    TRISCbits.TRISC0 = 0;
 //    LATCbits.LATC0 = 1;
     
@@ -113,6 +115,7 @@ void init_program_states(void) {
     program_status.buffer_index = 0;
     program_status.trie_ptr = &fastener_trie.nodes[0];
     program_status.history_cnt = 0;
+    program_status.operating = false;
 }
 
 void reset_fastener_prompt() {
@@ -136,7 +139,7 @@ void program_states_interrupt(unsigned char key) {
     switch(program_state) {
         case STATE_STANDBY: // Key pressed on standby mode
             if(key == '1') {
-                program_state = STATE_PROMPT_COMPARTMENT_COUNT; // Proceed to prompt for number of compartments
+                program_state = program_status.operating ? STATE_EXECUTE : STATE_PROMPT_COMPARTMENT_COUNT; // Proceed to prompt for number of compartments
             } else if(key == '2') {
                 program_state = STATE_HISTORY;
             }
@@ -234,6 +237,7 @@ void program_states_interrupt(unsigned char key) {
             if(key == '*') {
                 program_state = STATE_PROMPT_COMPARTMENT_COUNT;
             } else if(key == '#') {
+                program_status.operating = true;
                 program_state = STATE_EXECUTE;
             } else if('1' <= key && key <= '0'+program_status.compartment_count) {
                 program_status.compartment_count_index = key - '1';

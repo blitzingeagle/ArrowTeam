@@ -11,6 +11,8 @@
 #include "lcd.h"
 #include "history.h"
 
+#include <stdbool.h>
+
 enum PROG_STATES {
     STATE_STANDBY,
     STATE_PROMPT_COMPARTMENT_COUNT,
@@ -38,9 +40,10 @@ struct PROG_STATUS {
     char S;
     char W;
     char max_quantity;
-    char history_cnt;
-    char history_index;
+    unsigned char history_cnt;
+    unsigned char history_index;
     struct History history[4];
+    bool operating;
 } program_status;
 
 void (*PROG_FUNC[NUM_STATES])(void);

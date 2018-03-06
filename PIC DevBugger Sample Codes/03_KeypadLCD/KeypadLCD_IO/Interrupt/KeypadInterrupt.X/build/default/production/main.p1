@@ -2961,7 +2961,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "60
 [e :U 268 ]
 {
-[; ;main.c: 61: printf("Chocolate? ");
+[; ;main.c: 61: printf("Charge?  ");
 "61
 [e ( _printf :s 1C ]
 [; ;main.c: 62: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
@@ -2971,7 +2971,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 63: _delay((unsigned long)((1000)*(40000000/4000.0)));
 "63
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;main.c: 64: printf("CHOCOLATE?!");
+[; ;main.c: 64: printf("CHARGE!?!");
 "64
 [e ( _printf :s 2C ]
 [; ;main.c: 65: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
@@ -3030,5 +3030,5 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 270 ]
 }
 [p f _printf 8388608 ]
-[a 2C 67 72 79 67 79 76 65 84 69 63 33 0 ]
-[a 1C 67 104 111 99 111 108 97 116 101 63 32 0 ]
+[a 2C 67 72 65 82 71 69 33 63 33 0 ]
+[a 1C 67 104 97 114 103 101 63 32 32 0 ]

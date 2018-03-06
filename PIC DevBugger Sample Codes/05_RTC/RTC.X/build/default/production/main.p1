@@ -2918,27 +2918,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _happynewyear `Cuc ~T0 @X0 -> 7 `i e ]
 [i _happynewyear
 :U ..
--> -> 0 `i `uc
+-> -> 48 `i `uc
 "35
--> -> 67 `i `uc
+-> -> 4 `i `uc
 "36
--> -> 22 `i `uc
+-> -> 21 `i `uc
 "37
--> -> 2 `i `uc
+-> -> 1 `i `uc
 "38
--> -> 32 `i `uc
+-> -> 5 `i `uc
 "39
--> -> 2 `i `uc
+-> -> 3 `i `uc
 "41
 -> -> 24 `i `uc
 ..
 ]
-[; ;main.c: 34: const char happynewyear[7] = { 0x00,
-[; ;main.c: 35: 0x43,
-[; ;main.c: 36: 0x16,
-[; ;main.c: 37: 0x02,
-[; ;main.c: 38: 0x20,
-[; ;main.c: 39: 0x02,
+[; ;main.c: 34: const char happynewyear[7] = { 0x30,
+[; ;main.c: 35: 0x04,
+[; ;main.c: 36: 0x15,
+[; ;main.c: 37: 0x01,
+[; ;main.c: 38: 0x05,
+[; ;main.c: 39: 0x03,
 [; ;main.c: 40: 0x18
 [; ;main.c: 41: };
 [v $root$_main `(v ~T0 @X0 0 e ]

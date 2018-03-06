@@ -31,12 +31,12 @@ void RTC_setTime(void);
 
 /***** Constants *****/
 const char keys[] = "123A456B789C*0#D";
-const char happynewyear[7] = {  0x00, // 45 Seconds 
-                                0x43, // 59 Minutes
-                                0x16, // 24 hour mode, set to 23:00
-                                0x02, // Tues
-                                0x20, // 20th
-                                0x02, // Feb
+const char happynewyear[7] = {  0x30, // 45 Seconds 
+                                0x04, // 59 Minutes
+                                0x15, // 24 hour mode, set to 23:00
+                                0x01, // Tues
+                                0x05, // 20th
+                                0x03, // Feb
                                 0x18  // 2018
 };
 
@@ -78,7 +78,7 @@ void main(void) {
      * 
      * To see the RTC keep time, comment this line out after programming the PIC
      * directly before with this line included. */
-    //RTC_setTime();
+//    RTC_setTime();
     
     /* Declare local variables. */
     unsigned char time[7]; // Create a byte array to hold time read from RTC

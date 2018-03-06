@@ -3313,11 +3313,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Keypad.c: 14: unsigned char readKeyboard(void){
 [e :U _readKeyboard ]
 [f ]
-[; ;Keypad.c: 25: for(unsigned char i = 0; i < 4; i++){
+[; ;Keypad.c: 25: for(unsigned char i = 3; i < 4; i++){
 "25
 {
 [v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
+[e = _i -> -> 3 `i `uc ]
 [e $ < -> _i `i -> 4 `i 325  ]
 [e $U 326  ]
 [e :U 325 ]
@@ -3722,58 +3722,61 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Keypad.c: 209: TRISA = 0b11010000;
 "209
 [e = _TRISA -> -> 208 `i `uc ]
-[; ;Keypad.c: 210: LATAbits.LATA5 = 1;
+[; ;Keypad.c: 210: _delay((unsigned long)((20)*(8000000/4000.0)));
 "210
-[e = . . _LATAbits 0 5 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Keypad.c: 211: LATAbits.LATA5 = 1;
 "211
-}
-[; ;Keypad.c: 211: }
-[e $U 372  ]
+[e = . . _LATAbits 0 5 -> -> 1 `i `uc ]
 "212
-[e :U 371 ]
-[; ;Keypad.c: 212: else{
-{
-[; ;Keypad.c: 213: if(dataOut == readKeyboard()){
+}
+[; ;Keypad.c: 212: }
+[e $U 372  ]
 "213
+[e :U 371 ]
+[; ;Keypad.c: 213: else{
+{
+[; ;Keypad.c: 214: if(dataOut == readKeyboard()){
+"214
 [e $ ! == -> _dataOut `i -> ( _readKeyboard ..  `i 373  ]
 {
-[; ;Keypad.c: 214: return;
-"214
-[e $UE 354  ]
+[; ;Keypad.c: 215: return;
 "215
-}
-[; ;Keypad.c: 215: }
-[e $U 374  ]
+[e $UE 354  ]
 "216
-[e :U 373 ]
-[; ;Keypad.c: 216: else{
-{
-[; ;Keypad.c: 219: LATA = 0x00;
-"219
-[e = _LATA -> -> 0 `i `uc ]
-[; ;Keypad.c: 220: TRISA = 0b11011111;
-"220
-[e = _TRISA -> -> 223 `i `uc ]
-[; ;Keypad.c: 223: KPDState = polling;
-"223
-[e = _KPDState . `E3359 1 ]
-[; ;Keypad.c: 224: keypadFlags.sending_f_first = 1;
-"224
-[e = . _keypadFlags 2 -> -> 1 `i `uc ]
-"225
 }
-[e :U 374 ]
+[; ;Keypad.c: 216: }
+[e $U 374  ]
+"217
+[e :U 373 ]
+[; ;Keypad.c: 217: else{
+{
+[; ;Keypad.c: 220: LATA = 0x00;
+"220
+[e = _LATA -> -> 0 `i `uc ]
+[; ;Keypad.c: 221: TRISA = 0b11011111;
+"221
+[e = _TRISA -> -> 223 `i `uc ]
+[; ;Keypad.c: 224: KPDState = polling;
+"224
+[e = _KPDState . `E3359 1 ]
+[; ;Keypad.c: 225: keypadFlags.sending_f_first = 1;
+"225
+[e = . _keypadFlags 2 -> -> 1 `i `uc ]
 "226
 }
-[e :U 372 ]
-[; ;Keypad.c: 225: }
-[; ;Keypad.c: 226: }
-[; ;Keypad.c: 227: return;
+[e :U 374 ]
 "227
-[e $UE 354  ]
-"228
 }
-[; ;Keypad.c: 228: }
+[e :U 372 ]
+[; ;Keypad.c: 226: }
+[; ;Keypad.c: 227: }
+[; ;Keypad.c: 228: return;
+"228
+[e $UE 354  ]
+"229
+}
+[; ;Keypad.c: 229: }
 [e $U 355  ]
 "119
 [e :U 356 ]
@@ -3782,25 +3785,25 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ . `E3359 2 365
  , $ . `E3359 3 369
  355 ]
-"228
-[e :U 355 ]
-[; ;Keypad.c: 229: }
 "229
+[e :U 355 ]
+[; ;Keypad.c: 230: }
+"230
 [e :UE 354 ]
 }
 [v F3377 `(v ~T0 @X0 1 tf ]
-"231
+"232
 [v _keypadRoutineUART `TF3377 ~T0 @X0 1 e ]
 {
-[; ;Keypad.c: 231: inline void keypadRoutineUART(void){
+[; ;Keypad.c: 232: inline void keypadRoutineUART(void){
 [e :U _keypadRoutineUART ]
 [f ]
-[; ;Keypad.c: 240: if(0){
-"240
+[; ;Keypad.c: 241: if(0){
+"241
 [e $ ! != -> 0 `i -> 0 `i 376  ]
 {
-[; ;Keypad.c: 242: while(0){ continue; }
-"242
+[; ;Keypad.c: 243: while(0){ continue; }
+"243
 [e $U 377  ]
 [e :U 378 ]
 {
@@ -3809,91 +3812,91 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 377 ]
 [e $ != -> 0 `i -> 0 `i 378  ]
 [e :U 379 ]
-"243
+"244
 }
-[; ;Keypad.c: 243: }
+[; ;Keypad.c: 244: }
 [e $U 380  ]
-"246
+"247
 [e :U 376 ]
-[; ;Keypad.c: 246: else{
+[; ;Keypad.c: 247: else{
 {
-[; ;Keypad.c: 248: dataOut = readKeyboard();
-"248
+[; ;Keypad.c: 249: dataOut = readKeyboard();
+"249
 [e = _dataOut ( _readKeyboard ..  ]
-[; ;Keypad.c: 251: if (dataOut != 0xF0){
-"251
+[; ;Keypad.c: 252: if (dataOut != 0xF0){
+"252
 [e $ ! != -> _dataOut `i -> 240 `i 381  ]
 {
-[; ;Keypad.c: 255: _delay((unsigned long)((20)*(8000000/4000.0)));
-"255
+[; ;Keypad.c: 256: _delay((unsigned long)((20)*(8000000/4000.0)));
+"256
 [e ( __delay (1 -> * -> -> 20 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;Keypad.c: 257: if (dataOut == readKeyboard()){
-"257
+[; ;Keypad.c: 258: if (dataOut == readKeyboard()){
+"258
 [e $ ! == -> _dataOut `i -> ( _readKeyboard ..  `i 382  ]
 {
-[; ;Keypad.c: 259: uartTransmitBlocking(&dataOut, 1);
-"259
+[; ;Keypad.c: 260: uartTransmitBlocking(&dataOut, 1);
+"260
 [e ( _uartTransmitBlocking (2 , &U _dataOut -> -> 1 `i `uc ]
-[; ;Keypad.c: 262: while (dataOut == readKeyboard()){
-"262
+[; ;Keypad.c: 263: while (dataOut == readKeyboard()){
+"263
 [e $U 383  ]
 [e :U 384 ]
 {
-[; ;Keypad.c: 263: uartTransmitBlocking(&dataOut, 1);
-"263
+[; ;Keypad.c: 264: uartTransmitBlocking(&dataOut, 1);
+"264
 [e ( _uartTransmitBlocking (2 , &U _dataOut -> -> 1 `i `uc ]
-[; ;Keypad.c: 267: if(0){
-"267
+[; ;Keypad.c: 268: if(0){
+"268
 [e $ ! != -> 0 `i -> 0 `i 386  ]
 {
-[; ;Keypad.c: 269: uartTransmitBlocking(&dataEnd, 1);
-"269
+[; ;Keypad.c: 270: uartTransmitBlocking(&dataEnd, 1);
+"270
 [e ( _uartTransmitBlocking (2 , &U _dataEnd -> -> 1 `i `uc ]
-[; ;Keypad.c: 271: while(0){
-"271
+[; ;Keypad.c: 272: while(0){
+"272
 [e $U 387  ]
 [e :U 388 ]
 {
-[; ;Keypad.c: 272: continue;
-"272
-[e $U 387  ]
+[; ;Keypad.c: 273: continue;
 "273
+[e $U 387  ]
+"274
 }
 [e :U 387 ]
-"271
+"272
 [e $ != -> 0 `i -> 0 `i 388  ]
 [e :U 389 ]
-[; ;Keypad.c: 273: }
-[; ;Keypad.c: 274: return;
-"274
-[e $UE 375  ]
+[; ;Keypad.c: 274: }
+[; ;Keypad.c: 275: return;
 "275
-}
-[e :U 386 ]
+[e $UE 375  ]
 "276
 }
+[e :U 386 ]
+"277
+}
 [e :U 383 ]
-"262
+"263
 [e $ == -> _dataOut `i -> ( _readKeyboard ..  `i 384  ]
 [e :U 385 ]
-[; ;Keypad.c: 275: }
 [; ;Keypad.c: 276: }
-[; ;Keypad.c: 279: uartTransmitBlocking(&dataEnd, 1);
-"279
-[e ( _uartTransmitBlocking (2 , &U _dataEnd -> -> 1 `i `uc ]
+[; ;Keypad.c: 277: }
+[; ;Keypad.c: 280: uartTransmitBlocking(&dataEnd, 1);
 "280
-}
-[e :U 382 ]
+[e ( _uartTransmitBlocking (2 , &U _dataEnd -> -> 1 `i `uc ]
 "281
 }
-[e :U 381 ]
+[e :U 382 ]
 "282
 }
+[e :U 381 ]
+"283
+}
 [e :U 380 ]
-[; ;Keypad.c: 280: }
 [; ;Keypad.c: 281: }
 [; ;Keypad.c: 282: }
 [; ;Keypad.c: 283: }
-"283
+[; ;Keypad.c: 284: }
+"284
 [e :UE 375 ]
 }

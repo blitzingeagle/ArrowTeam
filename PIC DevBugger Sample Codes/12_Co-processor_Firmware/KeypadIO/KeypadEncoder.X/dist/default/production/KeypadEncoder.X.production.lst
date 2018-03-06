@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
-                                                                                               Sun Feb 25 21:40:24 2018
+                                                                                               Sun Mar  4 15:50:45 2018
 
 Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	18F2550
@@ -591,10 +591,10 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    577  000202                     _readKeyboard:
    578                           	opt stack 28
    579                           
-   580                           ;Keypad.c: 25: for(unsigned char i = 0; i < 4; i++){
+   580                           ;Keypad.c: 25: for(unsigned char i = 3; i < 4; i++){
    581                           
    582                           ;incstack = 0
-   583  000202  0E00               	movlw	0
+   583  000202  0E03               	movlw	3
    584  000204  6E38               	movwf	readKeyboard@i,c
    585  000206                     l898:
    586  000206  0E03               	movlw	3
@@ -1318,7 +1318,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
-Symbol Table                                                                                   Sun Feb 25 21:40:24 2018
+Symbol Table                                                                                   Sun Mar  4 15:50:45 2018
 
                            l23 0352                    __CFG_BOR$ON 000000                    __CFG_BORV$3 000000  
                  __CFG_CP0$OFF 000000                   __CFG_CP1$OFF 000000                   __CFG_CP2$OFF 000000  

@@ -32,10 +32,21 @@
 #define __bcd_to_num(num) (num & 0x0F) + ((num & 0xF0)>>4)*10
 
 /***** Function Prototypes *****/
-void RTC_setTime(void);
+//void RTC_setTime(void);
 
 /***** Constants *****/
 const char keys[] = "123B456N789S*0#W";
+
+unsigned char time[7];
+
+const char happynewyear[7] = {  0x30, // 45 Seconds 
+                                0x04, // 59 Minutes
+                                0x15, // 24 hour mode, set to 23:00
+                                0x01, // Tues
+                                0x05, // 20th
+                                0x03, // Feb
+                                0x18  // 2018
+};
 
 void init(void) {
     // <editor-fold defaultstate="collapsed" desc="Machine Configuration">
@@ -84,6 +95,7 @@ void init(void) {
     
     /* Initialize I2C */
     I2C_Master_Init(100000); //Initialize I2C Master with 100 kHz clock
+    RTC_set_time(happynewyear);
     
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
@@ -130,12 +142,21 @@ void main(void) {
             print_px_string(1, 115, buffer);
             
             arduino_send_gate_return();
+            arduino_send_fastener_data(program_status.set_count);
+            
+//            orient_container();
+//            
+//            for(unsigned char i = 0; i < 8; i++) {
+//                arduino_send_load_compartment(i);
+//                rotate_to_compartment(i);
+//                __delay_ms(500);
+//            }
             
             program_status.operating = false;
             
             __delay_ms(5000);
             
-            arduino_send_gate_drop();
+            arduino_send_gate_overflow();
             
             program_state = STATE_STANDBY;
             __lcd_clear();
@@ -186,8 +207,6 @@ void main(void) {
     }
 }
 
-unsigned char time[7];
-
 void interrupt interruptHandler(void) {
     if(TMR0IF) {
         TMR0IF = 0;
@@ -216,8 +235,8 @@ void interrupt interruptHandler(void) {
     /* Handle UART interrupt */
     UART_interrupt();
     
-//    /* Handle DigitalIO interrupt */
-//    DigitalIO_interrupt();
+    /* Handle DigitalIO interrupt */
+    DigitalIO_interrupt();
 }
 
 // TODO: Interface functions for UART_interrupt

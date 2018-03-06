@@ -12,6 +12,8 @@
 
 #define TURNTABLE_CW LATAbits.LATA0
 #define TURNTABLE_CCW LATAbits.LATA1
+#define LEADSCREW_CW LATCbits.LATC0
+#define LEADSCREW_CCW LATCbits.LATC1
 
 #define ROTARY_ENCODER PORTAbits.PORTA2
 #define OPTICAL_SENSOR_1 PORTAbits.PORTA3
@@ -20,6 +22,9 @@
 unsigned char CMPT1 = 0;
 
 void orient_container(void);
+void clamp_up(void);
+void clamp_down(void);
+void rotate_to_compartment(unsigned char cmpt);
 
 void DigitalIO_interrupt(void);
 

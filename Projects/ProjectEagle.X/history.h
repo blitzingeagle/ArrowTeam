@@ -14,7 +14,7 @@ struct History {
     unsigned char steps;
 };
 
-struct History make_history(char **set_count, char steps);
+struct History make_history(char set_count[][4], char steps);
 
 #endif	/* HISTORY_H */
 

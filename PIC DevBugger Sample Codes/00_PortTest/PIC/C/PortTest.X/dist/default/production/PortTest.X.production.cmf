@@ -11,14 +11,14 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$/tmp/xcVVbN3GL.obj
-idloc IDLOC 0 200000 200000 8 1
-init CODE 0 0 0 4 1
-config CONFIG 0 300000 300000 E 1
 $dist/default/production/PortTest.X.production.obj
 cinit CODE 0 FEA8 FEA8 6 1
 text0 CODE 0 FEAE FEAE 152 1
 cstackCOMRAM COMRAM 1 1 1 4 1
+$/tmp/xc3nWmFf7.obj
+idloc IDLOC 0 200000 200000 8 1
+init CODE 0 0 0 4 1
+config CONFIG 0 300000 300000 E 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -65,64 +65,64 @@ MEDIUMCONST 1000-FEA7 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production/PortTest.X.production.obj
-FEAE text0 CODE >33:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEAE text0 CODE >39:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEB2 text0 CODE >40:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEB6 text0 CODE >41:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEBA text0 CODE >42:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEBE text0 CODE >43:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEC2 text0 CODE >47:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEC6 text0 CODE >48:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FECA text0 CODE >49:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FECE text0 CODE >50:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FED2 text0 CODE >51:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FED6 text0 CODE >54:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEDA text0 CODE >55:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEDE text0 CODE >63:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEDE text0 CODE >65:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEE2 text0 CODE >66:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEE6 text0 CODE >68:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEEA text0 CODE >71:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEF6 text0 CODE >72:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEFA text0 CODE >73:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEFE text0 CODE >74:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF16 text0 CODE >71:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF1A text0 CODE >76:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF1E text0 CODE >79:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF22 text0 CODE >80:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF2E text0 CODE >81:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF32 text0 CODE >82:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF36 text0 CODE >83:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF4E text0 CODE >80:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF52 text0 CODE >85:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF56 text0 CODE >87:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF5A text0 CODE >88:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF66 text0 CODE >89:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF6A text0 CODE >90:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF6E text0 CODE >91:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF86 text0 CODE >88:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF8A text0 CODE >93:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF8E text0 CODE >95:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF92 text0 CODE >96:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FF9E text0 CODE >97:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FFA2 text0 CODE >98:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FFA6 text0 CODE >99:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FFBE text0 CODE >96:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FFC2 text0 CODE >101:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FFC6 text0 CODE >104:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FFCA text0 CODE >105:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FFD6 text0 CODE >106:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FFDA text0 CODE >107:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FFDE text0 CODE >108:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FFF6 text0 CODE >105:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FFFA text0 CODE >110:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FFFE text0 CODE >63:/Users/morris/MPLABXProjects/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
-FEA8 cinit CODE >415:/tmp/xc0qhtdp4
-FEA8 cinit CODE >417:/tmp/xc0qhtdp4
-FEA8 cinit CODE >420:/tmp/xc0qhtdp4
-FEA8 cinit CODE >426:/tmp/xc0qhtdp4
-FEA8 cinit CODE >428:/tmp/xc0qhtdp4
-FEAA cinit CODE >429:/tmp/xc0qhtdp4
+FEAE text0 CODE >33:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEAE text0 CODE >39:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEB2 text0 CODE >40:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEB6 text0 CODE >41:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEBA text0 CODE >42:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEBE text0 CODE >43:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEC2 text0 CODE >47:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEC6 text0 CODE >48:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FECA text0 CODE >49:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FECE text0 CODE >50:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FED2 text0 CODE >51:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FED6 text0 CODE >54:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEDA text0 CODE >55:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEDE text0 CODE >63:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEDE text0 CODE >65:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEE2 text0 CODE >66:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEE6 text0 CODE >68:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEEA text0 CODE >71:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEF6 text0 CODE >72:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEFA text0 CODE >73:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEFE text0 CODE >74:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF16 text0 CODE >71:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF1A text0 CODE >76:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF1E text0 CODE >79:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF22 text0 CODE >80:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF2E text0 CODE >81:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF32 text0 CODE >82:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF36 text0 CODE >83:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF4E text0 CODE >80:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF52 text0 CODE >85:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF56 text0 CODE >87:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF5A text0 CODE >88:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF66 text0 CODE >89:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF6A text0 CODE >90:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF6E text0 CODE >91:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF86 text0 CODE >88:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF8A text0 CODE >93:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF8E text0 CODE >95:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF92 text0 CODE >96:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FF9E text0 CODE >97:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FFA2 text0 CODE >98:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FFA6 text0 CODE >99:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FFBE text0 CODE >96:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FFC2 text0 CODE >101:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FFC6 text0 CODE >104:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FFCA text0 CODE >105:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FFD6 text0 CODE >106:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FFDA text0 CODE >107:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FFDE text0 CODE >108:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FFF6 text0 CODE >105:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FFFA text0 CODE >110:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FFFE text0 CODE >63:/Users/morris/Documents/Github/ArrowTeam/PIC DevBugger Sample Codes/00_PortTest/PIC/C/PortTest.X/main.c
+FEA8 cinit CODE >415:/tmp/xcB19xaUO
+FEA8 cinit CODE >417:/tmp/xcB19xaUO
+FEA8 cinit CODE >420:/tmp/xcB19xaUO
+FEA8 cinit CODE >426:/tmp/xcB19xaUO
+FEA8 cinit CODE >428:/tmp/xcB19xaUO
+FEAA cinit CODE >429:/tmp/xcB19xaUO
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -141,7 +141,7 @@ __Hspace_1 5 0 ABS 0 - dist/default/production/PortTest.X.production.obj
 __Hspace_2 0 0 ABS 0 - dist/default/production/PortTest.X.production.obj
 __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production/PortTest.X.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production/PortTest.X.production.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcVVbN3GL.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xc3nWmFf7.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/PortTest.X.production.obj
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production/PortTest.X.production.obj
 main@i 4 0 COMRAM 1 cstackCOMRAM dist/default/production/PortTest.X.production.obj
@@ -151,16 +151,16 @@ _LATB F8A 0 ABS 0 - dist/default/production/PortTest.X.production.obj
 _LATC F8B 0 ABS 0 - dist/default/production/PortTest.X.production.obj
 _LATD F8C 0 ABS 0 - dist/default/production/PortTest.X.production.obj
 _LATE F8D 0 ABS 0 - dist/default/production/PortTest.X.production.obj
-___sp 0 0 STACK 2 stack /tmp/xcVVbN3GL.obj
+___sp 0 0 STACK 2 stack /tmp/xc3nWmFf7.obj
 _main FEAE 0 CODE 0 text0 dist/default/production/PortTest.X.production.obj
-start 0 0 CODE 0 init /tmp/xcVVbN3GL.obj
+start 0 0 CODE 0 init /tmp/xc3nWmFf7.obj
 __size_of_main 0 0 ABS 0 - dist/default/production/PortTest.X.production.obj
 __Hpowerup 0 0 CODE 0 powerup dist/default/production/PortTest.X.production.obj
-__accesstop 80 0 ABS 0 - /tmp/xcVVbN3GL.obj
-intlevel0 0 0 CODE 0 text /tmp/xcVVbN3GL.obj
-intlevel1 0 0 CODE 0 text /tmp/xcVVbN3GL.obj
-intlevel2 0 0 CODE 0 text /tmp/xcVVbN3GL.obj
-intlevel3 0 0 CODE 0 text /tmp/xcVVbN3GL.obj
+__accesstop 80 0 ABS 0 - /tmp/xc3nWmFf7.obj
+intlevel0 0 0 CODE 0 text /tmp/xc3nWmFf7.obj
+intlevel1 0 0 CODE 0 text /tmp/xc3nWmFf7.obj
+intlevel2 0 0 CODE 0 text /tmp/xc3nWmFf7.obj
+intlevel3 0 0 CODE 0 text /tmp/xc3nWmFf7.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/PortTest.X.production.obj
 __CFG_EBTR0$OFF 0 0 ABS 0 - dist/default/production/PortTest.X.production.obj
 __CFG_EBTR1$OFF 0 0 ABS 0 - dist/default/production/PortTest.X.production.obj
@@ -171,8 +171,8 @@ __Hifardata 0 0 CODE 0 ifardata dist/default/production/PortTest.X.production.ob
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production/PortTest.X.production.obj
 _ADCON0 FC2 0 ABS 0 - dist/default/production/PortTest.X.production.obj
 _ADCON1 FC1 0 ABS 0 - dist/default/production/PortTest.X.production.obj
-___inthi_sp 0 0 STACK 2 stack /tmp/xcVVbN3GL.obj
-___intlo_sp 0 0 STACK 2 stack /tmp/xcVVbN3GL.obj
+___inthi_sp 0 0 STACK 2 stack /tmp/xc3nWmFf7.obj
+___intlo_sp 0 0 STACK 2 stack /tmp/xc3nWmFf7.obj
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production/PortTest.X.production.obj
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production/PortTest.X.production.obj
 __Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production/PortTest.X.production.obj
@@ -211,7 +211,7 @@ __Hbank14 0 0 ABS 0 bank14 dist/default/production/PortTest.X.production.obj
 __Hbank15 0 0 ABS 0 bank15 dist/default/production/PortTest.X.production.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production/PortTest.X.production.obj
 __Hbigram 0 0 ABS 0 bigram dist/default/production/PortTest.X.production.obj
-__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcVVbN3GL.obj
+__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xc3nWmFf7.obj
 __Hcomram 0 0 ABS 0 comram dist/default/production/PortTest.X.production.obj
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production/PortTest.X.production.obj
 __CFG_LPT1OSC$OFF 0 0 ABS 0 - dist/default/production/PortTest.X.production.obj
@@ -280,8 +280,8 @@ __CFG_CPD$ON 0 0 ABS 0 - dist/default/production/PortTest.X.production.obj
 main@temp 3 0 COMRAM 1 cstackCOMRAM dist/default/production/PortTest.X.production.obj
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production/PortTest.X.production.obj
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production/PortTest.X.production.obj
-stackhi F7F 0 ABS 0 - /tmp/xcVVbN3GL.obj
-stacklo 80 0 ABS 0 - /tmp/xcVVbN3GL.obj
+stackhi F7F 0 ABS 0 - /tmp/xc3nWmFf7.obj
+stacklo 80 0 ABS 0 - /tmp/xc3nWmFf7.obj
 __Lintcode 0 0 CODE 0 intcode dist/default/production/PortTest.X.production.obj
 __Lintret 0 0 ABS 0 intret dist/default/production/PortTest.X.production.obj
 __Lirdata 0 0 CODE 0 irdata dist/default/production/PortTest.X.production.obj
@@ -300,7 +300,7 @@ __Lrparam 0 0 COMRAM 1 rparam dist/default/production/PortTest.X.production.obj
 __pcinit FEA8 0 CODE 0 cinit dist/default/production/PortTest.X.production.obj
 __ptext0 FEAE 0 CODE 0 text0 dist/default/production/PortTest.X.production.obj
 __Lstruct 0 0 COMRAM 1 struct dist/default/production/PortTest.X.production.obj
-__ramtop 1000 0 RAM 0 ramtop /tmp/xcVVbN3GL.obj
+__ramtop 1000 0 RAM 0 ramtop /tmp/xc3nWmFf7.obj
 __Lpowerup 0 0 CODE 0 powerup dist/default/production/PortTest.X.production.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/PortTest.X.production.obj
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production/PortTest.X.production.obj

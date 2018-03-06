@@ -142,6 +142,8 @@ void program_states_interrupt(unsigned char key) {
                 program_state = program_status.operating ? STATE_EXECUTE : STATE_PROMPT_COMPARTMENT_COUNT; // Proceed to prompt for number of compartments
             } else if(key == '2') {
                 program_state = STATE_HISTORY;
+            } else {
+                program_state = STATE_HISTORY;
             }
             break;
         case STATE_PROMPT_COMPARTMENT_COUNT: // Key pressed while prompting for compartment count
@@ -149,8 +151,11 @@ void program_states_interrupt(unsigned char key) {
                 program_status.compartment_count = key - '0'; // Store compartment count
                 program_status.compartment_count_index = 0; // Start compartment index at 0
                 memset(program_status.set_count, 0, sizeof(program_status.set_count[0][0]) * 8 * 4);
+                
                 reset_fastener_prompt();
                 program_state = STATE_PROMPT_FASTENER_SET; // Proceed to prompt for fastener set contents
+            } else if(key == '*') {
+                program_state = STATE_STANDBY;
             }
             break;
         case STATE_PROMPT_FASTENER_SET: // Key pressed while prompting for fastener set contents

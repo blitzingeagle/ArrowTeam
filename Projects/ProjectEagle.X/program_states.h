@@ -24,6 +24,7 @@ enum PROG_STATES {
     STATE_EXECUTE,
     STATE_HISTORY,
     STATE_HISTORY_PAGE_1,
+    STATE_SET_TIME,
     NUM_STATES
 } program_state;
 
@@ -35,15 +36,14 @@ struct PROG_STATUS {
     char buffer[8];
     char buffer_index;
     struct trie_node *trie_ptr;
-    char B;
-    char N;
-    char S;
-    char W;
+    char B, N, S, W;
     char max_quantity;
     unsigned char history_cnt;
     unsigned char history_index;
     struct History history[4];
     bool operating;
+    unsigned char edit_time_idx;
+    unsigned char time[7];
 } program_status;
 
 void (*PROG_FUNC[NUM_STATES])(void);
@@ -58,6 +58,7 @@ void FUNC_STATE_REVIEW_SET(void);
 void FUNC_STATE_EXECUTE(void);
 void FUNC_STATE_HISTORY(void);
 void FUNC_STATE_HISTORY_PAGE_1(void);
+void FUNC_STATE_SET_TIME(void);
 
 void init_program_states(void);
 void program_states_interrupt(unsigned char key);

@@ -97,6 +97,32 @@ void FUNC_STATE_HISTORY_PAGE_1(void) {
     printf("%d step assembly", program_status.history[i].steps);
 }
 
+void FUNC_STATE_SET_TIME(void) {
+    unsigned char *time = program_status.time;
+    
+    __lcd_home();
+    printf("%02x/%02x/%02x", time[6],time[5],time[4]); // Print date in YY/MM/DD
+    __lcd_newline();
+    printf("%02x:%02x:%02x", time[2],time[1],time[0]); // HH:MM:SS
+    
+    __lcd_display_control(1,1,1);
+    switch(program_status.edit_time_idx) {
+        case 1: lcd_set_cursor(0,0); break;
+        case 2: lcd_set_cursor(1,0); break;
+        case 3: lcd_set_cursor(3,0); break;
+        case 4: lcd_set_cursor(4,0); break;
+        case 5: lcd_set_cursor(6,0); break;
+        case 6: lcd_set_cursor(7,0); break;
+        case 7: lcd_set_cursor(0,1); break;
+        case 8: lcd_set_cursor(1,1); break;
+        case 9: lcd_set_cursor(3,1); break;
+        case 10: lcd_set_cursor(4,1); break;
+        case 11: lcd_set_cursor(6,1); break;
+        case 12: lcd_set_cursor(7,1); break;
+        default: __lcd_display_control(1,0,0);
+    }
+}
+
 void init_program_states(void) {
     program_state = STATE_STANDBY;
     PROG_FUNC[STATE_STANDBY] = FUNC_STATE_STANDBY;
@@ -109,6 +135,7 @@ void init_program_states(void) {
     PROG_FUNC[STATE_EXECUTE] = FUNC_STATE_EXECUTE;
     PROG_FUNC[STATE_HISTORY] = FUNC_STATE_HISTORY;
     PROG_FUNC[STATE_HISTORY_PAGE_1] = FUNC_STATE_HISTORY_PAGE_1;
+    PROG_FUNC[STATE_SET_TIME] = FUNC_STATE_SET_TIME;
     
     init_fastener_trie();
     program_status.compartment_count_index = 0;
@@ -142,8 +169,10 @@ void program_states_interrupt(unsigned char key) {
                 program_state = program_status.operating ? STATE_EXECUTE : STATE_PROMPT_COMPARTMENT_COUNT; // Proceed to prompt for number of compartments
             } else if(key == '2') {
                 program_state = STATE_HISTORY;
-            } else {
-                program_state = STATE_HISTORY;
+            } else if(key == '3') {
+                program_status.edit_time_idx = 0;
+                TMR0IE = 0;
+                program_state = STATE_SET_TIME;
             }
             break;
         case STATE_PROMPT_COMPARTMENT_COUNT: // Key pressed while prompting for compartment count
@@ -263,6 +292,46 @@ void program_states_interrupt(unsigned char key) {
                     program_state = STATE_STANDBY;
             } else {
                 program_state = STATE_STANDBY;
+            }
+            break;
+        case STATE_SET_TIME:
+            if(key == '*') {
+                if(program_status.edit_time_idx == 0) {
+                    TMR0IE = 1;
+                    program_state = STATE_STANDBY;
+                } else {
+                    program_status.edit_time_idx--;
+                }
+            } else if(key == '#') {
+                if(program_status.edit_time_idx == 13) {
+                    use_protocol(I2C);
+                    RTC_set_time(program_status.time);
+                    TMR0IE = 1;
+                    program_state = STATE_STANDBY;
+                } else {
+                    program_status.edit_time_idx++;
+                }
+            } else if('0' <= key && key <= '9') {
+                unsigned char digit = key - '0';
+                unsigned char *time = program_status.time;
+                switch(program_status.edit_time_idx) {
+                    case 1: time[6] = (0x0F & time[6]) | (0xF0 & (digit << 4)); break;
+                    case 2: time[6] = (0x0F & digit) | (0xF0 & time[6]); break;
+                    case 3: time[5] = (0x0F & time[5]) | (0xF0 & (digit << 4)); break;
+                    case 4: time[5] = (0x0F & digit) | (0xF0 & time[5]); break;
+                    case 5: time[4] = (0x0F & time[4]) | (0xF0 & (digit << 4)); break;
+                    case 6: time[4] = (0x0F & digit) | (0xF0 & time[4]); break;
+                    case 7: time[2] = (0x0F & time[2]) | (0xF0 & (digit << 4)); break;
+                    case 8: time[2] = (0x0F & digit) | (0xF0 & time[2]); break;
+                    case 9: time[1] = (0x0F & time[1]) | (0xF0 & (digit << 4)); break;
+                    case 10: time[1] = (0x0F & digit) | (0xF0 & time[1]); break;
+                    case 11: time[0] = (0x0F & time[0]) | (0xF0 & (digit << 4)); break;
+                    case 12: time[0] = (0x0F & digit) | (0xF0 & time[0]); break;
+                }
+                if(program_status.edit_time_idx < 13) {
+                    program_status.edit_time_idx++;
+                }
+                
             }
             break;
         default:

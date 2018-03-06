@@ -37,8 +37,6 @@
 /***** Constants *****/
 const char keys[] = "123B456N789S*0#W";
 
-unsigned char time[7];
-
 const char happynewyear[7] = {  0x30, // 45 Seconds 
                                 0x04, // 59 Minutes
                                 0x15, // 24 hour mode, set to 23:00
@@ -94,8 +92,8 @@ void init(void) {
     glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
     
     /* Initialize I2C */
-    I2C_Master_Init(100000); //Initialize I2C Master with 100 kHz clock
-    RTC_set_time(happynewyear);
+    I2C_Master_Init(100000); // Initialize I2C Master with 100 kHz clock
+    RTC_read_time(program_status.time); // Read RTC time
     
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
@@ -208,8 +206,10 @@ void main(void) {
 }
 
 void interrupt interruptHandler(void) {
-    if(TMR0IF) {
+    if(TMR0IE && TMR0IF) {
         TMR0IF = 0;
+        
+        unsigned char *time = program_status.time;
         
         use_protocol(I2C);
         RTC_read_time(time);

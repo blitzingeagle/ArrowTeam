@@ -3878,10 +3878,10 @@ initLCD();
 
 
 while(1) {
-printf("Charge?  ");
+printf("Chocolate? ");
 lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
 _delay((unsigned long)((1000)*(40000000/4000.0)));
-printf("CHARGE!?!");
+printf("CHOCOLATE?!");
 lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
 _delay((unsigned long)((1000)*(40000000/4000.0)));
 }

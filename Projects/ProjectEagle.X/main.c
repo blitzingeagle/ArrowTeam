@@ -27,6 +27,7 @@
 #include "UART_PIC.h"
 #include "arduino_cmd.h"
 #include "DigitalIO_PIC.h"
+#include "eep.h"
 
 /***** Macros *****/
 #define __bcd_to_num(num) (num & 0x0F) + ((num & 0xF0)>>4)*10
@@ -84,6 +85,15 @@ void init(void) {
     
     /* Initialize LCD. */
     initLCD();
+    
+//    eep_write(0, "fuck");
+//    unsigned char c[5];
+//    eep_read(0, c);
+//    c[4] = '\0';
+//    printf("%s", c);
+//    
+//    while(1);
+    
     /* Initialize GLCD. */
     initGLCD();
     

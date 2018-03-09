@@ -58,10 +58,10 @@ void main(void) {
     
     /* Main loop. */
     while(1) {
-        printf("Charge?  ");
+        printf("Chocolate? ");
         __lcd_home();
         __delay_ms(1000);
-        printf("CHARGE!?!");
+        printf("CHOCOLATE?!");
         __lcd_home();
         __delay_ms(1000);
     }

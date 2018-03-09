@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/Applications/microchip/xc8/v1.45/dat/en_msgs.txt -cs \
   -h+dist/default/production/KeypadInterrupt.X.production.sym \
   --cmf=dist/default/production/KeypadInterrupt.X.production.cmf -z \
-  -Q18F4620 -o/tmp/xcK48lheC \
+  -Q18F4620 -o/tmp/xcnQXjTxF \
   -Mdist/default/production/KeypadInterrupt.X.production.map -E1 -ver=XC8 \
   -ASTACK=080h-0f7fh -pstack=STACK -ACODE=00h-0FFFFh -ACONST=00h-0FFFFh \
   -ASMALLCONST=01000h-010FFhx240 -AMEDIUMCONST=01000h-0FFFFh \
@@ -25,7 +25,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xc0nzBEfq.obj \
+  /tmp/xcR2FbIYZ.obj \
   dist/default/production/KeypadInterrupt.X.production.obj 
 
 Object code version is 3.11
@@ -38,7 +38,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xc0nzBEfq.obj
+/tmp/xcR2FbIYZ.obj
                 init                                  E        E        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
@@ -46,20 +46,20 @@ Call graph: (short form)
 dist/default/production/KeypadInterrupt.X.production.obj
                 intcode                               8        8        6        4       0
                 temp                                 24       24        1        1       1
-                smallconst                         1000     1000       2E      800       0
-                text9                              122A     122A       7E      817       0
-                text8                              1370     1370       14      817       0
-                text7                              135C     135C       14      817       0
-                intcode_body                       102E     102E       D8      817       0
-                text5                              11AC     11AC       7E      817       0
-                text4                              1348     1348       14      817       0
-                text3                              12A8     12A8       4C      817       0
-                text2                              1334     1334       14      817       0
-                text1                              12F4     12F4       2A      817       0
-                text0                              1106     1106       A6      817       0
+                smallconst                         1000     1000       32      800       0
+                text9                              122E     122E       7E      819       0
+                text8                              1374     1374       14      819       0
+                text7                              1360     1360       14      819       0
+                intcode_body                       1032     1032       D8      819       0
+                text5                              11B0     11B0       7E      819       0
+                text4                              134C     134C       14      819       0
+                text3                              12AC     12AC       4C      819       0
+                text2                              1338     1338       14      819       0
+                text1                              12F8     12F8       2A      819       0
+                text0                              110A     110A       A6      819       0
                 cstackCOMRAM                          1        1       21        1       1
                 bssCOMRAM                            22       22        2        1       1
-                cinit                              131E     131E       16      817       0
+                cinit                              1322     1322       16      819       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -68,22 +68,22 @@ TOTAL           Name                               Link     Load   Length     Sp
                 intcode                               8        8        6         0
                 init                                  E        E        4         0
                 reset_vec                             0        0        4         0
-                text9                              122A     122A       7E         0
-                text8                              1370     1370       14         0
-                text7                              135C     135C       14         0
-                intcode_body                       102E     102E       D8         0
-                text5                              11AC     11AC       7E         0
-                text4                              1348     1348       14         0
-                text3                              12A8     12A8       4C         0
-                text2                              1334     1334       14         0
-                text1                              12F4     12F4       2A         0
-                text0                              1106     1106       A6         0
-                cinit                              131E     131E       16         0
+                text9                              122E     122E       7E         0
+                text8                              1374     1374       14         0
+                text7                              1360     1360       14         0
+                intcode_body                       1032     1032       D8         0
+                text5                              11B0     11B0       7E         0
+                text4                              134C     134C       14         0
+                text3                              12AC     12AC       4C         0
+                text2                              1338     1338       14         0
+                text1                              12F8     12F8       2A         0
+                text0                              110A     110A       A6         0
+                cinit                              1322     1322       16         0
 
         CLASS   CONST          
 
         CLASS   SMALLCONST     
-                smallconst                         1000     1000       2E         0
+                smallconst                         1000     1000       32         0
 
         CLASS   MEDIUMCONST    
 
@@ -149,8 +149,8 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 reset_vec                      000000  000004  000004         0       0  CODE    
                 cstackCOMRAM                   000001  000024  000025         1       1  COMRAM  
                 intcode                        000008  00000A  000012         4       0  CODE    
-                smallconst                     001000  00002E  00102E       800       0  SMALLCON
-                intcode_body                   00102E  000356  001384       817       0  CODE    
+                smallconst                     001000  000032  001032       800       0  SMALLCON
+                intcode_body                   001032  000356  001388       819       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -177,16 +177,16 @@ UNUSED ADDRESS RANGES
         BIGRAM           000025-000F7F              F5B
         CODE             000004-000007                4
                          000012-000FFF              FEE
-                         001384-00FFFF             EC7C
+                         001388-00FFFF             EC78
         COMRAM           000025-00007F               5B
         CONST            000004-000007                4
                          000012-000FFF              FEE
-                         001384-00FFFF             EC7C
+                         001388-00FFFF             EC78
         EEDATA           F00000-F003FF              400
-        MEDIUMCONST      001384-00FFFF             EC7C
+        MEDIUMCONST      001388-00FFFF             EC78
         RAM              000080-000F7F              100
         SFR              000F80-000FFF               80
-        SMALLCONST       001384-00FFFF              100
+        SMALLCONST       001388-00FFFF              100
         STACK            000080-000F7F              F00
 
                                   Symbol Table
@@ -307,7 +307,7 @@ __Hrdata                   rdata        000000
 __Hreset_vec               reset_vec    000004
 __Hrparam                  rparam       000000
 __Hsfr                     sfr          000000
-__Hsmallconst              smallconst   00102E
+__Hsmallconst              smallconst   001032
 __Hspace_0                 (abs)        30000E
 __Hspace_1                 (abs)        000025
 __Hspace_2                 (abs)        000000
@@ -416,35 +416,35 @@ __end_of_LCD_RIGHT         smallconst   001014
 __end_of_LCD_SIZE_HORZ     smallconst   001016
 __end_of_LCD_SIZE_VERT     smallconst   001015
 __end_of_LCD_VERT_LIMIT    smallconst   001017
-__end_of__initialization   cinit        001322
-__end_of_initLCD           text3        0012F4
-__end_of_interruptHandler  intcode_body 001106
+__end_of__initialization   cinit        001326
+__end_of_initLCD           text3        0012F8
+__end_of_interruptHandler  intcode_body 00110A
 __end_of_keys              smallconst   001012
-__end_of_lcdInst           text4        00135C
-__end_of_lcdNibble         text5        00122A
-__end_of_main              text0        0011AC
-__end_of_printf            text1        00131E
-__end_of_putch             text2        001348
-__end_ofi2_lcdInst         text8        001384
-__end_ofi2_lcdNibble       text9        0012A8
-__end_ofi2_putch           text7        001370
-__initialization           cinit        00131E
+__end_of_lcdInst           text4        001360
+__end_of_lcdNibble         text5        00122E
+__end_of_main              text0        0011B0
+__end_of_printf            text1        001322
+__end_of_putch             text2        00134C
+__end_ofi2_lcdInst         text8        001388
+__end_ofi2_lcdNibble       text9        0012AC
+__end_ofi2_putch           text7        001374
+__initialization           cinit        001322
 __mediumconst              mediumconst  000000
 __pbssCOMRAM               bssCOMRAM    000022
-__pcinit                   cinit        00131E
+__pcinit                   cinit        001322
 __pcstackCOMRAM            cstackCOMRAM 000001
 __pintcode                 intcode      000008
-__pintcode_body            intcode_body 00102E
+__pintcode_body            intcode_body 001032
 __psmallconst              smallconst   001000
-__ptext0                   text0        001106
-__ptext1                   text1        0012F4
-__ptext2                   text2        001334
-__ptext3                   text3        0012A8
-__ptext4                   text4        001348
-__ptext5                   text5        0011AC
-__ptext7                   text7        00135C
-__ptext8                   text8        001370
-__ptext9                   text9        00122A
+__ptext0                   text0        00110A
+__ptext1                   text1        0012F8
+__ptext2                   text2        001338
+__ptext3                   text3        0012AC
+__ptext4                   text4        00134C
+__ptext5                   text5        0011B0
+__ptext7                   text7        001360
+__ptext8                   text8        001374
+__ptext9                   text9        00122E
 __ramtop                   ramtop       001000
 __size_of_initLCD          (abs)        000000
 __size_of_interruptHandler (abs)        000000
@@ -457,25 +457,25 @@ __size_ofi2_lcdInst        (abs)        000000
 __size_ofi2_lcdNibble      (abs)        000000
 __size_ofi2_putch          (abs)        000000
 __smallconst               smallconst   001000
-_initLCD                   text3        0012A8
+_initLCD                   text3        0012AC
 _interruptHandler          intcode      000008
 _keys                      smallconst   001001
-_lcdInst                   text4        001348
-_lcdNibble                 text5        0011AC
-_main                      text0        001106
-_printf                    text1        0012F4
-_putch                     text2        001334
+_lcdInst                   text4        00134C
+_lcdNibble                 text5        0011B0
+_main                      text0        00110A
+_printf                    text1        0012F8
+_putch                     text2        001338
 btemp                      temp         000024
-end_of_initialization      cinit        001322
-i2_lcdInst                 text8        001370
-i2_lcdNibble               text9        00122A
-i2_putch                   text7        00135C
+end_of_initialization      cinit        001326
+i2_lcdInst                 text8        001374
+i2_lcdNibble               text9        00122E
+i2_putch                   text7        001360
 i2lcdInst@data             cstackCOMRAM 000003
 i2lcdNibble@data           cstackCOMRAM 000002
 i2lcdNibble@temp           cstackCOMRAM 000001
 i2putch@data               cstackCOMRAM 000003
 int$flags                  temp         000024
-int_func                   intcode_body 00102E
+int_func                   intcode_body 001032
 interruptHandler@keypress  cstackCOMRAM 000017
 intlevel0                  text         000000
 intlevel1                  text         000000
@@ -492,7 +492,7 @@ putch@data                 cstackCOMRAM 00001A
 stackhi                    (abs)        000F7F
 stacklo                    (abs)        000080
 start                      init         00000E
-start_initialization       cinit        00131E
+start_initialization       cinit        001322
 wtemp6                     temp         000025
 
 
@@ -534,7 +534,7 @@ Total ram usage:        2 bytes
 		line 464 in file "/Applications/microchip/xc8/v1.45/sources/common/doprnt.c"
  Parameters:    Size  Location     Type
   f               2   26[COMRAM] PTR const unsigned char 
-		 -> STR_2(10), STR_1(10), 
+		 -> STR_2(12), STR_1(12), 
  Auto vars:     Size  Location     Type
   tmpval          4    0        struct .
   cp              3    0        PTR const unsigned char 
@@ -821,35 +821,35 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 /Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-		_printf        		CODE           	12F4	0000	43
+		_printf        		CODE           	12F8	0000	43
 
 /Applications/microchip/xc8/v1.45/sources/common/doprnt.c estimated size: 43
 
 shared
-		i2_putch       		CODE           	135C	0000	21
-		i2_lcdNibble   		CODE           	122A	0000	127
+		i2_putch       		CODE           	1360	0000	21
+		i2_lcdNibble   		CODE           	122E	0000	127
 		_LCD_LEFT      		SMALLCONST     	1012	0000	2
 		_keys          		SMALLCONST     	1001	0000	18
 		_LCD_RIGHT     		SMALLCONST     	1013	0000	2
-		__initialization		CODE           	131E	0000	5
+		__initialization		CODE           	1322	0000	5
 		_LCD_VERT_LIMIT		SMALLCONST     	1016	0000	2
 		_LCD_HORZ_LIMIT		SMALLCONST     	1017	0000	2
 		_LCD_SIZE_VERT 		SMALLCONST     	1014	0000	2
 		_LCD_SIZE_HORZ 		SMALLCONST     	1015	0000	2
-		i2_lcdInst     		CODE           	1370	0000	21
+		i2_lcdInst     		CODE           	1374	0000	21
 
 shared estimated size: 204
 
 lcd.c
-		_putch         		CODE           	1334	0000	21
-		_lcdInst       		CODE           	1348	0000	21
-		_lcdNibble     		CODE           	11AC	0000	127
-		_initLCD       		CODE           	12A8	0000	77
+		_putch         		CODE           	1338	0000	21
+		_lcdInst       		CODE           	134C	0000	21
+		_lcdNibble     		CODE           	11B0	0000	127
+		_initLCD       		CODE           	12AC	0000	77
 
 lcd.c estimated size: 246
 
 main.c
-		_main          		CODE           	1106	0000	167
+		_main          		CODE           	110A	0000	167
 		_interruptHandler		CODE           	0008	0000	223
 
 main.c estimated size: 390

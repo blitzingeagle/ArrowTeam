@@ -4459,7 +4459,7 @@ inline void keypadRoutineUART(void);
 unsigned char readKeyboard(void){
 
 # 25
-for(unsigned char i = 3; i < 4; i++){
+for(unsigned char i = 0; i < 4; i++){
 if(i == 0)
 LATB = 0x10;
 else if(i == 1)
@@ -4615,7 +4615,6 @@ keypadFlags.sending_f_first = 0;
 # 208
 LATA = dataOut & 0b00001111U;
 TRISA = 0b11010000;
-_delay((unsigned long)((20)*(8000000/4000.0)));
 LATAbits.LATA5 = 1;
 }
 else{
@@ -4624,7 +4623,7 @@ return;
 }
 else{
 
-# 220
+# 219
 LATA = 0x00;
 TRISA = 0b11011111;
 
@@ -4639,7 +4638,7 @@ return;
 
 inline void keypadRoutineUART(void){
 
-# 241
+# 240
 if(0){
 
 while(0){ continue; }
@@ -4653,7 +4652,7 @@ dataOut = readKeyboard();
 
 if (dataOut != 0xF0){
 
-# 256
+# 255
 _delay((unsigned long)((20)*(8000000/4000.0)));
 
 if (dataOut == readKeyboard()){
@@ -4664,7 +4663,7 @@ uartTransmitBlocking(&dataOut, 1);
 while (dataOut == readKeyboard()){
 uartTransmitBlocking(&dataOut, 1);
 
-# 268
+# 267
 if(0){
 
 uartTransmitBlocking(&dataEnd, 1);

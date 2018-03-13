@@ -28,6 +28,7 @@
 #include "arduino_cmd.h"
 #include "DigitalIO_PIC.h"
 #include "eep.h"
+#include "canvas.h"
 
 /***** Macros *****/
 #define __bcd_to_num(num) (num & 0x0F) + ((num & 0xF0)>>4)*10
@@ -81,17 +82,19 @@ void init(void) {
     /************************** A/D Converter Module **************************/
     ADCON0 = 0x00;  // Disable ADC
     ADCON1 = 0b00001111; // Set all A/D ports to digital (pg. 222)
+    
+    TRISAbits.TRISA2 = 1;
+    TRISAbits.TRISA3 = 0;
+    TRISAbits.TRISA4 = 0;
+    
     // </editor-fold>
     
     /* Initialize LCD. */
     initLCD();
     
-//    eep_write(0, "fuck");
-//    unsigned char c[5];
-//    eep_read(0, c);
-//    c[4] = '\0';
-//    printf("%s", c);
-//    
+    //    eep_write(0, "fuck");
+//    printf("%d", eep_read_octet(0));
+    
 //    while(1);
     
     /* Initialize GLCD. */
@@ -115,6 +118,7 @@ void init(void) {
     init_program_states();
     
     INT1IE = 1; // Enable RB1 (keypad data available) interrupt
+    INT2IE = 1; // Enable RB2 interrupt
     
     T0CONbits.T08BIT = 0;
     T0CONbits.T0CS = 0;
@@ -135,8 +139,60 @@ void main(void) {
     
     FUNC_STATE_STANDBY(); // Start program in standby mode
     
-    /* Declare local variables. */
+    __delay_ms(250);
     
+    program_status.compartment_count = 4;
+    
+    program_status.set_count[0][0] = 1;
+    program_status.set_count[0][1] = 1;
+    program_status.set_count[0][2] = 0;
+    program_status.set_count[0][3] = 2;
+    
+    program_status.set_count[1][0] = 3;
+    program_status.set_count[1][1] = 0;
+    program_status.set_count[1][2] = 0;
+    program_status.set_count[1][3] = 0;
+    
+    program_status.set_count[2][0] = 0;
+    program_status.set_count[2][1] = 0;
+    program_status.set_count[2][2] = 0;
+    program_status.set_count[2][3] = 4;
+    
+    program_status.set_count[3][0] = 1;
+    program_status.set_count[3][1] = 0;
+    program_status.set_count[3][2] = 1;
+    program_status.set_count[3][3] = 0;
+    
+//    orient_container();
+    
+//    arduino_ping();
+//    arduino_begin_cmd();
+    
+    while(1) {
+        __lcd_clear();
+        arduino_send_gate_return();
+        __delay_ms(1000);
+        __lcd_newline();
+        arduino_send_gate_drop();
+        __delay_ms(1000);
+    }
+    
+    
+//    arduino_send_gate_return();
+    
+//    arduino_send_fastener_data(program_status.set_count);
+//    arduino_send_load_compartment(1);
+    
+//    while(1) {
+//        for(char i = 0; i < 10; i++) {
+//            arduino_send_gate_return();
+//            __delay_ms(1000);
+//            arduino_send_gate_drop();
+//            __delay_ms(1000);
+//        }
+//        arduino_send_gate_overflow();
+//        __delay_ms(1000);
+//    }
     
     /* Main loop. */
     while(1) {
@@ -215,6 +271,8 @@ void main(void) {
     }
 }
 
+unsigned long cnt = 0;
+
 void interrupt interruptHandler(void) {
     if(TMR0IE && TMR0IF) {
         TMR0IF = 0;
@@ -230,6 +288,21 @@ void interrupt interruptHandler(void) {
         char buffer[22];
         sprintf(buffer, "%02x/%02x/%02x     %02x:%02x:%02x", time[5], time[4], time[6], time[2], time[1], time[0]);
         print_px_string(1, 1, buffer);
+        
+        if(program_state == STATE_SET_TIME && program_status.edit_time_idx == 0) {
+            FUNC_STATE_SET_TIME();
+        }
+        
+//        char x = PORTAbits.RA0;
+//        if(x) {
+//            glcdDrawRectangle(28, 38, 28, 38, GREEN);
+//        } else {
+//            glcdDrawRectangle(28, 38, 28, 38, RED);
+//        }
+        
+        glcdDrawRectangle(0, GLCD_SIZE_VERT, 14, 28, GREEN);
+        sprintf(buffer, "%d %d %d %d", PORTAbits.RA0, PORTAbits.RA1, PORTAbits.RA2, PORTBbits.RB2);
+        print_px_string(1, 15, buffer);
     }
     
     if(INT1IF) { /* Interrupt on change handler for RB1. */
@@ -242,15 +315,19 @@ void interrupt interruptHandler(void) {
         return;
     }
     
+    if(INT2IF) {
+        rotary_angle += 45;
+        __lcd_clear();
+        printf("%f", rotary_angle);
+        
+        INT2IF = 0;
+        return;
+    }
+    
     /* Handle UART interrupt */
-    UART_interrupt();
+    UART_interrupt(TX_interface, RX_interface);
     
     /* Handle DigitalIO interrupt */
     DigitalIO_interrupt();
-}
-
-// TODO: Interface functions for UART_interrupt
-void tmp(void (*TX_interface)(void), void (*RX_interface)(void)) {
-    if(TX_interface) TX_interface();
 }
 

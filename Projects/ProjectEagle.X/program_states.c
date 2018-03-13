@@ -100,25 +100,32 @@ void FUNC_STATE_HISTORY_PAGE_1(void) {
 void FUNC_STATE_SET_TIME(void) {
     unsigned char *time = program_status.time;
     
-    __lcd_home();
-    printf("%02x/%02x/%02x", time[6],time[5],time[4]); // Print date in YY/MM/DD
-    __lcd_newline();
-    printf("%02x:%02x:%02x", time[2],time[1],time[0]); // HH:MM:SS
+    if(program_status.edit_time_idx) {
+        __lcd_home();
+        printf("  [ %02x/%02x/%02x ]  ", time[6],time[5],time[4]); // Print date in YY/MM/DD
+        __lcd_newline();
+        printf("  [ %02x:%02x:%02x ]  ", time[2],time[1],time[0]); // HH:MM:SS
+    } else {
+        __lcd_home();
+        printf("    %02x/%02x/%02x    ", time[6],time[5],time[4]); // Print date in YY/MM/DD
+        __lcd_newline();
+        printf("    %02x:%02x:%02x    ", time[2],time[1],time[0]); // HH:MM:SS
+    }
     
     __lcd_display_control(1,1,1);
     switch(program_status.edit_time_idx) {
-        case 1: lcd_set_cursor(0,0); break;
-        case 2: lcd_set_cursor(1,0); break;
-        case 3: lcd_set_cursor(3,0); break;
-        case 4: lcd_set_cursor(4,0); break;
-        case 5: lcd_set_cursor(6,0); break;
-        case 6: lcd_set_cursor(7,0); break;
-        case 7: lcd_set_cursor(0,1); break;
-        case 8: lcd_set_cursor(1,1); break;
-        case 9: lcd_set_cursor(3,1); break;
-        case 10: lcd_set_cursor(4,1); break;
-        case 11: lcd_set_cursor(6,1); break;
-        case 12: lcd_set_cursor(7,1); break;
+        case 1: lcd_set_cursor(4,0); break;
+        case 2: lcd_set_cursor(5,0); break;
+        case 3: lcd_set_cursor(7,0); break;
+        case 4: lcd_set_cursor(8,0); break;
+        case 5: lcd_set_cursor(10,0); break;
+        case 6: lcd_set_cursor(11,0); break;
+        case 7: lcd_set_cursor(4,1); break;
+        case 8: lcd_set_cursor(5,1); break;
+        case 9: lcd_set_cursor(7,1); break;
+        case 10: lcd_set_cursor(8,1); break;
+        case 11: lcd_set_cursor(10,1); break;
+        case 12: lcd_set_cursor(11,1); break;
         default: __lcd_display_control(1,0,0);
     }
 }
@@ -171,7 +178,6 @@ void program_states_interrupt(unsigned char key) {
                 program_state = STATE_HISTORY;
             } else if(key == '3') {
                 program_status.edit_time_idx = 0;
-                TMR0IE = 0;
                 program_state = STATE_SET_TIME;
             }
             break;
@@ -301,9 +307,15 @@ void program_states_interrupt(unsigned char key) {
                     program_state = STATE_STANDBY;
                 } else {
                     program_status.edit_time_idx--;
+                    if(program_status.edit_time_idx == 0) {
+                        TMR0IE = 1;
+                    }
                 }
             } else if(key == '#') {
-                if(program_status.edit_time_idx == 13) {
+                if(program_status.edit_time_idx == 0) {
+                    TMR0IE = 0;
+                    program_status.edit_time_idx++;
+                } else if(program_status.edit_time_idx == 13) {
                     use_protocol(I2C);
                     RTC_set_time(program_status.time);
                     TMR0IE = 1;

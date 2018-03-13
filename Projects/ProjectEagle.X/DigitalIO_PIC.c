@@ -1,51 +1,21 @@
 #include "DigitalIO_PIC.h"
 
 void orient_container(void) {
-    TRISAbits.TRISA2 = 1;
-    TRISAbits.TRISA3 = 1;
-    TRISAbits.TRISA4 = 1;
+    rotary_angle = 0;
     
-    unsigned char angle = 0;
-    
-    // Turn table clockwise
-    TURNTABLE_CW = 1;
-    TURNTABLE_CCW = 0;
-    
-    while(angle < 405) {
-        // replace with rotary encoder polling
-//        char x = ROTARY_ENCODER;
-        
-        __delay_ms(250);
-        angle += 15;
-        
-        // Read for white tape
-//        char opt = OPTICAL_SENSOR_1;
-//        if(opt) {
-//            CMPT1 = 0;
-//        }
-//        CMPT1 += 15;
+    TURNTABLE_CW();
+    int cnt = 0;
+    while(rotary_angle < 405) {
+        if(OPTICAL_SENSOR_1) {
+            cmpt1 = rotary_angle;
+        }
     }
     
-    // Turn table counterclockwise
-    TURNTABLE_CW = 0;
-    TURNTABLE_CCW = 1;
+    TURNTABLE_STOP();
+    __delay_ms(1000);
     
-    while(angle > 0) {
-        // replace with rotary encoder polling
-        __delay_ms(250);
-        angle -= 15;
-        
-        // Read for white tape
-//        char opt = OPTICAL_SENSOR_1;
-//        if(opt) {
-//            CMPT1 = 0;
-//        }
-//        CMPT1 += 15;
-    }
-    
-    // Stop turn table
-    TURNTABLE_CW = 0;
-    TURNTABLE_CCW = 0;
+    TURNTABLE_CCW();
+    __delay_ms(1000);
 }
 
 void clamp_up(void) {
@@ -67,15 +37,15 @@ void clamp_down(void) {
 }
 
 void rotate_to_compartment(unsigned char cmpt) {
-    char angle = CMPT1;
-    
-    TURNTABLE_CW = 1;
-    TURNTABLE_CCW = 0;
-    
-    // TODO WITH ROTARY ENCODER POLLING
-    
-    TURNTABLE_CW = 0;
-    TURNTABLE_CCW = 0;
+//    char angle = CMPT1;
+//    
+//    TURNTABLE_CW = 1;
+//    TURNTABLE_CCW = 0;
+//    
+//    // TODO WITH ROTARY ENCODER POLLING
+//    
+//    TURNTABLE_CW = 0;
+//    TURNTABLE_CCW = 0;
 }
 
 void DigitalIO_interrupt(void) {

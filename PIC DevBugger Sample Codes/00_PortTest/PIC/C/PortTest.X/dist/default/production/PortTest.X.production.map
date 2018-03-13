@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/Applications/microchip/xc8/v1.45/dat/en_msgs.txt -cs \
   -h+dist/default/production/PortTest.X.production.sym \
   --cmf=dist/default/production/PortTest.X.production.cmf -z -Q18F4620 \
-  -o/tmp/xcR8XgLPs -Mdist/default/production/PortTest.X.production.map -E1 \
+  -o/tmp/xc3ckH6ty -Mdist/default/production/PortTest.X.production.map -E1 \
   -ver=XC8 -ASTACK=080h-0f7fh -pstack=STACK -ACODE=00h-0FFFFh \
   -ACONST=00h-0FFFFh -ASMALLCONST=01000h-010FFhx240 \
   -AMEDIUMCONST=01000h-0FFFFh -ACOMRAM=01h-07Fh -AABS1=00h-0F7Fh \
@@ -25,7 +25,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xc3nWmFf7.obj dist/default/production/PortTest.X.production.obj 
+  /tmp/xcj5F5M8E.obj dist/default/production/PortTest.X.production.obj 
 
 Object code version is 3.11
 
@@ -37,22 +37,22 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xc3nWmFf7.obj
+/tmp/xcj5F5M8E.obj
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/production/PortTest.X.production.obj
-                text0                              FEAE     FEAE      152     7F57       0
+                text0                              FE64     FE64      19C     7F32       0
                 cstackCOMRAM                          1        1        4        1       1
-                cinit                              FEA8     FEA8        6     7F54       0
+                cinit                              FE5E     FE5E        6     7F2F       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 init                                  0        0        4         0
-                text0                              FEAE     FEAE      152         0
-                cinit                              FEA8     FEA8        6         0
+                text0                              FE64     FE64      19C         0
+                cinit                              FE5E     FE5E        6         0
 
         CLASS   CONST          
 
@@ -119,8 +119,8 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
                 cstackCOMRAM                   000001  000004  000005         1       1  COMRAM  
-                cinit                          00FEA8  000006  00FEAE      7F54       0  CODE    
-                text0                          00FEAE  000152  010000      7F57       0  CODE    
+                cinit                          00FE5E  000006  00FE64      7F2F       0  CODE    
+                text0                          00FE64  00019C  010000      7F32       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -145,14 +145,14 @@ UNUSED ADDRESS RANGES
         BANK8            000800-0008FF              100
         BANK9            000900-0009FF              100
         BIGRAM           000005-000F7F              F7B
-        CODE             000004-00FEA7             FEA4
+        CODE             000004-00FE5D             FE5A
         COMRAM           000005-00007F               7B
-        CONST            000004-00FEA7             FEA4
+        CONST            000004-00FE5D             FE5A
         EEDATA           F00000-F003FF              400
-        MEDIUMCONST      001000-00FEA7             EEA8
+        MEDIUMCONST      001000-00FE5D             EE5E
         RAM              000080-000F7F              100
         SFR              000F80-000FFF               80
-        SMALLCONST       001000-00FEA7              100
+        SMALLCONST       001000-00FE5D              100
         STACK            000080-000F7F              F00
 
                                   Symbol Table
@@ -160,13 +160,19 @@ UNUSED ADDRESS RANGES
 _ADCON0                  (abs)        000FC2
 _ADCON1                  (abs)        000FC1
 _LATA                    (abs)        000F89
+_LATAbits                (abs)        000F89
 _LATB                    (abs)        000F8A
 _LATC                    (abs)        000F8B
+_LATCbits                (abs)        000F8B
 _LATD                    (abs)        000F8C
 _LATE                    (abs)        000F8D
+_PORTBbits               (abs)        000F81
 _TRISA                   (abs)        000F92
+_TRISAbits               (abs)        000F92
 _TRISB                   (abs)        000F93
+_TRISBbits               (abs)        000F93
 _TRISC                   (abs)        000F94
+_TRISCbits               (abs)        000F94
 _TRISD                   (abs)        000F95
 _TRISE                   (abs)        000F96
 __CFG_BOREN$SBORDIS      (abs)        000000
@@ -346,18 +352,18 @@ ___rparam_used           (abs)        000001
 ___sp                    stack        000000
 __accesstop              (abs)        000080
 __activetblptr           (abs)        000000
-__end_of__initialization cinit        00FEA8
+__end_of__initialization cinit        00FE5E
 __end_of_main            text0        010000
-__initialization         cinit        00FEA8
+__initialization         cinit        00FE5E
 __mediumconst            mediumconst  000000
-__pcinit                 cinit        00FEA8
+__pcinit                 cinit        00FE5E
 __pcstackCOMRAM          cstackCOMRAM 000001
-__ptext0                 text0        00FEAE
+__ptext0                 text0        00FE64
 __ramtop                 ramtop       001000
 __size_of_main           (abs)        000000
 __smallconst             smallconst   000000
-_main                    text0        00FEAE
-end_of_initialization    cinit        00FEA8
+_main                    text0        00FE64
+end_of_initialization    cinit        00FE5E
 intlevel0                text         000000
 intlevel1                text         000000
 intlevel2                text         000000
@@ -367,7 +373,7 @@ main@temp                cstackCOMRAM 000003
 stackhi                  (abs)        000F7F
 stacklo                  (abs)        000080
 start                    init         000000
-start_initialization     cinit        00FEA8
+start_initialization     cinit        00FE5E
 
 
 FUNCTION INFORMATION:
@@ -406,12 +412,12 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 shared
-		__initialization		CODE           	FEA8	0000	1
+		__initialization		CODE           	FE5E	0000	1
 
 shared estimated size: 1
 
 main.c
-		_main          		CODE           	FEAE	0000	339
+		_main          		CODE           	FE64	0000	413
 
-main.c estimated size: 339
+main.c estimated size: 413
 

@@ -81,6 +81,6 @@ void uartReceiveIT(unsigned char numBytes);
 /* Initialization */
 void UART_Init(long baud);
 
-void UART_interrupt(void);
+void UART_interrupt(void (*TX_interface)(void), void (*RX_interface)(void));
 
 #endif	/* UART_PIC_H */

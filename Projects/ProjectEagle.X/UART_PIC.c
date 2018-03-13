@@ -240,14 +240,14 @@ void UART_Init(long baud){
 #include "protocol_manager.h"
 #include "px_ascii.h"
 
-void UART_interrupt(void) {
+void UART_interrupt(void (*TX_interface)(void), void (*RX_interface)(void)) {
     /* Any time that an interrupt is generated, the microcontroller will branch
      * here. As such, any interrupts that are enabled need to be handled in this
      * function. Otherwise, unexpected behavior can arise.
      */
     
     /* UART transmit: TXREG empty */
-    if(IE_TX){
+    if(IE_TX && IF_TX){
         /* Load data into transmit register TXREG */
         UARTinterruptState = INTCONbits.GIE; // Enter critical section
         di();
@@ -262,11 +262,10 @@ void UART_interrupt(void) {
             
             /* Set TX state to ready */
             UART -> _stateTX = UART_STATE_READY;
+            
+            if(TX_interface) TX_interface();
         }
-    }
-    
-    /* UART receive: RCREG full */
-    if(IE_RX){
+    } else if(IE_RX && IF_RX) { /* UART receive: RCREG full */
         /* Check/clear framing error (too many or too few bytes between start
          * and stop bit.*/
         if(FRAMING_ERROR){
@@ -303,13 +302,10 @@ void UART_interrupt(void) {
             IE_RX = 0;
             
             /* Set RX state to ready */
-            UART -> _stateRX = UART_STATE_READY; 
+            UART -> _stateRX = UART_STATE_READY;
+            
+            if(RX_interface) RX_interface();
         }
-        
-//        use_protocol(SPI);
-//        glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, GREEN);
-//        print_px_string(1, 114, UART->_dataRX);
-//        use_protocol(I2C);
     }
 }
 

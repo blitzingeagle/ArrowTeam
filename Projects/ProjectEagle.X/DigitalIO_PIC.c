@@ -48,15 +48,3 @@ void rotate_to_compartment(unsigned char cmpt) {
 //    TURNTABLE_CCW = 0;
 }
 
-void DigitalIO_interrupt(void) {
-    if(INT2IE && INT2IF) {
-        INT2IF = 0; // Clear interrupt flag
-        
-        // Stop leadscrew turning
-        LEADSCREW_CW = 0;
-        LEADSCREW_CCW = 0;
-        
-        INT2IE = 0; // Disable microswitch interrupt
-    }
-}
-

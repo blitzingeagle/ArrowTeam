@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "arduino_cmd.h"
 #include "program_states.h"
 #include "RTC.h"
 #include "history.h"
@@ -14,7 +15,7 @@ void FUNC_STATE_STANDBY(void) {
         printf("<1> to start");
     }
     __lcd_newline();
-    printf("<2> for history");
+    printf("<2> for history ");
     __lcd_display_control(1, 1, 1);
 }
 
@@ -278,6 +279,7 @@ void program_states_interrupt(unsigned char key) {
                 program_state = STATE_PROMPT_COMPARTMENT_COUNT;
             } else if(key == '#') {
                 program_status.operating = true;
+                arduino_send_orient();
                 program_state = STATE_EXECUTE;
             } else if('1' <= key && key <= '0'+program_status.compartment_count) {
                 program_status.compartment_count_index = key - '1';

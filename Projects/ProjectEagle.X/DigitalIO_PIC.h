@@ -29,7 +29,6 @@ void clamp_up(void);
 void clamp_down(void);
 void rotate_to_compartment(unsigned char cmpt);
 
-void DigitalIO_interrupt(void);
 
 #endif	/* DIGITALIO_PIC_H */
 

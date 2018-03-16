@@ -15,6 +15,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 #include "config_bits.h"
 #include "lcd.h"
 #include "I2C.h"
@@ -26,7 +28,6 @@
 #include "RTC.h"
 #include "UART_PIC.h"
 #include "arduino_cmd.h"
-#include "DigitalIO_PIC.h"
 #include "eep.h"
 #include "canvas.h"
 
@@ -37,7 +38,8 @@
 //void RTC_setTime(void);
 
 /***** Constants *****/
-const char keys[] = "123B456N789S*0#W";
+//const char keys[] = "123B456N789S*0#W";
+const char keys[] = "WSNB#9630852*741";
 
 const char happynewyear[7] = {  0x30, // 45 Seconds 
                                 0x04, // 59 Minutes
@@ -118,7 +120,6 @@ void init(void) {
     init_program_states();
     
     INT1IE = 1; // Enable RB1 (keypad data available) interrupt
-    INT2IE = 1; // Enable RB2 interrupt
     
     T0CONbits.T08BIT = 0;
     T0CONbits.T0CS = 0;
@@ -139,60 +140,38 @@ void main(void) {
     
     FUNC_STATE_STANDBY(); // Start program in standby mode
     
-    __delay_ms(250);
+//    __delay_ms(250);
     
-    program_status.compartment_count = 4;
-    
-    program_status.set_count[0][0] = 1;
-    program_status.set_count[0][1] = 1;
-    program_status.set_count[0][2] = 0;
-    program_status.set_count[0][3] = 2;
-    
-    program_status.set_count[1][0] = 3;
-    program_status.set_count[1][1] = 0;
-    program_status.set_count[1][2] = 0;
-    program_status.set_count[1][3] = 0;
-    
-    program_status.set_count[2][0] = 0;
-    program_status.set_count[2][1] = 0;
-    program_status.set_count[2][2] = 0;
-    program_status.set_count[2][3] = 4;
-    
-    program_status.set_count[3][0] = 1;
-    program_status.set_count[3][1] = 0;
-    program_status.set_count[3][2] = 1;
-    program_status.set_count[3][3] = 0;
+//    program_status.compartment_count = 4;
+//    
+//    program_status.set_count[0][0] = 1;
+//    program_status.set_count[0][1] = 1;
+//    program_status.set_count[0][2] = 0;
+//    program_status.set_count[0][3] = 2;
+//    
+//    program_status.set_count[1][0] = 3;
+//    program_status.set_count[1][1] = 0;
+//    program_status.set_count[1][2] = 0;
+//    program_status.set_count[1][3] = 0;
+//    
+//    program_status.set_count[2][0] = 0;
+//    program_status.set_count[2][1] = 0;
+//    program_status.set_count[2][2] = 0;
+//    program_status.set_count[2][3] = 4;
+//    
+//    program_status.set_count[3][0] = 1;
+//    program_status.set_count[3][1] = 0;
+//    program_status.set_count[3][2] = 1;
+//    program_status.set_count[3][3] = 0;
     
 //    orient_container();
     
+//    arduino_send_orient();
+    
 //    arduino_ping();
 //    arduino_begin_cmd();
-    
-    while(1) {
-        __lcd_clear();
-        arduino_send_gate_return();
-        __delay_ms(1000);
-        __lcd_newline();
-        arduino_send_gate_drop();
-        __delay_ms(1000);
-    }
-    
-    
-//    arduino_send_gate_return();
-    
-//    arduino_send_fastener_data(program_status.set_count);
-//    arduino_send_load_compartment(1);
-    
-//    while(1) {
-//        for(char i = 0; i < 10; i++) {
-//            arduino_send_gate_return();
-//            __delay_ms(1000);
-//            arduino_send_gate_drop();
-//            __delay_ms(1000);
-//        }
-//        arduino_send_gate_overflow();
-//        __delay_ms(1000);
-//    }
+//    
+//    while(1);
     
     /* Main loop. */
     while(1) {
@@ -206,7 +185,7 @@ void main(void) {
             print_px_string(1, 115, buffer);
             
             arduino_send_gate_return();
-            arduino_send_fastener_data(program_status.set_count);
+            arduino_send_fastener_data(program_status.set_count, program_status.compartment_count);
             
 //            orient_container();
 //            
@@ -271,7 +250,30 @@ void main(void) {
     }
 }
 
-unsigned long cnt = 0;
+void TX_interface(void) {
+    
+}
+
+void RX_interface(void) {
+    __lcd_clear();
+    
+    if(strcmp(UART->_dataRX, "F_TT") == 0) {
+        uartReceiveIT(4);
+    } else if(strcmp(UART->_dataRX, "ORTT") == 0) {
+        arduino_send_fastener_data(program_status.set_count, program_status.compartment_count);
+    } else if(strcmp(UART->_dataRX, "DONE") == 0) {
+        program_status.operating = false;
+        
+        program_state = STATE_STANDBY;
+        __lcd_clear();
+        __lcd_home();
+        PROG_FUNC[program_state]();
+    }
+    
+//    printf("%s", UART->_dataRX);
+    memset(UART->_dataRX, '\0', UART->_numReceives);
+    UART->_numReceives = 0;
+}
 
 void interrupt interruptHandler(void) {
     if(TMR0IE && TMR0IF) {
@@ -300,9 +302,9 @@ void interrupt interruptHandler(void) {
 //            glcdDrawRectangle(28, 38, 28, 38, RED);
 //        }
         
-        glcdDrawRectangle(0, GLCD_SIZE_VERT, 14, 28, GREEN);
-        sprintf(buffer, "%d %d %d %d", PORTAbits.RA0, PORTAbits.RA1, PORTAbits.RA2, PORTBbits.RB2);
-        print_px_string(1, 15, buffer);
+//        glcdDrawRectangle(0, GLCD_SIZE_VERT, 14, 28, GREEN);
+//        sprintf(buffer, "%d %d %d %d", PORTAbits.RA0, PORTAbits.RA1, PORTAbits.RA2, PORTBbits.RB2);
+//        print_px_string(1, 15, buffer);
     }
     
     if(INT1IF) { /* Interrupt on change handler for RB1. */
@@ -315,19 +317,7 @@ void interrupt interruptHandler(void) {
         return;
     }
     
-    if(INT2IF) {
-        rotary_angle += 45;
-        __lcd_clear();
-        printf("%f", rotary_angle);
-        
-        INT2IF = 0;
-        return;
-    }
-    
     /* Handle UART interrupt */
     UART_interrupt(TX_interface, RX_interface);
-    
-    /* Handle DigitalIO interrupt */
-    DigitalIO_interrupt();
 }
 

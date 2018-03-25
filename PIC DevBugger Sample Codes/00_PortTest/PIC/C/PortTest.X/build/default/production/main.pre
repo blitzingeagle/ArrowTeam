@@ -3781,44 +3781,7 @@ TRISE = 0x00;
 ADCON0 = 0x00;
 ADCON1 = 0b00001111;
 
-
-TRISAbits.TRISA0 = 1;
-TRISAbits.TRISA1 = 1;
-TRISAbits.TRISA2 = 1;
-TRISAbits.TRISA3 = 0;
-TRISAbits.TRISA4 = 0;
-TRISBbits.TRISB2 = 1;
-TRISCbits.TRISC0 = 0;
-TRISCbits.TRISC1 = 0;
-
-while(1) {
-LATAbits.LATA3 = 0;
-LATAbits.LATA4 = 1;
-while(!PORTBbits.RB2);
-while(PORTBbits.RB2);
-LATAbits.LATA3 = 1;
-LATAbits.LATA4 = 0;
-while(!PORTBbits.RB2);
-while(PORTBbits.RB2);
-LATAbits.LATA3 = 0;
-LATAbits.LATA4 = 0;
-
-LATCbits.LATC0 = 0;
-LATCbits.LATC1 = 1;
-while(!PORTBbits.RB2);
-while(PORTBbits.RB2);
-LATCbits.LATC0 = 1;
-LATCbits.LATC1 = 0;
-while(!PORTBbits.RB2);
-while(PORTBbits.RB2);
-LATCbits.LATC0 = 0;
-LATCbits.LATC1 = 0;
-
-
-
-}
-
-# 99
+# 63
 while(1){
 
 unsigned char i = 0;
@@ -3826,7 +3789,7 @@ unsigned char temp = 0x00;
 
 temp = 1 << 7;
 
-# 107
+# 71
 for (i = 0; i < 8; i++){
 LATA = temp;
 temp >>= 1;

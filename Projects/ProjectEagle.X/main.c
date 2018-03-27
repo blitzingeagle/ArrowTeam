@@ -140,39 +140,6 @@ void main(void) {
     
     FUNC_STATE_STANDBY(); // Start program in standby mode
     
-//    __delay_ms(250);
-    
-//    program_status.compartment_count = 4;
-//    
-//    program_status.set_count[0][0] = 1;
-//    program_status.set_count[0][1] = 1;
-//    program_status.set_count[0][2] = 0;
-//    program_status.set_count[0][3] = 2;
-//    
-//    program_status.set_count[1][0] = 3;
-//    program_status.set_count[1][1] = 0;
-//    program_status.set_count[1][2] = 0;
-//    program_status.set_count[1][3] = 0;
-//    
-//    program_status.set_count[2][0] = 0;
-//    program_status.set_count[2][1] = 0;
-//    program_status.set_count[2][2] = 0;
-//    program_status.set_count[2][3] = 4;
-//    
-//    program_status.set_count[3][0] = 1;
-//    program_status.set_count[3][1] = 0;
-//    program_status.set_count[3][2] = 1;
-//    program_status.set_count[3][3] = 0;
-    
-//    orient_container();
-    
-//    arduino_send_orient();
-    
-//    arduino_ping();
-//    arduino_begin_cmd();
-//    
-//    while(1);
-    
     /* Main loop. */
     while(1) {
         if(program_status.operating) {
@@ -184,22 +151,13 @@ void main(void) {
             sprintf(buffer, "%d step assembly", program_status.compartment_count);
             print_px_string(1, 115, buffer);
             
-            arduino_send_gate_return();
             arduino_send_fastener_data(program_status.set_count, program_status.compartment_count);
             
-//            orient_container();
-//            
-//            for(unsigned char i = 0; i < 8; i++) {
-//                arduino_send_load_compartment(i);
-//                rotate_to_compartment(i);
-//                __delay_ms(500);
-//            }
             
-            program_status.operating = false;
             
             __delay_ms(5000);
             
-            arduino_send_gate_overflow();
+            program_status.operating = !program_status.operating;
             
             program_state = STATE_STANDBY;
             __lcd_clear();

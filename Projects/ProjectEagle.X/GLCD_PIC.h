@@ -154,6 +154,14 @@ void glcdDrawRectangle(unsigned char XS, unsigned char XE,\
                         unsigned char YS, unsigned char YE,\
                         unsigned long color);
 void glcdDrawPixel(unsigned char XS, unsigned char YS, unsigned long color);
+void glcdDrawLine(unsigned char XS, unsigned char XE,\
+                        unsigned char YS, unsigned char YE,\
+                        unsigned char end_incl,\
+                        unsigned long color);
+void glcdDrawCircle(unsigned char X, unsigned char Y,\
+                        unsigned char R, unsigned long color);
+void glcdDrawSpokes(unsigned char X, unsigned char Y,\
+                        unsigned char R, unsigned long color);
 
 /* The following two functions may be used by students who:
  *  1. Want to maximize write efficiency to the GLCD by minimizing color depth

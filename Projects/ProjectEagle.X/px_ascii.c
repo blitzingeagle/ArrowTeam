@@ -120,27 +120,47 @@ inline px_char px_map(char c) {
     // </editor-fold>
 }
 
-void draw_px_char(int x, int y, px_char p) {
+//void draw_px_char(int x, int y, px_char p, unsigned long color) {
+//    uint32_t m = 0b1;
+//    for(char i = 0; i < 32; i++) {
+//        if(m & p.part[0]) glcdDrawPixel(x+i%PX_CHAR_WIDTH, y+i/PX_CHAR_WIDTH, color);
+//        if(m & p.part[1]) glcdDrawPixel(x+(i+32)%PX_CHAR_WIDTH, y+(i+32)/PX_CHAR_WIDTH, color);
+//
+//        m <<= 1;
+//    }
+//}
+//
+//void print_px_char(int x, int y, char c, unsigned long color) {
+//    draw_px_char(x, y, px_map(c), color);
+//}
+//
+//void print_px_string(int x, int y, char *s, unsigned long color) {
+//    int idx = 0;
+//    while(s[idx] != '\0') {
+//        print_px_char(x+idx*(PX_CHAR_WIDTH+1), y, s[idx], color);
+//        
+//        idx++;
+//    }
+//}
+
+void overdraw_px_char(int x, int y, px_char p, unsigned long txt_color, unsigned long bg_color) {
     uint32_t m = 0b1;
-    for(int i = 0; i < 32; i++) {
-        if(m & p.part[0]) glcdDrawPixel(x+i%PX_CHAR_WIDTH, y+i/PX_CHAR_WIDTH, BLACK);
-        if(m & p.part[1]) glcdDrawPixel(x+(i+32)%PX_CHAR_WIDTH, y+(i+32)/PX_CHAR_WIDTH, BLACK);
+    for(char i = 0; i < 32; i++) {
+        glcdDrawPixel(x+i%PX_CHAR_WIDTH, y+i/PX_CHAR_WIDTH, (m & p.part[0]) ? txt_color : bg_color);
+        if(i < 28) glcdDrawPixel(x+(i+32)%PX_CHAR_WIDTH, y+(i+32)/PX_CHAR_WIDTH, (m & p.part[1]) ? txt_color : bg_color);
 
         m <<= 1;
     }
 }
 
-void print_px_char(int x, int y, char c) {
-    draw_px_char(x, y, px_map(c));
+void overwrite_px_char(int x, int y, char c1, unsigned long txt_color, unsigned long bg_color) {
+    overdraw_px_char(x, y, px_map(c1), txt_color, bg_color);
 }
 
-void print_px_string(int x, int y, char *s) {
-    int idx = 0;
-    while(s[idx] != '\0') {
-        print_px_char(x+idx*(PX_CHAR_WIDTH+1), y, s[idx]);
-        
+void overwrite_px_string(int x, int y, char *s1, unsigned long txt_color, unsigned long bg_color) {
+    char idx = 0;
+    while(s1[idx] != '\0') {
+        overwrite_px_char(x+idx*(PX_CHAR_WIDTH+1), y, s1[idx], txt_color, bg_color);
         idx++;
     }
 }
-
-

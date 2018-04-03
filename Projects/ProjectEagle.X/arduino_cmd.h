@@ -22,12 +22,7 @@ const char* template_load_compartment = "CMDB{\"cmd\":\"load_cmpt\",\"data\":%d}
 
 void arduino_ping(void);
 
-void arduino_send_orient(void);
-void arduino_send_gate_drop(void);
-void arduino_send_gate_return(void);
-void arduino_send_gate_overflow(void);
 void arduino_send_fastener_data(char set_count[][4], unsigned char steps);
-void arduino_send_load_compartment(char x);
 
 #endif	/* ARDUINO_CMD_H */
 

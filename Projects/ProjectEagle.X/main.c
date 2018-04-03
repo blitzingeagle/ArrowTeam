@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include "config_bits.h"
 #include "lcd.h"
@@ -30,6 +31,7 @@
 #include "arduino_cmd.h"
 #include "eep.h"
 #include "canvas.h"
+#include "history.h"
 
 /***** Macros *****/
 #define __bcd_to_num(num) (num & 0x0F) + ((num & 0xF0)>>4)*10
@@ -38,17 +40,17 @@
 //void RTC_setTime(void);
 
 /***** Constants *****/
-//const char keys[] = "123B456N789S*0#W";
-const char keys[] = "WSNB#9630852*741";
+const char keys[] = "123B456N789S*0#W";
+//const char keys[] = "WSNB#9630852*741";
 
-const char happynewyear[7] = {  0x30, // 45 Seconds 
-                                0x04, // 59 Minutes
-                                0x15, // 24 hour mode, set to 23:00
-                                0x01, // Tues
-                                0x05, // 20th
-                                0x03, // Feb
-                                0x18  // 2018
-};
+//const char happynewyear[7] = {  0x30, // 45 Seconds 
+//                                0x04, // 59 Minutes
+//                                0x15, // 24 hour mode, set to 23:00
+//                                0x01, // Tues
+//                                0x05, // 20th
+//                                0x03, // Feb
+//                                0x18  // 2018
+//};
 
 void init(void) {
     // <editor-fold defaultstate="collapsed" desc="Machine Configuration">
@@ -93,18 +95,21 @@ void init(void) {
     
     /* Initialize LCD. */
     initLCD();
-    
-    //    eep_write(0, "fuck");
-//    printf("%d", eep_read_octet(0));
+
+//    for(unsigned char i = 0; ; i++) {
+//        __lcd_clear();
+//        printf("%d: %d", i, eep_read_octet(0));
+//        __delay_ms(1000);
+//    }
     
 //    while(1);
     
     /* Initialize GLCD. */
     initGLCD();
     
-    glcdDrawRectangle(0, GLCD_SIZE_VERT, 0, 14, RED);
-    glcdDrawRectangle(0, GLCD_SIZE_VERT, 14, 110, BLACK);
-    glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
+    draw_frame();
+    draw_container();
+    draw_table();
     
     /* Initialize I2C */
     I2C_Master_Init(100000); // Initialize I2C Master with 100 kHz clock
@@ -115,6 +120,7 @@ void init(void) {
     
     /* Initialize UART */
     UART_Init(9600); // Baud rate 9600
+    uartReceiveIT(4);
     
     /* Initialize Program States */
     init_program_states();
@@ -122,7 +128,7 @@ void init(void) {
     INT1IE = 1; // Enable RB1 (keypad data available) interrupt
     
     T0CONbits.T08BIT = 0;
-    T0CONbits.T0CS = 0;
+    T0CONbits.T0CS = 0; 
     T0CONbits.PSA = 0;
     T0CONbits.T0PS2 = 1;
     T0CONbits.T0PS1 = 0;
@@ -143,13 +149,12 @@ void main(void) {
     /* Main loop. */
     while(1) {
         if(program_status.operating) {
-            program_status.history[(program_status.history_cnt++)%4] = make_history(program_status.set_count, program_status.compartment_count);
+            //program_status.history[(program_status.history_cnt++)%4] = make_history(program_status.set_count, program_status.compartment_count);
             
             use_protocol(SPI);
             glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
             char buffer[22];
             sprintf(buffer, "%d step assembly", program_status.compartment_count);
-            print_px_string(1, 115, buffer);
             
             arduino_send_fastener_data(program_status.set_count, program_status.compartment_count);
             
@@ -164,47 +169,7 @@ void main(void) {
             __lcd_home();
             PROG_FUNC[program_state]();
         }
-//        if(program_status.operating) {
-//            printf("Operating...");
-//            
-//            
-//            
-//            program_status.operating = 0;
-//        }
-        
         __delay_ms(500);
-//        if(program_status.operating) {
-//            arduino_send_gate_return();
-//            arduino_send_fastener_data(program_status.set_count);
-//            
-//            printf("Operating...");
-//            
-//            __delay_ms(5000);
-//            
-//            program_status.operating = 0;
-//        }
-        
-//        if(program_status.operating) {
-//            use_protocol(SPI);
-//            glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
-//            char buffer[22];
-//            sprintf(buffer, "%d step assembly", program_status.compartment_count);
-//            print_px_string(1, 115, buffer);
-//            use_protocol(I2C);
-//            
-//            arduino_send_gate_return();
-//            arduino_send_fastener_data(program_status.set_count);
-//            printf("Operating..."); 
-//            
-//            __delay_ms(5000);
-//            
-//            program_status.operating = 0;
-//            program_state = STATE_STANDBY;
-//            
-//            __lcd_clear();
-//            __lcd_home();
-//            PROG_FUNC[program_state]();
-//        }
     }
 }
 
@@ -215,22 +180,28 @@ void TX_interface(void) {
 void RX_interface(void) {
     __lcd_clear();
     
-    if(strcmp(UART->_dataRX, "F_TT") == 0) {
-        uartReceiveIT(4);
-    } else if(strcmp(UART->_dataRX, "ORTT") == 0) {
-        arduino_send_fastener_data(program_status.set_count, program_status.compartment_count);
-    } else if(strcmp(UART->_dataRX, "DONE") == 0) {
-        program_status.operating = false;
-        
-        program_state = STATE_STANDBY;
-        __lcd_clear();
-        __lcd_home();
-        PROG_FUNC[program_state]();
-    }
+//    if(strcmp(UART->_dataRX, "F_TT") == 0) {
+//        uartReceiveIT(4);
+//    } else if(strcmp(UART->_dataRX, "ORTT") == 0) {
+//        arduino_send_fastener_data(program_status.set_count, program_status.compartment_count);
+//    } else if(strcmp(UART->_dataRX, "DONE") == 0) {
+//        program_status.operating = false;
+//        
+//        program_state = STATE_STANDBY;
+//        __lcd_clear();
+//        __lcd_home();
+//        PROG_FUNC[program_state]();
+//    }
     
-//    printf("%s", UART->_dataRX);
-    memset(UART->_dataRX, '\0', UART->_numReceives);
+//    use_protocol(SPI);
+//    sprintf("%s", Canvas.footer_text, UART->_dataRX);
+//    update_footer();
+    
+    printf("%s", UART->_dataRX);
+//    memset(UART->_dataRX, '\0', UART->_numReceives);
     UART->_numReceives = 0;
+    
+    uartReceiveIT(4);
 }
 
 void interrupt interruptHandler(void) {
@@ -243,26 +214,13 @@ void interrupt interruptHandler(void) {
         RTC_read_time(time);
 
         use_protocol(SPI);
-        glcdDrawRectangle(0, GLCD_SIZE_VERT, 0, 14, RED);
 
-        char buffer[22];
-        sprintf(buffer, "%02x/%02x/%02x     %02x:%02x:%02x", time[5], time[4], time[6], time[2], time[1], time[0]);
-        print_px_string(1, 1, buffer);
+        sprintf(Canvas.header_text, "%02x/%02x/%02x     %02x:%02x:%02x", time[5], time[4], time[6], time[2], time[1], time[0]);
+        update_header();
         
         if(program_state == STATE_SET_TIME && program_status.edit_time_idx == 0) {
             FUNC_STATE_SET_TIME();
         }
-        
-//        char x = PORTAbits.RA0;
-//        if(x) {
-//            glcdDrawRectangle(28, 38, 28, 38, GREEN);
-//        } else {
-//            glcdDrawRectangle(28, 38, 28, 38, RED);
-//        }
-        
-//        glcdDrawRectangle(0, GLCD_SIZE_VERT, 14, 28, GREEN);
-//        sprintf(buffer, "%d %d %d %d", PORTAbits.RA0, PORTAbits.RA1, PORTAbits.RA2, PORTBbits.RB2);
-//        print_px_string(1, 15, buffer);
     }
     
     if(INT1IF) { /* Interrupt on change handler for RB1. */

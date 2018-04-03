@@ -23,7 +23,7 @@ enum PROG_STATES {
     STATE_REVIEW_SET,
     STATE_EXECUTE,
     STATE_HISTORY,
-    STATE_HISTORY_PAGE_1,
+    STATE_LOG_PAGE_1,
     STATE_SET_TIME,
     NUM_STATES
 } program_state;
@@ -33,6 +33,8 @@ struct PROG_STATUS {
     char compartment_count_index;
     char set_count_tmp;
     char set_count[8][4];
+    unsigned char set_enum;
+    unsigned char set_qty;
     char buffer[8];
     char buffer_index;
     struct trie_node *trie_ptr;
@@ -57,11 +59,13 @@ void FUNC_STATE_CONFIRM_SETS(void);
 void FUNC_STATE_REVIEW_SET(void);
 void FUNC_STATE_EXECUTE(void);
 void FUNC_STATE_HISTORY(void);
-void FUNC_STATE_HISTORY_PAGE_1(void);
+void FUNC_STATE_LOG_PAGE_1(void);
 void FUNC_STATE_SET_TIME(void);
 
 void init_program_states(void);
 void program_states_interrupt(unsigned char key);
+
+#define TRIE_ROOT_ADR &fastener_trie.nodes[0]
 
 struct trie_node {
     struct trie_node *parent;

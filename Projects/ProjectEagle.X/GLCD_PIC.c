@@ -8,6 +8,9 @@
  */
 
 /********************************** Includes **********************************/
+#include <math.h>
+#include <stdlib.h>
+
 #include "GLCD_PIC.h"
 #include "SPI_PIC.h"
 
@@ -198,6 +201,38 @@ void glcdDrawPixel(unsigned char XS, unsigned char YS, unsigned long color){
     
     /* Draw a rectangle in the window specified by a single pixel. */
     glcdDrawRectangle(XS, XS, YS, YS, color);
+}
+
+void glcdDrawLine(unsigned char XS, unsigned char XE,\
+                        unsigned char YS, unsigned char YE,\
+                        unsigned char end_incl,\
+                        unsigned long color) {
+    unsigned char ticks = max(abs(XE-XS),abs(YE-YS)) + 1;
+    float dx = (float)(XE-XS)/ticks, dy = (float)(YE-YS)/ticks;
+    for(unsigned char i = 0; i < ticks + end_incl; i++) {
+        unsigned char x = XS + (char)round(dx*i), y = YS + (char)round(dy*i);
+        glcdDrawPixel(x,y,color);
+    }
+}
+
+void glcdDrawCircle(unsigned char X, unsigned char Y, unsigned char R, unsigned long color) {
+    float dtheta = M_PI/8;
+    for(float theta = 0; theta < 2*M_PI; theta += dtheta) {
+        unsigned char x1 = X + (char)round(R * cos(theta));
+        unsigned char y1 = Y + (char)round(R * sin(theta));
+        unsigned char x2 = X + (char)round(R * cos(theta+dtheta));
+        unsigned char y2 = Y + (char)round(R * sin(theta+dtheta));
+        glcdDrawLine(x1, x2, y1, y2, 1, color);
+    }
+}
+
+void glcdDrawSpokes(unsigned char X, unsigned char Y, unsigned char R, unsigned long color) {
+    float dtheta = M_PI/4;
+    for(float theta = 0; theta < 2*M_PI; theta += dtheta) {
+        unsigned char x1 = X + (char)round(R * cos(theta));
+        unsigned char y1 = Y + (char)round(R * sin(theta));
+        glcdDrawLine(X, x1, Y, y1, 0, color);
+    }
 }
 
 void glcdSetCOLMOD(unsigned char numBitsPerPixel){

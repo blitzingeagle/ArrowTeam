@@ -1,3 +1,6 @@
+#ifndef PX_ASCII
+#define PX_ASCII
+
 #include <stdint.h>
 
 #define PX_CHAR_WIDTH 5
@@ -108,6 +111,12 @@ typedef struct {
 px_char new_px_char(uint32_t a, uint32_t b);
 inline px_char px_map(char c);
 
-void draw_px_char(int x, int y, px_char p);
-void print_px_char(int x, int y, char c);
-void print_px_string(int x, int y, char *s);
+//void draw_px_char(int x, int y, px_char p, unsigned long color);
+//void print_px_char(int x, int y, char c, unsigned long color);
+//void print_px_string(int x, int y, char *s, unsigned long color);
+
+void overdraw_px_char(int x, int y, px_char p, unsigned long txt_color, unsigned long bg_color);
+void overwrite_px_char(int x, int y, char c1, unsigned long txt_color, unsigned long bg_color);
+void overwrite_px_string(int x, int y, char *s1, unsigned long txt_color, unsigned long bg_color);
+
+#endif

@@ -409,5 +409,3 @@ char trie_node_leaf_index(char c) {
     }
     return 4;
 }
-
-

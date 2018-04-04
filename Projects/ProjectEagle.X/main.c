@@ -52,6 +52,8 @@ const char keys[] = "123B456N789S*0#W";
 //                                0x18  // 2018
 //};
 
+char RX_packet[5];
+
 void init(void) {
     // <editor-fold defaultstate="collapsed" desc="Machine Configuration">
     /********************************* PIN I/O ********************************/
@@ -112,7 +114,7 @@ void init(void) {
     draw_table();
     
     /* Initialize I2C */
-    I2C_Master_Init(100000); // Initialize I2C Master with 100 kHz clock
+    I2C_Master_Init(9600); // Initialize I2C Master with 100 kHz clock
     RTC_read_time(program_status.time); // Read RTC time
     
     INTCONbits.GIE = 1;
@@ -120,7 +122,9 @@ void init(void) {
     
     /* Initialize UART */
     UART_Init(9600); // Baud rate 9600
-    uartReceiveIT(4);
+    memset(RX_packet, ' ', 4);
+    RX_packet[4] = '\0';
+    uartReceiveIT(1);
     
     /* Initialize Program States */
     init_program_states();
@@ -158,11 +162,7 @@ void main(void) {
             
             arduino_send_fastener_data(program_status.set_count, program_status.compartment_count);
             
-            
-            
-            __delay_ms(5000);
-            
-            program_status.operating = !program_status.operating;
+            while(program_status.operating);
             
             program_state = STATE_STANDBY;
             __lcd_clear();
@@ -173,35 +173,28 @@ void main(void) {
     }
 }
 
-void TX_interface(void) {
-    
+
+
+void TX_interface(void) {    
 }
 
 void RX_interface(void) {
-    __lcd_clear();
-    
-//    if(strcmp(UART->_dataRX, "F_TT") == 0) {
-//        uartReceiveIT(4);
-//    } else if(strcmp(UART->_dataRX, "ORTT") == 0) {
-//        arduino_send_fastener_data(program_status.set_count, program_status.compartment_count);
-//    } else if(strcmp(UART->_dataRX, "DONE") == 0) {
-//        program_status.operating = false;
-//        
-//        program_state = STATE_STANDBY;
-//        __lcd_clear();
-//        __lcd_home();
-//        PROG_FUNC[program_state]();
-//    }
-    
-//    use_protocol(SPI);
-//    sprintf("%s", Canvas.footer_text, UART->_dataRX);
-//    update_footer();
-    
-    printf("%s", UART->_dataRX);
-//    memset(UART->_dataRX, '\0', UART->_numReceives);
+    for(unsigned char c = 0; c < 3; c++) RX_packet[c] = RX_packet[c+1];
+    RX_packet[3] = UART->_dataRX[0];
     UART->_numReceives = 0;
     
-    uartReceiveIT(4);
+//    __lcd_clear();
+//    printf("%s", RX_packet);
+    
+    if(strcmp(RX_packet, "DONE") == 0) {
+        program_status.operating = false;
+    } else {
+        uartReceiveIT(1);
+        return;
+    }
+    
+    uartTransmitIT(" ACK", 4);
+    uartReceiveIT(1);
 }
 
 void interrupt interruptHandler(void) {

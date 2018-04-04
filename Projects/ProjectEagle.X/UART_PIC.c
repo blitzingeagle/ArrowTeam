@@ -236,10 +236,6 @@ void UART_Init(long baud){
     RCSTAbits.SPEN = 1;
 }
 
-#include "GLCD_PIC.h"
-#include "protocol_manager.h"
-#include "px_ascii.h"
-
 void UART_interrupt(void (*TX_interface)(void), void (*RX_interface)(void)) {
     /* Any time that an interrupt is generated, the microcontroller will branch
      * here. As such, any interrupts that are enabled need to be handled in this

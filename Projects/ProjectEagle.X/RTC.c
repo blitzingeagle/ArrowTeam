@@ -7,8 +7,6 @@
 
 #include "RTC.h"
 
-#include <time.h>
-
 #include "I2C.h"
 
 void RTC_set_time(char *setTime) {
@@ -66,13 +64,19 @@ void RTC_read_time(char *time) {
     I2C_Master_Stop(); // Stop condition
 }
 
-time_t get_epoch_time(void) {
+time_t get_epoch_time(char *time) {
     struct tm t = {0};  // Initalize to all 0's
-    t.tm_year = 112;  // This is year-1900, so 112 = 2012
-    t.tm_mon = 8;
-    t.tm_mday = 15;
-    t.tm_hour = 21;
-    t.tm_min = 54;
-    t.tm_sec = 13;
-    time_t timeSinceEpoch = mktime(&t);
+    t.tm_year = 100 + __bcd_to_num(time[6]);
+    t.tm_mon = __bcd_to_num(time[5]);
+    t.tm_mday = __bcd_to_num(time[4]);
+    t.tm_hour = __bcd_to_num(time[2]);
+    t.tm_min = __bcd_to_num(time[1]);
+    t.tm_sec = __bcd_to_num(time[0]);
+//    t.tm_year = 112;  // This is year-1900, so 112 = 2012
+//    t.tm_mon = 8;
+//    t.tm_mday = 15;
+//    t.tm_hour = 21;
+//    t.tm_min = 54;
+//    t.tm_sec = 13;
+    return mktime(&t);
 }

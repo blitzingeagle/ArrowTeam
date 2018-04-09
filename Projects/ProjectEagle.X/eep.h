@@ -16,5 +16,8 @@ unsigned char eep_read_octet(unsigned char adr);
 void eep_write(unsigned char adr, const unsigned char data[4]);
 void eep_read(unsigned char adr, unsigned char *data);
 
+void eep_write_long(unsigned char adr, unsigned long l);
+unsigned long eep_read_long(unsigned char adr);
+
 #endif	/* EEP_H */
 

@@ -37,3 +37,20 @@ void eep_write(unsigned char adr, const unsigned char data[4]) {
 void eep_read(unsigned char adr, unsigned char *data) {
     for(char i = 0; i < 4; i++) data[i] = eep_read_octet(adr+i);
 }
+
+void eep_write_long(unsigned char adr, unsigned long l) {
+    unsigned char data[4];
+    data[0] = l & 0xFF;
+    data[1] = (l >> 8) & 0xFF;
+    data[2] = (l >> 16) & 0xFF;
+    data[3] = (l >> 24) & 0xFF;
+    
+    eep_write(adr, data);
+}
+
+unsigned long eep_read_long(unsigned char adr) {
+    unsigned char data[4];
+    eep_read(adr, data);
+    
+    return (unsigned long) data[0] | (data[1] << 8) | (data[2] << 16) | (data[3] << 24);
+}

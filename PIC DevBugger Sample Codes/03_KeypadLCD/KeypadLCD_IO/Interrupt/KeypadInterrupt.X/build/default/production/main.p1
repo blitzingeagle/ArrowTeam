@@ -2881,152 +2881,152 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 75: void lcd_set_cursor(unsigned char x, unsigned char y);
 [; ;lcd.h: 76: void lcd_shift_cursor(unsigned char numChars, unsigned char direction);
 [; ;lcd.h: 77: void lcd_shift_display(unsigned char numChars, unsigned char direction);
-"26 main.c
+"27 main.c
 [v _keys `Cuc ~T0 @X0 -> 0 `x e ]
 [i _keys
 :U ..
 -> 49 `c
--> 50 `c
--> 51 `c
--> 65 `c
 -> 52 `c
--> 53 `c
--> 54 `c
--> 66 `c
 -> 55 `c
--> 56 `c
--> 57 `c
--> 67 `c
 -> 42 `c
+-> 50 `c
+-> 53 `c
+-> 56 `c
 -> 48 `c
+-> 51 `c
+-> 54 `c
+-> 57 `c
 -> 35 `c
--> 68 `c
+-> 66 `c
+-> 78 `c
+-> 83 `c
+-> 87 `c
 -> 0 `c
 ..
 ]
-[; ;main.c: 26: const char keys[] = "123A456B789C*0#D";
+[; ;main.c: 27: const char keys[] = "147*2580369#BNSW";
 [v $root$_main `(v ~T0 @X0 0 e ]
-"28
+"29
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 28: void main(void) {
+[; ;main.c: 29: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 34: LATA = 0x00;
-"34
-[e = _LATA -> -> 0 `i `uc ]
-[; ;main.c: 35: LATB = 0x00;
+[; ;main.c: 35: LATA = 0x00;
 "35
-[e = _LATB -> -> 0 `i `uc ]
-[; ;main.c: 36: LATC = 0x00;
+[e = _LATA -> -> 0 `i `uc ]
+[; ;main.c: 36: LATB = 0x00;
 "36
-[e = _LATC -> -> 0 `i `uc ]
-[; ;main.c: 37: LATD = 0x00;
+[e = _LATB -> -> 0 `i `uc ]
+[; ;main.c: 37: LATC = 0x00;
 "37
-[e = _LATD -> -> 0 `i `uc ]
-[; ;main.c: 38: LATE = 0x00;
+[e = _LATC -> -> 0 `i `uc ]
+[; ;main.c: 38: LATD = 0x00;
 "38
+[e = _LATD -> -> 0 `i `uc ]
+[; ;main.c: 39: LATE = 0x00;
+"39
 [e = _LATE -> -> 0 `i `uc ]
-[; ;main.c: 42: TRISA = 0xFF;
-"42
-[e = _TRISA -> -> 255 `i `uc ]
-[; ;main.c: 43: TRISB = 0xFF;
+[; ;main.c: 43: TRISA = 0xFF;
 "43
-[e = _TRISB -> -> 255 `i `uc ]
-[; ;main.c: 44: TRISC = 0x00;
+[e = _TRISA -> -> 255 `i `uc ]
+[; ;main.c: 44: TRISB = 0xFF;
 "44
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 45: TRISD = 0x00;
+[e = _TRISB -> -> 255 `i `uc ]
+[; ;main.c: 45: TRISC = 0x00;
 "45
-[e = _TRISD -> -> 0 `i `uc ]
-[; ;main.c: 46: TRISE = 0x00;
+[e = _TRISC -> -> 0 `i `uc ]
+[; ;main.c: 46: TRISD = 0x00;
 "46
+[e = _TRISD -> -> 0 `i `uc ]
+[; ;main.c: 47: TRISE = 0x00;
+"47
 [e = _TRISE -> -> 0 `i `uc ]
-[; ;main.c: 49: ADCON0 = 0x00;
-"49
-[e = _ADCON0 -> -> 0 `i `uc ]
-[; ;main.c: 50: ADCON1 = 0b00001111;
+[; ;main.c: 50: ADCON0 = 0x00;
 "50
+[e = _ADCON0 -> -> 0 `i `uc ]
+[; ;main.c: 51: ADCON1 = 0b00001111;
+"51
 [e = _ADCON1 -> -> 15 `i `uc ]
-[; ;main.c: 53: INT1IE = 1;
-"53
-[e = _INT1IE -> -> 1 `i `b ]
-[; ;main.c: 54: (INTCONbits.GIE = 1);
+[; ;main.c: 54: INT1IE = 1;
 "54
+[e = _INT1IE -> -> 1 `i `b ]
+[; ;main.c: 55: (INTCONbits.GIE = 1);
+"55
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 57: initLCD();
-"57
+[; ;main.c: 58: initLCD();
+"58
 [e ( _initLCD ..  ]
-[; ;main.c: 60: while(1) {
-"60
+[; ;main.c: 61: while(1) {
+"61
 [e :U 268 ]
 {
-[; ;main.c: 61: printf("Chocolate? ");
-"61
-[e ( _printf :s 1C ]
-[; ;main.c: 62: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
+[; ;main.c: 62: printf("Chocolate? ");
 "62
-[e ( _lcdInst (1 -> -> 128 `i `uc ]
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;main.c: 63: _delay((unsigned long)((1000)*(40000000/4000.0)));
+[e ( _printf :s 1C ]
+[; ;main.c: 63: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
 "63
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;main.c: 64: printf("CHOCOLATE?!");
-"64
-[e ( _printf :s 2C ]
-[; ;main.c: 65: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
-"65
 [e ( _lcdInst (1 -> -> 128 `i `uc ]
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;main.c: 66: _delay((unsigned long)((1000)*(40000000/4000.0)));
-"66
+[; ;main.c: 64: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"64
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;main.c: 65: printf("CHOCOLATE?!");
+"65
+[e ( _printf :s 2C ]
+[; ;main.c: 66: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
+"66
+[e ( _lcdInst (1 -> -> 128 `i `uc ]
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;main.c: 67: _delay((unsigned long)((1000)*(40000000/4000.0)));
 "67
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"68
 }
 [e :U 267 ]
-"60
+"61
 [e $U 268  ]
 [e :U 269 ]
-[; ;main.c: 67: }
 [; ;main.c: 68: }
-"68
+[; ;main.c: 69: }
+"69
 [e :UE 266 ]
 }
 [v $root$_interruptHandler `(v ~T0 @X0 0 e ]
 [v F2983 `(v ~T0 @X0 1 tf ]
-"70
+"71
 [v _interruptHandler `IF2983 ~T0 @X0 1 e ]
 {
-[; ;main.c: 70: void interrupt interruptHandler(void){
+[; ;main.c: 71: void interrupt interruptHandler(void){
 [e :U _interruptHandler ]
 [f ]
-[; ;main.c: 81: if(INT1IF){
-"81
+[; ;main.c: 82: if(INT1IF){
+"82
 [e $ ! _INT1IF 271  ]
 {
-[; ;main.c: 85: lcdInst(0xC0);;
-"85
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;main.c: 86: lcdInst(0xC0);;
 "86
-[v _keypress `uc ~T0 @X0 1 a ]
-[; ;main.c: 86: unsigned char keypress = (PORTB & 0xF0) >> 4;
-[e = _keypress -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
-[; ;main.c: 87: putch(keys[keypress]);
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
 "87
-[e ( _putch (1 *U + &U _keys * -> _keypress `ux -> -> # *U &U _keys `ui `ux ]
-[; ;main.c: 88: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
+[v _keypress `uc ~T0 @X0 1 a ]
+[; ;main.c: 87: unsigned char keypress = (PORTB & 0xF0) >> 4;
+[e = _keypress -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
+[; ;main.c: 88: putch(keys[keypress]);
 "88
+[e ( _putch (1 *U + &U _keys * -> _keypress `ux -> -> # *U &U _keys `ui `ux ]
+[; ;main.c: 89: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
+"89
 [e ( _lcdInst (1 -> -> 128 `i `uc ]
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;main.c: 90: INT1IF = 0;
-"90
-[e = _INT1IF -> -> 0 `i `b ]
+[; ;main.c: 91: INT1IF = 0;
 "91
+[e = _INT1IF -> -> 0 `i `b ]
+"92
 }
 [e :U 271 ]
-[; ;main.c: 91: }
 [; ;main.c: 92: }
-"92
+[; ;main.c: 93: }
+"93
 [e :UE 270 ]
 }
 [p f _printf 8388608 ]

@@ -13,7 +13,7 @@
 
 enum PROTOCOL {
     SPI, I2C
-};
+} curr_protocol;
 
 void use_protocol(enum PROTOCOL p);
 

@@ -12,4 +12,5 @@ void use_protocol(enum PROTOCOL p) {
             SSPCON2 = 0b00000000; // Set entire I2C operation to idle
             break;
     }
+    curr_protocol = p;
 }

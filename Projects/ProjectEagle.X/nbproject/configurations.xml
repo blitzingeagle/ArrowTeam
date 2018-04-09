@@ -16,9 +16,9 @@
       <itemPath>UART_PIC.h</itemPath>
       <itemPath>arduino_cmd.h</itemPath>
       <itemPath>history.h</itemPath>
-      <itemPath>DigitalIO_PIC.h</itemPath>
       <itemPath>eep.h</itemPath>
       <itemPath>canvas.h</itemPath>
+      <itemPath>trie.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -39,9 +39,9 @@
       <itemPath>UART_PIC.c</itemPath>
       <itemPath>arduino_cmd.c</itemPath>
       <itemPath>history.c</itemPath>
-      <itemPath>DigitalIO_PIC.c</itemPath>
       <itemPath>eep.c</itemPath>
       <itemPath>canvas.c</itemPath>
+      <itemPath>trie.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

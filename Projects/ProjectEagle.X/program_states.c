@@ -7,6 +7,9 @@
 #include "canvas.h"
 #include "RTC.h"
 #include "history.h"
+#include "trie.h"
+#include "GLCD_PIC.h"
+#include "px_ascii.h"
 
 #define min(X, Y) (((X) < (Y)) ? (X) : (Y))
 
@@ -44,7 +47,8 @@ void FUNC_STATE_PROMPT_FASTENER_SET(void) {
     use_protocol(SPI);
     char num_sets = program_status.compartment_count;
     char set = program_status.compartment_count_index;
-    highlight_sector((num_sets <= 6) ? set + (set / (num_sets - 3)) : set);
+    program_status.sector = (num_sets <= 6) ? set + (set / (num_sets - 3)) : set;
+    highlight_sector(program_status.sector);
             
     sprintf(Canvas.footer_text, "%d step assembly", num_sets);
     update_footer();
@@ -82,7 +86,7 @@ void FUNC_STATE_REVIEW_SET(void) {
 }
 
 void FUNC_STATE_EXECUTE(void) {
-    printf("Executing...");
+    printf("Executing... %d", program_status.operating);
     __lcd_newline();
     
 //    TRISCbits.TRISC0 = 0;
@@ -91,23 +95,34 @@ void FUNC_STATE_EXECUTE(void) {
 //    PORTCbits.PORTC0;
 }
 
+void FUNC_STATE_COMPLETION(void) {
+    printf("Done: %d steps", program_status.compartment_count);
+    __lcd_newline();
+    printf("Time: %ld sec", program_status.time_elapsed);
+    
+    use_protocol(SPI);
+    sprintf(Canvas.footer_text, "B:%d N:%d S:%d W:%d", program_status.overflow.B, program_status.overflow.N, program_status.overflow.S, program_status.overflow.W);
+    update_footer();
+}
+
 void FUNC_STATE_HISTORY(void) {
-    if(program_status.history_cnt) {
-        for(int i = 0; i < program_status.history_cnt; i++) {
-            lcd_set_cursor(i*8%16,i*8/16);
-            printf("%d %02x/%02x", i+1, program_status.history[i].time[5], program_status.history[i].time[4]);
-        }
-    } else {
+//    if(program_status.history_cnt) {
+//        for(int i = 0; i < program_status.history_cnt; i++) {
+//            lcd_set_cursor(i*8%16,i*8/16);
+//            printf("%d %02x/%02x", i+1, program_status.history[i].time[5], program_status.history[i].time[4]);
+//        }
+//    } else {
         printf("No logs present.");
         __lcd_newline();
-    }
+//    }
 }
 
 void FUNC_STATE_LOG_PAGE_1(void) {
-    char i = program_status.history_index;
-    printf("%02x/%02x %02x:%02x:%02x", program_status.history[i].time[5], program_status.history[i].time[4], program_status.history[i].time[2], program_status.history[i].time[1], program_status.history[i].time[0]);
-    __lcd_newline();
-    printf("%d step assembly", program_status.history[i].steps);
+    printf("Nothing to show.");
+//    char i = program_status.history_index;
+//    printf("%02x/%02x %02x:%02x:%02x", program_status.history[i].time[5], program_status.history[i].time[4], program_status.history[i].time[2], program_status.history[i].time[1], program_status.history[i].time[0]);
+//    __lcd_newline();
+//    printf("%d step assembly", program_status.history[i].steps);
 }
 
 void FUNC_STATE_SET_TIME(void) {
@@ -153,6 +168,7 @@ void init_program_states(void) {
     PROG_FUNC[STATE_CONFIRM_SETS] = FUNC_STATE_CONFIRM_SETS;
     PROG_FUNC[STATE_REVIEW_SET] = FUNC_STATE_REVIEW_SET;
     PROG_FUNC[STATE_EXECUTE] = FUNC_STATE_EXECUTE;
+    PROG_FUNC[STATE_COMPLETION] = FUNC_STATE_COMPLETION;
     PROG_FUNC[STATE_HISTORY] = FUNC_STATE_HISTORY;
     PROG_FUNC[STATE_LOG_PAGE_1] = FUNC_STATE_LOG_PAGE_1;
     PROG_FUNC[STATE_SET_TIME] = FUNC_STATE_SET_TIME;
@@ -161,7 +177,7 @@ void init_program_states(void) {
     program_status.compartment_count_index = 0;
     program_status.buffer_index = 0;
     program_status.trie_ptr = &fastener_trie.nodes[0];
-    program_status.history_cnt = 0;
+//    program_status.history_cnt = 0;
     program_status.operating = false;
 }
 
@@ -175,11 +191,6 @@ void reset_fastener_prompt() {
     memset(program_status.buffer, '\0', 8);
     program_status.buffer_index = 0;
 }
-
-#include "GLCD_PIC.h"
-#include "px_ascii.h"
-#include "protocol_manager.h"
-#include "canvas.h"
 
 void program_states_interrupt(unsigned char key) {
     bool state_changed = true;
@@ -303,13 +314,36 @@ void program_states_interrupt(unsigned char key) {
         case STATE_REVIEW_SET:
             program_state = STATE_CONFIRM_SETS;
             break;
-        case STATE_HISTORY:
-            if('1' <= key && key <= '9') {
-                program_status.history_index = key - '1';
-                program_state = (program_status.history_index < program_status.history_cnt) ? STATE_LOG_PAGE_1 : STATE_STANDBY;
+        case STATE_COMPLETION:
+            // TODO
+            if('1' <= key && key <= '8') {
+                program_status.sector = key - '1';
+                
+                unsigned char sector = program_status.sector;
+                unsigned char num_sets = program_status.compartment_count;
+                unsigned char set = (num_sets <= 6) ? sector - (sector+1)/(num_sets-2) : sector;
+                set = (((num_sets <= 6) ? set + (set / (num_sets - 3)) : set) == sector) ? set : 8;
+                
+                use_protocol(SPI);
+                highlight_sector(program_status.sector);
+                
+                if(set < 8) {
+                    update_sheet_data(program_status.set_count[set][0], program_status.set_count[set][1], program_status.set_count[set][2], program_status.set_count[set][3]);
+                } else {
+                    update_sheet_data(0, 0, 0, 0);
+                }
+                state_changed = false;
             } else {
                 program_state = STATE_STANDBY;
             }
+            break;
+        case STATE_HISTORY:
+//            if('1' <= key && key <= '9') {
+//                program_status.history_index = key - '1';
+//                program_state = (program_status.history_index < program_status.history_cnt) ? STATE_LOG_PAGE_1 : STATE_STANDBY;
+//            } else {
+                program_state = STATE_STANDBY;
+//            }
             break;
         case STATE_SET_TIME:
             if(key == '*') {
@@ -370,36 +404,6 @@ void program_states_interrupt(unsigned char key) {
         __lcd_home();
         PROG_FUNC[program_state]();
     }
-}
-
-void init_children(char *letters, struct trie_node *node, struct trie_node **trie_ptr) {
-    int i = -1;
-    while(letters[++i] != '\0') {
-    	node->children[i] = (*trie_ptr)++;
-    	node->children[i]->letter = letters[i];
-    	node->children[i]->parent = node;
-    }
-    
-    node->children_count = i;
-}
-
-void init_fastener_trie(void) {
-    struct trie_node *trie_ptr = &fastener_trie.nodes[0];
-    trie_ptr->letter = 'A';
-    trie_ptr->parent = &fastener_trie.nodes[0];
-    trie_ptr++;
-    init_children("BNSW", &fastener_trie.nodes[0], &trie_ptr);
-    init_children("BNSW", &fastener_trie.nodes[1], &trie_ptr);
-    init_children("NSW", &fastener_trie.nodes[5], &trie_ptr);
-    init_children("NW", &fastener_trie.nodes[6], &trie_ptr);
-    init_children("W", &fastener_trie.nodes[7], &trie_ptr);
-    init_children("W", &fastener_trie.nodes[8], &trie_ptr);
-    init_children("W", &fastener_trie.nodes[9], &trie_ptr);
-    init_children("W", &fastener_trie.nodes[10], &trie_ptr);
-    init_children("NW", &fastener_trie.nodes[12], &trie_ptr);
-    init_children("W", &fastener_trie.nodes[13], &trie_ptr);
-    init_children("W", &fastener_trie.nodes[14], &trie_ptr);
-    init_children("W", &fastener_trie.nodes[15], &trie_ptr);
 }
 
 char trie_node_leaf_index(char c) {

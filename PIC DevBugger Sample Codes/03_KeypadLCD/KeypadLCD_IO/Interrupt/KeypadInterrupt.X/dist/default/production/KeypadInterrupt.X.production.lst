@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
-                                                                                               Thu Mar  8 18:19:51 2018
+                                                                                               Mon Apr  9 10:07:18 2018
 
 Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	18F4620
@@ -77,21 +77,21 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
     63  001001                     _keys:
     64                           	opt stack 0
     65  001001  31                 	db	49
-    66  001002  32                 	db	50
-    67  001003  33                 	db	51
-    68  001004  41                 	db	65
-    69  001005  34                 	db	52
+    66  001002  34                 	db	52
+    67  001003  37                 	db	55
+    68  001004  2A                 	db	42
+    69  001005  32                 	db	50
     70  001006  35                 	db	53
-    71  001007  36                 	db	54
-    72  001008  42                 	db	66
-    73  001009  37                 	db	55
-    74  00100A  38                 	db	56
+    71  001007  38                 	db	56
+    72  001008  30                 	db	48
+    73  001009  33                 	db	51
+    74  00100A  36                 	db	54
     75  00100B  39                 	db	57
-    76  00100C  43                 	db	67
-    77  00100D  2A                 	db	42
-    78  00100E  30                 	db	48
-    79  00100F  23                 	db	35
-    80  001010  44                 	db	68
+    76  00100C  23                 	db	35
+    77  00100D  42                 	db	66
+    78  00100E  4E                 	db	78
+    79  00100F  53                 	db	83
+    80  001010  57                 	db	87
     81  001011  00                 	db	0
     82  001012                     __end_of_keys:
     83                           	opt stack 0
@@ -284,7 +284,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    270 ;;
    271 ;; *************** function _main *****************
    272 ;; Defined at:
-   273 ;;		line 28 in file "main.c"
+   273 ;;		line 29 in file "main.c"
    274 ;; Parameters:    Size  Location     Type
    275 ;;		None
    276 ;; Auto vars:     Size  Location     Type
@@ -324,71 +324,71 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    305  00110A                     _main:
    306                           	opt stack 25
    307                           
-   308                           ;main.c: 34: LATA = 0x00;
+   308                           ;main.c: 35: LATA = 0x00;
    309                           
    310                           ;incstack = 0
    311  00110A  0E00               	movlw	0
    312  00110C  6E89               	movwf	3977,c	;volatile
    313                           
-   314                           ;main.c: 35: LATB = 0x00;
+   314                           ;main.c: 36: LATB = 0x00;
    315  00110E  0E00               	movlw	0
    316  001110  6E8A               	movwf	3978,c	;volatile
    317                           
-   318                           ;main.c: 36: LATC = 0x00;
+   318                           ;main.c: 37: LATC = 0x00;
    319  001112  0E00               	movlw	0
    320  001114  6E8B               	movwf	3979,c	;volatile
    321                           
-   322                           ;main.c: 37: LATD = 0x00;
+   322                           ;main.c: 38: LATD = 0x00;
    323  001116  0E00               	movlw	0
    324  001118  6E8C               	movwf	3980,c	;volatile
    325                           
-   326                           ;main.c: 38: LATE = 0x00;
+   326                           ;main.c: 39: LATE = 0x00;
    327  00111A  0E00               	movlw	0
    328  00111C  6E8D               	movwf	3981,c	;volatile
    329                           
-   330                           ;main.c: 42: TRISA = 0xFF;
+   330                           ;main.c: 43: TRISA = 0xFF;
    331  00111E  6892               	setf	3986,c	;volatile
    332                           
-   333                           ;main.c: 43: TRISB = 0xFF;
+   333                           ;main.c: 44: TRISB = 0xFF;
    334  001120  6893               	setf	3987,c	;volatile
    335                           
-   336                           ;main.c: 44: TRISC = 0x00;
+   336                           ;main.c: 45: TRISC = 0x00;
    337  001122  0E00               	movlw	0
    338  001124  6E94               	movwf	3988,c	;volatile
    339                           
-   340                           ;main.c: 45: TRISD = 0x00;
+   340                           ;main.c: 46: TRISD = 0x00;
    341  001126  0E00               	movlw	0
    342  001128  6E95               	movwf	3989,c	;volatile
    343                           
-   344                           ;main.c: 46: TRISE = 0x00;
+   344                           ;main.c: 47: TRISE = 0x00;
    345  00112A  0E00               	movlw	0
    346  00112C  6E96               	movwf	3990,c	;volatile
    347                           
-   348                           ;main.c: 49: ADCON0 = 0x00;
+   348                           ;main.c: 50: ADCON0 = 0x00;
    349  00112E  0E00               	movlw	0
    350  001130  6EC2               	movwf	4034,c	;volatile
    351                           
-   352                           ;main.c: 50: ADCON1 = 0b00001111;
+   352                           ;main.c: 51: ADCON1 = 0b00001111;
    353  001132  0E0F               	movlw	15
    354  001134  6EC1               	movwf	4033,c	;volatile
    355                           
-   356                           ;main.c: 53: INT1IE = 1;
+   356                           ;main.c: 54: INT1IE = 1;
    357  001136  86F0               	bsf	intcon3,3,c	;volatile
    358                           
-   359                           ;main.c: 54: (INTCONbits.GIE = 1);
+   359                           ;main.c: 55: (INTCONbits.GIE = 1);
    360  001138  8EF2               	bsf	intcon,7,c	;volatile
    361                           
-   362                           ;main.c: 57: initLCD();
+   362                           ;main.c: 58: initLCD();
    363  00113A  EC56  F009         	call	_initLCD	;wreg free
    364  00113E                     
-   365                           ;main.c: 61: printf("Chocolate? ");
+   365                           ;main.c: 62: printf("Chocolate? ");
    366  00113E  0E18               	movlw	low STR_1
    367  001140  6E1B               	movwf	printf@f,c
    368  001142  0E10               	movlw	high STR_1
    369  001144  6E1C               	movwf	printf@f+1,c
    370  001146  EC7C  F009         	call	_printf	;wreg free
    371                           
-   372                           ;main.c: 62: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
+   372                           ;main.c: 63: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
    373  00114A  0E80               	movlw	128
    374  00114C  ECA6  F009         	call	_lcdInst
    375  001150  0E41               	movlw	65
@@ -401,7 +401,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    382  00115C  D7FC               	bra	u177
    383  00115E  D000               	nop2	
    384                           
-   385                           ;main.c: 63: _delay((unsigned long)((1000)*(40000000/4000.0)));
+   385                           ;main.c: 64: _delay((unsigned long)((1000)*(40000000/4000.0)));
    386  001160  0E33               	movlw	51
    387  001162  6E21               	movwf	(??_main+1)& (0+255),c
    388  001164  0EBB               	movlw	187
@@ -415,14 +415,14 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    396  001172  2E21               	decfsz	(??_main+1)& (0+255),f,c
    397  001174  D7FA               	bra	u187
    398                           
-   399                           ;main.c: 64: printf("CHOCOLATE?!");
+   399                           ;main.c: 65: printf("CHOCOLATE?!");
    400  001176  0E24               	movlw	low STR_2
    401  001178  6E1B               	movwf	printf@f,c
    402  00117A  0E10               	movlw	high STR_2
    403  00117C  6E1C               	movwf	printf@f+1,c
    404  00117E  EC7C  F009         	call	_printf	;wreg free
    405                           
-   406                           ;main.c: 65: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
+   406                           ;main.c: 66: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
    407  001182  0E80               	movlw	128
    408  001184  ECA6  F009         	call	_lcdInst
    409  001188  0E41               	movlw	65
@@ -435,7 +435,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    416  001194  D7FC               	bra	u197
    417  001196  D000               	nop2	
    418                           
-   419                           ;main.c: 66: _delay((unsigned long)((1000)*(40000000/4000.0)));
+   419                           ;main.c: 67: _delay((unsigned long)((1000)*(40000000/4000.0)));
    420  001198  0E33               	movlw	51
    421  00119A  6E21               	movwf	(??_main+1)& (0+255),c
    422  00119C  0EBB               	movlw	187
@@ -956,7 +956,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    908                           
    909 ;; *************** function _interruptHandler *****************
    910 ;; Defined at:
-   911 ;;		line 70 in file "main.c"
+   911 ;;		line 71 in file "main.c"
    912 ;; Parameters:    Size  Location     Type
    913 ;;		None
    914 ;; Auto vars:     Size  Location     Type
@@ -1033,21 +1033,21 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    980  001074  C026  F015         	movff	btemp+2,??_interruptHandler+17
    981  001078  C027  F016         	movff	btemp+3,??_interruptHandler+18
    982                           
-   983                           ;main.c: 81: if(INT1IF){
+   983                           ;main.c: 82: if(INT1IF){
    984  00107C  A0F0               	btfss	intcon3,0,c	;volatile
    985  00107E  D01F               	goto	i2l71
    986                           
-   987                           ;main.c: 85: lcdInst(0xC0);;
+   987                           ;main.c: 86: lcdInst(0xC0);;
    988  001080  0EC0               	movlw	192
    989  001082  ECBA  F009         	call	i2_lcdInst
    990                           
-   991                           ;main.c: 86: unsigned char keypress = (PORTB & 0xF0) >> 4;
+   991                           ;main.c: 87: unsigned char keypress = (PORTB & 0xF0) >> 4;
    992  001086  3881               	swapf	3969,w,c	;volatile
    993  001088  0B0F               	andlw	15
    994  00108A  0B0F               	andlw	15
    995  00108C  6E17               	movwf	interruptHandler@keypress,c
    996                           
-   997                           ;main.c: 87: putch(keys[keypress]);
+   997                           ;main.c: 88: putch(keys[keypress]);
    998  00108E  5017               	movf	interruptHandler@keypress,w,c
    999  001090  0D01               	mullw	1
   1000  001092  0E01               	movlw	low _keys
@@ -1062,7 +1062,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   1009  0010A0  50F5               	movf	tablat,w,c
   1010  0010A2  ECB0  F009         	call	i2_putch
   1011                           
-  1012                           ;main.c: 88: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
+  1012                           ;main.c: 89: lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
   1013  0010A6  0E80               	movlw	128
   1014  0010A8  ECBA  F009         	call	i2_lcdInst
   1015  0010AC  0E41               	movlw	65
@@ -1075,7 +1075,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   1022  0010B8  D7FC               	bra	i2u29_47
   1023  0010BA  D000               	nop2	
   1024                           
-  1025                           ;main.c: 90: INT1IF = 0;
+  1025                           ;main.c: 91: INT1IF = 0;
   1026  0010BC  90F0               	bcf	intcon3,0,c	;volatile
   1027  0010BE                     i2l71:
   1028  0010BE  C016  F027         	movff	??_interruptHandler+18,btemp+3
@@ -1800,7 +1800,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
-Symbol Table                                                                                   Thu Mar  8 18:19:51 2018
+Symbol Table                                                                                   Mon Apr  9 10:07:18 2018
 
                        l63 113E                         u15 11EA                         u16 11EC  
                        u25 122A                         u26 122C                __CFG_CPD$ON 000000  

@@ -40,17 +40,9 @@
 //void RTC_setTime(void);
 
 /***** Constants *****/
-const char keys[] = "123B456N789S*0#W";
+const char keys[] =  "123B456N789S*0#W";
 //const char keys[] = "WSNB#9630852*741";
-
-//const char happynewyear[7] = {  0x30, // 45 Seconds 
-//                                0x04, // 59 Minutes
-//                                0x15, // 24 hour mode, set to 23:00
-//                                0x01, // Tues
-//                                0x05, // 20th
-//                                0x03, // Feb
-//                                0x18  // 2018
-//};
+//const char keys[] = "147*2580369#BNSW";
 
 char RX_packet[5];
 
@@ -97,14 +89,23 @@ void init(void) {
     
     /* Initialize LCD. */
     initLCD();
-
-//    for(unsigned char i = 0; ; i++) {
-//        __lcd_clear();
-//        printf("%d: %d", i, eep_read_octet(0));
-//        __delay_ms(1000);
-//    }
     
+//    struct History history = {0};
+//    struct Log log = {0};
+//    log.time_start = 30021;
+//    log.time_end = 5124241;
+//    add_log(log, &history);
+//    write_history(history);
+//    
+//    struct History history2 = {0};
+//    read_history(&history2);
+//    
+//    __lcd_clear();
+//    printf("%d %ld %ld", history2.count, history2.logs[0].time_start, history2.logs[0].time_end);
+//    
 //    while(1);
+    
+    read_history(&program_status.history);
     
     /* Initialize GLCD. */
     initGLCD();
@@ -150,10 +151,14 @@ void main(void) {
     
     FUNC_STATE_STANDBY(); // Start program in standby mode
     
+//    program_state = STATE_COMPLETION;
+//    FUNC_STATE_COMPLETION();
+    
     /* Main loop. */
     while(1) {
         if(program_status.operating) {
-            //program_status.history[(program_status.history_cnt++)%4] = make_history(program_status.set_count, program_status.compartment_count);
+            struct Log log = {0};
+            log.time_start = get_epoch_time(program_status.time);
             
             use_protocol(SPI);
             glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
@@ -162,13 +167,26 @@ void main(void) {
             
             arduino_send_fastener_data(program_status.set_count, program_status.compartment_count);
             
-            while(program_status.operating);
+            while(program_status.operating) {
+                di();
+                use_protocol(SPI);
+                update_header();
+                ei();
+                __delay_ms(500);
+            }
             
-            program_state = STATE_STANDBY;
+            log.time_end = get_epoch_time(program_status.time);
+            program_status.time_elapsed = log.time_end - log.time_start;
+            
+            program_state = STATE_COMPLETION;
             __lcd_clear();
             __lcd_home();
             PROG_FUNC[program_state]();
         }
+        di();
+        use_protocol(SPI);
+        update_header();
+        ei();
         __delay_ms(500);
     }
 }
@@ -183,11 +201,16 @@ void RX_interface(void) {
     RX_packet[3] = UART->_dataRX[0];
     UART->_numReceives = 0;
     
-//    __lcd_clear();
-//    printf("%s", RX_packet);
-    
     if(strcmp(RX_packet, "DONE") == 0) {
         program_status.operating = false;
+    } else if(RX_packet[0] == 'E' && RX_packet[1] == 'X') {
+        unsigned char count = RX_packet[3] - 'A';
+        switch(RX_packet[2]) {
+            case 'B': program_status.overflow.B = count; break;
+            case 'N': program_status.overflow.N = count; break;
+            case 'S': program_status.overflow.S = count; break;
+            case 'W': program_status.overflow.W = count; break;
+        }
     } else {
         uartReceiveIT(1);
         return;
@@ -198,7 +221,28 @@ void RX_interface(void) {
 }
 
 void interrupt interruptHandler(void) {
+    enum PROTOCOL p = curr_protocol;
+    
+    if(INT1IE && INT1IF) { /* Interrupt on change handler for RB1. */
+        di();
+        INT1IF = 0;  // Clear interrupt flag bit to signify it's been handled
+        
+        unsigned char keypress = (PORTB & 0xF0) >> 4;
+        unsigned char key = keys[keypress];
+        
+        use_protocol(SPI);
+        sprintf(Canvas.footer_text, "Pressed: %c", key);
+        update_footer();
+        
+        program_states_interrupt(key);
+        
+        TMR0IF = 0;
+        
+        ei();
+    }
+    
     if(TMR0IE && TMR0IF) {
+        di();
         TMR0IF = 0;
         
         unsigned char *time = program_status.time;
@@ -206,27 +250,18 @@ void interrupt interruptHandler(void) {
         use_protocol(I2C);
         RTC_read_time(time);
 
-        use_protocol(SPI);
-
         sprintf(Canvas.header_text, "%02x/%02x/%02x     %02x:%02x:%02x", time[5], time[4], time[6], time[2], time[1], time[0]);
-        update_header();
         
         if(program_state == STATE_SET_TIME && program_status.edit_time_idx == 0) {
             FUNC_STATE_SET_TIME();
         }
-    }
-    
-    if(INT1IF) { /* Interrupt on change handler for RB1. */
-        unsigned char keypress = (PORTB & 0xF0) >> 4;
-        unsigned char key = keys[keypress];
         
-        program_states_interrupt(key);
-        
-        INT1IF = 0;  // Clear interrupt flag bit to signify it's been handled
-        return;
+        ei();
     }
     
     /* Handle UART interrupt */
     UART_interrupt(TX_interface, RX_interface);
+    
+    use_protocol(p);
 }
 

@@ -23,7 +23,8 @@
 #include "lcd.h"
 
 /***** Constants *****/
-const char keys[] = "123A456B789C*0#D"; 
+//const char keys[] = "123A456B789C*0#D"; 
+const char keys[] = "147*2580369#BNSW";
 
 void main(void) {
     

@@ -1,24 +1,17 @@
-#include <stdbool.h>
 #include <string.h>
 
-#include "arduino_cmd.h"
 #include "program_states.h"
 #include "protocol_manager.h"
 #include "canvas.h"
 #include "RTC.h"
 #include "history.h"
 #include "trie.h"
-#include "GLCD_PIC.h"
-#include "px_ascii.h"
 
 #define min(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 void FUNC_STATE_STANDBY(void) {
-    if(program_status.operating) {
-        printf("<1> to resume");
-    } else {
-        printf("<1> to start");
-    }
+    printf("<1> to ");
+    printf(program_status.operating ? "resume" : "start");
     __lcd_newline();
     printf("<2> for history ");
     __lcd_display_control(1, 1, 1);
@@ -50,7 +43,7 @@ void FUNC_STATE_PROMPT_FASTENER_SET(void) {
     program_status.sector = (num_sets <= 6) ? set + (set / (num_sets - 3)) : set;
     highlight_sector(program_status.sector);
             
-    sprintf(Canvas.footer_text, "%d step assembly", num_sets);
+    sprintf(Canvas.footer_text, "%d STEP ASSEMBLY", num_sets);
     update_footer();
     
     update_sheet_data(program_status.B, program_status.N, program_status.S, program_status.W);
@@ -59,12 +52,8 @@ void FUNC_STATE_PROMPT_FASTENER_SET(void) {
 void FUNC_STATE_PROMPT_FASTENER_SET_QUANTITY(void) {
     printf("Set %d: %s", program_status.compartment_count_index + 1, program_status.buffer);
     __lcd_newline();
-    if(program_status.max_quantity == 1) {
-        printf("Qty (1) >");
-    } else {
-        printf("Qty (1-%d) >", program_status.max_quantity);
-    }
-    
+    if(program_status.max_quantity == 1) printf("Qty (1) >");
+    else printf("Qty (1-%d) >", program_status.max_quantity);
 }
 
 void FUNC_STATE_PREVIEW_FASTENER_SET(void) {
@@ -86,13 +75,8 @@ void FUNC_STATE_REVIEW_SET(void) {
 }
 
 void FUNC_STATE_EXECUTE(void) {
-    printf("Executing... %d", program_status.operating);
+    printf("Executing... ");
     __lcd_newline();
-    
-//    TRISCbits.TRISC0 = 0;
-//    LATCbits.LATC0 = 1;
-    
-//    PORTCbits.PORTC0;
 }
 
 void FUNC_STATE_COMPLETION(void) {
@@ -106,39 +90,52 @@ void FUNC_STATE_COMPLETION(void) {
 }
 
 void FUNC_STATE_HISTORY(void) {
-//    if(program_status.history_cnt) {
-//        for(int i = 0; i < program_status.history_cnt; i++) {
-//            lcd_set_cursor(i*8%16,i*8/16);
-//            printf("%d %02x/%02x", i+1, program_status.history[i].time[5], program_status.history[i].time[4]);
-//        }
-//    } else {
+    if(program_status.history.count) {
+        for(unsigned char i = 0; i < program_status.history.count; i++) {
+            lcd_set_cursor(i*8%16,i*8/16);
+            struct tm *ptm = gmtime(&program_status.history.logs[(program_status.history.first_log+i)%MAX_LOGS].time_start);
+            
+            printf("%d %02d/%02d", i+1, ptm->tm_mon, ptm->tm_mday);
+        }
+    } else {
         printf("No logs present.");
         __lcd_newline();
-//    }
+    }
 }
 
 void FUNC_STATE_LOG_PAGE_1(void) {
-    printf("Nothing to show.");
-//    char i = program_status.history_index;
-//    printf("%02x/%02x %02x:%02x:%02x", program_status.history[i].time[5], program_status.history[i].time[4], program_status.history[i].time[2], program_status.history[i].time[1], program_status.history[i].time[0]);
-//    __lcd_newline();
-//    printf("%d step assembly", program_status.history[i].steps);
+    unsigned char i = program_status.history_index;
+    struct tm *ptm = gmtime(&program_status.history.logs[(program_status.history.first_log+i)%MAX_LOGS].time_start);
+    time_t time_start = program_status.history.logs[(program_status.history.first_log+i)%MAX_LOGS].time_start;
+    time_t time_end = program_status.history.logs[(program_status.history.first_log+i)%MAX_LOGS].time_end;
+    
+    printf("%02d:%02d %d sec", ptm->tm_hour, ptm->tm_min, time_end-time_start);
+    __lcd_newline();
+    printf("%d step assembly    ", program_status.history.logs[i].num_sets);
+    
+    use_protocol(SPI);
+    sprintf(Canvas.footer_text, "B:%d N:%d S:%d W:%d", program_status.overflow.B, program_status.overflow.N, program_status.overflow.S, program_status.overflow.W);
+    update_footer();
 }
 
 void FUNC_STATE_SET_TIME(void) {
     unsigned char *time = program_status.time;
     
-    if(program_status.edit_time_idx) {
-        __lcd_home();
-        printf("  [ %02x/%02x/%02x ]  ", time[6],time[5],time[4]); // Print date in YY/MM/DD
-        __lcd_newline();
-        printf("  [ %02x:%02x:%02x ]  ", time[2],time[1],time[0]); // HH:MM:SS
-    } else {
-        __lcd_home();
-        printf("    %02x/%02x/%02x    ", time[6],time[5],time[4]); // Print date in YY/MM/DD
-        __lcd_newline();
-        printf("    %02x:%02x:%02x    ", time[2],time[1],time[0]); // HH:MM:SS
-    }
+    __lcd_home();
+    printf(program_status.edit_time_idx ? "  [ %02x/%02x/%02x ]  " : "    %02x/%02x/%02x    ", time[6],time[5],time[4]); // Print date in YY/MM/DD
+    __lcd_newline();
+    printf(program_status.edit_time_idx ? "  [ %02x/%02x/%02x ]  " : "    %02x/%02x/%02x    ", time[2],time[1],time[0]); // HH:MM:SS
+//    if(program_status.edit_time_idx) {
+//        __lcd_home();
+//        printf("  [ %02x/%02x/%02x ]  ", time[6],time[5],time[4]); // Print date in YY/MM/DD
+//        __lcd_newline();
+//        printf("  [ %02x:%02x:%02x ]  ", time[2],time[1],time[0]); // HH:MM:SS
+//    } else {
+//        __lcd_home();
+//        printf("    %02x/%02x/%02x    ", time[6],time[5],time[4]); // Print date in YY/MM/DD
+//        __lcd_newline();
+//        printf("    %02x:%02x:%02x    ", time[2],time[1],time[0]); // HH:MM:SS
+//    }
     
     __lcd_display_control(1,1,1);
     switch(program_status.edit_time_idx) {
@@ -177,8 +174,7 @@ void init_program_states(void) {
     program_status.compartment_count_index = 0;
     program_status.buffer_index = 0;
     program_status.trie_ptr = &fastener_trie.nodes[0];
-//    program_status.history_cnt = 0;
-    program_status.operating = false;
+    program_status.operating = 0;
 }
 
 void reset_fastener_prompt() {
@@ -193,7 +189,7 @@ void reset_fastener_prompt() {
 }
 
 void program_states_interrupt(unsigned char key) {
-    bool state_changed = true;
+    unsigned char state_changed = 1;
 
     switch(program_state) {
         case STATE_STANDBY: // Key pressed on standby mode
@@ -232,7 +228,7 @@ void program_states_interrupt(unsigned char key) {
                     }
                     program_status.trie_ptr = program_status.trie_ptr->children[leaf_index];
                 }
-                state_changed = false;
+                state_changed = 0;
             } else if(key == '*' && program_status.buffer_index > 0) {
                 lcd_shift_cursor(1, 0);
                 putch(' ');
@@ -246,7 +242,7 @@ void program_states_interrupt(unsigned char key) {
                 }
                 program_status.buffer[program_status.buffer_index] = '\0';
                 program_status.trie_ptr = program_status.trie_ptr->parent;
-                state_changed = false;
+                state_changed = 0;
             } else if(key == '#' && program_status.buffer_index > 0) {
                 if(strcmp(program_status.buffer,"BB") != 0 && strcmp(program_status.buffer,"BNN") != 0) {
                     program_status.max_quantity = 4;
@@ -255,26 +251,26 @@ void program_states_interrupt(unsigned char key) {
                     if(program_status.S > 0) program_status.max_quantity = min(program_status.max_quantity, 2/program_status.S);
                     if(program_status.W > 0) program_status.max_quantity = min(program_status.max_quantity, 4/program_status.W);
                     
-                    program_status.set_enum = program_status.trie_ptr - TRIE_ROOT_ADR;
+                    program_status.set_enum[program_status.compartment_count_index] = program_status.trie_ptr - TRIE_ROOT_ADR;
                     
                     program_state = STATE_PROMPT_FASTENER_SET_QUANTITY;
                 } else {
-                    state_changed = false;
+                    state_changed = 0;
                 }
             } else {
-                state_changed = false;
+                state_changed = 0;
             }
             use_protocol(SPI);
             update_sheet_data(program_status.B, program_status.N, program_status.S, program_status.W);
             break;
         case STATE_PROMPT_FASTENER_SET_QUANTITY:
             if('1' <= key && key <= ('0' + program_status.max_quantity)) {
-                program_status.set_qty = key - '0';
-                program_status.set_count_tmp = program_status.set_qty;
+                program_status.set_qty[program_status.compartment_count_index] = key - '0';
+                program_status.set_count_tmp = key - '0';
                 
                 program_state = STATE_PREVIEW_FASTENER_SET;
             } else {
-                state_changed = false;
+                state_changed = 0;
             }
             break;
         case STATE_PREVIEW_FASTENER_SET:
@@ -295,20 +291,20 @@ void program_states_interrupt(unsigned char key) {
                 reset_fastener_prompt();
                 program_state = STATE_PROMPT_FASTENER_SET;
             } else {
-                state_changed = false;
+                state_changed = 0;
             }
             break;
         case STATE_CONFIRM_SETS:
             if(key == '*') {
                 program_state = STATE_PROMPT_COMPARTMENT_COUNT;
             } else if(key == '#') {
-                program_status.operating = true;
+                program_status.operating = 1;
                 program_state = STATE_EXECUTE;
             } else if('1' <= key && key <= '0'+program_status.compartment_count) {
                 program_status.compartment_count_index = key - '1';
                 program_state = STATE_REVIEW_SET;
             } else {
-                state_changed = false;
+                state_changed = 0;
             }
             break;
         case STATE_REVIEW_SET:
@@ -332,18 +328,26 @@ void program_states_interrupt(unsigned char key) {
                 } else {
                     update_sheet_data(0, 0, 0, 0);
                 }
-                state_changed = false;
+                state_changed = 0;
             } else {
                 program_state = STATE_STANDBY;
             }
             break;
         case STATE_HISTORY:
-//            if('1' <= key && key <= '9') {
-//                program_status.history_index = key - '1';
-//                program_state = (program_status.history_index < program_status.history_cnt) ? STATE_LOG_PAGE_1 : STATE_STANDBY;
-//            } else {
+            if('1' <= key && key <= '9') {
+                program_status.history_index = key - '1';
+                program_state = (program_status.history_index < program_status.history.count) ? STATE_LOG_PAGE_1 : STATE_STANDBY;
+                
+                if(program_status.history_index < program_status.history.count) {
+                    program_status.history_index = (program_status.history.first_log+program_status.history_index)%MAX_LOGS;
+                    program_state = STATE_LOG_PAGE_1;
+                } else {
+                    program_state = STATE_STANDBY;
+                }
+                
+            } else {
                 program_state = STATE_STANDBY;
-//            }
+            }
             break;
         case STATE_SET_TIME:
             if(key == '*') {

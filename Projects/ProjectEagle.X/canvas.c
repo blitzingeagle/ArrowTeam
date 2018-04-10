@@ -31,7 +31,7 @@ void draw_table(void) {
     glcdDrawRectangle(76, 119, 52, 53, GREY);
     glcdDrawRectangle(76, 119, 66, 67, GREY);
     glcdDrawRectangle(76, 119, 80, 81, GREY);
-    overwrite_px_string(80, 26, "CMPT 1", WHITE, BLUE);
+    overwrite_px_string(80, 26, " CMPT ", WHITE, BLUE);
     overwrite_px_char(78, 40, 'B', BLACK, WHITE);
     overwrite_px_char(78, 54, 'N', BLACK, WHITE);
     overwrite_px_char(78, 68, 'S', BLACK, WHITE);

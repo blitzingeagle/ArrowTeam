@@ -41,15 +41,15 @@ void spiSend(unsigned char val){
     spiTransfer(val);
 }
 
-unsigned char spiReceive(void){
-    /* Receives a byte using the SPI module.
-     *
-     * Arguments: none
-     * 
-     * Returns: byte received
-     */
-    return spiTransfer(0xFF);
-}
+//unsigned char spiReceive(void){
+//    /* Receives a byte using the SPI module.
+//     *
+//     * Arguments: none
+//     * 
+//     * Returns: byte received
+//     */
+//    return spiTransfer(0xFF);
+//}
 
 void spiInit(unsigned char divider){
     /* Initializes the MSSP module for SPI mode. All configuration register bits

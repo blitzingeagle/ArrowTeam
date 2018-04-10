@@ -52,5 +52,5 @@ unsigned long eep_read_long(unsigned char adr) {
     unsigned char data[4];
     eep_read(adr, data);
     
-    return (unsigned long) data[0] | (data[1] << 8) | (data[2] << 16) | (data[3] << 24);
+    return (unsigned long) data[0] | ((unsigned long) data[1] << 8) | ((unsigned long) data[2] << 16) | ((unsigned long) data[3] << 24);
 }

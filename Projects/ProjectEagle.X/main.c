@@ -12,39 +12,31 @@
 
 /***** Includes *****/
 #include <xc.h>
-#include <stdbool.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <math.h>
 
 #include "config_bits.h"
 #include "lcd.h"
 #include "I2C.h"
 #include "GLCD_PIC.h"
-#include "SPI_PIC.h"
-#include "px_ascii.h"
 #include "protocol_manager.h"
 #include "program_states.h"
 #include "RTC.h"
 #include "UART_PIC.h"
 #include "arduino_cmd.h"
-#include "eep.h"
 #include "canvas.h"
 #include "history.h"
 
 /***** Macros *****/
-#define __bcd_to_num(num) (num & 0x0F) + ((num & 0xF0)>>4)*10
-
-/***** Function Prototypes *****/
-//void RTC_setTime(void);
+#define __bcd_to_num(num) (num & 0x0F) + ((num & 0xF0)>>4)*10;
 
 /***** Constants *****/
-const char keys[] =  "123B456N789S*0#W";
+//const char keys[] =  "123B456N789S*0#W";
 //const char keys[] = "WSNB#9630852*741";
-//const char keys[] = "147*2580369#BNSW";
+const char keys[] = "147*2580369#BNSW";
 
 char RX_packet[5];
+unsigned char refresh = 0;
 
 void init(void) {
     // <editor-fold defaultstate="collapsed" desc="Machine Configuration">
@@ -89,21 +81,6 @@ void init(void) {
     
     /* Initialize LCD. */
     initLCD();
-    
-//    struct History history = {0};
-//    struct Log log = {0};
-//    log.time_start = 30021;
-//    log.time_end = 5124241;
-//    add_log(log, &history);
-//    write_history(history);
-//    
-//    struct History history2 = {0};
-//    read_history(&history2);
-//    
-//    __lcd_clear();
-//    printf("%d %ld %ld", history2.count, history2.logs[0].time_start, history2.logs[0].time_end);
-//    
-//    while(1);
     
     read_history(&program_status.history);
     
@@ -151,19 +128,16 @@ void main(void) {
     
     FUNC_STATE_STANDBY(); // Start program in standby mode
     
-//    program_state = STATE_COMPLETION;
-//    FUNC_STATE_COMPLETION();
-    
     /* Main loop. */
     while(1) {
         if(program_status.operating) {
             struct Log log = {0};
             log.time_start = get_epoch_time(program_status.time);
-            
-            use_protocol(SPI);
-            glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
-            char buffer[22];
-            sprintf(buffer, "%d step assembly", program_status.compartment_count);
+            log.num_sets = program_status.compartment_count;
+            for(unsigned char i = 0; i < 8; i++) {
+                log.set_enum[i] = program_status.set_enum[i];
+                log.qty[i] = program_status.set_qty[i];
+            }
             
             arduino_send_fastener_data(program_status.set_count, program_status.compartment_count);
             
@@ -177,11 +151,22 @@ void main(void) {
             
             log.time_end = get_epoch_time(program_status.time);
             program_status.time_elapsed = log.time_end - log.time_start;
+            add_log(log, &program_status.history);
             
             program_state = STATE_COMPLETION;
             __lcd_clear();
             __lcd_home();
             PROG_FUNC[program_state]();
+            refresh = 0;
+            
+            write_history(program_status.history);
+        }
+        
+        if(refresh) {
+            __lcd_clear();
+            __lcd_home();
+            PROG_FUNC[program_state]();
+            refresh = 0;
         }
         di();
         use_protocol(SPI);
@@ -202,7 +187,15 @@ void RX_interface(void) {
     UART->_numReceives = 0;
     
     if(strcmp(RX_packet, "DONE") == 0) {
-        program_status.operating = false;
+//        initGLCD();
+//    
+//        draw_frame();
+//        draw_container();
+//        draw_table();
+        
+        program_state = STATE_COMPLETION;
+        program_status.operating = 0;
+        refresh = 1;
     } else if(RX_packet[0] == 'E' && RX_packet[1] == 'X') {
         unsigned char count = RX_packet[3] - 'A';
         switch(RX_packet[2]) {
@@ -230,9 +223,9 @@ void interrupt interruptHandler(void) {
         unsigned char keypress = (PORTB & 0xF0) >> 4;
         unsigned char key = keys[keypress];
         
-        use_protocol(SPI);
-        sprintf(Canvas.footer_text, "Pressed: %c", key);
-        update_footer();
+//        use_protocol(SPI);
+//        sprintf(Canvas.footer_text, "Pressed: %c", key);
+//        update_footer();
         
         program_states_interrupt(key);
         

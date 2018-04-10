@@ -79,18 +79,18 @@ void I2C_Master_Start(){
     SSPCON2bits.SEN = 1; // Initiate Start condition
 }
 
-void I2C_Master_RepeatedStart(){
-    /* Initiates Repeated Start condition on SDA and SCL pins. Automatically
-     * cleared by hardware.
-     * 
-     * Arguments: none
-     * 
-     * Returns: none
-     */
-    
-    I2C_Master_Wait(); // Ensure I2C module is idle
-    SSPCON2bits.RSEN = 1; // Initiate Repeated Start condition
-}
+//void I2C_Master_RepeatedStart(){
+//    /* Initiates Repeated Start condition on SDA and SCL pins. Automatically
+//     * cleared by hardware.
+//     * 
+//     * Arguments: none
+//     * 
+//     * Returns: none
+//     */
+//    
+//    I2C_Master_Wait(); // Ensure I2C module is idle
+//    SSPCON2bits.RSEN = 1; // Initiate Repeated Start condition
+//}
 
 void I2C_Master_Stop(){
     /* Initiates Stop condition on SDA and SCL pins. Automatically cleared by 

@@ -114,19 +114,19 @@ void lcd_shift_cursor(unsigned char numChars, unsigned char direction){
     }
 }
 
-void lcd_shift_display(unsigned char numChars, unsigned char direction){
-    /* Shifts display numChars characters.
-     * 
-     * Arguments: numChars, the number of character positions by which the
-     *              cursor is to be moved (min: o, max: 255).
-     *            direction, the direction for which the shift is to occur.
-     *              Direction = 1 --> right
-     *              Direction = 0 --> left
-     *
-     * Returns: none
-     */
-    
-    for(unsigned char n = numChars; n > 0; n--){
-        lcdInst((unsigned char)(0x18 | (direction << 2)));
-    }
-}
+//void lcd_shift_display(unsigned char numChars, unsigned char direction){
+//    /* Shifts display numChars characters.
+//     * 
+//     * Arguments: numChars, the number of character positions by which the
+//     *              cursor is to be moved (min: o, max: 255).
+//     *            direction, the direction for which the shift is to occur.
+//     *              Direction = 1 --> right
+//     *              Direction = 0 --> left
+//     *
+//     * Returns: none
+//     */
+//    
+//    for(unsigned char n = numChars; n > 0; n--){
+//        lcdInst((unsigned char)(0x18 | (direction << 2)));
+//    }
+//}

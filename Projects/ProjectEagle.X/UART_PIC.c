@@ -19,54 +19,54 @@ UART_t uart = {0};
 UART_t* UART = &uart;
 
 /****************************** Public Functions ******************************/
-void uartTransmitBlocking(unsigned char* data, unsigned char numBytes){
-    /* Transmits an array of data over UART in blocking mode (no interrupts
-     * required). RC6 is the TX pin.
-     *
-     * Arguments: data, pointer to the data to be transmitted. It is the 
-     *                  programmer's responsibility to ensure this pointer is 
-     *                  not NULL, and that the size of the array does not
-     *                  exceed numBytes.
-     *            numBytes, the number of bytes to be transmitted.
-     * 
-     * Returns: none
-     */
-
-    /* Ensure this function is not called while the UART transmitter is busy. */
-    while(UART -> _stateTX == UART_STATE_BUSY){ continue;   }
-    
-    /* Set TX state to busy */
-    UART -> _stateTX = UART_STATE_BUSY;
-
-    /* Local variable declaration and initialization */
-    unsigned char numTransmits = 0;
-
-    /* Enable transmit module */
-    __UART_ENABLE_TX();
-
-    /* Iterate through the data array to be transmitted */
-    while(numTransmits < numBytes){
-        /* Wait until the previous TXREG data has completed its transfer 
-         * into the TSR and the TSR has finished transmitting all bits 
-         * before loading the TXREG register. */
-        while(!IF_TX | !TSR_IS_READY){   continue;   }
-        NOP();
-        
-        /* Load data into transmit register TXREG */
-        UARTinterruptState = INTCONbits.GIE; // Enter critical section
-        di();
-        TXREG =  data[numTransmits];
-        INTCONbits.GIE = UARTinterruptState; // Exit critical section
-        
-        numTransmits++;
-        /* The rest of the transmission is implemented in hardware and 
-         * therefore could execute in parallel with the user-defined program
-         * if interrupts were used. */
-    }
-    
-    /* Set TX state to ready */
-    UART -> _stateTX = UART_STATE_READY;
-}
+//void uartTransmitBlocking(unsigned char* data, unsigned char numBytes){
+//    /* Transmits an array of data over UART in blocking mode (no interrupts
+//     * required). RC6 is the TX pin.
+//     *
+//     * Arguments: data, pointer to the data to be transmitted. It is the 
+//     *                  programmer's responsibility to ensure this pointer is 
+//     *                  not NULL, and that the size of the array does not
+//     *                  exceed numBytes.
+//     *            numBytes, the number of bytes to be transmitted.
+//     * 
+//     * Returns: none
+//     */
+//
+//    /* Ensure this function is not called while the UART transmitter is busy. */
+//    while(UART -> _stateTX == UART_STATE_BUSY){ continue;   }
+//    
+//    /* Set TX state to busy */
+//    UART -> _stateTX = UART_STATE_BUSY;
+//
+//    /* Local variable declaration and initialization */
+//    unsigned char numTransmits = 0;
+//
+//    /* Enable transmit module */
+//    __UART_ENABLE_TX();
+//
+//    /* Iterate through the data array to be transmitted */
+//    while(numTransmits < numBytes){
+//        /* Wait until the previous TXREG data has completed its transfer 
+//         * into the TSR and the TSR has finished transmitting all bits 
+//         * before loading the TXREG register. */
+//        while(!IF_TX | !TSR_IS_READY){   continue;   }
+//        NOP();
+//        
+//        /* Load data into transmit register TXREG */
+//        UARTinterruptState = INTCONbits.GIE; // Enter critical section
+//        di();
+//        TXREG =  data[numTransmits];
+//        INTCONbits.GIE = UARTinterruptState; // Exit critical section
+//        
+//        numTransmits++;
+//        /* The rest of the transmission is implemented in hardware and 
+//         * therefore could execute in parallel with the user-defined program
+//         * if interrupts were used. */
+//    }
+//    
+//    /* Set TX state to ready */
+//    UART -> _stateTX = UART_STATE_READY;
+//}
 
 void uartTransmitIT(unsigned char* data, unsigned char numBytes){
     /* Transmits an array of data over UART in non-blocking mode (uses
@@ -100,71 +100,71 @@ void uartTransmitIT(unsigned char* data, unsigned char numBytes){
     /* The rest of transmit is executed in TXIF's ISR (IF_TX) */
 }
 
-void uartReceiveBlocking(unsigned char numBytes){
-    /* Receives data over UART in blocking mode (no interrupts). RC7 is the RX 
-     * pin. The data received is stored in an array in UART -> _dataRX.
-     * 
-     * Arguments: numBytes, the number of bytes to be received. Must be less
-     *                      than or equal to BUFF_SIZE_RX
-     * 
-     * Returns: none
-     */
-    
-    /* Ensure this function is not called while the UART receiver is busy. */    
-    while(UART -> _stateRX == UART_STATE_BUSY){ continue;   }
-    
-    /* Set RX state to busy */
-    UART -> _stateRX = UART_STATE_BUSY;
-
-    /* Local variable declaration and initialization */
-    unsigned char numReceives = 0;
-    UART -> _lastReceiveFERR = 1; // Assume framing error
-    UART -> _lastReceiveOERR = 1; // Assume overload error
-
-    /* Enable receive module */
-    __UART_ENABLE_RX();
-    unsigned char temp = RCREG; // Flush receive register
-
-    /* Iterate through the data array to be transmitted */
-    while(numReceives < numBytes){  
-        /* Wait until the receive buffer RCREG is full */
-        while(!IF_RX){   continue;   }
-        
-        /* Check/clear framing error (too many or too few bytes between start
-         * and stop bit.*/
-        if(FRAMING_ERROR){
-            /* Store information for now. If there is a framing error, it will 
-             * be cleared when the receive register RCREG is read. But, in this
-             * case, that entry in _dataRX will be garbage */
-            UART -> _lastReceiveFERR = 1;
-        }
-        else{
-            UART -> _lastReceiveFERR = 0;
-        }
-
-        /* Read RCREG into memory */
-        UARTinterruptState = INTCONbits.GIE; // Enter critical section
-        di();
-        UART -> _dataRX[numReceives] = RCREG;
-        INTCONbits.GIE = UARTinterruptState; // Exit critical section
-
-        /* Check/clear overrun error (next byte arrives before previous
-         * was read). */
-        if(OVERRUN_ERROR){
-            /* Receive buffer flushed in hardware when receiver is reset */
-            RCSTAbits.CREN = 0;
-            RCSTAbits.CREN = 1;
-        }
-        else{
-            UART -> _lastReceiveOERR = 0;
-        }
-
-        numReceives++; // Increment receive count
-    }
-
-    /* Set RX state to ready */
-    UART -> _stateRX = UART_STATE_READY;
-}
+//void uartReceiveBlocking(unsigned char numBytes){
+//    /* Receives data over UART in blocking mode (no interrupts). RC7 is the RX 
+//     * pin. The data received is stored in an array in UART -> _dataRX.
+//     * 
+//     * Arguments: numBytes, the number of bytes to be received. Must be less
+//     *                      than or equal to BUFF_SIZE_RX
+//     * 
+//     * Returns: none
+//     */
+//    
+//    /* Ensure this function is not called while the UART receiver is busy. */    
+//    while(UART -> _stateRX == UART_STATE_BUSY){ continue;   }
+//    
+//    /* Set RX state to busy */
+//    UART -> _stateRX = UART_STATE_BUSY;
+//
+//    /* Local variable declaration and initialization */
+//    unsigned char numReceives = 0;
+//    UART -> _lastReceiveFERR = 1; // Assume framing error
+//    UART -> _lastReceiveOERR = 1; // Assume overload error
+//
+//    /* Enable receive module */
+//    __UART_ENABLE_RX();
+//    unsigned char temp = RCREG; // Flush receive register
+//
+//    /* Iterate through the data array to be transmitted */
+//    while(numReceives < numBytes){  
+//        /* Wait until the receive buffer RCREG is full */
+//        while(!IF_RX){   continue;   }
+//        
+//        /* Check/clear framing error (too many or too few bytes between start
+//         * and stop bit.*/
+//        if(FRAMING_ERROR){
+//            /* Store information for now. If there is a framing error, it will 
+//             * be cleared when the receive register RCREG is read. But, in this
+//             * case, that entry in _dataRX will be garbage */
+//            UART -> _lastReceiveFERR = 1;
+//        }
+//        else{
+//            UART -> _lastReceiveFERR = 0;
+//        }
+//
+//        /* Read RCREG into memory */
+//        UARTinterruptState = INTCONbits.GIE; // Enter critical section
+//        di();
+//        UART -> _dataRX[numReceives] = RCREG;
+//        INTCONbits.GIE = UARTinterruptState; // Exit critical section
+//
+//        /* Check/clear overrun error (next byte arrives before previous
+//         * was read). */
+//        if(OVERRUN_ERROR){
+//            /* Receive buffer flushed in hardware when receiver is reset */
+//            RCSTAbits.CREN = 0;
+//            RCSTAbits.CREN = 1;
+//        }
+//        else{
+//            UART -> _lastReceiveOERR = 0;
+//        }
+//
+//        numReceives++; // Increment receive count
+//    }
+//
+//    /* Set RX state to ready */
+//    UART -> _stateRX = UART_STATE_READY;
+//}
 
 void uartReceiveIT(unsigned char numBytes){
     /* Receives data over UART in non-blocking mode (uses interrupts). For this 

@@ -263,48 +263,48 @@ void glcdSetCOLMOD(unsigned char numBitsPerPixel){
     glcdTransfer(rawData, MEMWRITE);
 }
 
-void glcdSetOrigin(unsigned char corner){
-    /* Sets MADCTLbits and sends the byte to MADCTL on the GLCD to change the
-     * mirror/exchange effects and thus rotate the display.
-     * 
-     * Arguments: corner, the corner in which the origin is to be set.
-     *              Possible values: TOP_LEFT, TOP_RIGHT, 
-     *                               BOTTOM_LEFT, BOTTOM_RIGHT
-     * 
-     * Returns: none
-     */
-    
-    /* Set MADCTL bits to reflect the configuration. */
-    switch(corner){
-        case ORIGIN_TOP_LEFT:
-            MADCTLbits.MY = 1;
-            MADCTLbits.MX = 1;
-            MADCTLbits.MV = 1;
-            break;
-        case ORIGIN_TOP_RIGHT:
-            MADCTLbits.MY = 1;
-            MADCTLbits.MX = 0;
-            MADCTLbits.MV = 0;
-            break;
-        case ORIGIN_BOTTOM_RIGHT:
-            MADCTLbits.MY = 0;
-            MADCTLbits.MX = 0;
-            MADCTLbits.MV = 1;
-            break;
-        case ORIGIN_BOTTOM_LEFT:
-            MADCTLbits.MY = 0;
-            MADCTLbits.MX = 1;
-            MADCTLbits.MV = 0;
-            break;
-        default:
-            MADCTLbits.MY = 1;
-            MADCTLbits.MX = 1;
-            MADCTLbits.MV = 1;
-            break;            
-    }
-    
-    __SETMADCTL(); // Push changes to GLCD
-}
+//void glcdSetOrigin(unsigned char corner){
+//    /* Sets MADCTLbits and sends the byte to MADCTL on the GLCD to change the
+//     * mirror/exchange effects and thus rotate the display.
+//     * 
+//     * Arguments: corner, the corner in which the origin is to be set.
+//     *              Possible values: TOP_LEFT, TOP_RIGHT, 
+//     *                               BOTTOM_LEFT, BOTTOM_RIGHT
+//     * 
+//     * Returns: none
+//     */
+//    
+//    /* Set MADCTL bits to reflect the configuration. */
+//    switch(corner){
+//        case ORIGIN_TOP_LEFT:
+//            MADCTLbits.MY = 1;
+//            MADCTLbits.MX = 1;
+//            MADCTLbits.MV = 1;
+//            break;
+//        case ORIGIN_TOP_RIGHT:
+//            MADCTLbits.MY = 1;
+//            MADCTLbits.MX = 0;
+//            MADCTLbits.MV = 0;
+//            break;
+//        case ORIGIN_BOTTOM_RIGHT:
+//            MADCTLbits.MY = 0;
+//            MADCTLbits.MX = 0;
+//            MADCTLbits.MV = 1;
+//            break;
+//        case ORIGIN_BOTTOM_LEFT:
+//            MADCTLbits.MY = 0;
+//            MADCTLbits.MX = 1;
+//            MADCTLbits.MV = 0;
+//            break;
+//        default:
+//            MADCTLbits.MY = 1;
+//            MADCTLbits.MX = 1;
+//            MADCTLbits.MV = 1;
+//            break;            
+//    }
+//    
+//    __SETMADCTL(); // Push changes to GLCD
+//}
 
 void initGLCD(void){
     /* Initializes the GLCD.

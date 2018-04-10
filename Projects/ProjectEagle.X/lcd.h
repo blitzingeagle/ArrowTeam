@@ -71,7 +71,7 @@ void lcdNibble(char data);
 void initLCD(void);
 void lcd_set_cursor(unsigned char x, unsigned char y);
 void lcd_shift_cursor(unsigned char numChars, unsigned char direction);
-void lcd_shift_display(unsigned char numChars, unsigned char direction);
+//void lcd_shift_display(unsigned char numChars, unsigned char direction);
 
 #endif	/* LCD_H */
 

@@ -27,7 +27,7 @@
 /****************************** Public Interfaces *****************************/
 unsigned char spiTransfer(unsigned char byteToSend);
 void spiSend(unsigned char val);
-unsigned char spiReceive(void);
+//unsigned char spiReceive(void);
 void spiInit(unsigned char divider);
 
 

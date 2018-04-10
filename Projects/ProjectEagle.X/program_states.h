@@ -11,8 +11,6 @@
 #include "lcd.h"
 #include "history.h"
 
-#include <stdbool.h>
-
 enum PROG_STATES {
     STATE_STANDBY,
     STATE_PROMPT_COMPARTMENT_COUNT,
@@ -38,8 +36,8 @@ struct PROG_STATUS {
     char compartment_count_index;
     char set_count_tmp;
     char set_count[8][4];
-    unsigned char set_enum;
-    unsigned char set_qty;
+    unsigned char set_enum[8];
+    unsigned char set_qty[8];
     char buffer[8];
     char buffer_index;
     struct trie_node *trie_ptr;
@@ -48,10 +46,10 @@ struct PROG_STATUS {
     char max_quantity;
     unsigned long time_elapsed;
 //    unsigned char history_cnt;
-//    unsigned char history_index;
+    unsigned char history_index;
 //    struct History history[4];
     struct History history;
-    bool operating;
+    unsigned char operating;
     unsigned char edit_time_idx;
     unsigned char time[7];
     unsigned char sector;

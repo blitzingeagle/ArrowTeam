@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <string.h>
 
 #include "arduino_cmd.h"
@@ -14,11 +13,7 @@
 #define min(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 void FUNC_STATE_STANDBY(void) {
-    if(program_status.operating) {
-        printf("<1> to resume");
-    } else {
-        printf("<1> to start");
-    }
+    printf(program_status.operating ? "<1> to resume" : "<1> to start");
     __lcd_newline();
     printf("<2> for history ");
     __lcd_display_control(1, 1, 1);
@@ -59,12 +54,8 @@ void FUNC_STATE_PROMPT_FASTENER_SET(void) {
 void FUNC_STATE_PROMPT_FASTENER_SET_QUANTITY(void) {
     printf("Set %d: %s", program_status.compartment_count_index + 1, program_status.buffer);
     __lcd_newline();
-    if(program_status.max_quantity == 1) {
-        printf("Qty (1) >");
-    } else {
-        printf("Qty (1-%d) >", program_status.max_quantity);
-    }
-    
+    if(program_status.max_quantity == 1) printf("Qty (1) >");
+    else printf("Qty (1-%d) >", program_status.max_quantity);
 }
 
 void FUNC_STATE_PREVIEW_FASTENER_SET(void) {
@@ -86,13 +77,8 @@ void FUNC_STATE_REVIEW_SET(void) {
 }
 
 void FUNC_STATE_EXECUTE(void) {
-    printf("Executing... %d", program_status.operating);
+    printf("Executing... ");
     __lcd_newline();
-    
-//    TRISCbits.TRISC0 = 0;
-//    LATCbits.LATC0 = 1;
-    
-//    PORTCbits.PORTC0;
 }
 
 void FUNC_STATE_COMPLETION(void) {
@@ -106,39 +92,52 @@ void FUNC_STATE_COMPLETION(void) {
 }
 
 void FUNC_STATE_HISTORY(void) {
-//    if(program_status.history_cnt) {
-//        for(int i = 0; i < program_status.history_cnt; i++) {
-//            lcd_set_cursor(i*8%16,i*8/16);
-//            printf("%d %02x/%02x", i+1, program_status.history[i].time[5], program_status.history[i].time[4]);
-//        }
-//    } else {
+    if(program_status.history.count) {
+        for(unsigned char i = 0; i < program_status.history.count; i++) {
+            lcd_set_cursor(i*8%16,i*8/16);
+            struct tm *ptm = gmtime(&program_status.history.logs[(program_status.history.first_log+i)%MAX_LOGS].time_start);
+            
+            printf("%d %02d/%02d", i+1, ptm->tm_mon, ptm->tm_mday);
+        }
+    } else {
         printf("No logs present.");
         __lcd_newline();
-//    }
+    }
 }
 
 void FUNC_STATE_LOG_PAGE_1(void) {
-    printf("Nothing to show.");
-//    char i = program_status.history_index;
-//    printf("%02x/%02x %02x:%02x:%02x", program_status.history[i].time[5], program_status.history[i].time[4], program_status.history[i].time[2], program_status.history[i].time[1], program_status.history[i].time[0]);
-//    __lcd_newline();
-//    printf("%d step assembly", program_status.history[i].steps);
+    unsigned char i = program_status.history_index;
+    struct tm *ptm = gmtime(&program_status.history.logs[(program_status.history.first_log+i)%MAX_LOGS].time_start);
+    time_t time_start = program_status.history.logs[(program_status.history.first_log+i)%MAX_LOGS].time_start;
+    time_t time_end = program_status.history.logs[(program_status.history.first_log+i)%MAX_LOGS].time_end;
+    
+    printf("%02d:%02d %d sec", ptm->tm_hour, ptm->tm_min, time_end-time_start);
+    __lcd_newline();
+    printf("%d step assembly    ", program_status.history.logs[i].num_sets);
+    
+    use_protocol(SPI);
+    sprintf(Canvas.footer_text, "B:%d N:%d S:%d W:%d", program_status.overflow.B, program_status.overflow.N, program_status.overflow.S, program_status.overflow.W);
+    update_footer();
 }
 
 void FUNC_STATE_SET_TIME(void) {
     unsigned char *time = program_status.time;
     
-    if(program_status.edit_time_idx) {
-        __lcd_home();
-        printf("  [ %02x/%02x/%02x ]  ", time[6],time[5],time[4]); // Print date in YY/MM/DD
-        __lcd_newline();
-        printf("  [ %02x:%02x:%02x ]  ", time[2],time[1],time[0]); // HH:MM:SS
-    } else {
-        __lcd_home();
-        printf("    %02x/%02x/%02x    ", time[6],time[5],time[4]); // Print date in YY/MM/DD
-        __lcd_newline();
-        printf("    %02x:%02x:%02x    ", time[2],time[1],time[0]); // HH:MM:SS
-    }
+    __lcd_home();
+    printf(program_status.edit_time_idx ? "  [ %02x/%02x/%02x ]  " : "    %02x/%02x/%02x    ", time[6],time[5],time[4]); // Print date in YY/MM/DD
+    __lcd_newline();
+    printf(program_status.edit_time_idx ? "  [ %02x/%02x/%02x ]  " : "    %02x/%02x/%02x    ", time[2],time[1],time[0]); // HH:MM:SS
+//    if(program_status.edit_time_idx) {
+//        __lcd_home();
+//        printf("  [ %02x/%02x/%02x ]  ", time[6],time[5],time[4]); // Print date in YY/MM/DD
+//        __lcd_newline();
+//        printf("  [ %02x:%02x:%02x ]  ", time[2],time[1],time[0]); // HH:MM:SS
+//    } else {
+//        __lcd_home();
+//        printf("    %02x/%02x/%02x    ", time[6],time[5],time[4]); // Print date in YY/MM/DD
+//        __lcd_newline();
+//        printf("    %02x:%02x:%02x    ", time[2],time[1],time[0]); // HH:MM:SS
+//    }
     
     __lcd_display_control(1,1,1);
     switch(program_status.edit_time_idx) {
@@ -177,7 +176,6 @@ void init_program_states(void) {
     program_status.compartment_count_index = 0;
     program_status.buffer_index = 0;
     program_status.trie_ptr = &fastener_trie.nodes[0];
-//    program_status.history_cnt = 0;
     program_status.operating = false;
 }
 
@@ -193,7 +191,7 @@ void reset_fastener_prompt() {
 }
 
 void program_states_interrupt(unsigned char key) {
-    bool state_changed = true;
+    unsigned char state_changed = true;
 
     switch(program_state) {
         case STATE_STANDBY: // Key pressed on standby mode
@@ -255,7 +253,7 @@ void program_states_interrupt(unsigned char key) {
                     if(program_status.S > 0) program_status.max_quantity = min(program_status.max_quantity, 2/program_status.S);
                     if(program_status.W > 0) program_status.max_quantity = min(program_status.max_quantity, 4/program_status.W);
                     
-                    program_status.set_enum = program_status.trie_ptr - TRIE_ROOT_ADR;
+                    program_status.set_enum[program_status.compartment_count_index] = program_status.trie_ptr - TRIE_ROOT_ADR;
                     
                     program_state = STATE_PROMPT_FASTENER_SET_QUANTITY;
                 } else {
@@ -269,8 +267,8 @@ void program_states_interrupt(unsigned char key) {
             break;
         case STATE_PROMPT_FASTENER_SET_QUANTITY:
             if('1' <= key && key <= ('0' + program_status.max_quantity)) {
-                program_status.set_qty = key - '0';
-                program_status.set_count_tmp = program_status.set_qty;
+                program_status.set_qty[program_status.compartment_count_index] = key - '0';
+                program_status.set_count_tmp = key - '0';
                 
                 program_state = STATE_PREVIEW_FASTENER_SET;
             } else {
@@ -338,12 +336,97 @@ void program_states_interrupt(unsigned char key) {
             }
             break;
         case STATE_HISTORY:
-//            if('1' <= key && key <= '9') {
-//                program_status.history_index = key - '1';
-//                program_state = (program_status.history_index < program_status.history_cnt) ? STATE_LOG_PAGE_1 : STATE_STANDBY;
-//            } else {
+            if('1' <= key && key <= '9') {
+                program_status.history_index = key - '1';
+                program_state = (program_status.history_index < program_status.history.count) ? STATE_LOG_PAGE_1 : STATE_STANDBY;
+                
+                if(program_status.history_index < program_status.history.count) {
+                    program_status.history_index = (program_status.history.first_log+program_status.history_index)%MAX_LOGS;
+//                    unsigned char index = (program_status.history.first_log+program_status.history_index)%MAX_LOGS;
+//                    struct Log log = program_status.history.logs[index];
+//                    memset(program_status.set_count, 0, sizeof(program_status.set_count[0][0]) * 8 * 4);
+//                    for(int i = 0; i < 8; i++) {
+//                        unsigned char qty = log.qty[i];
+//                        program_status.trie_ptr = &fastener_trie.nodes[log.set_enum[i]];
+//                        while(program_status.trie_ptr != program_status.trie_ptr->parent) {
+//                            char fastener = program_status.trie_ptr->letter;
+//                            switch(fastener) {
+//                                case 'B': program_status.set_count[i][0] += qty; break;
+//                                case 'N': program_status.set_count[i][1] += qty; break;
+//                                case 'S': program_status.set_count[i][2] += qty; break;
+//                                case 'W': program_status.set_count[i][3] += qty; break;
+//                            }
+//                            program_status.trie_ptr = program_status.trie_ptr->parent;
+//                        }
+//                        {
+//                            program_status.set_count[i][0] += qty;
+//                            char fastener = program_status.trie_ptr->letter;
+//                            switch(fastener) {
+//                                case 'B': program_status.set_count[i][0] += qty; break;
+//                                case 'N': program_status.set_count[i][1] += qty; break;
+//                                case 'S': program_status.set_count[i][2] += qty; break;
+//                                case 'W': program_status.set_count[i][3] += qty; break;
+//                            }
+//                        }
+//                    }
+//                    program_status.overflow.B = log.overflow[0];
+//                    program_status.overflow.N = log.overflow[1];
+//                    program_status.overflow.S = log.overflow[2];
+//                    program_status.overflow.W = log.overflow[3];
+                    program_state = STATE_LOG_PAGE_1;
+                } else {
+                    program_state = STATE_STANDBY;
+                }
+                
+            } else {
                 program_state = STATE_STANDBY;
-//            }
+            }
+            break;
+        case STATE_LOG_PAGE_1:
+            if('1' <= key && key <= '8') {
+                program_status.sector = key - '1';
+                
+                unsigned char sector = program_status.sector;
+                
+                use_protocol(SPI);
+                highlight_sector(program_status.sector);
+                
+                struct F_STAT fasteners = {0};
+                unsigned char qty = program_status.history.logs[program_status.history_index].qty[sector];
+                unsigned char set_enum = program_status.history.logs[program_status.history_index].set_enum[sector];
+                program_status.trie_ptr = &fastener_trie.nodes[set_enum];
+                if(qty > 0) {
+                    __lcd_clear();
+                    printf("%d %d ", qty, set_enum);
+                    while(program_status.trie_ptr->letter != 'A') {
+                        char fastener = program_status.trie_ptr->letter;
+                        printf("%c", fastener);
+                        switch(fastener) {
+                            case 'B': fasteners.B += qty; break;
+                            case 'N': fasteners.N += qty; break;
+                            case 'S': fasteners.S += qty; break;
+                            case 'W': fasteners.W += qty; break;
+                        }
+                        program_status.trie_ptr = program_status.trie_ptr->parent;
+                    }
+                }
+//                    program_status.trie_ptr = &fastener_trie.nodes[set_enum];
+                update_sheet_data(fasteners.B, fasteners.N, fasteners.S, fasteners.W);
+                    
+//                    update_sheet_data(program_status.set_count[set][0], program_status.set_count[set][1], program_status.set_count[set][2], program_status.set_count[set][3]);
+                
+                
+                state_changed = false;
+            } else if(key == '0') {
+                __lcd_clear();
+                unsigned char index = (program_status.history.first_log+program_status.history_index)%MAX_LOGS;
+                for(unsigned char i = 0; i < 8; i++) printf("%d ", program_status.history.logs[index].qty[i]);
+                __lcd_newline();
+                for(unsigned char i = 0; i < 8; i++) printf("%d ", program_status.history.logs[index].set_enum[i]);
+                state_changed = false;
+            } else {
+                program_state = STATE_HISTORY;
+            }
             break;
         case STATE_SET_TIME:
             if(key == '*') {

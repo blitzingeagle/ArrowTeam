@@ -20,7 +20,7 @@ void draw_container(void) {
         float theta = 3*M_PI/2 + M_PI/8 + i*M_PI/4;
         unsigned char x1 = x + (char)round(2*r/3 * cos(theta));
         unsigned char y1 = y + (char)round(2*r/3 * sin(theta));
-        overwrite_px_char(x1-2,y1-6,i+'1',GREY,BLACK);
+        overwrite_px_char(x1-2,y1-6,i+'1',WHITE,BLACK);
     }
 }
 
@@ -31,7 +31,7 @@ void draw_table(void) {
     glcdDrawRectangle(76, 119, 52, 53, GREY);
     glcdDrawRectangle(76, 119, 66, 67, GREY);
     glcdDrawRectangle(76, 119, 80, 81, GREY);
-    overwrite_px_string(80, 26, "CMPT 1", WHITE, BLUE);
+    overwrite_px_string(80, 26, " CMPT ", WHITE, BLUE);
     overwrite_px_char(78, 40, 'B', BLACK, WHITE);
     overwrite_px_char(78, 54, 'N', BLACK, WHITE);
     overwrite_px_char(78, 68, 'S', BLACK, WHITE);
@@ -55,7 +55,7 @@ void highlight_sector(unsigned char sector) {
     glcdDrawLine(CONTAINER_X, x2, CONTAINER_Y, y2, 0, WHITE);
     x1 = CONTAINER_X + (char)round(2*CONTAINER_R/3 * cos(theta+M_PI/8));
     y1 = CONTAINER_Y + (char)round(2*CONTAINER_R/3 * sin(theta+M_PI/8));
-    overwrite_px_char(x1-2,y1-6,Canvas.selected_sector+'1',GREY,BLACK);
+    overwrite_px_char(x1-2,y1-6,Canvas.selected_sector+'1',WHITE,BLACK);
     
     theta = 3*M_PI/2 + sector * M_PI/4;
     x1 = CONTAINER_X + (char)round(CONTAINER_R * cos(theta));

@@ -20,6 +20,7 @@
 
 #define MAX_LOGS 4
 
+#define SETS_BEGIN_ADR 4
 #define LOG_BEGIN_ADR 12
 #define LOG_SIZE 20
 
@@ -28,11 +29,13 @@ struct Log {
     unsigned char qty[8];
     unsigned char set_enum[8];
     unsigned char overflow[4];
+    unsigned char num_sets;
 };
 
 struct History {
     unsigned char count;
     unsigned char write_index;
+    unsigned char first_log;
     struct Log logs[MAX_LOGS];
 };
 

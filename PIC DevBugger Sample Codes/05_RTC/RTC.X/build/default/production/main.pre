@@ -3868,21 +3868,106 @@ const char happynewyear[7] = { 0x30,
 0x18
 };
 
+# 8 "/Applications/microchip/xc8/v1.45/include/time.h"
+typedef long time_t;
+struct tm {
+int tm_sec;
+int tm_min;
+int tm_hour;
+int tm_mday;
+int tm_mon;
+int tm_year;
+int tm_wday;
+int tm_yday;
+int tm_isdst;
+};
+
+# 25
+extern int time_zone;
+
+# 30
+extern time_t time(time_t *);
+extern int stime(time_t *);
+
+# 47
+extern char * asctime(const struct tm *) ;
+extern char * ctime(const time_t *) ;
+extern struct tm * gmtime(const time_t *) ;
+extern struct tm * localtime(const time_t *) ;
+extern size_t strftime(char *, size_t, const char *, const struct tm *) ;
+extern time_t mktime(struct tm *);
+
+# 44 "main.c"
+void eep_write_octet(unsigned char adr, unsigned char data) {
+while(EECON1bits.WR);
+
+EEADR = adr;
+EEDATA = data;
+EECON1bits.EEPGD = 0;
+EECON1bits.CFGS = 0;
+EECON1bits.WREN = 1;
+INTCONbits.GIE = 0;
+
+EECON2 = 0x55;
+EECON2 = 0xAA;
+EECON1bits.WR = 1;
+
+INTCONbits.GIE = 1;
+_delay((unsigned long)((100)*(40000000/4000.0)));
+}
+
+unsigned char eep_read_octet(unsigned char adr) {
+while(EECON1bits.WR);
+
+EEADR = adr;
+EECON1bits.EEPGD = 0;
+EECON1bits.CFGS = 0;
+EECON1bits.RD = 1;
+_delay((unsigned long)((100)*(40000000/4000.0)));
+
+return EEDATA;
+}
+
+void eep_write(unsigned char adr, const unsigned char data[4]) {
+for(char i = 0; i < 4; i++) eep_write_octet(adr+i, data[i]);
+}
+
+void eep_read(unsigned char adr, unsigned char *data) {
+for(char i = 0; i < 4; i++) data[i] = eep_read_octet(adr+i);
+}
+
+void eep_write_long(unsigned char adr, unsigned long l) {
+unsigned char data[4];
+data[0] = l & 0xFF;
+data[1] = (l >> 8) & 0xFF;
+data[2] = (l >> 16) & 0xFF;
+data[3] = (l >> 24) & 0xFF;
+
+eep_write(adr, data);
+}
+
+unsigned long eep_read_long(unsigned char adr) {
+unsigned char data[4];
+eep_read(adr, data);
+
+return (unsigned long) data[0] | ((unsigned long) data[1] << 8) | ((unsigned long) data[2] << 16) | ((unsigned long) data[3] << 24);
+}
+
 void main(void) {
 
-# 49
+# 105
 LATA = 0x00;
 LATB = 0x00;
 LATC = 0x00;
 LATD = 0x00;
 LATE = 0x00;
 
-# 57
+# 113
 TRISA = 0xFF;
 TRISB = 0xFF;
 TRISC = 0b10000000;
 
-# 63
+# 119
 TRISD = 0x00;
 TRISE = 0x00;
 
@@ -3894,10 +3979,19 @@ ADCON1 = 0b00001111;
 
 initLCD();
 
+long t = 10241208;
+printf("%ld", t);
+lcdInst(0xC0);;
+eep_write_long(16, t);
+unsigned long l = eep_read_long(16);
+printf("%ld", l);
+
+while(1);
+
 I2C_Master_Init(100000);
 (INTCONbits.GIE = 0);
 
-# 84
+# 149
 unsigned char time[7];
 unsigned char i;
 
@@ -3929,7 +4023,7 @@ _delay((unsigned long)((1000)*(40000000/4000.0)));
 
 void RTC_setTime(void){
 
-# 121
+# 186
 I2C_Master_Start();
 I2C_Master_Write(0b11010000);
 I2C_Master_Write(0x00);

@@ -40,9 +40,9 @@
 //void RTC_setTime(void);
 
 /***** Constants *****/
-const char keys[] =  "123B456N789S*0#W";
+//const char keys[] =  "123B456N789S*0#W";
 //const char keys[] = "WSNB#9630852*741";
-//const char keys[] = "147*2580369#BNSW";
+const char keys[] = "147*2580369#BNSW";
 
 char RX_packet[5];
 
@@ -90,23 +90,6 @@ void init(void) {
     /* Initialize LCD. */
     initLCD();
     
-//    struct History history = {0};
-//    struct Log log = {0};
-//    log.time_start = 30021;
-//    log.time_end = 5124241;
-//    add_log(log, &history);
-//    write_history(history);
-//    
-//    struct History history2 = {0};
-//    read_history(&history2);
-//    
-//    __lcd_clear();
-//    printf("%d %ld %ld", history2.count, history2.logs[0].time_start, history2.logs[0].time_end);
-//    
-//    while(1);
-    
-    read_history(&program_status.history);
-    
     /* Initialize GLCD. */
     initGLCD();
     
@@ -149,21 +132,35 @@ void init(void) {
 void main(void) {
     init();
     
-    FUNC_STATE_STANDBY(); // Start program in standby mode
+    printf("Initializing...");
+    read_history(&program_status.history);
     
-//    program_state = STATE_COMPLETION;
-//    FUNC_STATE_COMPLETION();
+    __lcd_clear();
+    FUNC_STATE_STANDBY(); // Start program in standby mode
     
     /* Main loop. */
     while(1) {
         if(program_status.operating) {
-            struct Log log = {0};
-            log.time_start = get_epoch_time(program_status.time);
+            struct Log *log = &program_status.history.logs[program_status.history.write_index];
+            log->time_start = get_epoch_time(program_status.time);
+            memset(log->set_enum, 0, 8);
+            memset(log->qty, 0, 8);
+            __lcd_clear();
+            for(unsigned char set = 0; set < 8; set++) {
+                unsigned char num_sets = program_status.compartment_count;
+                unsigned char sector = (num_sets <= 6) ? set + (set / (num_sets - 3)) : set;
+                log->set_enum[sector] = program_status.set_enum[set];
+                printf("%d %d ", program_status.set_enum[set], log->set_enum[sector]);
+                
+                log->qty[sector] = program_status.set_qty[set];
+            }
             
-            use_protocol(SPI);
-            glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
-            char buffer[22];
-            sprintf(buffer, "%d step assembly", program_status.compartment_count);
+            log->num_sets = program_status.compartment_count;
+            
+//            use_protocol(SPI);
+//            glcdDrawRectangle(0, GLCD_SIZE_VERT, 114, 128, WHITE);
+//            char buffer[22];
+//            sprintf(buffer, "%d step assembly", program_status.compartment_count);
             
             arduino_send_fastener_data(program_status.set_count, program_status.compartment_count);
             
@@ -174,14 +171,32 @@ void main(void) {
                 ei();
                 __delay_ms(500);
             }
+            printf("Done!");
             
-            log.time_end = get_epoch_time(program_status.time);
-            program_status.time_elapsed = log.time_end - log.time_start;
+            log->time_end = get_epoch_time(program_status.time);
+            log->overflow[0] = program_status.overflow.B;
+            log->overflow[1] = program_status.overflow.N;
+            log->overflow[2] = program_status.overflow.S;
+            log->overflow[3] = program_status.overflow.W;
+            program_status.time_elapsed = log->time_end - log->time_start;
+            
+            for(unsigned char i = 0; i < 8; i++) {
+                printf("%d ", program_status.history.logs[program_status.history.write_index].set_enum[i]);
+            }
+            program_status.history.write_index = (program_status.history.write_index + 1) % MAX_LOGS;
+            
+            __delay_ms(5000);
+            
+//            add_log(log, &program_status.history);
             
             program_state = STATE_COMPLETION;
             __lcd_clear();
             __lcd_home();
             PROG_FUNC[program_state]();
+            
+            di();
+            write_history(program_status.history);
+            ei();
         }
         di();
         use_protocol(SPI);
@@ -230,9 +245,9 @@ void interrupt interruptHandler(void) {
         unsigned char keypress = (PORTB & 0xF0) >> 4;
         unsigned char key = keys[keypress];
         
-        use_protocol(SPI);
-        sprintf(Canvas.footer_text, "Pressed: %c", key);
-        update_footer();
+//        use_protocol(SPI);
+//        sprintf(Canvas.footer_text, "Pressed: %c", key);
+//        update_footer();
         
         program_states_interrupt(key);
         
